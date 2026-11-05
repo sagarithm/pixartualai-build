@@ -15,14 +15,14 @@ export const ShowcaseCollage: React.FC = () => {
   ];
 
   return (
-    <section className="bg-[#FBFBFA] dark:bg-[#0F0F0F] py-20 px-5 md:px-[50px] border-t border-neutral-200 dark:border-neutral-800 transition-colors">
+    <section className="bg-base py-20 px-5 md:px-[50px] border-t border-border transition-colors">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 font-semibold">
+            <span className="text-xs font-mono uppercase tracking-wider text-ink-muted font-semibold">
               Live Production Showcase
             </span>
-            <h2 className="font-display font-medium text-3xl sm:text-5xl tracking-tight text-neutral-900 dark:text-white mt-1">
+            <h2 className="font-display font-medium text-3xl sm:text-5xl tracking-tight text-ink-strong mt-1">
               Crafted with PixartualAI
             </h2>
           </div>

@@ -69,7 +69,7 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
       <main className="flex-1">
         {/* Section 0: Authentic Modulify Hero with Gradient Banner & Photo Drift */}
         <section className="kit-root relative box-border px-1.5 md:px-[50px]">
-          <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,#ffffff_0%,#f5f3ff_70%,#fbcfe8_99.04%)] px-4 pb-0 pt-[110px] md:px-[50px] md:pt-[150px]">
+          <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,theme(colors.white)_0%,theme(colors.violet.50)_70%,theme(colors.pink.200)_99.04%)] px-4 pb-0 pt-[110px] md:px-[50px] md:pt-[150px]">
             <div className="fhs-wrap relative z-[1] mx-auto flex w-full max-w-[900px] flex-col items-center text-center">
               {/* Badge */}
               <Link className="fhs-badge" href="/insights">

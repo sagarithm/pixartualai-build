@@ -24,8 +24,16 @@ export const Footer: React.FC = () => {
 
   useEffect(() => {
     try {
+      const modTheme = localStorage.getItem('modulify-theme');
+      if (modTheme) {
+        const parsed = JSON.parse(modTheme);
+        if (parsed?.state?.Theme && ['auto', 'light', 'dark'].includes(parsed.state.Theme)) {
+          setThemeMode(parsed.state.Theme);
+          return;
+        }
+      }
       const saved = localStorage.getItem('theme') as 'auto' | 'light' | 'dark' | null;
-      if (saved) {
+      if (saved && ['auto', 'light', 'dark'].includes(saved)) {
         setThemeMode(saved);
       }
     } catch (e) { }
@@ -34,16 +42,10 @@ export const Footer: React.FC = () => {
   const applyTheme = (mode: 'auto' | 'light' | 'dark') => {
     try {
       localStorage.setItem('theme', mode);
-      setThemeMode(mode);
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const effectiveTheme = mode === 'auto' ? (prefersDark ? 'dark' : 'light') : mode;
-      document.documentElement.setAttribute('data-theme', effectiveTheme);
-      if (effectiveTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      localStorage.setItem('modulify-theme', JSON.stringify({ state: { Theme: mode } }));
     } catch (e) { }
+    setThemeMode(mode);
+    window.dispatchEvent(new CustomEvent('pixartual-theme-change', { detail: mode }));
   };
 
   return (
@@ -240,27 +242,30 @@ export const Footer: React.FC = () => {
             <div aria-label="Theme" className="inline-flex shrink-0 items-center gap-0.5 rounded-[10px] bg-gray-100 p-[3px]">
               <button
                 type="button"
+                aria-label="Auto"
+                aria-pressed={themeMode === 'auto'}
                 onClick={() => applyTheme('auto')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${themeMode === 'auto' ? 'bg-white text-gray-900 shadow-sm' : ''
-                  }`}
+                className="flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-colors hover:text-gray-900 focus-visible:ring-1 focus-visible:ring-border aria-pressed:bg-white aria-pressed:text-gray-900 aria-pressed:shadow-sm"
                 title="Auto"
               >
                 <Desktop size={16} />
               </button>
               <button
                 type="button"
+                aria-label="Light"
+                aria-pressed={themeMode === 'light'}
                 onClick={() => applyTheme('light')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${themeMode === 'light' ? 'bg-white text-gray-900 shadow-sm' : ''
-                  }`}
+                className="flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-colors hover:text-gray-900 focus-visible:ring-1 focus-visible:ring-border aria-pressed:bg-white aria-pressed:text-gray-900 aria-pressed:shadow-sm"
                 title="Light"
               >
                 <Sun size={16} />
               </button>
               <button
                 type="button"
+                aria-label="Dark"
+                aria-pressed={themeMode === 'dark'}
                 onClick={() => applyTheme('dark')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${themeMode === 'dark' ? 'bg-white text-gray-900 shadow-sm' : ''
-                  }`}
+                className="flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-colors hover:text-gray-900 focus-visible:ring-1 focus-visible:ring-border aria-pressed:bg-white aria-pressed:text-gray-900 aria-pressed:shadow-sm"
                 title="Dark"
               >
                 <Moon size={16} />

@@ -23,12 +23,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" />
+        <meta name="theme-color" content="#f5f5f5" />
       </head>
-      <body className="min-h-screen bg-[#FBFBFA] dark:bg-[#0F0F0F] text-[#171717] dark:text-[#EDEDED] antialiased selection:bg-neutral-200 dark:selection:bg-neutral-800 transition-colors duration-200">
+      <body className="min-h-screen bg-base text-ink antialiased selection:bg-orange-500/20 selection:text-ink-strong">
         <ThemeSync />
         {children}
       </body>
     </html>
   );
 }
-

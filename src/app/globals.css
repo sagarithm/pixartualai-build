@@ -447,9 +447,54 @@
   background-repeat: no-repeat;
 }
 
+[data-color-scheme="dark"] .marketing-footer,
+[data-theme="dark"] .marketing-footer,
+html.dark .marketing-footer {
+  background-image: url(/images/footer-bg-dark.jpg);
+}
+
+.mim-hero-section {
+  background-image: url(/images/kit/hero-bg.jpg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+[data-color-scheme="dark"] .mim-hero-section,
+[data-theme="dark"] .mim-hero-section,
+html.dark .mim-hero-section {
+  background-image: url(/images/kit/hero-bg-dark.jpg);
+}
+
+[data-theme-switching] *,
+[data-theme-switching] *:before,
+[data-theme-switching] *:after {
+  transition: none !important;
+}
+
+[data-color-scheme="dark"] .mdlfy-adaptive-media,
+[data-theme="dark"] .mdlfy-adaptive-media,
+html.dark .mdlfy-adaptive-media {
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: lighten;
+}
+
+[data-color-scheme="dark"] .mdlfy-adaptive-graphic,
+[data-theme="dark"] .mdlfy-adaptive-graphic,
+html.dark .mdlfy-adaptive-graphic {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+[data-color-scheme="dark"] .mdlfy-site-icon,
+[data-theme="dark"] .mdlfy-site-icon,
+html.dark .mdlfy-site-icon {
+  background-color: rgb(var(--mdlfy-color-static-white) / 1);
+  box-shadow: 0 0 0 1.5px rgb(var(--mdlfy-color-static-white) / 1);
+}
+
 body {
-  background-color: var(--canvas-bg);
-  color: var(--text-primary);
+  background-color: rgb(var(--mdlfy-color-base));
+  color: rgb(var(--mdlfy-color-ink));
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;

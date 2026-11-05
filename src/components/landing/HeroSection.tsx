@@ -25,12 +25,12 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section className="box-border px-1.5 md:px-[50px]" id="hero">
-      <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,#ffffff_0%,#f5f3ff_70%,#fbcfe8_99.04%)] px-4 pb-9 pt-[18px] md:px-[50px] md:pb-[50px] md:pt-7">
+      <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,theme(colors.white)_0%,theme(colors.violet.50)_70%,theme(colors.pink.200)_99.04%)] px-4 pb-9 pt-[18px] md:px-[50px] md:pb-[50px] md:pt-7">
         {/* Ambient video background with glowing orbs */}
         <video
           aria-hidden="true"
           autoPlay
-          className="pointer-events-none absolute inset-0 z-0 size-full object-cover"
+          className="mdlfy-adaptive-media pointer-events-none absolute inset-0 z-0 size-full object-cover"
           loop
           muted
           playsInline
@@ -40,9 +40,9 @@ export const HeroSection: React.FC = () => {
         />
 
         <div className="relative z-[2] mx-auto flex max-w-[960px] flex-col items-center pt-5 text-center md:pt-[30px]">
-          <h1 className="mb-[18px] max-w-[780px] text-[clamp(32px,5vw,52px)] font-medium leading-[1.25] tracking-[-0.01em] text-neutral-900 font-['Neutralsans']">
+          <h1 className="mb-[18px] max-w-[780px] text-[clamp(32px,5vw,52px)] font-medium leading-[1.25] tracking-[-0.01em] text-ink-strong font-['Neutralsans']">
             Build a{' '}
-            <span className="hero-shine font-['Neutralsans'] font-bold text-neutral-900" data-text="polished">
+            <span className="hero-shine font-['Neutralsans'] font-bold text-ink-strong" data-text="polished">
               polished
             </span>{' '}
             website or web app with AI.
@@ -60,11 +60,11 @@ export const HeroSection: React.FC = () => {
 
               <form
                 onSubmit={handleGenerate}
-                className="relative z-[1] flex w-full flex-col rounded-[14px] bg-white p-3.5 text-left shadow-[0_4px_16px_rgba(0,0,0,0.06)] md:p-4 focus-within:ring-2 focus-within:ring-[#fe3200] focus-within:ring-offset-1 min-h-[150px] md:min-h-[165px] justify-between"
+                className="relative z-[1] flex w-full flex-col rounded-[14px] bg-white p-3.5 text-left shadow-[0_4px_8px_theme(colors.static-black/6%)] md:p-4 focus-within:ring-2 focus-within:ring-accent-hot focus-within:ring-offset-1 min-h-[150px] md:min-h-[165px] justify-between"
               >
                 <textarea
                   aria-label="Describe what you want to build"
-                  className="flex w-full outline-none transition-colors min-w-0 rounded-none border-0 bg-transparent p-0 relative z-[1] resize-none px-1 py-1.5 text-base leading-normal text-neutral-900 placeholder:text-gray-400 md:text-[17px]"
+                  className="flex w-full outline-none transition-colors disabled:pointer-events-none min-w-0 rounded-none border-0 bg-transparent p-0 relative z-[1] resize-none px-1 py-1.5 text-base leading-normal text-ink-strong placeholder:text-gray-400 md:text-[17px]"
                   placeholder="Ask PixartualAI to build a SaaS landing page with pricing, interactive demo, and testimonials…"
                   rows={3}
                   value={prompt}
@@ -92,7 +92,7 @@ export const HeroSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setPrompt(`Build a modern ${p.toLowerCase()} with high converting layout`)}
-                    className="cursor-pointer rounded-lg border-0 bg-transparent px-[9px] py-[5px] text-sm text-neutral-500 transition-colors hover:bg-gray-100/80 hover:text-neutral-900"
+                    className="cursor-pointer rounded-lg border-0 bg-transparent px-[9px] py-[5px] text-sm text-zinc-500 transition-colors hover:bg-gray-100 hover:text-ink-strong"
                   >
                     {p}
                   </button>
