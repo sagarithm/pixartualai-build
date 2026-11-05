@@ -1,0 +1,692 @@
+[
+  {
+    "id": "websites",
+    "name": "Websites",
+    "desc": "Landing pages, marketing sites, and content sites generated from a prompt and ready to publish.View all Websites \u2192",
+    "cards": [
+      {
+        "title": "SaaS Landing Page",
+        "desc": "Turn your product story into a high-converting SaaS landing page, hero, features, pricing, and FAQ, generated from a single prompt and ready to publish.",
+        "href": "/solutions/use-case/saas-landing-page"
+      },
+      {
+        "title": "Startup Landing Page",
+        "desc": "Launch a credible startup landing page fast, explain your idea, capture interest, and start collecting sign-ups without hiring a designer or developer.",
+        "href": "/solutions/use-case/startup-landing-page"
+      },
+      {
+        "title": "App Landing Page",
+        "desc": "Show off your mobile or web app with a landing page built to drive downloads, hero, screenshots, features, and store links, generated from one prompt.",
+        "href": "/solutions/use-case/app-landing-page"
+      },
+      {
+        "title": "Portfolio Website",
+        "desc": "Build a portfolio website that wins work, showcase projects, tell your story, and make it easy to hire you, all generated from a simple prompt.",
+        "href": "/solutions/use-case/portfolio-website"
+      },
+      {
+        "title": "Small Business Website",
+        "desc": "Get your small business online with a professional website, services, hours, testimonials, and contact, generated from a prompt and ready to publish.",
+        "href": "/solutions/use-case/small-business-website"
+      },
+      {
+        "title": "Waitlist & Pre-Launch Page",
+        "desc": "Build buzz before launch with a waitlist landing page that captures emails, teases the product, and turns interest into a launch-day audience.",
+        "href": "/solutions/use-case/waitlist-landing-page"
+      },
+      {
+        "title": "Product Launch Page",
+        "desc": "Announce your product with a launch page that builds momentum, a bold hero, key features, social proof, and one clear call to action.",
+        "href": "/solutions/use-case/product-launch-page"
+      },
+      {
+        "title": "Newsletter Landing Page",
+        "desc": "Grow your newsletter with a landing page built to convert readers into subscribers, a clear promise, proof, and a single sign-up form.",
+        "href": "/solutions/use-case/newsletter-landing-page"
+      },
+      {
+        "title": "Online Course Landing Page",
+        "desc": "Sell your online course with a landing page that explains the outcome, builds trust, and drives enrollments, curriculum, instructor, and pricing included.",
+        "href": "/solutions/use-case/online-course-landing-page"
+      },
+      {
+        "title": "Event Landing Page",
+        "desc": "Fill seats for your event with a landing page that covers the what, when, and why, agenda, speakers, and registration in one focused page.",
+        "href": "/solutions/use-case/event-landing-page"
+      },
+      {
+        "title": "Affiliate & Comparison Site",
+        "desc": "Launch review and comparison sites that rank and earn, AI-generated product pages with ratings, pros and cons, and affiliate links, built to convert.",
+        "href": "/solutions/use-case/affiliate-marketing-website"
+      },
+      {
+        "title": "Personal Blog",
+        "desc": "Start a personal blog you will actually keep writing, a clean, fast, SEO-ready site with a homepage, posts, and about, generated from a prompt.",
+        "href": "/solutions/use-case/personal-blog"
+      },
+      {
+        "title": "AI Chatbot Landing Page",
+        "desc": "Launch a landing page for your AI chatbot that turns curious visitors into signups and demos.",
+        "href": "/solutions/use-case/ai-chatbot-landing-page"
+      },
+      {
+        "title": "Custom AI Landing Page",
+        "desc": "Present your custom AI product or service with a page that builds trust and books demos.",
+        "href": "/solutions/use-case/custom-ai-landing-page"
+      },
+      {
+        "title": "Consultant & Freelancer Portfolio",
+        "desc": "Win better clients with a portfolio that shows your work, results, and how to hire you.",
+        "href": "/solutions/use-case/consultant-freelancer-portfolio"
+      },
+      {
+        "title": "Documentation Website",
+        "desc": "Give your product clear, searchable docs that help users and rank in search.",
+        "href": "/solutions/use-case/documentation-website"
+      },
+      {
+        "title": "Ebook & Lead Magnet Landing Page",
+        "desc": "Turn a free ebook or guide into a lead magnet that grows your email list.",
+        "href": "/solutions/use-case/ebook-lead-magnet-landing-page"
+      },
+      {
+        "title": "HR & Job Board Website",
+        "desc": "Publish open roles and attract candidates with a job board that is easy to update.",
+        "href": "/solutions/use-case/hr-job-board-website"
+      },
+      {
+        "title": "Marketing Campaign Landing Page",
+        "desc": "Spin up a focused campaign landing page that converts your ad and email traffic.",
+        "href": "/solutions/use-case/marketing-campaign-landing-page"
+      },
+      {
+        "title": "Membership & Subscription Website",
+        "desc": "Sell memberships and recurring plans with a site that explains the value and converts.",
+        "href": "/solutions/use-case/membership-subscription-website"
+      },
+      {
+        "title": "Nonprofit & Fundraising Page",
+        "desc": "Tell your cause story and drive donations with a page built to move people to give.",
+        "href": "/solutions/use-case/nonprofit-fundraising-page"
+      },
+      {
+        "title": "Podcast & Content Creator Page",
+        "desc": "Grow your audience with a home for your podcast or content and every place to follow.",
+        "href": "/solutions/use-case/podcast-creator-page"
+      },
+      {
+        "title": "Product Hunt & App Store Launch Page",
+        "desc": "Make launch day count with a page built to convert Product Hunt and app store traffic.",
+        "href": "/solutions/use-case/product-hunt-launch-page"
+      },
+      {
+        "title": "SaaS Pricing & Comparison Page",
+        "desc": "Turn plan-shoppers into customers with a clear pricing and comparison page.",
+        "href": "/solutions/use-case/saas-pricing-comparison-page"
+      },
+      {
+        "title": "Startup MVP Showcase",
+        "desc": "Show your MVP, prove the idea, and collect signups or feedback from early users.",
+        "href": "/solutions/use-case/startup-mvp-showcase"
+      },
+      {
+        "title": "Web3 & Crypto Project Website",
+        "desc": "Launch a clear, credible site for your Web3 project, token, or dApp.",
+        "href": "/solutions/use-case/web3-crypto-website"
+      },
+      {
+        "title": "Webinar & Virtual Event Page",
+        "desc": "Fill seats for your webinar or virtual event with a page built to drive registrations.",
+        "href": "/solutions/use-case/webinar-virtual-event-page"
+      }
+    ]
+  },
+  {
+    "id": "front-end-apps",
+    "name": "Front-End Apps",
+    "desc": "Interactive tools and single-page apps generated from a prompt and ready to ship.View all Front-End Apps \u2192",
+    "cards": [
+      {
+        "title": "3D Model Viewers",
+        "desc": "Load, rotate, and inspect 3D models right in the browser, no plugins and no wait.",
+        "href": "/solutions/use-case/3d-model-viewer"
+      },
+      {
+        "title": "AI Art Generators",
+        "desc": "Generate and share AI art from a prompt in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/ai-art-generator"
+      },
+      {
+        "title": "Calendar Applications",
+        "desc": "Plan events and view months, weeks, and days in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/calendar-app"
+      },
+      {
+        "title": "Digital Whiteboards",
+        "desc": "Sketch, note, and diagram together on an infinite canvas, no signup and no wait.",
+        "href": "/solutions/use-case/digital-whiteboard"
+      },
+      {
+        "title": "E-commerce Storefronts",
+        "desc": "Show products, build a cart, and drive checkout in the browser, no wait to launch.",
+        "href": "/solutions/use-case/ecommerce-storefront"
+      },
+      {
+        "title": "Event Management Platforms",
+        "desc": "Promote events, collect RSVPs, and share schedules in the browser, no wait to launch.",
+        "href": "/solutions/use-case/event-management-platform"
+      },
+      {
+        "title": "Feedback Collection Apps",
+        "desc": "Collect ratings and comments from users in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/feedback-collection-app"
+      },
+      {
+        "title": "Flashcard Apps",
+        "desc": "Study with flip cards and track what you know in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/flashcard-app"
+      },
+      {
+        "title": "Interactive Games",
+        "desc": "Ship a playable browser game with score and levels, no downloads and no wait.",
+        "href": "/solutions/use-case/interactive-game"
+      },
+      {
+        "title": "Interactive Maps & Geolocation Apps",
+        "desc": "Show locations, markers, and directions on a live map, no plugins and no wait.",
+        "href": "/solutions/use-case/interactive-maps-app"
+      },
+      {
+        "title": "Interactive Tutorials",
+        "desc": "Teach step by step with guided, hands-on lessons in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/interactive-tutorial"
+      },
+      {
+        "title": "Invoice Generators",
+        "desc": "Create, preview, and download professional invoices in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/invoice-generator"
+      },
+      {
+        "title": "Kanban Boards",
+        "desc": "Track work across columns with drag-and-drop cards in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/kanban-board"
+      },
+      {
+        "title": "Math Solvers",
+        "desc": "Solve equations and show the steps in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/math-solver"
+      },
+      {
+        "title": "Meditation & Mindfulness Apps",
+        "desc": "Guide breathing and calm sessions with timers and sound in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/meditation-app"
+      },
+      {
+        "title": "Mind Mapping Tools",
+        "desc": "Map ideas as connected nodes on a flexible canvas, no signup and no wait.",
+        "href": "/solutions/use-case/mind-mapping-tool"
+      },
+      {
+        "title": "Music & Media Players",
+        "desc": "Play audio and video with a clean, custom player in the browser, no plugins and no wait.",
+        "href": "/solutions/use-case/music-media-player"
+      },
+      {
+        "title": "Onboarding Flows",
+        "desc": "Welcome new users with guided, multi-step onboarding in the browser, no wait to launch.",
+        "href": "/solutions/use-case/onboarding-flow"
+      },
+      {
+        "title": "Press & Media Kit Page",
+        "desc": "Share logos, bios, and assets with press in one clean page, no wait to launch.",
+        "href": "/solutions/use-case/press-media-kit-page"
+      },
+      {
+        "title": "Product Configurators",
+        "desc": "Let customers customize a product with live options and pricing, no wait to launch.",
+        "href": "/solutions/use-case/product-configurator"
+      },
+      {
+        "title": "Quiz Platforms",
+        "desc": "Create quizzes with instant scoring and results in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/quiz-platform"
+      },
+      {
+        "title": "Real Estate & Property Listing Page",
+        "desc": "Showcase properties with photos, details, and filters in the browser, no wait to launch.",
+        "href": "/solutions/use-case/real-estate-listing-page"
+      },
+      {
+        "title": "Resume Builders",
+        "desc": "Build a polished resume with live preview and download in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/resume-builder"
+      },
+      {
+        "title": "Social Media Apps",
+        "desc": "Build a feed with posts, likes, and profiles in the browser, no wait to launch.",
+        "href": "/solutions/use-case/social-media-app"
+      },
+      {
+        "title": "Stock Market Trackers",
+        "desc": "Track tickers, charts, and watchlists in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/stock-market-tracker"
+      },
+      {
+        "title": "SVG Editors",
+        "desc": "Draw and edit vector shapes with live SVG code in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/svg-editor"
+      },
+      {
+        "title": "Time Trackers",
+        "desc": "Track time with a start-stop timer and logged entries in the browser, no signup and no wait.",
+        "href": "/solutions/use-case/time-tracker"
+      },
+      {
+        "title": "Trivia & Puzzle Games",
+        "desc": "Play trivia and puzzles with instant feedback and scoring in the browser, no downloads and no wait.",
+        "href": "/solutions/use-case/trivia-puzzle-game"
+      },
+      {
+        "title": "UI Frameworks",
+        "desc": "Showcase a component library with live examples and code in the browser, no wait to launch.",
+        "href": "/solutions/use-case/ui-framework"
+      },
+      {
+        "title": "Web-Based Graphic Design Tools",
+        "desc": "Design graphics with text, shapes, and images on a canvas, no signup and no wait.",
+        "href": "/solutions/use-case/graphic-design-tool"
+      }
+    ]
+  },
+  {
+    "id": "full-stack-apps",
+    "name": "Full-Stack Apps",
+    "desc": "Complete apps with data, accounts, and logic, built from a prompt in a fraction of the time.View all Full-Stack Apps \u2192",
+    "cards": [
+      {
+        "title": "Auction & Bidding Platforms",
+        "desc": "Run live auctions where bidders compete in real time and the highest bid wins.",
+        "href": "/solutions/use-case/auction-bidding-platform"
+      },
+      {
+        "title": "Carbon Footprint Calculators",
+        "desc": "Let people measure their emissions and see clear, personalized ways to cut them.",
+        "href": "/solutions/use-case/carbon-footprint-calculator"
+      },
+      {
+        "title": "CMS Platforms",
+        "desc": "Give your team one place to write, organize, and publish content without touching code.",
+        "href": "/solutions/use-case/cms-platform"
+      },
+      {
+        "title": "CRM Systems",
+        "desc": "Track every contact, deal, and follow-up in one place so nothing slips through.",
+        "href": "/solutions/use-case/crm-system"
+      },
+      {
+        "title": "Customer Feedback Tools",
+        "desc": "Collect feedback, ideas, and bug reports in one place and act on what matters.",
+        "href": "/solutions/use-case/customer-feedback-tool"
+      },
+      {
+        "title": "Dating Applications",
+        "desc": "Help people build profiles, discover matches, and start conversations that go somewhere.",
+        "href": "/solutions/use-case/dating-app"
+      },
+      {
+        "title": "Ecommerce Websites",
+        "desc": "Sell products online with a storefront, cart, and checkout that actually converts.",
+        "href": "/solutions/use-case/ecommerce-website"
+      },
+      {
+        "title": "Event Management Solutions",
+        "desc": "Create events, sell tickets, and manage attendees from one dashboard that runs itself.",
+        "href": "/solutions/use-case/event-management-solution"
+      },
+      {
+        "title": "Interactive Storytelling Apps",
+        "desc": "Let readers shape the story with choices that lead to different paths and endings.",
+        "href": "/solutions/use-case/interactive-storytelling-app"
+      },
+      {
+        "title": "Job Matching Platforms",
+        "desc": "Connect the right candidates with the right roles through profiles, listings, and smart matches.",
+        "href": "/solutions/use-case/job-matching-platform"
+      },
+      {
+        "title": "Language Learning Tools",
+        "desc": "Teach a language with bite-size lessons, quizzes, and streaks that keep learners coming back.",
+        "href": "/solutions/use-case/language-learning-platform"
+      },
+      {
+        "title": "Learning Platforms",
+        "desc": "Host courses, lessons, and quizzes with progress tracking that keeps students on track.",
+        "href": "/solutions/use-case/learning-platform"
+      },
+      {
+        "title": "Mentorship Platforms",
+        "desc": "Match mentees with mentors and let them book, meet, and grow, all in one place.",
+        "href": "/solutions/use-case/mentorship-platform"
+      },
+      {
+        "title": "Micro Blogging Platforms",
+        "desc": "Let people post short updates, follow each other, and build a real-time feed together.",
+        "href": "/solutions/use-case/micro-blogging-platform"
+      },
+      {
+        "title": "Peer-to-Peer Lending Platforms",
+        "desc": "Connect borrowers and lenders with listings, funding, and repayment tracking in one place.",
+        "href": "/solutions/use-case/peer-to-peer-lending-platform"
+      },
+      {
+        "title": "Project Management Tools",
+        "desc": "Plan work, assign tasks, and track progress so your team always knows what is next.",
+        "href": "/solutions/use-case/project-management-tool"
+      },
+      {
+        "title": "Remote Work & Coliving Platforms",
+        "desc": "List coliving spaces, take bookings, and build a community for remote workers on the move.",
+        "href": "/solutions/use-case/remote-work-coliving-platform"
+      },
+      {
+        "title": "SEO Tools",
+        "desc": "Track keywords, audit pages, and turn search data into rankings people can act on.",
+        "href": "/solutions/use-case/seo-tool"
+      },
+      {
+        "title": "Short-Term Rental Platforms",
+        "desc": "List properties, manage availability, and take bookings for stays, all in one place.",
+        "href": "/solutions/use-case/short-term-rental-platform"
+      },
+      {
+        "title": "Survey Builders",
+        "desc": "Create surveys, collect responses, and see results in charts you can act on right away.",
+        "href": "/solutions/use-case/survey-builder"
+      },
+      {
+        "title": "Newsletter Platforms",
+        "desc": "Grow subscribers, write issues, and send emails that land, all from one place.",
+        "href": "/solutions/use-case/newsletter-platform"
+      }
+    ]
+  },
+  {
+    "id": "dashboards",
+    "name": "Dashboards",
+    "desc": "Data-rich dashboards that turn your metrics into decisions, built from a prompt.View all Dashboards \u2192",
+    "cards": [
+      {
+        "title": "Ad Campaign Dashboards",
+        "desc": "See spend, ROAS, and conversions across every campaign in one view your team can read fast.",
+        "href": "/solutions/use-case/ad-campaign-dashboard"
+      },
+      {
+        "title": "AI-Powered Business Insights Dashboard",
+        "desc": "Pull revenue, growth, and operations into one AI-powered view your leaders can act on daily.",
+        "href": "/solutions/use-case/business-insights-dashboard"
+      },
+      {
+        "title": "Customer Support Dashboards",
+        "desc": "Track tickets, response time, and CSAT in one view so support never falls behind.",
+        "href": "/solutions/use-case/customer-support-dashboard"
+      },
+      {
+        "title": "Data Visualization Dashboards",
+        "desc": "Turn raw tables into clear charts anyone can read, without a data team or code.",
+        "href": "/solutions/use-case/data-visualization-dashboard"
+      },
+      {
+        "title": "Ecommerce Analytics Tools",
+        "desc": "Track sales, conversion, and AOV in one view so you grow revenue with confidence.",
+        "href": "/solutions/use-case/ecommerce-analytics-dashboard"
+      },
+      {
+        "title": "Energy Consumption Dashboards",
+        "desc": "See usage, cost, and peak demand in one view so you cut waste and lower bills.",
+        "href": "/solutions/use-case/energy-consumption-dashboard"
+      },
+      {
+        "title": "Esports & Gaming Performance Dashboards",
+        "desc": "Track K/D, win rate, and match stats in one view so players improve faster.",
+        "href": "/solutions/use-case/esports-performance-dashboard"
+      },
+      {
+        "title": "Financial Management Platforms",
+        "desc": "Track cash flow, expenses, and profit in one view so finance decisions stay grounded.",
+        "href": "/solutions/use-case/financial-management-dashboard"
+      },
+      {
+        "title": "Fitness & Workout Dashboards",
+        "desc": "Track workouts, progress, and personal records in one view so you stay on plan.",
+        "href": "/solutions/use-case/fitness-workout-dashboard"
+      },
+      {
+        "title": "Fleet Management Dashboards",
+        "desc": "Track vehicles, fuel, and maintenance in one view so your fleet runs efficiently.",
+        "href": "/solutions/use-case/fleet-management-dashboard"
+      },
+      {
+        "title": "Incident Response Dashboards",
+        "desc": "Track open incidents, MTTR, and severity in one view so your team responds faster.",
+        "href": "/solutions/use-case/incident-response-dashboard"
+      },
+      {
+        "title": "Influencer Marketing Dashboards",
+        "desc": "Track reach, engagement, and ROI across creators in one view so you back the right partners.",
+        "href": "/solutions/use-case/influencer-marketing-dashboard"
+      },
+      {
+        "title": "IT Infrastructure Dashboards",
+        "desc": "Track uptime, CPU, and alerts across servers in one view so systems stay healthy.",
+        "href": "/solutions/use-case/it-infrastructure-dashboard"
+      },
+      {
+        "title": "Manufacturing & Production Dashboards",
+        "desc": "Track OEE, output, and downtime in one view so your production line runs at its best.",
+        "href": "/solutions/use-case/manufacturing-dashboard"
+      },
+      {
+        "title": "Mapping Tools",
+        "desc": "Turn location data into interactive maps with metrics and filters anyone can read.",
+        "href": "/solutions/use-case/mapping-dashboard"
+      },
+      {
+        "title": "Marketing Tools",
+        "desc": "Track leads, channels, and ROI in one view so every marketing dollar earns its place.",
+        "href": "/solutions/use-case/marketing-dashboard"
+      },
+      {
+        "title": "Mental Health & Wellness Dashboards",
+        "desc": "Track mood, sleep, and habits in one view so wellbeing trends are easy to see and act on.",
+        "href": "/solutions/use-case/mental-health-dashboard"
+      },
+      {
+        "title": "News Aggregators",
+        "desc": "Pull headlines and sources into one dashboard with filters so you scan the news that matters.",
+        "href": "/solutions/use-case/news-aggregator-dashboard"
+      },
+      {
+        "title": "NFT & Digital Art Dashboards",
+        "desc": "Track floor price, volume, and holdings in one view so you make NFT decisions with data.",
+        "href": "/solutions/use-case/nft-dashboard"
+      },
+      {
+        "title": "Real Estate Listings",
+        "desc": "Track listings, prices, and days on market in one view so you act on real estate trends.",
+        "href": "/solutions/use-case/real-estate-dashboard"
+      },
+      {
+        "title": "Recycling & Waste Management Dashboards",
+        "desc": "Track waste volume, recycling rate, and diversion in one view so you hit sustainability goals.",
+        "href": "/solutions/use-case/waste-management-dashboard"
+      },
+      {
+        "title": "Sales Performance Dashboards",
+        "desc": "Track pipeline, quota, and win rate in one view so your team closes more with confidence.",
+        "href": "/solutions/use-case/sales-performance-dashboard"
+      },
+      {
+        "title": "School Administration Dashboards",
+        "desc": "Track enrollment, attendance, and outcomes in one view so administrators lead with data.",
+        "href": "/solutions/use-case/school-administration-dashboard"
+      },
+      {
+        "title": "SEO Performance Dashboards",
+        "desc": "Track rankings, traffic, and keywords in one view so you grow organic search with data.",
+        "href": "/solutions/use-case/seo-performance-dashboard"
+      },
+      {
+        "title": "Social Media Sentiment Dashboards",
+        "desc": "Track sentiment, mentions, and trends in one view so you understand how people feel about you.",
+        "href": "/solutions/use-case/social-media-sentiment-dashboard"
+      },
+      {
+        "title": "Student Performance Dashboards",
+        "desc": "Track grades, progress, and attendance in one view so no student slips through the cracks.",
+        "href": "/solutions/use-case/student-performance-dashboard"
+      },
+      {
+        "title": "Virtual Event Analytics Dashboards",
+        "desc": "Track registrations, attendance, and engagement in one view so your virtual events keep improving.",
+        "href": "/solutions/use-case/virtual-event-analytics-dashboard"
+      },
+      {
+        "title": "Weather & Climate Monitoring Dashboards",
+        "desc": "Track temperature, rainfall, and conditions in one view so you plan around the weather with data.",
+        "href": "/solutions/use-case/weather-monitoring-dashboard"
+      },
+      {
+        "title": "Website Analytics",
+        "desc": "Track visitors, conversions, and top pages in one view so you grow your site with data.",
+        "href": "/solutions/use-case/website-analytics-dashboard"
+      }
+    ]
+  },
+  {
+    "id": "internal-tools",
+    "name": "Internal Tools",
+    "desc": "Internal apps and workflows for your team, built from a prompt without a dev backlog.View all Internal Tools \u2192",
+    "cards": [
+      {
+        "title": "AI-Powered Forecasting & Budgeting Tools",
+        "desc": "Build a forecasting and budgeting tool your finance team can run without waiting on engineering.",
+        "href": "/solutions/use-case/forecasting-budgeting-tool"
+      },
+      {
+        "title": "AI-Powered Sentiment Analysis",
+        "desc": "Turn open-ended feedback into scored, searchable sentiment your team can act on, no data scientist required.",
+        "href": "/solutions/use-case/sentiment-analysis-tool"
+      },
+      {
+        "title": "Automated IT Support Chatbots",
+        "desc": "Give employees instant answers to IT questions and cut the ticket queue your help desk drowns in.",
+        "href": "/solutions/use-case/it-support-chatbot"
+      },
+      {
+        "title": "Compliance Tracking Software",
+        "desc": "Track requirements, evidence, and deadlines in one auditable place instead of scattered spreadsheets and reminders.",
+        "href": "/solutions/use-case/compliance-tracking-software"
+      },
+      {
+        "title": "Internal CRM System",
+        "desc": "Give your team a CRM shaped around how you actually sell, not a rigid off-the-shelf tool.",
+        "href": "/solutions/use-case/internal-crm-system"
+      },
+      {
+        "title": "Document Automation & E-Signature Tools",
+        "desc": "Generate documents from templates, route them for signature, and track every one to completion in one place.",
+        "href": "/solutions/use-case/document-automation-tool"
+      },
+      {
+        "title": "Expense Management Tools",
+        "desc": "Let staff submit expenses, route approvals, and give finance a clean view instead of chasing receipts.",
+        "href": "/solutions/use-case/expense-management-tool"
+      },
+      {
+        "title": "Hiring Software",
+        "desc": "Track candidates, coordinate interviews, and keep your hiring team aligned without living in spreadsheets and inboxes.",
+        "href": "/solutions/use-case/hiring-software"
+      },
+      {
+        "title": "Hybrid Work Scheduling Tools",
+        "desc": "Let staff book desks and office days, and give teams a clear view of who is in when.",
+        "href": "/solutions/use-case/hybrid-work-scheduling-tool"
+      },
+      {
+        "title": "Internal Communication Platforms",
+        "desc": "Keep announcements, updates, and team resources in one searchable place instead of buried email threads.",
+        "href": "/solutions/use-case/internal-communication-platform"
+      },
+      {
+        "title": "Internal Hackathon & Innovation Platforms",
+        "desc": "Collect ideas, form teams, and let everyone vote so your best internal projects rise to the top.",
+        "href": "/solutions/use-case/hackathon-innovation-platform"
+      },
+      {
+        "title": "Internal Market Research Tools",
+        "desc": "Gather research, organize findings, and share insights your whole team can search instead of scattered decks.",
+        "href": "/solutions/use-case/market-research-tool"
+      },
+      {
+        "title": "Internal Project Management Tools",
+        "desc": "Track tasks, owners, and deadlines in a project tool shaped around how your team actually works.",
+        "href": "/solutions/use-case/internal-project-management-tool"
+      },
+      {
+        "title": "Internal Surveys & Polling Platforms",
+        "desc": "Run surveys and quick polls, then see results in one place without exporting to a spreadsheet.",
+        "href": "/solutions/use-case/internal-survey-tool"
+      },
+      {
+        "title": "Invoicing Tools",
+        "desc": "Create invoices, track what is paid, and chase overdue accounts without living in spreadsheets.",
+        "href": "/solutions/use-case/invoicing-tool"
+      },
+      {
+        "title": "Knowledge Base Platforms",
+        "desc": "Give your team one searchable home for docs, answers, and how-tos instead of scattered files and repeated questions.",
+        "href": "/solutions/use-case/knowledge-base-platform"
+      },
+      {
+        "title": "Performance Review & Feedback Systems",
+        "desc": "Run reviews, collect feedback, and track goals in one place instead of chasing forms across email.",
+        "href": "/solutions/use-case/performance-review-tool"
+      },
+      {
+        "title": "Recruitment Portals",
+        "desc": "Give candidates a branded portal to browse roles and apply, and give your team applications in one place.",
+        "href": "/solutions/use-case/recruitment-portal"
+      },
+      {
+        "title": "Remote Workforce Tools",
+        "desc": "Coordinate distributed teams with directories, requests, and updates in one place your remote staff can reach anywhere.",
+        "href": "/solutions/use-case/remote-workforce-tool"
+      },
+      {
+        "title": "Revenue & Cash Flow Dashboards",
+        "desc": "See revenue, cash in, and cash out in one live dashboard instead of piecing together spreadsheets.",
+        "href": "/solutions/use-case/revenue-cash-flow-dashboard"
+      },
+      {
+        "title": "Standup Bots",
+        "desc": "Collect async standup updates and share a clean summary so your team skips the daily meeting.",
+        "href": "/solutions/use-case/standup-bot"
+      },
+      {
+        "title": "Subscription & SaaS Cost Tracking Tools",
+        "desc": "Track every subscription, renewal, and owner so software spend stops leaking through forgotten tools.",
+        "href": "/solutions/use-case/saas-cost-tracking-tool"
+      },
+      {
+        "title": "Ticketing Management Tools",
+        "desc": "Capture requests, assign owners, and track tickets to resolution in one place instead of a shared inbox.",
+        "href": "/solutions/use-case/ticketing-management-tool"
+      },
+      {
+        "title": "Time & Attendance Tracking Systems",
+        "desc": "Let staff clock in and log hours, and give managers a clear attendance view without paper timesheets.",
+        "href": "/solutions/use-case/time-attendance-tracking-system"
+      }
+    ]
+  }
+]

@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { PixartualLogo } from '@/components/brand/PixartualLogo';
 import {
   CurrencyDollar,
   Globe,
@@ -21,18 +22,38 @@ export const Footer: React.FC = () => {
   const currencies = ['USD $', 'EUR €', 'GBP £', 'CAD $', 'AUD $', 'JPY ¥', 'INR ₹'];
   const languages = ['English', 'Español', 'Français', 'Deutsch', '日本語', 'Português', 'Italiano'];
 
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('theme') as 'auto' | 'light' | 'dark' | null;
+      if (saved) {
+        setThemeMode(saved);
+      }
+    } catch (e) { }
+  }, []);
+
+  const applyTheme = (mode: 'auto' | 'light' | 'dark') => {
+    try {
+      localStorage.setItem('theme', mode);
+      setThemeMode(mode);
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const effectiveTheme = mode === 'auto' ? (prefersDark ? 'dark' : 'light') : mode;
+      document.documentElement.setAttribute('data-theme', effectiveTheme);
+      if (effectiveTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch (e) { }
+  };
+
   return (
     <footer className="marketing-footer bg-cover bg-top bg-no-repeat px-4 py-8 md:px-8 md:py-12">
       <div className="mx-auto w-full max-w-[1240px] overflow-hidden rounded-[32px] bg-white shadow-[0_18px_50px_rgba(0,0,0,0.10)]">
         <div className="px-6 md:px-[50px]">
           <div className="flex flex-col gap-12 pb-10 pt-8">
             <div className="flex flex-col gap-4">
-              <Link aria-label="PixartualAI home" className="inline-block" href="/">
-                <img
-                  alt="PixartualAI"
-                  className="-mb-4 -ml-4 block h-[90px] w-auto transition-transform duration-300 hover:scale-105"
-                  src="/images/modulify-small-icon.webp"
-                />
+              <Link aria-label="PixartualAI home" className="inline-flex items-center gap-3 transition-transform duration-300 hover:scale-105" href="/">
+                <PixartualLogo variant="badge-dark" size={44} showWordmark wordmarkClassName="text-2xl text-neutral-900" />
               </Link>
               <p className="max-w-[560px] text-[0.9375rem] leading-relaxed text-neutral-700">
                 The AI platform that designs, builds, and hosts complete web apps and digital experiences, end to end.
@@ -219,30 +240,27 @@ export const Footer: React.FC = () => {
             <div aria-label="Theme" className="inline-flex shrink-0 items-center gap-0.5 rounded-[10px] bg-gray-100 p-[3px]">
               <button
                 type="button"
-                onClick={() => setThemeMode('auto')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${
-                  themeMode === 'auto' ? 'bg-white text-gray-900 shadow-sm' : ''
-                }`}
+                onClick={() => applyTheme('auto')}
+                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${themeMode === 'auto' ? 'bg-white text-gray-900 shadow-sm' : ''
+                  }`}
                 title="Auto"
               >
                 <Desktop size={16} />
               </button>
               <button
                 type="button"
-                onClick={() => setThemeMode('light')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${
-                  themeMode === 'light' ? 'bg-white text-gray-900 shadow-sm' : ''
-                }`}
+                onClick={() => applyTheme('light')}
+                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${themeMode === 'light' ? 'bg-white text-gray-900 shadow-sm' : ''
+                  }`}
                 title="Light"
               >
                 <Sun size={16} />
               </button>
               <button
                 type="button"
-                onClick={() => setThemeMode('dark')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${
-                  themeMode === 'dark' ? 'bg-white text-gray-900 shadow-sm' : ''
-                }`}
+                onClick={() => applyTheme('dark')}
+                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${themeMode === 'dark' ? 'bg-white text-gray-900 shadow-sm' : ''
+                  }`}
                 title="Dark"
               >
                 <Moon size={16} />

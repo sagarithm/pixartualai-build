@@ -88,23 +88,21 @@ export const ModulifyBento: React.FC = () => {
             </div>
           </article>
 
-          {/* Card 4: Build beyond landing pages */}
-          <article className="bento-card col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-8">
-            <div className="relative flex min-h-[220px] flex-1 flex-col items-stretch justify-center overflow-hidden p-6">
-              <div aria-label="Dashboards, forms, and app flows" className="bento-marquee h-full min-h-[160px] w-full flex-1">
+          {/* Card 4: Build beyond landing pages with looping video marquee */}
+          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-8">
+            <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
+              <div aria-label="Dashboards, forms, and app flows" className="bento-marquee h-full min-h-[200px] w-full flex-1">
                 <div className="bento-track">
-                  {[...previewItems, ...previewItems, ...previewItems].map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex-none w-[200px] h-[125px] rounded-xl overflow-hidden border border-black/5 shadow-sm bg-white cursor-pointer transition-transform duration-300 hover:scale-105"
-                    >
-                      <img
-                        src={item.img}
-                        alt={item.name}
-                        className="w-full h-full object-cover object-top"
-                      />
-                    </div>
-                  ))}
+                  <video aria-hidden="false" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/revolver.webm" />
+                  <video aria-hidden="false" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/cinema-reel.webm" />
+                  <video aria-hidden="false" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/boutique.webm" />
+                  <video aria-hidden="false" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/aperture.webm" />
+                  <video aria-hidden="false" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/atelier.webm" />
+                  <video aria-hidden="true" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/revolver.webm" />
+                  <video aria-hidden="true" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/cinema-reel.webm" />
+                  <video aria-hidden="true" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/boutique.webm" />
+                  <video aria-hidden="true" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/aperture.webm" />
+                  <video aria-hidden="true" autoPlay className="bento-vid" loop muted playsInline preload="metadata" src="/videos/bento/atelier.webm" />
                 </div>
               </div>
             </div>

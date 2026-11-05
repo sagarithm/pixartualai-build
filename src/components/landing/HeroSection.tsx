@@ -45,7 +45,7 @@ export const HeroSection: React.FC = () => {
             <span className="hero-shine font-['Neutralsans'] font-bold text-neutral-900" data-text="polished">
               polished
             </span>{' '}
-            digital experience with AI.
+            website or web app with AI.
           </h1>
 
           <p className="mb-[30px] max-w-[600px] text-[clamp(1rem,1.4vw,1.18rem)] leading-relaxed text-gray-500 md:mb-[38px]">

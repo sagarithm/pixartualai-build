@@ -5,238 +5,369 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ModulifyCta } from '@/components/landing/ModulifyCta';
-import { CaretDown, Check } from '@phosphor-icons/react';
+import { MfyFaqAccordion } from '@/components/landing/MfyFaqAccordion';
+
+interface CreditOption {
+  label: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
+}
 
 export default function PricingPage() {
-  const [annual, setAnnual] = useState(true);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [billedYearly, setBilledYearly] = useState(true);
+
+  // Credit selector state
+  const [starterCredits, setStarterCredits] = useState('250 credits/mo');
+  const [proCredits, setProCredits] = useState('500 credits/mo');
+  const [starterDomains, setStarterDomains] = useState('1 domain included');
+  const [proDomains, setProDomains] = useState('3 domains included');
 
   const faqs = [
     {
-      q: 'Can I cancel or switch my plan at any time?',
-      a: 'Yes, you can upgrade, downgrade, or cancel your subscription at any time from your account settings. If you cancel, your subscription will remain active until the end of the billing period.',
+      q: 'How does PixartualAI pricing work?',
+      a: 'PixartualAI uses a flat credit-based model rather than variable token billing, so your cost is predictable month to month instead of changing with the length or complexity of each generation.',
     },
     {
-      q: 'How do AI credits work?',
-      a: 'Credits are consumed when you generate full pages, refactor layout structures, or run complex AI design chats. Minor edits or direct visual adjustments do not consume credits.',
+      q: 'What uses credits?',
+      a: 'PixartualAI credits are spent on AI generation work: creating a page, refining a section, restructuring a layout, or rewriting copy all draw down your balance. Generating a brand new AI image is the single most credit-hungry action, so bringing your own images or using a placeholder keeps costs down.',
     },
     {
-      q: 'Can I connect my own custom domain?',
-      a: 'Yes! On Starter, Pro, and Enterprise plans, you can connect an unlimited number of custom domains with automatic SSL certificates provisioned instantly.',
+      q: 'Do credits renew each month?',
+      a: 'Paid plan credits do. They reset at the start of each billing cycle to whatever monthly allowance your plan and credit tier include, so your balance is predictable every cycle. The Free plan includes a one-time grant of 35 credits that does not renew.',
     },
     {
-      q: 'Do you offer discounts for non-profits or students?',
-      a: 'Yes, we offer special educational and non-profit pricing. Reach out to our team to apply.',
+      q: 'Do unused credits roll over?',
+      a: 'Plan credits do not roll over and expire at the end of the billing cycle. Top-up credits purchased separately do roll over as long as you maintain an active paid plan.',
+    },
+    {
+      q: 'Can I cancel my subscription?',
+      a: 'Yes. You can cancel at any time from the Plans section by opening Manage Subscription and selecting Cancel Subscription. You will keep access to paid features until the end of your current billing period, after which your account will automatically downgrade to the Free plan.',
+    },
+    {
+      q: 'Can I get a refund?',
+      a: 'Yearly plans are eligible for a refund within 7 days of the charge if the account has not been significantly used. Monthly plans, renewals, and top-up credits are non-refundable. Contact support to request a review.',
+    },
+    {
+      q: 'Who owns the site I build?',
+      a: 'PixartualAI does not claim ownership of the sites or content you create. You retain full rights to publish, modify, or distribute your work.',
     },
   ];
+
+  const featuresList = [
+    'Preview Site',
+    'Publish Site',
+    'Database',
+    'Storage',
+    'Realtime Analytics',
+    'Free Subdomain',
+    'Remove PixartualAI branding',
+    'Custom Domain support',
+    'Team members',
+    'Dedicated support',
+  ];
+
+  const freeActive = [true, true, true, true, true, true, false, false, false, false];
+  const starterActive = [true, true, true, true, true, true, true, true, false, false];
+  const proActive = [true, true, true, true, true, true, true, true, true, false];
+
+  const checkIcon = (
+    <svg aria-hidden="true" className="pr-feat-ic" fill="currentColor" height="1em" viewBox="0 0 256 256" width="1em" xmlns="http://www.w3.org/2000/svg">
+      <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z" />
+    </svg>
+  );
+
+  const dashIcon = (
+    <svg aria-hidden="true" className="pr-feat-ic opacity-30" fill="currentColor" height="1em" viewBox="0 0 256 256" width="1em" xmlns="http://www.w3.org/2000/svg">
+      <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z" />
+    </svg>
+  );
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
       <Navbar />
 
-      <main className="flex-1">
+      <main className="pr-main flex-1">
         {/* Header */}
-        <section className="pt-16 pb-12 md:pt-24 md:pb-16 text-center px-5 max-w-[1240px] mx-auto">
-          <h1 className="text-[clamp(36px,6vw,56px)] font-medium leading-[1.15] text-neutral-900 font-['Neutralsans']">
-            Pricing that scales with you
-          </h1>
-          <p className="mt-4 max-w-[580px] mx-auto text-[clamp(1rem,1.2vw,1.12rem)] leading-relaxed text-gray-500">
-            Choose the plan that fits your ambition. From simple websites to full-stack apps and digital experiences, PixartualAI gives you the tools to create, edit, and launch.
-          </p>
+        <header className="pr-hero">
+          <h1>Pricing that scales with you</h1>
+          <p>Choose the best plan for your business. Change plans as you grow.</p>
+        </header>
 
-          {/* Billing Switcher Toggle */}
-          <div className="mt-9 inline-flex items-center gap-3 p-1 rounded-full bg-stone-100 border border-neutral-200">
-            <button
-              type="button"
-              onClick={() => setAnnual(true)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                annual ? 'bg-white text-neutral-900 shadow-sm' : 'text-neutral-500 hover:text-neutral-900'
-              }`}
-            >
-              Billed yearly <span className="ml-1 text-xs text-[#fc8c04] font-semibold">Save 20%</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setAnnual(false)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                !annual ? 'bg-white text-neutral-900 shadow-sm' : 'text-neutral-500 hover:text-neutral-900'
-              }`}
-            >
-              Billed monthly
-            </button>
-          </div>
-        </section>
-
-        {/* 3 Pricing Cards */}
-        <section className="pb-16 px-5 max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        {/* Pricing Cards Wrap */}
+        <div className="pr-wrap">
+          <div className="pr-grid">
             {/* Free Plan */}
-            <div className="pr-card flex flex-col justify-between border border-neutral-200 rounded-[22px] p-8 bg-white transition-all hover:border-neutral-300">
-              <div>
-                <h3 className="text-xl font-medium text-neutral-900 font-['Neutralsans']">Free Plan</h3>
-                <p className="mt-2 text-sm text-neutral-500 min-h-[40px]">
-                  Get started with PixartualAI at no cost.
-                </p>
+            <div className="pr-card">
+              <p className="pr-name">Free Plan</p>
+              <p className="pr-desc">Get started with PixartualAI at no cost.</p>
+              <div className="pr-price">
+                <span className="pr-price-amt">$0</span>
+                <span className="pr-price-per">forever</span>
+              </div>
 
-                <div className="pr-price mt-6 flex items-baseline gap-2">
-                  <span className="pr-price-amt font-['Neutralsans'] text-5xl font-medium text-neutral-900">$0</span>
-                  <span className="pr-price-per text-sm text-neutral-500">forever</span>
+              <label className="pr-billing cursor-pointer" onClick={() => setBilledYearly(!billedYearly)}>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={billedYearly}
+                  className={`inline-flex cursor-pointer items-center outline-none relative h-[18px] w-[32px] flex-none rounded-[999px] transition-colors duration-200 ${
+                    billedYearly ? 'bg-neutral-900' : 'bg-neutral-300'
+                  }`}
+                >
+                  <span
+                    className={`block transition-transform absolute left-[2px] top-[2px] h-[14px] w-[14px] rounded-full bg-white duration-200 ${
+                      billedYearly ? 'translate-x-[14px]' : 'translate-x-0'
+                    }`}
+                  />
+                </button>
+                <span className="pr-billing-label select-none">Billed yearly</span>
+              </label>
+
+              <div className="pr-controls">
+                <div className="pr-select-group">
+                  <label className="pr-select-label" htmlFor="free-credits">
+                    AI credits
+                  </label>
+                  <div className="relative w-full">
+                    <button
+                      type="button"
+                      disabled
+                      className="flex items-center justify-between whitespace-nowrap border bg-neutral-100 outline-none h-[38px] w-full px-[12px] rounded-[10px] border-neutral-200 text-left text-[13px] font-medium text-neutral-500 cursor-not-allowed"
+                    >
+                      <span>35 credits one time</span>
+                    </button>
+                  </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-neutral-100 space-y-3">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-neutral-400">Included</p>
-                  {[
-                    '35 AI generation credits',
-                    'Publish to pixartual.app subdomain',
-                    'Access to all standard templates',
-                    'Full visual canvas editing',
-                    'Community support',
-                  ].map((feat) => (
-                    <div key={feat} className="flex items-center gap-2.5 text-sm text-neutral-700">
-                      <Check size={16} weight="bold" className="text-[#fc8c04] shrink-0" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
+                <div className="pr-select-group">
+                  <label className="pr-select-label" htmlFor="free-domains">
+                    Domains
+                  </label>
+                  <div className="relative w-full">
+                    <button
+                      type="button"
+                      disabled
+                      className="flex items-center justify-between whitespace-nowrap border bg-neutral-100 outline-none h-[38px] w-full px-[12px] rounded-[10px] border-neutral-200 text-left text-[13px] font-medium text-neutral-500 cursor-not-allowed"
+                    >
+                      <span>Subdomain only</span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-10">
-                <Link href="/dashboard" className="mfy-btn mfy-btn--secondary w-full text-center">
-                  Start for free
+              <div className="pr-btn-wrap my-6">
+                <Link className="mfy-btn mfy-btn--secondary w-full justify-center" href="/dashboard">
+                  Get started
                 </Link>
+              </div>
+
+              <div className="pr-features">
+                {featuresList.map((feat, idx) => {
+                  const isOn = freeActive[idx];
+                  return (
+                    <div key={feat} className={`pr-feat ${isOn ? 'on' : ''}`}>
+                      {isOn ? checkIcon : dashIcon}
+                      <span>{feat}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
             {/* Starter Plan */}
-            <div className="pr-card flex flex-col justify-between border border-neutral-200 rounded-[22px] p-8 bg-white transition-all hover:border-neutral-300">
-              <div>
-                <h3 className="text-xl font-medium text-neutral-900 font-['Neutralsans']">Starter Plan</h3>
-                <p className="mt-2 text-sm text-neutral-500 min-h-[40px]">
-                  Build projects that convert and scale.
-                </p>
-
-                <div className="pr-price mt-6 flex items-baseline gap-2">
-                  <span className="pr-price-amt font-['Neutralsans'] text-5xl font-medium text-neutral-900">
-                    {annual ? '$20' : '$25'}
-                  </span>
-                  <span className="pr-price-per text-sm text-neutral-500">/month</span>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-neutral-100 space-y-3">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-neutral-400">Everything in Free plus</p>
-                  {[
-                    '150 AI generation credits / month',
-                    'Custom domains + automatic SSL',
-                    'No PixartualAI watermark',
-                    'Responsive mobile & tablet control',
-                    'Fast edge hosting & global CDN',
-                    'Export clean code (HTML & React)',
-                  ].map((feat) => (
-                    <div key={feat} className="flex items-center gap-2.5 text-sm text-neutral-700">
-                      <Check size={16} weight="bold" className="text-[#fc8c04] shrink-0" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="pr-card">
+              <p className="pr-name">Starter Plan</p>
+              <p className="pr-desc">Build projects that convert and scale.</p>
+              <div className="pr-price">
+                <span className="pr-price-amt">${billedYearly ? '20' : '25'}</span>
+                <span className="pr-price-per">/month</span>
               </div>
 
-              <div className="mt-10">
-                <Link href="/dashboard" className="mfy-btn mfy-btn--primary w-full text-center">
-                  Get Starter
-                </Link>
-              </div>
-            </div>
-
-            {/* Pro Plan (Most Popular) */}
-            <div className="pr-card is-popular relative flex flex-col justify-between border-2 border-neutral-950 rounded-[22px] p-8 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.12)]">
-              <span className="pr-badge absolute -top-3.5 left-1/2 -translate-x-1/2 bg-neutral-950 text-white rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider">
-                Most Popular
-              </span>
-
-              <div>
-                <h3 className="text-xl font-medium text-neutral-900 font-['Neutralsans']">Pro Plan</h3>
-                <p className="mt-2 text-sm text-neutral-500 min-h-[40px]">
-                  Unlock full creativity and powerful features.
-                </p>
-
-                <div className="pr-price mt-6 flex items-baseline gap-2">
-                  <span className="pr-price-amt font-['Neutralsans'] text-5xl font-medium text-neutral-900">
-                    {annual ? '$40' : '$50'}
-                  </span>
-                  <span className="pr-price-per text-sm text-neutral-500">/month</span>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-neutral-100 space-y-3">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-neutral-400">Everything in Starter plus</p>
-                  {[
-                    'Unlimited AI generations',
-                    'Full-stack apps, logic & databases',
-                    'CMS collections & dynamic content',
-                    'Team collaboration & shared workspace',
-                    'Priority generation speed',
-                    'Advanced SEO & traffic analytics',
-                    'Dedicated support channel',
-                  ].map((feat) => (
-                    <div key={feat} className="flex items-center gap-2.5 text-sm text-neutral-700">
-                      <Check size={16} weight="bold" className="text-[#fc8c04] shrink-0" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-10">
-                <Link href="/dashboard" className="mfy-btn mfy-btn--primary w-full text-center">
-                  Get Pro
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Enterprise Scale Card */}
-          <div className="pr-ent-card mt-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-7 items-center p-8 md:p-11 rounded-[22px] bg-neutral-950 text-white">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-medium font-['Neutralsans'] mb-3">Enterprise Scale Plan</h2>
-              <p className="text-neutral-400 max-w-[700px] text-sm md:text-base leading-relaxed">
-                PixartualAI Scale is built for teams that have high-traffic sites and want to keep them while unlocking AI workflows across engineering, design, and marketing. Includes custom SLA, dedicated support, and enterprise security.
-              </p>
-            </div>
-            <div>
-              <Link href="/enterprise-teams" className="mfy-btn mfy-btn--primary !bg-white !text-neutral-950 hover:!bg-neutral-100 font-semibold whitespace-nowrap">
-                Contact Enterprise
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQs */}
-        <section className="py-16 px-5 max-w-[900px] mx-auto border-t border-neutral-100">
-          <h2 className="text-center text-3xl font-medium font-['Neutralsans'] mb-10 text-neutral-900">
-            Billing & plans
-          </h2>
-
-          <div className="space-y-4">
-            {faqs.map((f, i) => (
-              <div key={i} className="border border-neutral-200 rounded-xl overflow-hidden">
+              <label className="pr-billing cursor-pointer" onClick={() => setBilledYearly(!billedYearly)}>
                 <button
                   type="button"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left font-medium text-neutral-900 hover:text-[#fc8c04] transition-colors"
+                  role="switch"
+                  aria-checked={billedYearly}
+                  className={`inline-flex cursor-pointer items-center outline-none relative h-[18px] w-[32px] flex-none rounded-[999px] transition-colors duration-200 ${
+                    billedYearly ? 'bg-neutral-900' : 'bg-neutral-300'
+                  }`}
                 >
-                  <span>{f.q}</span>
-                  <CaretDown size={18} className={`transition-transform duration-200 ${openFaq === i ? 'rotate-180' : ''}`} />
+                  <span
+                    className={`block transition-transform absolute left-[2px] top-[2px] h-[14px] w-[14px] rounded-full bg-white duration-200 ${
+                      billedYearly ? 'translate-x-[14px]' : 'translate-x-0'
+                    }`}
+                  />
                 </button>
-                {openFaq === i && (
-                  <div className="p-5 pt-0 text-neutral-500 text-sm leading-relaxed border-t border-neutral-100 mt-2">
-                    {f.a}
+                <span className="pr-billing-label select-none">Billed yearly</span>
+              </label>
+
+              <div className="pr-controls">
+                <div className="pr-select-group">
+                  <label className="pr-select-label" htmlFor="starter-credits">
+                    AI credits
+                  </label>
+                  <div className="relative w-full">
+                    <select
+                      id="starter-credits"
+                      value={starterCredits}
+                      onChange={(e) => setStarterCredits(e.target.value)}
+                      className="flex items-center justify-between whitespace-nowrap border bg-white outline-none h-[38px] w-full px-[12px] rounded-[10px] border-neutral-200 text-left text-[13px] font-medium text-neutral-900 cursor-pointer hover:bg-neutral-50"
+                    >
+                      <option value="250 credits/mo">250 credits/mo</option>
+                      <option value="500 credits/mo">500 credits/mo (+$15)</option>
+                      <option value="1000 credits/mo">1,000 credits/mo (+$35)</option>
+                    </select>
                   </div>
-                )}
+                </div>
+
+                <div className="pr-select-group">
+                  <label className="pr-select-label" htmlFor="starter-domains">
+                    Domains
+                  </label>
+                  <div className="relative w-full">
+                    <select
+                      id="starter-domains"
+                      value={starterDomains}
+                      onChange={(e) => setStarterDomains(e.target.value)}
+                      className="flex items-center justify-between whitespace-nowrap border bg-white outline-none h-[38px] w-full px-[12px] rounded-[10px] border-neutral-200 text-left text-[13px] font-medium text-neutral-900 cursor-pointer hover:bg-neutral-50"
+                    >
+                      <option value="1 domain included">1 domain included</option>
+                      <option value="3 domains included">3 domains (+$10)</option>
+                      <option value="5 domains included">5 domains (+$20)</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-            ))}
+
+              <div className="pr-btn-wrap my-6">
+                <Link className="mfy-btn mfy-btn--primary w-full justify-center" href="/dashboard">
+                  Try it now
+                </Link>
+              </div>
+
+              <div className="pr-features">
+                {featuresList.map((feat, idx) => {
+                  const isOn = starterActive[idx];
+                  return (
+                    <div key={feat} className={`pr-feat ${isOn ? 'on' : ''}`}>
+                      {isOn ? checkIcon : dashIcon}
+                      <span>{feat}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="pr-card">
+              <p className="pr-name">Pro Plan</p>
+              <p className="pr-desc">Unlock full creativity and powerful features.</p>
+              <div className="pr-price">
+                <span className="pr-price-amt">${billedYearly ? '40' : '49'}</span>
+                <span className="pr-price-per">/month</span>
+              </div>
+
+              <label className="pr-billing cursor-pointer" onClick={() => setBilledYearly(!billedYearly)}>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={billedYearly}
+                  className={`inline-flex cursor-pointer items-center outline-none relative h-[18px] w-[32px] flex-none rounded-[999px] transition-colors duration-200 ${
+                    billedYearly ? 'bg-neutral-900' : 'bg-neutral-300'
+                  }`}
+                >
+                  <span
+                    className={`block transition-transform absolute left-[2px] top-[2px] h-[14px] w-[14px] rounded-full bg-white duration-200 ${
+                      billedYearly ? 'translate-x-[14px]' : 'translate-x-0'
+                    }`}
+                  />
+                </button>
+                <span className="pr-billing-label select-none">Billed yearly</span>
+              </label>
+
+              <div className="pr-controls">
+                <div className="pr-select-group">
+                  <label className="pr-select-label" htmlFor="pro-credits">
+                    AI credits
+                  </label>
+                  <div className="relative w-full">
+                    <select
+                      id="pro-credits"
+                      value={proCredits}
+                      onChange={(e) => setProCredits(e.target.value)}
+                      className="flex items-center justify-between whitespace-nowrap border bg-white outline-none h-[38px] w-full px-[12px] rounded-[10px] border-neutral-200 text-left text-[13px] font-medium text-neutral-900 cursor-pointer hover:bg-neutral-50"
+                    >
+                      <option value="500 credits/mo">500 credits/mo</option>
+                      <option value="1000 credits/mo">1,000 credits/mo (+$25)</option>
+                      <option value="2500 credits/mo">2,500 credits/mo (+$60)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="pr-select-group">
+                  <label className="pr-select-label" htmlFor="pro-domains">
+                    Domains
+                  </label>
+                  <div className="relative w-full">
+                    <select
+                      id="pro-domains"
+                      value={proDomains}
+                      onChange={(e) => setProDomains(e.target.value)}
+                      className="flex items-center justify-between whitespace-nowrap border bg-white outline-none h-[38px] w-full px-[12px] rounded-[10px] border-neutral-200 text-left text-[13px] font-medium text-neutral-900 cursor-pointer hover:bg-neutral-50"
+                    >
+                      <option value="3 domains included">3 domains included</option>
+                      <option value="5 domains included">5 domains (+$10)</option>
+                      <option value="10 domains included">10 domains (+$25)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pr-btn-wrap my-6">
+                <Link className="mfy-btn mfy-btn--primary w-full justify-center" href="/dashboard">
+                  Try it now
+                </Link>
+              </div>
+
+              <div className="pr-features">
+                {featuresList.map((feat, idx) => {
+                  const isOn = proActive[idx];
+                  return (
+                    <div key={feat} className={`pr-feat ${isOn ? 'on' : ''}`}>
+                      {isOn ? checkIcon : dashIcon}
+                      <span>{feat}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Enterprise Scale Plan Section */}
+        <section className="pr-ent">
+          <div className="pr-ent-card">
+            <div>
+              <h2>Enterprise Scale Plan</h2>
+              <p>
+                PixartualAI Scale is built for teams that have a great site and want to scale without hiring designers and developers for every page. It includes everything in the Free, Starter, and Pro plans — plus much more, tailored to scale your team.
+              </p>
+            </div>
+            <Link className="mfy-btn mfy-btn--secondary" href="/enterprise-teams">
+              Learn more
+            </Link>
           </div>
         </section>
 
-        {/* CTA Banner */}
+        {/* FAQ Section */}
+        <section className="pr-faq">
+          <div className="pr-faq-head">
+            <h2>Billing &amp; plans</h2>
+          </div>
+          <MfyFaqAccordion items={faqs} />
+        </section>
+
+        {/* CTA banner */}
         <ModulifyCta />
       </main>
 

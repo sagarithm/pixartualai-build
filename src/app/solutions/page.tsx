@@ -5,171 +5,112 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ModulifyCta } from '@/components/landing/ModulifyCta';
-import {
-  Globe,
-  DeviceMobile,
-  Database,
-  ChartBar,
-  Wrench,
-  ArrowRight,
-  Check,
-} from '@phosphor-icons/react';
+import solutionsData from '@/data/solutions.json';
+
+interface SolutionCard {
+  title: string;
+  desc: string;
+  href: string;
+}
+
+interface SolutionCategory {
+  id: string;
+  name: string;
+  desc: string;
+  cards: SolutionCard[];
+}
+
+const categories: SolutionCategory[] = solutionsData as SolutionCategory[];
 
 export default function SolutionsPage() {
-  const solutions = [
-    {
-      id: 'websites',
-      title: 'Websites & Landing Pages',
-      subtitle: 'Marketing sites, personal portfolios, blogs, and agency showcases that turn visitors into users.',
-      icon: Globe,
-      image: '/images/cap-landing-pages.webp',
-      bullets: [
-        'AI generation from natural language prompts',
-        'Visual layout, typography, and responsive controls',
-        'Built-in SEO metadata and OpenGraph social previews',
-        'Custom domain support with automated edge SSL',
-      ],
-      tag: 'Marketing & Brand',
-    },
-    {
-      id: 'frontend-apps',
-      title: 'Front-End Apps & Micro-Tools',
-      subtitle: 'Single-page web applications, pricing calculators, diagnostic assessments, and interactive questionnaires.',
-      icon: DeviceMobile,
-      image: '/images/cap-webapps.webp',
-      bullets: [
-        'Stateful calculation engines with zero hand-coding',
-        'Multi-step form wizards and lead-qualification quizzes',
-        'Client-side state management and instant live reactive preview',
-        'One-click export to self-contained React or HTML bundles',
-      ],
-      tag: 'Interactive Experiences',
-    },
-    {
-      id: 'fullstack-apps',
-      title: 'Full-Stack Apps & CMS',
-      subtitle: 'Dynamic web applications powered by integrated database schemas, CMS collections, and backend logic.',
-      icon: Database,
-      image: '/images/bento-cms.webp',
-      bullets: [
-        'Automated database table & relation provisioning',
-        'Visual CMS collection editor for articles, products, and directories',
-        'REST API endpoints with filterable database queries',
-        'Production edge deployment with persistent global storage',
-      ],
-      tag: 'Full-Stack & Data',
-    },
-    {
-      id: 'dashboards',
-      title: 'Dashboards & Analytics',
-      subtitle: 'Modern control panels, KPI monitoring hubs, and real-time operational summaries.',
-      icon: ChartBar,
-      image: '/images/cap-dashboards.webp',
-      bullets: [
-        'Pre-configured dark and light charting components',
-        'Real-time traffic and conversion telemetry',
-        'Role-based access viewports and permission gates',
-        'Responsive layout across mobile, tablet, and ultra-wide displays',
-      ],
-      tag: 'Analytics & Admin',
-    },
-    {
-      id: 'internal-tools',
-      title: 'Internal Tools & Client Portals',
-      subtitle: 'Back-office operations hubs, approval pipelines, customer client portals, and inventory trackers.',
-      icon: Wrench,
-      image: '/images/cap-client-portals.webp',
-      bullets: [
-        'Secure client onboarding and document distribution',
-        'Team task review and workflow approval queues',
-        'Integrations with popular webhooks and REST services',
-        'Zero-maintenance hosting with enterprise-grade availability',
-      ],
-      tag: 'Operations & Enterprise',
-    },
-  ];
+  const scrollToCat = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
       <Navbar />
 
-      <main className="flex-1">
+      <main className="sx-main flex-1">
         {/* Hero Section */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
-          <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]">
-            <img alt="" className="h-full w-full object-cover object-bottom" src="/images/kit/hero-bg.jpg" />
-          </div>
+        <header className="sx-hero max-w-[1240px] mx-auto px-5 pt-16 pb-8 md:px-[50px] md:pt-24 text-center">
+          <h1 className="text-[clamp(2.4rem,5vw,3.6rem)] font-medium leading-[1.08] text-neutral-950 font-['Neutralsans']">
+            Build any website, app, or tool with PixartualAI
+          </h1>
+          <p className="mt-4 text-base md:text-lg text-neutral-500 max-w-[680px] mx-auto leading-relaxed">
+            PixartualAI turns a prompt into a polished website, web app, dashboard, or internal tool. Pick a use case below and launch in minutes, with no developers and no templates to wrestle with.
+          </p>
 
-          <div className="relative z-10 mx-auto max-w-[1000px] text-center px-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-orange-200 bg-orange-50/80 text-orange-600 mb-6">
-              <span>PixartualAI Solutions</span>
-            </div>
-
-            <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-['Neutralsans']">
-              Build any website, app, or tool with PixartualAI
-            </h1>
-            <p className="mx-auto mt-4 max-w-[620px] text-lg leading-relaxed text-neutral-600">
-              From single-page portfolios to stateful calculators, CMS platforms, dashboards, and client portals — see how creators and teams use PixartualAI.
-            </p>
-          </div>
-        </section>
-
-        {/* Alternating Solutions Sections */}
-        <section className="pb-20 px-5 max-w-[1240px] mx-auto space-y-24">
-          {solutions.map((sol, index) => {
-            const Icon = sol.icon;
-            const isEven = index % 2 === 1;
-
-            return (
-              <div
-                key={sol.id}
-                id={sol.id}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${
-                  isEven ? 'lg:grid-flow-dense' : ''
-                }`}
+          {/* Category Navigation Pills */}
+          <nav aria-label="Solutions categories" className="sx-catnav flex flex-wrap justify-center gap-2 mt-8">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => scrollToCat(cat.id)}
+                className="px-5 py-2 rounded-full text-xs font-semibold bg-neutral-100 text-neutral-700 hover:bg-neutral-900 hover:text-white transition-all cursor-pointer"
               >
-                {/* Content */}
-                <div className={isEven ? 'lg:col-start-2' : ''}>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-neutral-600 mb-4">
-                    <Icon size={14} className="text-[#fc8c04]" />
-                    <span>{sol.tag}</span>
-                  </div>
+                {cat.name}
+              </button>
+            ))}
+          </nav>
+        </header>
 
-                  <h2 className="text-3xl sm:text-4xl font-medium text-neutral-900 font-['Neutralsans'] leading-tight mb-4">
-                    {sol.title}
+        {/* 5 Category Sections */}
+        {categories.map((cat) => (
+          <div key={cat.id} id={cat.id} className="sx-cat py-12 md:py-16 border-t border-neutral-100">
+            <div className="max-w-[1240px] mx-auto px-5 md:px-[50px]">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-medium text-neutral-900 font-['Neutralsans']">
+                    {cat.name}
                   </h2>
-
-                  <p className="text-base text-gray-600 leading-relaxed mb-6">
-                    {sol.subtitle}
+                  <p className="mt-2 text-sm md:text-base text-neutral-500 max-w-[560px]">
+                    {cat.desc || `Explore pre-configured architectures and workflows for ${cat.name.toLowerCase()}.`}
                   </p>
-
-                  <div className="space-y-3 mb-8">
-                    {sol.bullets.map((b) => (
-                      <div key={b} className="flex items-start gap-3 text-sm text-neutral-700">
-                        <Check size={16} weight="bold" className="text-[#fc8c04] shrink-0 mt-0.5" />
-                        <span>{b}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Link href={`/dashboard?category=${sol.id}`} className="mfy-btn mfy-btn--primary">
-                    Build with AI <ArrowRight size={14} />
-                  </Link>
                 </div>
-
-                {/* Preview Image */}
-                <div className={`overflow-hidden rounded-[24px] border border-neutral-200 bg-stone-50 shadow-lg ${isEven ? 'lg:col-start-1' : ''}`}>
-                  <img
-                    src={sol.image}
-                    alt={sol.title}
-                    loading="lazy"
-                    className="w-full h-auto object-cover object-left-top transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
+                <Link
+                  href="/dashboard"
+                  className="text-xs font-semibold text-[#fc8c04] hover:underline whitespace-nowrap self-start md:self-auto"
+                >
+                  Start building {cat.name} &rarr;
+                </Link>
               </div>
-            );
-          })}
-        </section>
+
+              {/* Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                {cat.cards.map((card, i) => (
+                  <Link
+                    key={`${card.title}-${i}`}
+                    href="/dashboard"
+                    className="kit-fcard group relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-6 min-h-[220px] transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:bg-neutral-900 hover:text-white"
+                  >
+                    <div>
+                      <h3 className="font-['Neutralsans'] font-medium text-lg text-neutral-900 group-hover:text-white transition-colors">
+                        {card.title}
+                      </h3>
+                      <p className="mt-2 text-xs md:text-sm text-neutral-500 group-hover:text-neutral-300 leading-relaxed transition-colors">
+                        {card.desc}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 flex items-center justify-between">
+                      <span className="text-[11px] font-semibold text-[#fc8c04]">
+                        Generate with AI
+                      </span>
+                      <span className="inline-flex size-7 rounded-full bg-white text-neutral-900 group-hover:bg-[#fc8c04] group-hover:text-white items-center justify-center transition-colors shadow-xs">
+                        &rarr;
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
 
         {/* CTA Banner */}
         <ModulifyCta />
@@ -179,4 +120,3 @@ export default function SolutionsPage() {
     </div>
   );
 }
-

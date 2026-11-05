@@ -1,0 +1,728 @@
+[
+  {
+    "title": "Forge",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/custom-previews/6adb6a2f05611b34dba93502.webp",
+    "previewUrl": "https://forge-template.modulify.website"
+  },
+  {
+    "title": "Sales CRM",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/previews/6ac50ada7f321777a2ee3605.webp",
+    "previewUrl": "https://sales-crm-template.modulify.website"
+  },
+  {
+    "title": "Onda Studio",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/previews/6ac3b3a4c01ca4e98bbb4408.webp",
+    "previewUrl": "https://onda-template.modulify.website"
+  },
+  {
+    "title": "NORRVIK",
+    "category": "architecture",
+    "image": "https://cdn.modulify.ai/custom-previews/6ac370d03996523cd20f727a.webp",
+    "previewUrl": "https://norrvik-template.modulify.website"
+  },
+  {
+    "title": "AERIVE",
+    "category": "travel",
+    "image": "https://cdn.modulify.ai/previews/6ab937c9c44ece7c3af9682a.webp",
+    "previewUrl": "https://aerive-template.modulify.website"
+  },
+  {
+    "title": "Black Plus",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58e14a508e3a3e8bc2362c.webp",
+    "previewUrl": "https://blackplus-template.modulify.website"
+  },
+  {
+    "title": "Moments Template",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/previews/6ab51316c44ece7c3a3e0951.webp",
+    "previewUrl": "https://moments-template.modulify.website"
+  },
+  {
+    "title": "FlowCraft",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/previews/6adf70f366556e607aa18c9a.webp",
+    "previewUrl": "https://flow-craft-template.modulify.website"
+  },
+  {
+    "title": "Updraft",
+    "category": "marketing",
+    "image": "https://cdn.modulify.ai/previews/6adf6c0466556e607a9fba03.webp",
+    "previewUrl": "https://updraft.modulify.website"
+  },
+  {
+    "title": "Atrium",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/previews/6adb6cbd05611b34dbaa06b4.webp",
+    "previewUrl": "https://atrium-template.modulify.website"
+  },
+  {
+    "title": "Iris Monroe",
+    "category": "photography",
+    "image": "https://cdn.modulify.ai/previews/6ad8c1c3855f6313fd4a5866.webp",
+    "previewUrl": "https://iris-template.modulify.website"
+  },
+  {
+    "title": "Auren",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/custom-previews/6ad88368855f6313fd35e70d.webp",
+    "previewUrl": "https://auren-template.modulify.website"
+  },
+  {
+    "title": "Serene",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/previews/6ad62265ba0fe63cce15f2b3.webp",
+    "previewUrl": "https://serene-template.modulify.website"
+  },
+  {
+    "title": "BLITZ",
+    "category": "marketing",
+    "image": "https://cdn.modulify.ai/previews/6ad60b60ba0fe63cce105c57.webp",
+    "previewUrl": "https://blitz-template.modulify.website"
+  },
+  {
+    "title": "Kerning",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6ad2293721185653f1db0653.webp",
+    "previewUrl": "https://kerning-template.modulify.website"
+  },
+  {
+    "title": "Quayside",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/previews/6ad0e54375d491e1917d8fa5.webp",
+    "previewUrl": "https://quayside-template.modulify.website"
+  },
+  {
+    "title": "Halden Studio",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/custom-previews/6ad09e5c75d491e1916f35d7.webp",
+    "previewUrl": "https://halden-template.modulify.website"
+  },
+  {
+    "title": "VroomX",
+    "category": "playful-creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6acf70a8f11cc4f3b65c0147.webp",
+    "previewUrl": "https://vroomx-template.modulify.website"
+  },
+  {
+    "title": "CosmicLens",
+    "category": "playful-creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6acf8515f11cc4f3b66169e9.webp",
+    "previewUrl": "https://cosmiclens-template.modulify.website"
+  },
+  {
+    "title": "La Douceur",
+    "category": "bakery",
+    "image": "https://cdn.modulify.ai/previews/6ace29be5ec1574c62a9375d.webp",
+    "previewUrl": "https://la-douceur-template.modulify.website"
+  },
+  {
+    "title": "Verdane",
+    "category": "finance",
+    "image": "https://cdn.modulify.ai/previews/6ace3dde5ec1574c62af6ac4.webp",
+    "previewUrl": "https://verdane-template.modulify.website"
+  },
+  {
+    "title": "Pace",
+    "category": "fitness",
+    "image": "https://cdn.modulify.ai/custom-previews/6accf1b10f061d2e6c0dc699.webp",
+    "previewUrl": "https://pace-template.modulify.website"
+  },
+  {
+    "title": "Leon Vale",
+    "category": "photography",
+    "image": "https://cdn.modulify.ai/previews/6acdf6440f061d2e6c36a26e.webp",
+    "previewUrl": "https://leon-vale-template.modulify.website"
+  },
+  {
+    "title": "Vesper",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/previews/6acce4b4775de027778d4b81.webp",
+    "previewUrl": "https://vesper-template.modulify.website"
+  },
+  {
+    "title": "Veyra",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/previews/6ac8fe431073e828568db5d3.webp",
+    "previewUrl": "https://veyra-template.modulify.website"
+  },
+  {
+    "title": "Voiden",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6acce84cdd2e10ed84722ee9.webp",
+    "previewUrl": "https://voiden-template.modulify.website"
+  },
+  {
+    "title": "Gridora",
+    "category": "energy",
+    "image": "https://cdn.modulify.ai/custom-previews/6ad23fb321185653f1dfdcd3.webp",
+    "previewUrl": "https://gridora.modulify.website"
+  },
+  {
+    "title": "L\u2019\u00c9lite",
+    "category": "restaurant",
+    "image": "https://cdn.modulify.ai/previews/6ac8f7741073e828568c2d0b.webp",
+    "previewUrl": "https://l-elite-template.modulify.website"
+  },
+  {
+    "title": "Orvane",
+    "category": "technology",
+    "image": "https://cdn.modulify.ai/custom-previews/6ac8f9d11073e828568cb126.webp",
+    "previewUrl": "https://orvane-template.modulify.website"
+  },
+  {
+    "title": "Closewell",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/previews/6ac79ba5e16d0e77b947760f.webp",
+    "previewUrl": "https://closewell-template.modulify.website"
+  },
+  {
+    "title": "Cortex",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/previews/6ac78b63e16d0e77b9426a08.webp",
+    "previewUrl": "https://cortex-template.modulify.website"
+  },
+  {
+    "title": "Softly",
+    "category": "healthcare",
+    "image": "https://cdn.modulify.ai/previews/6ac78d2de16d0e77b942f481.webp",
+    "previewUrl": "https://softly-template.modulify.website"
+  },
+  {
+    "title": "Xray Bag",
+    "category": "photography",
+    "image": "https://cdn.modulify.ai/previews/6ac7a6341073e8285652a98f.webp",
+    "previewUrl": "https://xray-template.modulify.website"
+  },
+  {
+    "title": "Meridian Freight",
+    "category": "shipping",
+    "image": "https://cdn.modulify.ai/previews/6ac8ba461073e828567c6ae5.webp",
+    "previewUrl": "https://meridian-template.modulify.website"
+  },
+  {
+    "title": "Nothing but net",
+    "category": "playful-creative",
+    "image": "https://cdn.modulify.ai/previews/6ac64d25c178440a50346e74.webp",
+    "previewUrl": "https://nothing-but-net-template.modulify.website"
+  },
+  {
+    "title": "Elias Brandt Architecture",
+    "category": "architecture",
+    "image": "https://cdn.modulify.ai/previews/6ac8fa861073e828568cccbd.webp",
+    "previewUrl": "https://architecture-template.modulify.website"
+  },
+  {
+    "title": "NOVAIR Studio",
+    "category": "creative-studio",
+    "image": "https://cdn.modulify.ai/previews/6ac65141c178440a5035a422.webp",
+    "previewUrl": "https://novair-template.modulify.website"
+  },
+  {
+    "title": "Voyager",
+    "category": "education",
+    "image": "https://cdn.modulify.ai/previews/6ac64eb8c178440a5034e062.webp",
+    "previewUrl": "https://voyager-template.modulify.website"
+  },
+  {
+    "title": "ARGJIL\u00cb",
+    "category": "craft-workshops",
+    "image": "https://cdn.modulify.ai/custom-previews/6ac65157c178440a5035a8c6.webp",
+    "previewUrl": "https://argjile-template.modulify.website"
+  },
+  {
+    "title": "Liftline",
+    "category": "home-services",
+    "image": "https://cdn.modulify.ai/previews/6ac615bdc178440a5025b990.webp",
+    "previewUrl": "https://liftline-template.modulify.website"
+  },
+  {
+    "title": "Dino Lab",
+    "category": "marketing",
+    "image": "https://cdn.modulify.ai/previews/6abfb3b23996523cd208097a.webp",
+    "previewUrl": "https://dino-lab-template.modulify.website"
+  },
+  {
+    "title": "Kuro Coffee",
+    "category": "restaurant",
+    "image": "https://cdn.modulify.ai/previews/6abfa5c02369e1d590c3e332.webp",
+    "previewUrl": "https://kuro-coffee-template.modulify.website"
+  },
+  {
+    "title": "Huzzah Studio",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/previews/6ac4dad94165df0f4c11f304.webp",
+    "previewUrl": "https://huzzah-studio.modulify.website"
+  },
+  {
+    "title": "Peelmark",
+    "category": "playful-creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6ac75f22c178440a50649484.webp",
+    "previewUrl": "https://peelmark.modulify.website"
+  },
+  {
+    "title": "Hangline",
+    "category": "fashion",
+    "image": "https://cdn.modulify.ai/custom-previews/6abe7203310d51d52f52d0b2.webp",
+    "previewUrl": "https://hangline-template.modulify.website"
+  },
+  {
+    "title": "Fieldhand",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/previews/6abd1f98c245ecec2ae02dda.webp",
+    "previewUrl": "https://fieldhand-template.modulify.website"
+  },
+  {
+    "title": "Morrow Golf Park",
+    "category": "sports",
+    "image": "https://cdn.modulify.ai/previews/6abcfa10c245ecec2ad3233d.webp",
+    "previewUrl": "https://morrow-golf-template.modulify.website"
+  },
+  {
+    "title": "Elio",
+    "category": "fashion",
+    "image": "https://cdn.modulify.ai/previews/6ad0d40c75d491e1917a45ef.webp",
+    "previewUrl": "https://elio-template.modulify.website"
+  },
+  {
+    "title": "Cabinet",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/previews/6abb7b5483070c3ac90bb706.webp",
+    "previewUrl": "https://cabinet-template.modulify.website"
+  },
+  {
+    "title": "Onde One",
+    "category": "music-audio",
+    "image": "https://cdn.modulify.ai/previews/6ab95ff1c44ece7c3a016b50.webp",
+    "previewUrl": "https://onde-one-template.modulify.website"
+  },
+  {
+    "title": "Oriel",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/previews/6ab849d8c44ece7c3ad4e282.webp",
+    "previewUrl": "https://oriel-template.modulify.website"
+  },
+  {
+    "title": "Epoch One",
+    "category": "fitness",
+    "image": "https://cdn.modulify.ai/previews/6aba38bc77ecadb0d1cf7daa.webp",
+    "previewUrl": "https://epoch-template.modulify.website"
+  },
+  {
+    "title": "Vektr Electric",
+    "category": "sports",
+    "image": "https://cdn.modulify.ai/previews/6ab69b6dc44ece7c3a8e8b85.webp",
+    "previewUrl": "https://vektr-template.modulify.website"
+  },
+  {
+    "title": "Terra",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/previews/6abb888d83070c3ac90f3a6c.webp",
+    "previewUrl": "https://terra-template.modulify.website"
+  },
+  {
+    "title": "Loupe",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6ab4e3f9c44ece7c3a3169ab.webp",
+    "previewUrl": "https://loupe-template.modulify.website"
+  },
+  {
+    "title": "Noma Studio",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/previews/6accaae94f48a583e28fb5e8.webp",
+    "previewUrl": "https://noma-template.modulify.website"
+  },
+  {
+    "title": "Selora",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/previews/6ab3de09c44ece7c3af83ef5.webp",
+    "previewUrl": "https://selora-template.modulify.website"
+  },
+  {
+    "title": "Nuv\u00e9a",
+    "category": "beauty",
+    "image": "https://cdn.modulify.ai/previews/6ac4c17f4165df0f4c0b6db0.webp",
+    "previewUrl": "https://nuvea-template.modulify.website"
+  },
+  {
+    "title": "Aurex Law",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/previews/6ab12f3cca3712e70f0d219d.webp",
+    "previewUrl": "https://aurex-template.modulify.website"
+  },
+  {
+    "title": "Tecton Arch",
+    "category": "architecture",
+    "image": "https://cdn.modulify.ai/previews/6aad0f81f13b453247b1c0ce.webp",
+    "previewUrl": "https://tecton-arch-tempalte.modulify.website"
+  },
+  {
+    "title": "Sora Health",
+    "category": "fitness",
+    "image": "https://cdn.modulify.ai/previews/6abd066bc245ecec2ad932e5.webp",
+    "previewUrl": "https://sora-health-template.modulify.website"
+  },
+  {
+    "title": "Northlight Studio",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/previews/6aaaa6440744824be7e556f5.webp",
+    "previewUrl": "https://northlight-template.modulify.website"
+  },
+  {
+    "title": "Funnel",
+    "category": "marketing",
+    "image": "https://cdn.modulify.ai/previews/6aa9571482bdbcf944868afd.webp",
+    "previewUrl": "https://funnel-template.modulify.website"
+  },
+  {
+    "title": "Metric",
+    "category": "events",
+    "image": "https://cdn.modulify.ai/previews/6aa9537582bdbcf9448593af.webp",
+    "previewUrl": "https://metric-template.modulify.website"
+  },
+  {
+    "title": "Wayfare Travels",
+    "category": "travel",
+    "image": "https://cdn.modulify.ai/previews/6aa90c297a27bcabc8de3da0.webp",
+    "previewUrl": "https://wayfare-travels-template.modulify.website"
+  },
+  {
+    "title": "Astra",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/previews/6ab50bb7c44ece7c3a3c20ba.webp",
+    "previewUrl": "https://astra-template.modulify.website"
+  },
+  {
+    "title": "RYVEN",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/previews/6aa8041d7a27bcabc8b405aa.webp",
+    "previewUrl": "https://ryven-template.modulify.website"
+  },
+  {
+    "title": "Fitway",
+    "category": "fitness",
+    "image": "https://cdn.modulify.ai/previews/6aa803487a27bcabc8b3c883.webp",
+    "previewUrl": "https://fitzone-template.modulify.website"
+  },
+  {
+    "title": "Morph",
+    "category": "ai",
+    "image": "https://cdn.modulify.ai/custom-previews/6aa15b535f825b276feca381.webp",
+    "previewUrl": "https://morph-template.modulify.website"
+  },
+  {
+    "title": "Lightroom",
+    "category": "photography",
+    "image": "https://cdn.modulify.ai/previews/6a958b1a8e1a986507e5f212.webp",
+    "previewUrl": "https://lightroom-template.modulify.website"
+  },
+  {
+    "title": "Amour Studio",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/previews/6a86c60189499540f8598861.webp",
+    "previewUrl": "https://amour-template.modulify.website"
+  },
+  {
+    "title": "Cutout",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/previews/6a7f2ab5bb95d1de460e9568.webp",
+    "previewUrl": "https://cutout-template.modulify.website"
+  },
+  {
+    "title": "Rooster Rush",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6a7f17de55396967ead4a273.webp",
+    "previewUrl": "https://rooster-rush-template.modulify.website"
+  },
+  {
+    "title": "Emulsion",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/custom-previews/6a7ce0bafd5ff7670c5d2bfd.webp",
+    "previewUrl": "https://emulsion-template.modulify.website"
+  },
+  {
+    "title": "Formation",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/previews/6a75ed71927e0d68f33367b9.webp",
+    "previewUrl": "https://formation-template.modulify.website"
+  },
+  {
+    "title": "Frieze",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/custom-previews/6a74a70eae6b40cc03e4143b.webp",
+    "previewUrl": "https://frieze-template.modulify.website"
+  },
+  {
+    "title": "Reverie",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/custom-previews/6a7ce0ebfd5ff7670c5d2f70.webp",
+    "previewUrl": "https://reverie-template.modulify.website"
+  },
+  {
+    "title": "Fathom",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6a7ce157fd5ff7670c5d385d.webp",
+    "previewUrl": "https://fathom-template.modulify.website"
+  },
+  {
+    "title": "Alive",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/custom-previews/6a5a3e6cdb7620dc18c68a9d.webp",
+    "previewUrl": "https://alive-template.modulify.website"
+  },
+  {
+    "title": "Stream-Showcase Template",
+    "category": "education",
+    "image": "https://cdn.modulify.ai/previews/6a5e2d33c9002c0c14b90781.webp",
+    "previewUrl": "https://stream-showcase-template.modulify.website"
+  },
+  {
+    "title": "Canada",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58e5fa508e3a3e8bc2b921.webp",
+    "previewUrl": "https://canada-template.modulify.website"
+  },
+  {
+    "title": "Aperture",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58e23f508e3a3e8bc24f31.webp",
+    "previewUrl": "https://aperture-template.modulify.website"
+  },
+  {
+    "title": "Crema",
+    "category": "restaurant",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58de0a508e3a3e8bc1b51f.webp",
+    "previewUrl": "https://crema-template.modulify.website"
+  },
+  {
+    "title": "Atelier",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/custom-previews/6a997408acd2b83c025c3879.webp",
+    "previewUrl": "https://atelier-template.modulify.website"
+  },
+  {
+    "title": "Aster",
+    "category": "blog",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58df38508e3a3e8bc1e9e7.webp",
+    "previewUrl": "https://aster-template.modulify.website"
+  },
+  {
+    "title": "Hardback",
+    "category": "blog",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58a8a5508e3a3e8bbb8972.webp",
+    "previewUrl": "https://hardback-template.modulify.website"
+  },
+  {
+    "title": "Cinema Reel",
+    "category": "blog",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58e7c3508e3a3e8bc2e856.webp",
+    "previewUrl": "https://cinema-reel-template.modulify.website"
+  },
+  {
+    "title": "Cardwall",
+    "category": "finance",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58e733508e3a3e8bc2da89.webp",
+    "previewUrl": "https://cardwall-template.modulify.website"
+  },
+  {
+    "title": "Liquid Type",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58a831508e3a3e8bbb7c33.webp",
+    "previewUrl": "https://liquid-type-template.modulify.website"
+  },
+  {
+    "title": "Momentum Slider",
+    "category": "ecommerce",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58a64d508e3a3e8bbb3d02.webp",
+    "previewUrl": "https://momentum-slider-template.modulify.website"
+  },
+  {
+    "title": "Aurora",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58e2d8508e3a3e8bc25e75.webp",
+    "previewUrl": "https://aurora-template.modulify.website"
+  },
+  {
+    "title": "Console",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58a941508e3a3e8bbb9b1b.webp",
+    "previewUrl": "https://console-motion-template.modulify.website"
+  },
+  {
+    "title": "Revolver",
+    "category": "finance",
+    "image": "https://cdn.modulify.ai/previews/6a7c8690fd5ff7670c56c30b.webp",
+    "previewUrl": "https://revolver-template.modulify.website"
+  },
+  {
+    "title": "Hollow Pines",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6a7f2352bb95d1de460dcf78.webp",
+    "previewUrl": "https://overworld-template.modulify.website"
+  },
+  {
+    "title": "Desk 95",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/custom-previews/6a7f185655396967ead4b080.webp",
+    "previewUrl": "https://desk-95-template.modulify.website"
+  },
+  {
+    "title": "Assembly",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6a7dd1bc11f650d1f4dd3b01.webp",
+    "previewUrl": "https://assembly-template.modulify.website"
+  },
+  {
+    "title": "Pixels",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/previews/6a7dbcda11f650d1f4da7076.webp",
+    "previewUrl": "https://pixels-template.modulify.website"
+  },
+  {
+    "title": "Lens Bloom",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6a7db47811f650d1f4d965ed.webp",
+    "previewUrl": "https://lens-bloom-template.modulify.website"
+  },
+  {
+    "title": "Pantheon",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6a7d8757a767ed63f369839b.webp",
+    "previewUrl": "https://pantheon-template.modulify.website"
+  },
+  {
+    "title": "Fluid Gallery",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6a7c2cbefd5ff7670c4c7ff8.webp",
+    "previewUrl": "https://fluid-gallery-template.modulify.website"
+  },
+  {
+    "title": "Nova",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/custom-previews/6a7ce110fd5ff7670c5d31f3.webp",
+    "previewUrl": "https://nova-template.modulify.website"
+  },
+  {
+    "title": "Filament",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/custom-previews/6a7ce131fd5ff7670c5d3475.webp",
+    "previewUrl": "https://filament-template.modulify.website"
+  },
+  {
+    "title": "Helix",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6a68ac8462db21e748f5420c.webp",
+    "previewUrl": "https://helix.modulify.website"
+  },
+  {
+    "title": "Marathon",
+    "category": "fitness",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58df5b508e3a3e8bc1ef04.webp",
+    "previewUrl": "https://marathon-template.modulify.website"
+  },
+  {
+    "title": "Isle Template",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6a5e341ec9002c0c14b9ca01.webp",
+    "previewUrl": "https://isle-template.modulify.website"
+  },
+  {
+    "title": "San Diego",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58e039508e3a3e8bc20de5.webp",
+    "previewUrl": "https://sandiego-template.modulify.website"
+  },
+  {
+    "title": "Milano Template",
+    "category": "ecommerce",
+    "image": "https://cdn.modulify.ai/previews/6a425aa4cd99d59bcc5f7fdf.webp",
+    "previewUrl": "https://milano-template.modulify.website"
+  },
+  {
+    "title": "Vancouver Plus",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58dfcc508e3a3e8bc1fe72.webp",
+    "previewUrl": "https://vancouverplus-template.modulify.website"
+  },
+  {
+    "title": "Manila",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/previews/6a3c4c9c3b2688cf7b2dc66c.webp",
+    "previewUrl": "https://manila-template.modulify.website"
+  },
+  {
+    "title": "Galway Template",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/previews/6a94b8d785f085bacd99c726.webp",
+    "previewUrl": "https://galway-template.modulify.website"
+  },
+  {
+    "title": "Benchmark",
+    "category": "saas",
+    "image": "https://cdn.modulify.ai/previews/6a7d783efd5ff7670c674d75.webp",
+    "previewUrl": "https://benchmark-template.modulify.website"
+  },
+  {
+    "title": "Riffle",
+    "category": "ecommerce",
+    "image": "https://cdn.modulify.ai/previews/6a7c8e88fd5ff7670c57e180.webp",
+    "previewUrl": "https://riffle-template.modulify.website"
+  },
+  {
+    "title": "Boutique",
+    "category": "ecommerce",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58e3aa508e3a3e8bc272ab.webp",
+    "previewUrl": "https://boutique-templatee.modulify.website"
+  },
+  {
+    "title": "Cipher",
+    "category": "finance",
+    "image": "https://cdn.modulify.ai/previews/6a7c7384fd5ff7670c5453e6.webp",
+    "previewUrl": "https://cipher-template.modulify.website"
+  },
+  {
+    "title": "Spring Dispatch",
+    "category": "blog",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58a877508e3a3e8bbb83bf.webp",
+    "previewUrl": "https://spring-dispatch-template.modulify.website"
+  },
+  {
+    "title": "Folio",
+    "category": "agency",
+    "image": "https://cdn.modulify.ai/previews/6a7eef5655396967ead0ee0a.webp",
+    "previewUrl": "https://folio-template.modulify.website"
+  },
+  {
+    "title": "Picasso Ecommerce",
+    "category": "ecommerce",
+    "image": "https://cdn.modulify.ai/previews/6a7eec8c55396967ead09600.webp",
+    "previewUrl": "https://picasso-ecommerce-template.modulify.website"
+  },
+  {
+    "title": "Portfolio Photographer",
+    "category": "portfolio",
+    "image": "https://cdn.modulify.ai/previews/6a7eeb7255396967ead07492.webp",
+    "previewUrl": "https://portfolio-photographer-template.modulify.website"
+  },
+  {
+    "title": "Drag Gallery",
+    "category": "ecommerce",
+    "image": "https://cdn.modulify.ai/previews/6a7ee4b255396967eacf8d81.webp",
+    "previewUrl": "https://drag-gallery-template.modulify.website"
+  },
+  {
+    "title": "Membrane",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/previews/6a7ee37c55396967eacf5ea6.webp",
+    "previewUrl": "https://membrane-template.modulify.website"
+  },
+  {
+    "title": "Shape Trail",
+    "category": "creative",
+    "image": "https://cdn.modulify.ai/custom-previews/6a58dd07508e3a3e8bc1896a.webp",
+    "previewUrl": "https://shape-trail-template.modulify.website"
+  }
+]

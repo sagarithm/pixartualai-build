@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { CaretDown, List, X } from '@phosphor-icons/react';
+import { PixartualLogo } from '@/components/brand/PixartualLogo';
 
 export const Navbar: React.FC = () => {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
@@ -28,30 +29,10 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-[100] transition-colors duration-300 bg-white/90 backdrop-blur-md backdrop-saturate-[1.8] border-b border-black/[0.04]">
       <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between gap-3 px-5 py-3.5 md:px-[50px] lg:gap-6">
-        {/* Left: Sunburst Brand Logo + Nav items */}
+        {/* Left: PixartualAI Brand Logo + Nav items */}
         <div className="flex items-center gap-6">
           <Link aria-label="PixartualAI home" className="flex shrink-0 items-center gap-2" href="/">
-            <svg
-              className="h-7 w-auto"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M28.74 0.6L24.72 17.37L29.84 12.18L31.65 13.98L22.9 22.84L6.88 21.66L7.07 19.12L16.3 19.79L0 11.34L1.18 9.08L18.02 17.81L10.87 8.31L12.91 6.77L19.56 15.61L17.91 9.23L20.38 8.59L22.36 16.25L26.26 0L28.74 0.6Z"
-                fill="url(#pixartual_mark)"
-              />
-              <defs>
-                <linearGradient id="pixartual_mark" x1="15.86" y1="2.5" x2="25.05" y2="25.16" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stopColor="#FE3200" />
-                  <stop offset="0.51" stopColor="#FC8C04" />
-                  <stop offset="1" stopColor="#F28A6F" stopOpacity="0.8" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <span className="text-[20px] font-medium tracking-tight text-neutral-900 font-['Neutralsans']">
-              Pixartual<span className="text-[#fc8c04]">AI</span>
-            </span>
+            <PixartualLogo variant="badge-dark" size={32} showWordmark />
           </Link>
 
           {/* Desktop Navigation */}

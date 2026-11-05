@@ -1,3 +1,4 @@
+import { ThemeSync } from '@/components/layout/ThemeSync';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" />
       </head>
       <body className="min-h-screen bg-[#FBFBFA] dark:bg-[#0F0F0F] text-[#171717] dark:text-[#EDEDED] antialiased selection:bg-neutral-200 dark:selection:bg-neutral-800 transition-colors duration-200">
+        <ThemeSync />
         {children}
       </body>
     </html>

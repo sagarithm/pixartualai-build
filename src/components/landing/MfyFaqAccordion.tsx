@@ -54,3 +54,4 @@ export const MfyFaqAccordion: React.FC<MfyFaqAccordionProps> = ({ items }) => {
     </div>
   );
 };
+
