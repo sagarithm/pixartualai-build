@@ -147,16 +147,66 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-neutral-200 bg-white px-5 py-4 space-y-2">
-          <Link href="/templates" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 font-medium">
-            Templates
-          </Link>
-          <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 font-medium">
-            Pricing
-          </Link>
-          <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 font-medium">
-            AI Studio Dashboard
-          </Link>
+        <div className="lg:hidden border-t border-neutral-200 bg-white px-5 py-5 space-y-4 max-h-[80vh] overflow-y-auto">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Explore Solutions</div>
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { label: 'Founders', href: '/founders' },
+                { label: 'Designers', href: '/designers' },
+                { label: 'Marketers', href: '/marketers' },
+                { label: 'Prototypes', href: '/prototypes' },
+                { label: 'Internal Tools', href: '/tools' },
+                { label: 'All Solutions', href: '/solutions' },
+              ].map((s) => (
+                <Link
+                  key={s.label}
+                  href={s.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg"
+                >
+                  {s.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t border-neutral-100 pt-3">
+            <div className="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Platform & Resources</div>
+            <div className="flex flex-col gap-1">
+              <Link href="/templates" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
+                Templates Gallery
+              </Link>
+              <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
+                Pricing Plans
+              </Link>
+              <Link href="/made-in-modulify" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
+                Made in PixartualAI
+              </Link>
+              <Link href="/insights" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
+                Insights & Updates
+              </Link>
+              <Link href="/connect" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
+                Integrations & Connect
+              </Link>
+              <Link href="/domains" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
+                Custom Domains
+              </Link>
+              <Link href="/webflow-transfer" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
+                Webflow Migration
+              </Link>
+            </div>
+          </div>
+
+          <div className="border-t border-neutral-100 pt-3 flex flex-col gap-2">
+            <Link
+              href="/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mfy-btn mfy-btn--primary w-full justify-center !py-3"
+            >
+              Start building free
+            </Link>
+          </div>
         </div>
       )}
     </header>

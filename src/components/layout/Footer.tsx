@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
 import {
@@ -19,8 +19,24 @@ export const Footer: React.FC = () => {
   const [langOpen, setLangOpen] = useState(false);
   const [language, setLanguage] = useState('English');
 
+  const currencyRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
+
   const currencies = ['USD $', 'EUR €', 'GBP £', 'CAD $', 'AUD $', 'JPY ¥', 'INR ₹'];
   const languages = ['English', 'Español', 'Français', 'Deutsch', '日本語', 'Português', 'Italiano'];
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (currencyRef.current && !currencyRef.current.contains(e.target as Node)) {
+        setCurrencyOpen(false);
+      }
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     try {
@@ -273,7 +289,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Currency Selector */}
-            <div className="relative">
+            <div className="relative" ref={currencyRef}>
               <button
                 type="button"
                 onClick={() => setCurrencyOpen(!currencyOpen)}
@@ -303,7 +319,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Language Selector */}
-            <div className="relative">
+            <div className="relative" ref={langRef}>
               <button
                 type="button"
                 onClick={() => setLangOpen(!langOpen)}

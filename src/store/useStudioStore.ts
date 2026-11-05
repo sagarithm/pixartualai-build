@@ -64,10 +64,36 @@ export const useStudioStore = create<StudioState>((set, get) => ({
   },
 
   loadTemplate: (templateId) => {
-    const found = PRESET_TEMPLATES.find((t) => t.id === templateId);
-    if (found) {
-      get().setExperience(JSON.parse(JSON.stringify(found)));
-      set({ isTemplateModalOpen: false });
+    try {
+      const decoded = decodeURIComponent(templateId);
+      const found = PRESET_TEMPLATES.find(
+        (t) => t.id === templateId || t.name.toLowerCase() === decoded.toLowerCase()
+      );
+      if (found) {
+        get().setExperience(JSON.parse(JSON.stringify(found)));
+        set({ isTemplateModalOpen: false });
+      } else {
+        // Dynamically instantiate experience for this template
+        const generated = generateExperienceFromPrompt({
+          prompt: `A polished ${decoded} website template with hero, interactive features, bento grid, and contact`,
+          themePreference: get().experience.theme.mode,
+        });
+        generated.name = decoded;
+        get().setExperience(generated);
+        set({
+          isTemplateModalOpen: false,
+          chatMessages: [
+            ...get().chatMessages,
+            {
+              id: `msg-${Date.now()}`,
+              role: 'assistant',
+              text: `✨ Cloned the "${decoded}" template into your workspace! You can click any section to edit or use Copilot chat to customize it.`,
+            },
+          ],
+        });
+      }
+    } catch (e) {
+      console.error(e);
     }
   },
 

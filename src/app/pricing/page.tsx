@@ -22,6 +22,24 @@ export default function PricingPage() {
   const [starterDomains, setStarterDomains] = useState('1 domain included');
   const [proDomains, setProDomains] = useState('3 domains included');
 
+  const getStarterPrice = () => {
+    let base = billedYearly ? 20 : 25;
+    if (starterCredits.includes('500')) base += 15;
+    if (starterCredits.includes('1000')) base += 35;
+    if (starterDomains.includes('3 domains')) base += 10;
+    if (starterDomains.includes('5 domains')) base += 20;
+    return base;
+  };
+
+  const getProPrice = () => {
+    let base = billedYearly ? 40 : 49;
+    if (proCredits.includes('1000')) base += 25;
+    if (proCredits.includes('2500')) base += 60;
+    if (proDomains.includes('5 domains')) base += 10;
+    if (proDomains.includes('10 domains')) base += 25;
+    return base;
+  };
+
   const faqs = [
     {
       q: 'How does PixartualAI pricing work?',
@@ -179,7 +197,7 @@ export default function PricingPage() {
               <p className="pr-name">Starter Plan</p>
               <p className="pr-desc">Build projects that convert and scale.</p>
               <div className="pr-price">
-                <span className="pr-price-amt">${billedYearly ? '20' : '25'}</span>
+                <span className="pr-price-amt">${getStarterPrice()}</span>
                 <span className="pr-price-per">/month</span>
               </div>
 
@@ -263,7 +281,7 @@ export default function PricingPage() {
               <p className="pr-name">Pro Plan</p>
               <p className="pr-desc">Unlock full creativity and powerful features.</p>
               <div className="pr-price">
-                <span className="pr-price-amt">${billedYearly ? '40' : '49'}</span>
+                <span className="pr-price-amt">${getProPrice()}</span>
                 <span className="pr-price-per">/month</span>
               </div>
 

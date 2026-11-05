@@ -10,6 +10,7 @@ import { CalculatorRenderer } from '@/components/render/CalculatorRenderer';
 import { QuizRenderer } from '@/components/render/QuizRenderer';
 import { BentoRenderer } from '@/components/render/BentoRenderer';
 import { ContactRenderer } from '@/components/render/ContactRenderer';
+import { PixartualLogo } from '@/components/brand/PixartualLogo';
 import {
   Desktop,
   DeviceTablet,
@@ -102,19 +103,8 @@ function DashboardContent() {
       {/* Top Navbar */}
       <header className="h-14 border-b border-neutral-800 bg-[#161616] px-4 flex items-center justify-between shrink-0 z-20">
         <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2">
-            <svg className="h-6 w-auto" viewBox="0 0 32 32" fill="none">
-              <path
-                d="M28.74 0.6L24.72 17.37L29.84 12.18L31.65 13.98L22.9 22.84L6.88 21.66L7.07 19.12L16.3 19.79L0 11.34L1.18 9.08L18.02 17.81L10.87 8.31L12.91 6.77L19.56 15.61L17.91 9.23L20.38 8.59L22.36 16.25L26.26 0L28.74 0.6Z"
-                fill="url(#dash_mark)"
-              />
-              <defs>
-                <linearGradient id="dash_mark" x1="15.86" y1="2.5" x2="25.05" y2="25.16" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stopColor="#FE3200" />
-                  <stop offset="0.51" stopColor="#FC8C04" />
-                </linearGradient>
-              </defs>
-            </svg>
+          <Link href="/" className="flex items-center gap-2.5 transition-transform hover:scale-105">
+            <PixartualLogo variant="badge-dark" size={26} />
             <span className="text-sm font-medium tracking-tight text-white font-['Neutralsans']">
               Pixartual<span className="text-[#fc8c04]">AI</span> Studio
             </span>
