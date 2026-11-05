@@ -246,3 +246,4 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
     </div>
   );
 };
+
