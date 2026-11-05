@@ -2,23 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import {
-  Sparkle,
-  ArrowRight,
-  CaretDown,
-  RocketLaunch,
-  ChartBar,
-  Layout,
-  Palette,
-  Megaphone,
-  Wrench,
-  Users,
-  DeviceMobile,
-  Database,
-  List,
-  X,
-} from '@phosphor-icons/react';
-import { ThemeToggle } from './ThemeToggle';
+import { CaretDown, List, X } from '@phosphor-icons/react';
 
 export const Navbar: React.FC = () => {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
@@ -41,157 +25,140 @@ export const Navbar: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const solutions = [
-    { title: 'Founders', desc: 'Ship your product and interactive MVP fast.', icon: RocketLaunch, href: '/templates?category=portfolio' },
-    { title: 'Designers', desc: 'Ship functional prototypes with zero handoff.', icon: Palette, href: '/templates?category=portfolio' },
-    { title: 'Product Managers', desc: 'Build interactive tools instead of static specs.', icon: Layout, href: '/templates?category=tool' },
-    { title: 'Marketers', desc: 'Launch high-converting calculators & quizzes.', icon: Megaphone, href: '/templates?category=tool' },
-    { title: 'Operations', desc: 'Interactive internal tools, trackers & estimators.', icon: Wrench, href: '/templates?category=tool' },
-    { title: 'Creators', desc: 'Personal websites and bento portfolio hubs.', icon: Users, href: '/templates?category=personal' },
-  ];
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200/80 dark:border-neutral-800/80 bg-[#FBFBFA]/90 dark:bg-[#0F0F0F]/90 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Left: Brand Logo + Dropdowns */}
-        <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="size-8 rounded-[7px] bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-bold shadow-sm transition-transform group-hover:scale-105">
-              <Sparkle size={18} weight="fill" />
-            </div>
-            <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-neutral-900 dark:text-neutral-50">
-              Pixartual<span className="text-neutral-500">AI</span>
+    <header className="sticky top-0 z-[100] transition-colors duration-300 bg-white/90 backdrop-blur-md backdrop-saturate-[1.8] border-b border-black/[0.04]">
+      <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between gap-3 px-5 py-3.5 md:px-[50px] lg:gap-6">
+        {/* Left: Sunburst Brand Logo + Nav items */}
+        <div className="flex items-center gap-6">
+          <Link aria-label="PixartualAI home" className="flex shrink-0 items-center gap-2" href="/">
+            <svg
+              className="h-7 w-auto"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M28.74 0.6L24.72 17.37L29.84 12.18L31.65 13.98L22.9 22.84L6.88 21.66L7.07 19.12L16.3 19.79L0 11.34L1.18 9.08L18.02 17.81L10.87 8.31L12.91 6.77L19.56 15.61L17.91 9.23L20.38 8.59L22.36 16.25L26.26 0L28.74 0.6Z"
+                fill="url(#pixartual_mark)"
+              />
+              <defs>
+                <linearGradient id="pixartual_mark" x1="15.86" y1="2.5" x2="25.05" y2="25.16" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stopColor="#FE3200" />
+                  <stop offset="0.51" stopColor="#FC8C04" />
+                  <stop offset="1" stopColor="#F28A6F" stopOpacity="0.8" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span className="text-[20px] font-medium tracking-tight text-neutral-900 font-['Neutralsans']">
+              Pixartual<span className="text-[#fc8c04]">AI</span>
             </span>
           </Link>
 
-          {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center gap-1 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+          {/* Desktop Navigation */}
+          <nav aria-label="Primary" className="ml-2 hidden items-center gap-1 lg:flex">
             {/* Solutions Dropdown */}
             <div className="relative" ref={solutionsRef}>
               <button
                 type="button"
                 onClick={() => setSolutionsOpen(!solutionsOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-[7px] hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-neutral-800/70 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 no-underline cursor-pointer bg-transparent hover:bg-neutral-100/70 transition-colors"
               >
-                <span>Solutions</span>
-                <CaretDown size={12} className={`transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`} />
+                Solutions
+                <CaretDown size={14} className={`text-gray-500 transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {solutionsOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[540px] rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 shadow-xl grid grid-cols-2 gap-2 z-50">
-                  {solutions.map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <Link
-                        key={idx}
-                        href={item.href}
-                        onClick={() => setSolutionsOpen(false)}
-                        className="flex items-start gap-3 p-2.5 rounded-[10px] hover:bg-neutral-50 dark:hover:bg-neutral-800/60 transition-colors group"
-                      >
-                        <div className="size-8 rounded-[7px] bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-800 dark:text-neutral-200 group-hover:bg-neutral-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-neutral-900 transition-colors shrink-0">
-                          <Icon size={16} />
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-neutral-900 dark:text-white">
-                            {item.title}
-                          </div>
-                          <div className="text-[11px] text-neutral-500 font-sans mt-0.5 leading-tight">
-                            {item.desc}
-                          </div>
-                        </div>
-                      </Link>
-                    );
-                  })}
+                <div className="absolute left-0 top-full mt-2 z-50 w-[480px] rounded-[18px] border border-neutral-200 bg-white p-4 shadow-xl grid grid-cols-2 gap-2">
+                  {[
+                    { label: 'Founders', desc: 'Ship your MVP in minutes', href: '/templates' },
+                    { label: 'Designers', desc: 'No-code interactive design', href: '/templates' },
+                    { label: 'Product Managers', desc: 'Prototype tools & flows', href: '/templates' },
+                    { label: 'Marketers', desc: 'High-converting funnels', href: '/templates' },
+                    { label: 'Client Portals', desc: 'Stateful portals & apps', href: '/templates' },
+                    { label: 'Internal Tools', desc: 'Custom business dashboards', href: '/templates' },
+                  ].map((s) => (
+                    <Link
+                      key={s.label}
+                      href={s.href}
+                      onClick={() => setSolutionsOpen(false)}
+                      className="p-2.5 rounded-xl hover:bg-neutral-50 transition-colors block"
+                    >
+                      <div className="text-sm font-medium text-neutral-900">{s.label}</div>
+                      <div className="text-xs text-neutral-500">{s.desc}</div>
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
 
-            <Link
-              href="/templates"
-              className="px-3 py-1.5 rounded-[7px] hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-neutral-800/70 transition-colors"
-            >
+            {/* Resources Dropdown */}
+            <div className="relative" ref={resourcesRef}>
+              <button
+                type="button"
+                onClick={() => setResourcesOpen(!resourcesOpen)}
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 no-underline cursor-pointer bg-transparent hover:bg-neutral-100/70 transition-colors"
+              >
+                Resources
+                <CaretDown size={14} className={`text-gray-500 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {resourcesOpen && (
+                <div className="absolute left-0 top-full mt-2 z-50 w-[240px] rounded-[18px] border border-neutral-200 bg-white p-2 shadow-xl flex flex-col gap-1">
+                  <Link href="/templates" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Showcase
+                  </Link>
+                  <Link href="/templates" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Documentation
+                  </Link>
+                  <Link href="/templates" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Community & Discord
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link href="/templates" className="inline-flex items-center rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 hover:bg-neutral-100/70 transition-colors">
               Templates
             </Link>
 
-            <Link
-              href="/pricing"
-              className="px-3 py-1.5 rounded-[7px] hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-neutral-800/70 transition-colors"
-            >
+            <Link href="/pricing" className="inline-flex items-center rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 hover:bg-neutral-100/70 transition-colors">
               Pricing
-            </Link>
-
-            <Link
-              href="/#features"
-              className="px-3 py-1.5 rounded-[7px] hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100/70 dark:hover:bg-neutral-800/70 transition-colors"
-            >
-              Features
             </Link>
           </nav>
         </div>
 
-        {/* Right: Actions, Currency, Theme, Launch */}
+        {/* Right: Actions */}
         <div className="flex items-center gap-3">
-          <ThemeToggle />
-
-          <Link
-            href="/studio"
-            className="hidden sm:inline-flex text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white px-2 py-1"
-          >
-            Sign In
+          <Link href="/dashboard" className="hidden sm:inline-flex text-[15px] font-normal text-neutral-800 hover:text-neutral-500 px-3 py-1.5 transition-colors">
+            Log in
+          </Link>
+          <Link href="/dashboard" className="mfy-btn mfy-btn--primary !px-5 !py-2.5 !text-sm !font-semibold">
+            Start building
           </Link>
 
-          <Link
-            href="/studio"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-[10px] bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium text-xs sm:text-sm hover:opacity-90 transition-opacity shadow-sm"
-          >
-            <span>Get Started</span>
-            <ArrowRight size={14} weight="bold" />
-          </Link>
-
-          {/* Mobile menu trigger */}
+          {/* Mobile hamburger */}
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-[7px] border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400"
-            aria-label="Toggle mobile menu"
+            className="lg:hidden p-2 text-neutral-700 hover:bg-neutral-100 rounded-lg"
           >
-            {mobileMenuOpen ? <X size={18} /> : <List size={18} />}
+            {mobileMenuOpen ? <X size={20} /> : <List size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-neutral-200 dark:border-neutral-800 bg-[#FBFBFA] dark:bg-[#0F0F0F] px-4 py-4 space-y-2">
-          <Link
-            href="/templates"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-[7px] text-sm font-medium text-neutral-800 dark:text-neutral-200"
-          >
-            Templates Catalog
+        <div className="lg:hidden border-t border-neutral-200 bg-white px-5 py-4 space-y-2">
+          <Link href="/templates" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 font-medium">
+            Templates
           </Link>
-          <Link
-            href="/pricing"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-[7px] text-sm font-medium text-neutral-800 dark:text-neutral-200"
-          >
-            Pricing & Plans
+          <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 font-medium">
+            Pricing
           </Link>
-          <Link
-            href="/#features"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-[7px] text-sm font-medium text-neutral-800 dark:text-neutral-200"
-          >
-            Platform Features
+          <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 font-medium">
+            AI Studio Dashboard
           </Link>
-          <div className="pt-2">
-            <Link
-              href="/studio"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-[10px] bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-center text-xs font-semibold block"
-            >
-              Launch Studio Canvas
-            </Link>
-          </div>
         </div>
       )}
     </header>

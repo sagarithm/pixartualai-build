@@ -7,3 +7,12 @@ dist/
 *.log
 .env*.local
 
+# Temporary scraper dumps
+*.html
+*.css.tmp
+modulify_styles.css
+extract_sections.py
+find_css.py
+inspect_exact_modulify.py
+parse_structure.py
+extracted_sections/
