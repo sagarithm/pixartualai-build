@@ -45,17 +45,23 @@ export default function EnterpriseTeamsPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="pt-16 pb-12 md:pt-24 md:pb-16 text-center px-5 max-w-[1240px] mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border border-neutral-200 bg-stone-50 text-neutral-700 mb-6">
-            <span>PixartualAI for Enterprise & Teams</span>
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+          <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]">
+            <img alt="" className="h-full w-full object-cover object-bottom" src="/images/kit/hero-bg.jpg" />
           </div>
 
-          <h1 className="text-[clamp(36px,6vw,56px)] font-medium leading-[1.15] text-neutral-900 font-['Neutralsans']">
-            AI website operations for teams that move fast.
-          </h1>
-          <p className="mt-4 max-w-[620px] mx-auto text-[clamp(1rem,1.2vw,1.12rem)] leading-relaxed text-gray-500">
-            Enable marketing, design, and engineering teams to build, edit, and ship web apps and digital experiences with speed, autonomy, and security.
-          </p>
+          <div className="relative z-10 mx-auto max-w-[1000px] text-center px-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-orange-200 bg-orange-50/80 text-orange-600 mb-6">
+              <span>PixartualAI for Enterprise & Teams</span>
+            </div>
+
+            <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-['Neutralsans']">
+              AI website operations for teams that move fast.
+            </h1>
+            <p className="mx-auto mt-4 max-w-[620px] text-lg leading-relaxed text-neutral-600">
+              Enable marketing, design, and engineering teams to build, edit, and ship web apps and digital experiences with speed, autonomy, and security.
+            </p>
+          </div>
         </section>
 
         {/* Value Proposition Cards */}

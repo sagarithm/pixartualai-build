@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ModulifyCta } from '@/components/landing/ModulifyCta';
-import { Globe, MapPin, ArrowRight, Buildings, Compass } from '@phosphor-icons/react';
+import { MfyFaqAccordion } from '@/components/landing/MfyFaqAccordion';
+import { Globe, MapPin, ArrowRight, Compass } from '@phosphor-icons/react';
 
 export default function TopAgenciesPage() {
   const northAmericaMarkets = [
@@ -27,7 +28,7 @@ export default function TopAgenciesPage() {
     { name: 'Spain & Italy', slug: '/top-agencies/united-kingdom', count: '22+ Studios', desc: 'Barcelona, Madrid, and Milan studios with bold editorial aesthetics and lifestyle craft.' },
   ];
 
-  const agencyAdvice = [
+  const agencyFaqs = [
     {
       q: 'How much does a custom agency website cost in 2026?',
       a: 'Top studios in New York and London typically charge $25,000 to $120,000+ for custom brand strategy, design, and bespoke development. For growing startups, PixartualAI provides an alternative: launch with identical design pedigree in hours at a fraction of the cost, or prototype your exact vision before hiring an agency.',
@@ -38,7 +39,7 @@ export default function TopAgenciesPage() {
     },
     {
       q: 'Is this directory sponsored?',
-      a: 'No. This directory is 100% editorial and unpaid. Studios are evaluated based on their verified portfolio, award history, code performance, and client outcomes.',
+      a: 'No. This directory is 100% editorial and unpaid: it lists studios across the United States and Europe with what they do, typical rates, and direct links to their own work so you can judge them yourself.',
     },
   ];
 
@@ -47,31 +48,35 @@ export default function TopAgenciesPage() {
       <Navbar />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-100/50 via-white to-white px-5 pt-16 pb-20 md:pt-24 md:pb-28">
-          <div className="mx-auto max-w-[1000px] text-center">
+        {/* Section 0: Authentic Hero with hero-bg.jpg */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+          <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]">
+            <img alt="" className="h-full w-full object-cover object-bottom" src="/images/kit/hero-bg.jpg" />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-[1000px] text-center px-5">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-orange-600">
               <Compass size={14} weight="fill" />
               Global Creative Directory
             </div>
-            <h1 className="text-[clamp(36px,5.5vw,60px)] font-bold tracking-tight text-neutral-900 font-['Neutralsans']">
+            <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-['Neutralsans']">
               Web design agencies, city by city
             </h1>
-            <p className="mx-auto mt-6 max-w-[700px] text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-neutral-600">
+            <p className="mx-auto mt-6 max-w-[700px] text-lg leading-relaxed text-neutral-600">
               Finding a web design agency usually means wading through paid ads. This directory is editorial and unpaid: it lists studios across the United States and Europe with what they do, typical rates, and direct links to their work.
             </p>
           </div>
         </section>
 
-        {/* North America */}
-        <section className="border-t border-neutral-100 py-16 md:py-24 bg-stone-50/50">
+        {/* Section 1: North America */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px] border-t border-neutral-100">
           <div className="mx-auto max-w-[1200px] px-5">
             <div className="mb-10 flex items-center justify-between">
               <div>
-                <h2 className="text-[clamp(26px,3.5vw,36px)] font-bold text-neutral-900 font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   North America
                 </h2>
-                <p className="mt-2 text-neutral-600">
+                <p className="mt-2 text-neutral-600 text-sm">
                   The deepest bench of creative technology, branding, and enterprise UX studios.
                 </p>
               </div>
@@ -85,14 +90,14 @@ export default function TopAgenciesPage() {
                 <Link
                   key={m.name}
                   href={m.slug}
-                  className="group flex flex-col justify-between rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm hover:border-orange-500 hover:shadow-md transition-all"
+                  className="group flex flex-col justify-between rounded-2xl border border-neutral-200 bg-neutral-50/50 p-6 shadow-xs hover:border-orange-500 hover:shadow-md transition-all"
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-neutral-900 group-hover:text-orange-600 transition-colors">
+                      <h3 className="text-lg font-bold text-neutral-900 group-hover:text-orange-600 transition-colors font-['Neutralsans']">
                         {m.name}
                       </h3>
-                      <span className="rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-semibold text-orange-600">
+                      <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-orange-600">
                         {m.count}
                       </span>
                     </div>
@@ -109,15 +114,15 @@ export default function TopAgenciesPage() {
           </div>
         </section>
 
-        {/* Europe */}
-        <section className="py-16 md:py-24 bg-white">
+        {/* Section 2: Europe */}
+        <section className="kit-root relative overflow-hidden bg-stone-50 py-20 md:py-[100px]">
           <div className="mx-auto max-w-[1200px] px-5">
             <div className="mb-10 flex items-center justify-between">
               <div>
-                <h2 className="text-[clamp(26px,3.5vw,36px)] font-bold text-neutral-900 font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   Europe
                 </h2>
-                <p className="mt-2 text-neutral-600">
+                <p className="mt-2 text-neutral-600 text-sm">
                   Independent European ateliers celebrated for typographic rigor, motion craft, and editorial art direction.
                 </p>
               </div>
@@ -131,14 +136,14 @@ export default function TopAgenciesPage() {
                 <Link
                   key={m.name}
                   href={m.slug}
-                  className="group flex flex-col justify-between rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm hover:border-orange-500 hover:shadow-md transition-all"
+                  className="group flex flex-col justify-between rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs hover:border-orange-500 hover:shadow-md transition-all"
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-neutral-900 group-hover:text-orange-600 transition-colors">
+                      <h3 className="text-lg font-bold text-neutral-900 group-hover:text-orange-600 transition-colors font-['Neutralsans']">
                         {m.name}
                       </h3>
-                      <span className="rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-semibold text-orange-600">
+                      <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-orange-600">
                         {m.count}
                       </span>
                     </div>
@@ -155,30 +160,25 @@ export default function TopAgenciesPage() {
           </div>
         </section>
 
-        {/* Choosing a web design agency Guide */}
-        <section className="border-t border-neutral-100 bg-stone-50 py-16 md:py-24">
-          <div className="mx-auto max-w-[900px] px-5">
-            <div className="mb-12 text-center">
-              <h2 className="text-[clamp(26px,3.5vw,38px)] font-bold text-neutral-900 font-['Neutralsans']">
-                Choosing a web design agency
-              </h2>
-              <p className="mt-3 text-neutral-600">
-                Essential questions to ask before signing a $50k+ agency contract.
-              </p>
-            </div>
+        {/* Section 3: Choosing an Agency FAQs */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+          <div className="mx-auto max-w-[860px] px-5 md:px-[50px]">
+            <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-3.5 text-center">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                  Choosing a web design agency
+                </h2>
+                <p className="text-[15px] leading-relaxed text-neutral-600">
+                  Essential questions to consider before signing an agency contract.
+                </p>
+              </div>
 
-            <div className="space-y-6">
-              {agencyAdvice.map((item, idx) => (
-                <div key={idx} className="rounded-2xl border border-neutral-200 bg-white p-6 md:p-8 shadow-sm">
-                  <h3 className="text-lg font-bold text-neutral-900">{item.q}</h3>
-                  <p className="mt-3 text-neutral-600 leading-relaxed text-sm sm:text-base">{item.a}</p>
-                </div>
-              ))}
+              <MfyFaqAccordion items={agencyFaqs} />
             </div>
           </div>
         </section>
 
-        {/* CTA */}
+        {/* Bottom CTA */}
         <ModulifyCta />
       </main>
 
@@ -186,4 +186,3 @@ export default function TopAgenciesPage() {
     </div>
   );
 }
-

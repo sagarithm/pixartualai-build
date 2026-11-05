@@ -1,26 +1,91 @@
+'use client';
+
+import React from 'react';
 import { RolePageTemplate } from '@/components/landing/RolePageTemplate';
+import { Palette, Lightning, Sparkle, Eye } from '@phosphor-icons/react';
 
 export default function DesignersPage() {
   return (
     <RolePageTemplate
-      badge="Designers"
-      h1="Ship your design, no handoff. The handoff is where design drifts."
-      subtitle="Design functional websites and interactive prototypes that look identical to your vision. No compromises with developers over paddings or responsive breakpoints."
-      previewImage="/images/bento-generate.webp"
-      benefitsTitle="The handoff is where design drifts"
-      benefits={[
-        { title: 'NeutralSans Typography Scale', desc: 'Pre-calibrated typographic scales and token systems that preserve aesthetic harmony.' },
-        { title: 'Chat-Driven Visual Tweaks', desc: 'Ask AI to adjust gap, radius, line-height, and padding in plain language.' },
-        { title: 'Functional Prototypes', desc: 'Deliver prototypes that actually calculate, filter, and respond to user inputs.' },
+      roleSlug="designers"
+      heroTitle="Ship your design, no handoff"
+      heroDesc="The handoff is where design drifts. PixartualAI turns your layout decisions into production-ready software directly, with zero translation loss."
+      heroImage="/images/personas/designers-hero-full.webp"
+      heroImageAlt="Designer crafting interfaces in PixartualAI"
+      features={[
+        {
+          title: 'The handoff is where design drifts',
+          tagline: 'Preserve typographic hierarchy, spacing, and micro-interactions.',
+          description:
+            'When engineers rebuild your Figma frames by hand, details get compromised: margin collapse, incorrect kerning, and sluggish transitions. PixartualAI preserves your layout tokens with mathematical fidelity directly on the canvas.',
+          imageSrc: '/images/personas/founders-look-funded.webp',
+          reverse: false,
+        },
+        {
+          title: 'Design with live dynamic content',
+          tagline: 'Never design around lorem ipsum again.',
+          description:
+            'Test your layouts against variable user names, long international product descriptions, and dynamic image aspect ratios before deploying to production.',
+          imageSrc: '/images/personas/founders-trust.webp',
+          reverse: true,
+        },
+        {
+          title: 'Interactive state without JavaScript',
+          tagline: 'Create stateful tabs, calculators, and modals effortlessly.',
+          description:
+            'Go beyond static clickable prototypes. Build genuine responsive experiences that respond to user input, calculate values, and submit live form data.',
+          imageSrc: '/images/personas/founders-launch-faster.webp',
+          reverse: false,
+        },
+        {
+          title: 'Complete design system synchrony',
+          tagline: 'NeutralSans typography and curated color harmony out of the box.',
+          description:
+            'Ensure every client portal, landing page, and internal dashboard looks cohesive with unified radius tokens, shadow elevations, and brand accents.',
+          imageSrc: '/images/personas/founders-grow-with-you.webp',
+          reverse: true,
+        },
       ]}
-      bulletPoints={[
-        'Zero translation loss from Figma to live web',
-        'Direct on-canvas layout and text manipulation',
-        'Responsive viewport controls for Desktop, Tablet, and Mobile',
-        'Instant shareable client review links',
+      flameTitle="Designed for creative directors and UI specialists"
+      flameDesc="Everything you need to express visual craft without being held back by frontend developer capacity."
+      flameCards={[
+        {
+          title: 'Direct Visual Studio',
+          desc: 'Click on any heading, button, or container to adjust padding, typography, border radiuses, and shadows.',
+          icon: <Palette size={28} weight="duotone" className="text-orange-500" />,
+        },
+        {
+          title: 'Instant Breakpoint Previews',
+          desc: 'Switch between mobile (390px), tablet (768px), and wide desktop (1440px) with one tap to audit responsive rules.',
+          icon: <Eye size={28} weight="duotone" className="text-orange-500" />,
+        },
+        {
+          title: 'Smooth Micro-Interactions',
+          desc: 'Pre-engineered hover glows, flame billows, and chromatic link shimmers that feel polished right away.',
+          icon: <Sparkle size={28} weight="duotone" className="text-orange-500" />,
+        },
+        {
+          title: 'Clean Standard React Code',
+          desc: 'Export pristine Tailwind CSS code that frontend engineering teams love to integrate into broader monorepos.',
+          icon: <Lightning size={28} weight="duotone" className="text-orange-500" />,
+        },
       ]}
-      templateCategory="Agency"
+      faqTitle="Designer questions, answered"
+      faqDesc="What visual creators ask before shifting their workflow into PixartualAI."
+      faqs={[
+        {
+          q: 'Can I import from Figma?',
+          a: 'Yes. You can import design tokens, hex palettes, and frame dimensions directly into PixartualAI or prompt the AI assistant with your layout guidelines.',
+        },
+        {
+          q: 'Can I customize custom fonts and typography scales?',
+          a: 'Yes. PixartualAI includes the NeutralSans type family and supports custom web font integration with custom letter-spacing and fluid clamp sizing.',
+        },
+        {
+          q: 'Is it responsive by default?',
+          a: 'Every component generated by PixartualAI adapts automatically to mobile, tablet, and desktop viewports.',
+        },
+      ]}
     />
   );
 }
-

@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ModulifyCta } from '@/components/landing/ModulifyCta';
-import { Check, X, ArrowRight, Sparkle, ShieldCheck, Lightning, Cube } from '@phosphor-icons/react';
+import { MfyFaqAccordion, FaqItem } from '@/components/landing/MfyFaqAccordion';
+import { Check, X, ArrowRight, Sparkle, ShieldCheck, Lightning, Cube, Desktop } from '@phosphor-icons/react';
 
 export interface ComparisonFeature {
   name: string;
@@ -25,6 +26,7 @@ export interface CompareDetailProps {
   competitorBetterTitle: string;
   competitorBetterPoints: Array<{ title: string; desc: string }>;
   features: ComparisonFeature[];
+  faqs?: FaqItem[];
 }
 
 export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
@@ -39,23 +41,41 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
   competitorBetterTitle,
   competitorBetterPoints,
   features,
+  faqs = [
+    {
+      q: `Can I migrate from ${competitorName} to PixartualAI?`,
+      a: `Yes. If you have existing layouts, copy, or CMS schemas in ${competitorName}, you can import them into PixartualAI or paste your URLs to generate 1:1 responsive equivalents with AI editing unlocked.`,
+    },
+    {
+      q: 'Do I need a separate hosting account like Vercel or Netlify?',
+      a: 'No. Every PixartualAI project includes enterprise edge hosting, custom domain linking, and free wildcard SSL certificates out of the box.',
+    },
+    {
+      q: 'Can I export clean source code?',
+      a: 'Yes. You can export complete, standard Next.js / React and Tailwind CSS source code anytime without proprietary runtime fees or platform lock-in.',
+    },
+  ],
 }) => {
   return (
     <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
       <Navbar />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-100/50 via-white to-white px-5 pt-16 pb-20 md:pt-24 md:pb-28">
-          <div className="mx-auto max-w-[1000px] text-center">
+        {/* Section 0: Authentic Compare Hero with hero-bg.jpg */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+          <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]">
+            <img alt="" className="h-full w-full object-cover object-bottom" src="/images/kit/hero-bg.jpg" />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-[1000px] text-center px-5">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-orange-600">
               <Sparkle size={14} weight="fill" />
               Direct Comparison
             </div>
-            <h1 className="text-[clamp(36px,5.5vw,64px)] font-bold tracking-tight text-neutral-900 font-['Neutralsans']">
+            <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-['Neutralsans']">
               {title}
             </h1>
-            <p className="mx-auto mt-6 max-w-[700px] text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-neutral-600">
+            <p className="mx-auto mt-6 max-w-[700px] text-lg leading-relaxed text-neutral-600">
               {subtitle}
             </p>
 
@@ -70,14 +90,14 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
           </div>
         </section>
 
-        {/* Side by Side Comparison Matrix */}
-        <section className="border-t border-neutral-100 bg-stone-50/50 py-16 md:py-24">
+        {/* Section 1: Side by Side Comparison Matrix */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px] border-t border-neutral-100">
           <div className="mx-auto max-w-[1100px] px-5">
             <div className="mb-12 text-center">
-              <h2 className="text-[clamp(28px,3.8vw,42px)] font-bold tracking-tight text-neutral-900 font-['Neutralsans']">
+              <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                 PixartualAI and {competitorName}, side by side
               </h2>
-              <p className="mt-3 text-neutral-600">
+              <p className="mt-3 text-[15px] leading-relaxed text-neutral-600">
                 A factual, feature-by-feature evaluation of capabilities, speed, and workflow.
               </p>
             </div>
@@ -107,7 +127,7 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
                           </div>
                         )
                       ) : (
-                        <span className="font-semibold text-orange-600">{feat.pixartual}</span>
+                        <span className="font-semibold text-orange-600 text-xs sm:text-sm">{feat.pixartual}</span>
                       )}
                     </div>
 
@@ -124,7 +144,7 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
                           </div>
                         )
                       ) : (
-                        <span className="text-neutral-600">{feat.competitor}</span>
+                        <span className="text-neutral-500 text-xs sm:text-sm">{feat.competitor}</span>
                       )}
                     </div>
                   </div>
@@ -134,29 +154,14 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
           </div>
         </section>
 
-        {/* Bottleneck deep dive */}
-        <section className="py-20 md:py-28 bg-white">
-          <div className="mx-auto max-w-[900px] px-5 text-center">
-            <span className="text-xs font-bold uppercase tracking-widest text-orange-500">
-              The Fundamental Difference
-            </span>
-            <h2 className="mt-3 text-[clamp(28px,4vw,44px)] font-bold text-neutral-900 font-['Neutralsans']">
-              {bottleneckTitle}
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-neutral-600">
-              {bottleneckDesc}
-            </p>
-          </div>
-        </section>
-
-        {/* Where PixartualAI pulls ahead */}
-        <section className="bg-neutral-900 py-20 text-white md:py-28">
+        {/* Section 2: Where PixartualAI pulls ahead */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
           <div className="mx-auto max-w-[1100px] px-5">
             <div className="mb-14 text-center">
-              <span className="text-xs font-bold uppercase tracking-widest text-orange-400">
+              <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
                 Core Advantages
               </span>
-              <h2 className="mt-3 text-[clamp(28px,4vw,44px)] font-bold text-white font-['Neutralsans']">
+              <h2 className="kit-heading mt-3 text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                 {aheadTitle}
               </h2>
             </div>
@@ -165,35 +170,64 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
               {aheadPoints.map((pt, idx) => (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-8 hover:border-orange-500/50 transition-colors"
+                  className="rounded-2xl border border-neutral-200 bg-neutral-50 p-8 hover:border-orange-500 hover:shadow-md transition-all"
                 >
-                  <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 text-white font-bold">
+                  <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 text-white font-bold text-sm">
                     {idx + 1}
                   </div>
-                  <h3 className="text-xl font-semibold text-white">{pt.title}</h3>
-                  <p className="mt-3 text-neutral-400 leading-relaxed">{pt.desc}</p>
+                  <h3 className="text-xl font-bold text-neutral-900 font-['Neutralsans']">{pt.title}</h3>
+                  <p className="mt-3 text-neutral-600 leading-relaxed text-sm">{pt.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Where Competitor is the better choice */}
-        <section className="py-20 bg-stone-50 md:py-28">
+        {/* Section 3: Bottleneck with authentic split.jpg image */}
+        <section className="kit-root relative overflow-hidden bg-stone-50 py-20 md:py-[100px]">
+          <div className="mx-auto max-w-[1240px] px-5 md:px-[50px]">
+            <div className="flex items-center gap-8 md:flex-row md:gap-[40px] flex-col">
+              <div className="w-full md:w-1/2">
+                <div className="aspect-[631/480] w-full overflow-hidden rounded-2xl shadow-sm border border-neutral-200">
+                  <img
+                    alt="PixartualAI vs competitor visual comparison"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    src="/images/kit/split.jpg"
+                  />
+                </div>
+              </div>
+              <div className="flex w-full flex-col gap-6 md:w-1/2 lg:gap-8">
+                <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
+                  The Fundamental Difference
+                </span>
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                  {bottleneckTitle}
+                </h2>
+                <p className="text-[15px] leading-relaxed text-neutral-600">
+                  {bottleneckDesc}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Where Competitor is the better choice */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
           <div className="mx-auto max-w-[1000px] px-5">
             <div className="mb-12 text-center">
-              <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">
+              <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">
                 Fair & Balanced
               </span>
-              <h2 className="mt-3 text-[clamp(26px,3.5vw,38px)] font-bold text-neutral-900 font-['Neutralsans']">
+              <h2 className="kit-heading mt-3 text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                 {competitorBetterTitle}
               </h2>
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {competitorBetterPoints.map((pt, idx) => (
-                <div key={idx} className="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-neutral-900">{pt.title}</h3>
+                <div key={idx} className="rounded-xl border border-neutral-200 bg-neutral-50/60 p-6 shadow-xs">
+                  <h3 className="text-lg font-bold text-neutral-900 font-['Neutralsans']">{pt.title}</h3>
                   <p className="mt-2 text-sm text-neutral-600 leading-relaxed">{pt.desc}</p>
                 </div>
               ))}
@@ -201,39 +235,99 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
           </div>
         </section>
 
-        {/* What comes with PixartualAI */}
-        <section className="py-20 bg-white md:py-28">
-          <div className="mx-auto max-w-[1100px] px-5">
-            <div className="mb-14 text-center">
-              <h2 className="text-[clamp(28px,3.8vw,42px)] font-bold text-neutral-900 font-['Neutralsans']">
-                What comes with every PixartualAI project
-              </h2>
-              <p className="mt-3 text-neutral-600">
-                Everything required to ship, scale, and manage your digital experience.
-              </p>
-            </div>
+        {/* Section 5: What comes with a PixartualAI site (Flame cards) */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+          <div className="mx-auto max-w-[1240px] px-5 md:px-[50px]">
+            <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-3.5">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                  What comes with a PixartualAI site
+                </h2>
+                <p className="text-[15px] leading-relaxed text-neutral-900">
+                  Everything required to ship, scale, and manage your digital experience.
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border border-neutral-200 p-6 hover:shadow-md transition-shadow">
-                <Lightning size={32} className="text-orange-500 mb-4" weight="fill" />
-                <h4 className="text-base font-semibold text-neutral-900">Instant AI Generation</h4>
-                <p className="mt-2 text-sm text-neutral-600">Turn prompts into functional responsive designs and interactive widgets in seconds.</p>
+              <div className="grid grid-cols-1 items-start gap-[30px] sm:grid-cols-2 lg:grid-cols-4">
+                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[25px] aspect-[253/368] min-h-[368px]">
+                  <div>
+                    <Lightning size={32} className="text-orange-500 mb-6" weight="duotone" />
+                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 font-['Neutralsans']">
+                      Instant AI Generation
+                    </h3>
+                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600">
+                      Turn prompts into functional responsive designs and interactive widgets in under 30 seconds.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[25px] aspect-[253/368] min-h-[368px]">
+                  <div>
+                    <Cube size={32} className="text-orange-500 mb-6" weight="duotone" />
+                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 font-['Neutralsans']">
+                      Visual Canvas Studio
+                    </h3>
+                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600">
+                      Fine-tune copy, geometry, colors, typography, and spacing on an interactive live preview.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[25px] aspect-[253/368] min-h-[368px]">
+                  <div>
+                    <ShieldCheck size={32} className="text-orange-500 mb-6" weight="duotone" />
+                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 font-['Neutralsans']">
+                      Global Edge Hosting
+                    </h3>
+                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600">
+                      Custom domain linking, auto SSL, and fast worldwide distribution with 99.99% uptime.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[25px] aspect-[253/368] min-h-[368px]">
+                  <div>
+                    <Sparkle size={32} className="text-orange-500 mb-6" weight="duotone" />
+                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 font-['Neutralsans']">
+                      Zero Code Lock-in
+                    </h3>
+                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600">
+                      Export clean, standard React + Tailwind code anytime to host anywhere you want.
+                    </p>
+                  </div>
+                </article>
               </div>
-              <div className="rounded-2xl border border-neutral-200 p-6 hover:shadow-md transition-shadow">
-                <Cube size={32} className="text-orange-500 mb-4" weight="fill" />
-                <h4 className="text-base font-semibold text-neutral-900">Visual Drag & Drop Studio</h4>
-                <p className="mt-2 text-sm text-neutral-600">Fine-tune copy, geometry, colors, typography, and layout on an interactive canvas.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 6: Proof Prompt to Page Screenshot */}
+        <section className="kit-root relative overflow-hidden bg-white pb-20 md:pb-[100px]">
+          <div className="mx-auto max-w-[1240px] px-5 md:px-[50px]">
+            <div className="overflow-hidden rounded-3xl border border-neutral-200 shadow-md">
+              <img
+                alt="PixartualAI Studio prompt to page editor"
+                className="w-full h-auto object-cover"
+                src="/images/kit/dashboard.jpg"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: Compare FAQ */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px] border-t border-neutral-100">
+          <div className="mx-auto max-w-[860px] px-5 md:px-[50px]">
+            <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-3.5 text-center">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                  PixartualAI vs {competitorName}, answered
+                </h2>
+                <p className="text-[15px] leading-relaxed text-neutral-600">
+                  Common questions teams ask when evaluating platforms.
+                </p>
               </div>
-              <div className="rounded-2xl border border-neutral-200 p-6 hover:shadow-md transition-shadow">
-                <ShieldCheck size={32} className="text-orange-500 mb-4" weight="fill" />
-                <h4 className="text-base font-semibold text-neutral-900">Global Edge Hosting</h4>
-                <p className="mt-2 text-sm text-neutral-600">Custom domain linking, auto SSL, and fast worldwide edge distribution with 99.99% uptime.</p>
-              </div>
-              <div className="rounded-2xl border border-neutral-200 p-6 hover:shadow-md transition-shadow">
-                <Sparkle size={32} className="text-orange-500 mb-4" weight="fill" />
-                <h4 className="text-base font-semibold text-neutral-900">Zero Code Lock-in</h4>
-                <p className="mt-2 text-sm text-neutral-600">Export clean, standard React + Tailwind code anytime to host anywhere you want.</p>
-              </div>
+
+              <MfyFaqAccordion items={faqs} />
             </div>
           </div>
         </section>
@@ -246,4 +340,3 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
     </div>
   );
 };
-

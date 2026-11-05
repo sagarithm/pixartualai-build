@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { ModulifyCta } from '@/components/landing/ModulifyCta';
-import { ArrowUpRight } from '@phosphor-icons/react';
+import { ArrowUpRight, BookOpen } from '@phosphor-icons/react';
 
 const articles = [
   {
@@ -48,49 +48,61 @@ export default function InsightsPage() {
       <Navbar />
 
       <main className="flex-1">
-        <section className="pt-16 pb-12 md:pt-24 md:pb-16 text-center px-5 max-w-[1240px] mx-auto">
-          <h1 className="text-[clamp(36px,6vw,56px)] font-medium leading-[1.15] text-neutral-900 font-['Neutralsans']">
-            Everything about AI Web Design
-          </h1>
-          <p className="mt-4 max-w-[580px] mx-auto text-[clamp(1rem,1.2vw,1.12rem)] leading-relaxed text-gray-500">
-            Thoughts, frameworks, and engineering breakdowns on building the next generation of visual software with AI.
-          </p>
+        {/* Header with hero-bg.jpg */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+          <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]">
+            <img alt="" className="h-full w-full object-cover object-bottom" src="/images/kit/hero-bg.jpg" />
+          </div>
 
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <Link href="/insights" className="px-4 py-1.5 rounded-full text-xs font-semibold bg-neutral-950 text-white">
-              All Articles
-            </Link>
-            <Link href="/insights/use-cases" className="px-4 py-1.5 rounded-full text-xs font-medium bg-stone-100 text-neutral-600 hover:bg-stone-200">
-              Use Cases & Case Studies
-            </Link>
+          <div className="relative z-10 mx-auto max-w-[1000px] text-center px-5">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-orange-600">
+              <BookOpen size={14} weight="fill" />
+              Insights & Architecture
+            </div>
+            <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-['Neutralsans']">
+              Everything about AI Web Design
+            </h1>
+            <p className="mx-auto mt-4 max-w-[620px] text-lg leading-relaxed text-neutral-600">
+              Thoughts, frameworks, and engineering breakdowns on building the next generation of visual software with AI.
+            </p>
+
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <Link href="/insights" className="px-5 py-2 rounded-full text-xs font-semibold bg-neutral-950 text-white shadow-sm">
+                All Articles
+              </Link>
+              <Link href="/insights/use-cases" className="px-5 py-2 rounded-full text-xs font-semibold bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-colors">
+                Use Cases & Stories
+              </Link>
+            </div>
           </div>
         </section>
 
+        {/* Articles List */}
         <section className="pb-20 px-5 max-w-[1000px] mx-auto">
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {articles.map((art) => (
               <article
                 key={art.slug}
-                className="p-7 rounded-[22px] border border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-lg transition-all group flex flex-col sm:flex-row sm:items-center justify-between gap-6 cursor-pointer"
+                className="group flex flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-7 shadow-xs hover:border-orange-500 hover:shadow-md transition-all cursor-pointer"
               >
-                <div className="max-w-[650px]">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#fc8c04] bg-orange-50 px-2.5 py-0.5 rounded-full">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">
                       {art.tag}
                     </span>
-                    <span className="text-xs text-neutral-400">{art.date} · {art.readTime}</span>
+                    <span className="text-xs text-neutral-400">
+                      {art.date} · {art.readTime}
+                    </span>
                   </div>
-                  <h2 className="text-xl font-medium font-['Neutralsans'] text-neutral-900 group-hover:text-[#fc8c04] transition-colors mb-2">
+                  <h2 className="text-xl font-bold text-neutral-900 group-hover:text-orange-600 transition-colors font-['Neutralsans']">
                     {art.title}
                   </h2>
-                  <p className="text-sm text-neutral-500 leading-relaxed">
+                  <p className="mt-3 text-sm text-neutral-600 leading-relaxed">
                     {art.summary}
                   </p>
                 </div>
-                <div className="shrink-0">
-                  <span className="size-10 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 group-hover:border-neutral-950 group-hover:text-neutral-950 transition-colors">
-                    <ArrowUpRight size={18} />
-                  </span>
+                <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-orange-600 group-hover:translate-x-1 transition-transform">
+                  Read article <ArrowUpRight size={14} />
                 </div>
               </article>
             ))}
@@ -104,4 +116,3 @@ export default function InsightsPage() {
     </div>
   );
 }
-
