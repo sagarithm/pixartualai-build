@@ -1,0 +1,29 @@
+{
+  "version": "1.2.0",
+  "name": "sagarithm-workspace",
+  "targets": [
+    "antigravity"
+  ],
+  "riskThreshold": "high",
+  "enabledDomains": [
+    "architecture",
+    "quality",
+    "testing",
+    "security",
+    "documentation",
+    "frontend",
+    "backend",
+    "database",
+    "devops",
+    "ai",
+    "agents"
+  ],
+  "paths": {
+    "constitution": "./constitution",
+    "skills": "./skills",
+    "policies": "./policies",
+    "workflows": "./workflows",
+    "adapters": "./adapters",
+    "agents": "./agents"
+  }
+}

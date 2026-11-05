@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "sagarithm": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "sagarithm-kit",
+        "mcp"
+      ]
+    }
+  }
+}
