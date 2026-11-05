@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col gap-12 pb-10 pt-8">
             <div className="flex flex-col gap-4">
               <Link aria-label="PixartualAI home" className="inline-flex items-center gap-3 transition-transform duration-300 hover:scale-105" href="/">
-                <PixartualLogo variant="badge-dark" size={44} showWordmark wordmarkClassName="text-2xl text-neutral-900" />
+                <PixartualLogo variant="auto" size={38} showWordmark wordmarkClassName="text-2xl text-neutral-900" />
               </Link>
               <p className="max-w-[560px] text-[0.9375rem] leading-relaxed text-neutral-700">
                 The AI platform that designs, builds, and hosts complete web apps and digital experiences, end to end.

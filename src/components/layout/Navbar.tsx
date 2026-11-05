@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
         {/* Left: PixartualAI Brand Logo + Nav items */}
         <div className="flex items-center gap-6">
           <Link aria-label="PixartualAI home" className="flex shrink-0 items-center gap-2" href="/">
-            <PixartualLogo variant="badge-dark" size={32} showWordmark />
+            <PixartualLogo variant="auto" size={30} showWordmark />
           </Link>
 
           {/* Desktop Navigation */}

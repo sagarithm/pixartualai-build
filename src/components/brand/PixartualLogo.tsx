@@ -19,7 +19,7 @@ export const PixartualLogo: React.FC<PixartualLogoProps> = ({
 }) => {
   return (
     <div className={`inline-flex items-center gap-2.5 ${className}`}>
-      {variant === 'auto' ? (
+      {variant === 'auto' || variant === 'badge-dark' ? (
         <>
           <img
             src="/pixartual/svg/pixartual-symbol-black.svg"
@@ -45,15 +45,6 @@ export const PixartualLogo: React.FC<PixartualLogoProps> = ({
             className="w-full h-full object-contain"
           />
         </div>
-      ) : variant === 'badge-dark' ? (
-        <div className="relative shrink-0 inline-flex items-center justify-center">
-          <img
-            src="/pixartual/svg/pixartual-badge-dark.svg"
-            alt="PixartualAI"
-            style={{ width: size, height: size }}
-            className="shrink-0 object-contain rounded-lg shadow-sm border border-black/5 dark:border-white/20 transition-colors"
-          />
-        </div>
       ) : variant === 'symbol-white' ? (
         <img
           src="/pixartual/svg/pixartual-symbol-white.svg"
@@ -73,7 +64,7 @@ export const PixartualLogo: React.FC<PixartualLogoProps> = ({
       {showWordmark && (
         <span
           className={`font-['Neutralsans',sans-serif] font-medium tracking-tight text-[19px] leading-none ${
-            wordmarkClassName || 'text-neutral-900'
+            wordmarkClassName || 'text-neutral-900 dark:text-white'
           }`}
         >
           Pixartual<span className="text-[#fc8c04] font-semibold">AI</span>

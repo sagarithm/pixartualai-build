@@ -104,7 +104,7 @@ function DashboardContent() {
       <header className="h-14 border-b border-neutral-800 bg-[#161616] px-4 flex items-center justify-between shrink-0 z-20">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2.5 transition-transform hover:scale-105">
-            <PixartualLogo variant="badge-dark" size={26} />
+            <PixartualLogo variant="symbol-white" size={26} />
             <span className="text-sm font-medium tracking-tight text-white font-['Neutralsans']">
               Pixartual<span className="text-[#fc8c04]">AI</span> Studio
             </span>

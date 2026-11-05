@@ -12,7 +12,7 @@ export const metadata: Metadata = {
       { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', sizes: 'any' },
     ],
-    apple: '/pixartual/png/pixartual-badge-dark.png',
+    apple: '/pixartual/png/pixartual-symbol-black.png',
   },
   openGraph: {
     title: 'PixartualAI — Turn Ideas into Interactive Digital Experiences',
