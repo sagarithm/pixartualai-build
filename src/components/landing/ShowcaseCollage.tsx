@@ -75,3 +75,4 @@ export const ShowcaseCollage: React.FC = () => {
     </section>
   );
 };
+

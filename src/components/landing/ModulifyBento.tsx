@@ -118,3 +118,4 @@ export const ModulifyBento: React.FC = () => {
     </section>
   );
 };
+
