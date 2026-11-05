@@ -68,7 +68,7 @@ export const Navbar: React.FC = () => {
               </button>
 
               {solutionsOpen && (
-                <div className="absolute left-0 top-full mt-2 z-50 w-[480px] rounded-[18px] border border-neutral-200 bg-white p-4 shadow-xl grid grid-cols-2 gap-2">
+                <div className="absolute left-0 top-full mt-2 z-50 w-[480px] rounded-[18px] border border-neutral-200 bg-white p-4 shadow-xl grid grid-cols-2 gap-2 mfy-fadein">
                   {[
                     { label: 'Founders', desc: 'Ship your MVP in minutes', href: '/templates' },
                     { label: 'Designers', desc: 'No-code interactive design', href: '/templates' },
@@ -103,7 +103,7 @@ export const Navbar: React.FC = () => {
               </button>
 
               {resourcesOpen && (
-                <div className="absolute left-0 top-full mt-2 z-50 w-[240px] rounded-[18px] border border-neutral-200 bg-white p-2 shadow-xl flex flex-col gap-1">
+                <div className="absolute left-0 top-full mt-2 z-50 w-[240px] rounded-[18px] border border-neutral-200 bg-white p-2 shadow-xl flex flex-col gap-1 mfy-fadein">
                   <Link href="/templates" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
                     Showcase
                   </Link>

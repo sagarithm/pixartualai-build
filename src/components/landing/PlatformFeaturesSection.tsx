@@ -98,3 +98,4 @@ export const PlatformFeaturesSection: React.FC = () => {
     </section>
   );
 };
+

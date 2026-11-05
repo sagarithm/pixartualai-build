@@ -29,7 +29,7 @@ export const ModulifyBento: React.FC = () => {
 
         <div className="mx-auto grid max-w-[460px] grid-cols-1 gap-5 md:max-w-none md:grid-cols-12">
           {/* Card 1: Generate pages */}
-          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-7">
+          <article className="bento-card col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-7 cursor-pointer">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Generating a page from a prompt"
@@ -49,7 +49,7 @@ export const ModulifyBento: React.FC = () => {
           </article>
 
           {/* Card 2: Refine with chat */}
-          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-5">
+          <article className="bento-card col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-5 cursor-pointer">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Refining a section with chat"
@@ -69,7 +69,7 @@ export const ModulifyBento: React.FC = () => {
           </article>
 
           {/* Card 3: CMS */}
-          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-4">
+          <article className="bento-card col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-4 cursor-pointer">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Managing CMS collections"
@@ -89,21 +89,23 @@ export const ModulifyBento: React.FC = () => {
           </article>
 
           {/* Card 4: Build beyond landing pages */}
-          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-8">
+          <article className="bento-card col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-8">
             <div className="relative flex min-h-[220px] flex-1 flex-col items-stretch justify-center overflow-hidden p-6">
-              <div className="flex gap-4 overflow-hidden w-full">
-                {[...previewItems, ...previewItems].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex-none w-[180px] h-[120px] rounded-lg overflow-hidden border border-black/5 shadow-sm bg-white"
-                  >
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                ))}
+              <div aria-label="Dashboards, forms, and app flows" className="bento-marquee h-full min-h-[160px] w-full flex-1">
+                <div className="bento-track">
+                  {[...previewItems, ...previewItems, ...previewItems].map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[200px] h-[125px] rounded-xl overflow-hidden border border-black/5 shadow-sm bg-white cursor-pointer transition-transform duration-300 hover:scale-105"
+                    >
+                      <img
+                        src={item.img}
+                        alt={item.name}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="px-6 pb-6 pt-[18px]">

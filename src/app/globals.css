@@ -53,16 +53,20 @@
   inherits: false;
 }
 
+/* ==========================================================================
+   AUTHENTIC KEYFRAMES FROM MODULIFY
+   ========================================================================== */
+
 @keyframes nh-rotate {
-  0% { --nh-angle: 0deg; }
-  100% { --nh-angle: 360deg; }
+  to { --nh-angle: 360deg; }
 }
 
 @keyframes nh-text-shine {
-  0%, 100% { background-position: 150% 0; opacity: 0; }
-  10% { opacity: 1; }
-  50% { background-position: -50% 0; opacity: 1; }
-  60% { opacity: 0; }
+  0% { opacity: 0; background-position: 150% 0; }
+  8% { opacity: 1; }
+  28% { opacity: 1; background-position: -50% 0; }
+  34% { opacity: 0; background-position: -50% 0; }
+  100% { opacity: 0; background-position: 150% 0; }
 }
 
 @keyframes mfy-marquee-left {
@@ -75,6 +79,39 @@
   100% { transform: translateX(0); }
 }
 
+@keyframes bento-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 8px)); }
+}
+
+@keyframes feature-flame {
+  0% { transform: translate(0) scale(1); }
+  20% { transform: translate(-1%, -1.5%) scale(1.03, 1.07); }
+  40% { transform: translate(1.2%, -0.6%) scale(1.05, 1.04); }
+  60% { transform: translate(-0.8%, -2%) scale(1.02, 1.08); }
+  80% { transform: translate(1%, -0.9%) scale(1.04, 1.05); }
+  100% { transform: translate(0) scale(1); }
+}
+
+@keyframes fx-link-shimmer {
+  to { background-position: -200% 0; }
+}
+
+@keyframes mfy-fadein {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   HERO & PROMPT ANIMATIONS
+   ========================================================================== */
+
 .hero-ring-glow {
   position: absolute;
   inset: -8px;
@@ -82,9 +119,16 @@
   border-radius: 26px;
   background: conic-gradient(from var(--nh-angle, 0deg), #f97316 0%, #fb7185 14%, #f59e6b 28%, #fbbf24 42%, #fb7185 56%, #f97316 70%, #6366f1 82%, #362bff 88%, #8b5cf6 94%, #f97316 100%);
   filter: blur(15px);
-  opacity: 0.7;
+  opacity: 0.65;
   animation: nh-rotate 8s linear infinite;
   pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-hero-prompt:hover .hero-ring-glow,
+.home-hero-prompt:focus-within .hero-ring-glow {
+  opacity: 0.95;
+  filter: blur(22px);
 }
 
 .hero-ring {
@@ -124,6 +168,10 @@
   pointer-events: none;
 }
 
+/* ==========================================================================
+   MARQUEE & TEMPLATE COLLAGE HOVER ANIMATIONS
+   ========================================================================== */
+
 .dot-grid {
   background-color: #fafaf9;
   background-image: radial-gradient(circle, #d6d3d1 1px, transparent 1px);
@@ -138,11 +186,72 @@
   animation: mfy-marquee-right 45s linear infinite;
 }
 
+/* Pause marquee when user hovers over collage */
+.dot-grid:hover .marquee-left,
+.dot-grid:hover .marquee-right {
+  animation-play-state: paused;
+}
+
+/* Template card hover lift, zoom & shadow */
+.dot-grid img {
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.35s cubic-bezier(0.33, 1, 0.68, 1), filter 0.35s ease;
+}
+
+.dot-grid img:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  z-index: 20;
+}
+
+/* ==========================================================================
+   BENTO AMBIENCE & CARD HOVER
+   ========================================================================== */
+
 .bento-glow {
   background: linear-gradient(180deg, rgba(254, 50, 0, 0) 0% 16%, #fe3200 36%, #fc8c04 45%, rgba(242, 138, 111, 0) 80%);
   opacity: 0.8;
   filter: blur(50px);
 }
+
+.bento-card {
+  transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.bento-card img {
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.bento-card:hover img {
+  transform: scale(1.025);
+}
+
+.bento-marquee {
+  container-type: inline-size;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+
+.bento-track {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  animation: bento-marquee 32s linear infinite;
+}
+
+.bento-marquee:hover .bento-track {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   SCROLLER (BUILD ANYTHING) INTERACTIVE HOVER
+   ========================================================================== */
 
 .scroller {
   position: relative;
@@ -182,13 +291,14 @@
   line-height: 1.1;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.35);
-  transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+  transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
   border: none;
 }
 
 .scroller__item:hover:not(.is-active) {
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.55);
+  transform: translateX(8px);
 }
 
 .scroller__item.is-active {
@@ -196,7 +306,12 @@
   color: #000000 !important;
   font-weight: 500;
   box-shadow: inset 0 0 30px rgba(252, 140, 4, 0.35), 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+  transform: translateX(12px);
 }
+
+/* ==========================================================================
+   FEATURE FLAME WITH ANIMATED FIRE BILLOW
+   ========================================================================== */
 
 .feature-flame {
   position: relative;
@@ -218,28 +333,49 @@
   transform-origin: 50% 100%;
   opacity: 0;
   transition: opacity 0.5s ease;
-  background: radial-gradient(86.61% 48.94% at -3.95% 84.11%, #fe3200, rgba(252, 140, 4, 0)), radial-gradient(33.2% 51.3% at 104.74% 63.93%, #fc8c04, rgba(252, 140, 4, 0));
+  background: radial-gradient(86.61% 48.94% at -3.95% 84.11%, #fe3200, rgba(252, 140, 4, 0)),
+              radial-gradient(33.2% 51.3% at 104.74% 63.93%, #fe3200, rgba(252, 140, 4, 0) 74.52%),
+              linear-gradient(180deg, rgba(252, 140, 4, 0), #fc8c04),
+              #f5f5f4;
 }
 
 .feature-flame:hover:before {
   opacity: 1;
+  animation: feature-flame 4.5s ease-in-out infinite;
 }
 
 .feature-flame:hover h3,
-.feature-flame:hover p {
-  color: #ffffff !important;
-}
-
+.feature-flame:hover p,
 .feature-flame:hover span svg {
   color: #ffffff !important;
 }
 
-.marketing-footer {
-  background-image: url(/images/footer-bg.jpg);
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
+/* ==========================================================================
+   CHROMATIC SHIMMER HOVER LINKS (.fx-link)
+   ========================================================================== */
+
+.fx-link {
+  background-image: linear-gradient(110deg, #fe3200, #fc8c04, #a855f7, #3b82f6);
+  background-size: 200% 100%;
+  background-position: 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: currentColor;
+  transition: -webkit-text-fill-color 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+  display: inline-block;
 }
+
+.fx-link:hover,
+.fx-link:focus-visible {
+  -webkit-text-fill-color: transparent !important;
+  transform: translateY(-1px);
+  animation: fx-link-shimmer 3.5s linear infinite;
+}
+
+/* ==========================================================================
+   BUTTON HOVER & ACTIVE MICRO-INTERACTIONS
+   ========================================================================== */
 
 .mfy-btn {
   display: inline-flex;
@@ -258,7 +394,7 @@
   letter-spacing: 0.54px;
   text-decoration: none;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1), background-color 0.25s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.25s cubic-bezier(0.33, 1, 0.68, 1), color 0.25s ease;
 }
 
 .mfy-btn--primary {
@@ -267,9 +403,13 @@
 }
 
 .mfy-btn--primary:hover {
-  transform: translateY(-1px);
-  background-color: #262626;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  background-color: #1f1f1f;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.mfy-btn--primary:active {
+  transform: translateY(0);
 }
 
 .mfy-btn--secondary {
@@ -279,9 +419,24 @@
 }
 
 .mfy-btn--secondary:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   background-color: #f5f5f5;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mfy-btn--secondary:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   FOOTER AMBIENCE & BASE STYLES
+   ========================================================================== */
+
+.marketing-footer {
+  background-image: url(/images/footer-bg.jpg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 }
 
 body {
@@ -292,7 +447,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom minimal scrollbar matching Modulify */
+/* Custom minimal scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;

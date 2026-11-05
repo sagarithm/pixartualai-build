@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
               <Link aria-label="PixartualAI home" className="inline-block" href="/">
                 <img
                   alt="PixartualAI"
-                  className="-mb-4 -ml-4 block h-[90px] w-auto"
+                  className="-mb-4 -ml-4 block h-[90px] w-auto transition-transform duration-300 hover:scale-105"
                   src="/images/modulify-small-icon.webp"
                 />
               </Link>
@@ -46,34 +46,34 @@ export const Footer: React.FC = () => {
                   Platform
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/">
                     Home
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/dashboard">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/dashboard">
                     AI Builder
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     Templates
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
                     Pricing
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/dashboard">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/dashboard">
                     Start building
                   </Link>
                 </div>
                 <hr className="my-4 h-px w-full border-0 bg-neutral-200" />
                 <div className="flex flex-col gap-2">
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
                     Compare
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
                     PixartualAI vs Framer
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
                     PixartualAI vs Webflow
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
                     PixartualAI vs Lovable
                   </Link>
                 </div>
@@ -85,28 +85,28 @@ export const Footer: React.FC = () => {
                   Solutions
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     All solutions
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates?category=portfolio">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=portfolio">
                     Founders
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates?category=tool">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=tool">
                     Product managers
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates?category=portfolio">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=portfolio">
                     Designers
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates?category=tool">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=tool">
                     Marketers
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates?category=tool">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=tool">
                     Ops
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates?category=personal">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=personal">
                     Prototypes
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates?category=tool">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=tool">
                     Internal tools
                   </Link>
                 </div>
@@ -118,22 +118,22 @@ export const Footer: React.FC = () => {
                   Resources
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     Insights
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     Use cases
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     FAQs
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     Templates
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     Made in PixartualAI
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     Docs
                   </Link>
                 </div>
@@ -145,22 +145,22 @@ export const Footer: React.FC = () => {
                   Follow us
                 </p>
                 <div className="flex flex-col gap-2">
-                  <a className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="https://x.com" target="_blank" rel="noopener noreferrer">
+                  <a className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="https://x.com" target="_blank" rel="noopener noreferrer">
                     X / Twitter
                   </a>
-                  <a className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="https://discord.com" target="_blank" rel="noopener noreferrer">
+                  <a className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="https://discord.com" target="_blank" rel="noopener noreferrer">
                     Discord
                   </a>
-                  <a className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                     LinkedIn
                   </a>
-                  <a className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                  <a className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="https://youtube.com" target="_blank" rel="noopener noreferrer">
                     YouTube
                   </a>
-                  <a className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                  <a className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                     Instagram
                   </a>
-                  <a className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="https://threads.net" target="_blank" rel="noopener noreferrer">
+                  <a className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="https://threads.net" target="_blank" rel="noopener noreferrer">
                     Threads
                   </a>
                 </div>
@@ -172,13 +172,13 @@ export const Footer: React.FC = () => {
                   Legal
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/privacy">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/privacy">
                     Contact
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/privacy">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/privacy">
                     Privacy Policy
                   </Link>
-                  <Link className="text-[0.9375rem] text-neutral-800 hover:text-neutral-500 no-underline transition-colors" href="/terms">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/terms">
                     Terms of Service
                   </Link>
                 </div>
@@ -202,7 +202,7 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setThemeMode('auto')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-colors hover:text-gray-900 ${
+                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${
                   themeMode === 'auto' ? 'bg-white text-gray-900 shadow-sm' : ''
                 }`}
                 title="Auto"
@@ -212,7 +212,7 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setThemeMode('light')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-colors hover:text-gray-900 ${
+                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${
                   themeMode === 'light' ? 'bg-white text-gray-900 shadow-sm' : ''
                 }`}
                 title="Light"
@@ -222,7 +222,7 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setThemeMode('dark')}
-                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-colors hover:text-gray-900 ${
+                className={`flex size-8 cursor-pointer items-center justify-center rounded-[7px] border-0 bg-transparent p-0 text-gray-500 outline-none transition-all duration-200 hover:text-gray-900 ${
                   themeMode === 'dark' ? 'bg-white text-gray-900 shadow-sm' : ''
                 }`}
                 title="Dark"
@@ -236,14 +236,14 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setCurrencyOpen(!currencyOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 transition-colors hover:bg-stone-100"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 transition-all duration-200 hover:bg-stone-100 hover:border-neutral-300"
               >
                 <CurrencyDollar size={16} className="text-gray-500" />
                 <span>{currency}</span>
                 <CaretDown size={14} className="text-gray-500" />
               </button>
               {currencyOpen && (
-                <div className="absolute bottom-full mb-2 left-0 z-50 min-w-[120px] rounded-xl border border-neutral-200 bg-white p-1 shadow-lg">
+                <div className="absolute bottom-full mb-2 left-0 z-50 min-w-[120px] rounded-xl border border-neutral-200 bg-white p-1 shadow-lg mfy-fadein">
                   {currencies.map((c) => (
                     <button
                       key={c}
@@ -252,7 +252,7 @@ export const Footer: React.FC = () => {
                         setCurrency(c);
                         setCurrencyOpen(false);
                       }}
-                      className="w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-neutral-100 text-neutral-800"
+                      className="w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-neutral-100 text-neutral-800 transition-colors"
                     >
                       {c}
                     </button>
@@ -266,14 +266,14 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLangOpen(!langOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 transition-colors hover:bg-stone-100"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 transition-all duration-200 hover:bg-stone-100 hover:border-neutral-300"
               >
                 <Globe size={16} className="text-gray-500" />
                 <span>{language}</span>
                 <CaretDown size={14} className="text-gray-500" />
               </button>
               {langOpen && (
-                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[120px] rounded-xl border border-neutral-200 bg-white p-1 shadow-lg">
+                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[120px] rounded-xl border border-neutral-200 bg-white p-1 shadow-lg mfy-fadein">
                   {languages.map((l) => (
                     <button
                       key={l}
@@ -282,7 +282,7 @@ export const Footer: React.FC = () => {
                         setLanguage(l);
                         setLangOpen(false);
                       }}
-                      className="w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-neutral-100 text-neutral-800"
+                      className="w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-neutral-100 text-neutral-800 transition-colors"
                     >
                       {l}
                     </button>

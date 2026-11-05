@@ -53,7 +53,7 @@ export const HeroSection: React.FC = () => {
           </p>
 
           {/* Prompt Input Box with Rainbow Glowing Ring */}
-          <div className="relative mx-auto w-full max-w-[792px]">
+          <div className="relative mx-auto w-full max-w-[792px] home-hero-prompt">
             <div className="relative isolate w-full rounded-[20px] p-1.5">
               <div aria-hidden="true" className="hero-ring-glow" />
               <div aria-hidden="true" className="hero-ring" />
@@ -110,3 +110,4 @@ export const HeroSection: React.FC = () => {
     </section>
   );
 };
+

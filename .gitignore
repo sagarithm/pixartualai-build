@@ -16,3 +16,5 @@ find_css.py
 inspect_exact_modulify.py
 parse_structure.py
 extracted_sections/
+extract_animations.py
+get_all_hovers.py

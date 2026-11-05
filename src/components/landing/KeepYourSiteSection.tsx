@@ -47,7 +47,7 @@ export const KeepYourSiteSection: React.FC = () => {
         {/* Feature Checkmarks */}
         <ul aria-label="What carries over" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4">
           {points.map((pt) => (
-            <li key={pt} className="inline-flex items-center gap-[7px] whitespace-nowrap text-[0.88rem] font-medium text-gray-600">
+            <li key={pt} className="inline-flex items-center gap-[7px] whitespace-nowrap text-[0.88rem] font-medium text-gray-600 hover:text-neutral-900 transition-colors cursor-default">
               <svg
                 aria-hidden="true"
                 className="size-3.5 flex-none text-[#fc8c04]"
@@ -77,3 +77,4 @@ export const KeepYourSiteSection: React.FC = () => {
     </section>
   );
 };
+
