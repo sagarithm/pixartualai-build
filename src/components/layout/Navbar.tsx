@@ -70,12 +70,12 @@ export const Navbar: React.FC = () => {
               {solutionsOpen && (
                 <div className="absolute left-0 top-full mt-2 z-50 w-[480px] rounded-[18px] border border-neutral-200 bg-white p-4 shadow-xl grid grid-cols-2 gap-2 mfy-fadein">
                   {[
-                    { label: 'Founders', desc: 'Ship your MVP in minutes', href: '/templates' },
-                    { label: 'Designers', desc: 'No-code interactive design', href: '/templates' },
-                    { label: 'Product Managers', desc: 'Prototype tools & flows', href: '/templates' },
-                    { label: 'Marketers', desc: 'High-converting funnels', href: '/templates' },
-                    { label: 'Client Portals', desc: 'Stateful portals & apps', href: '/templates' },
-                    { label: 'Internal Tools', desc: 'Custom business dashboards', href: '/templates' },
+                    { label: 'Founders', desc: 'Ship your MVP in minutes', href: '/founders' },
+                    { label: 'Designers', desc: 'No-code interactive design', href: '/designers' },
+                    { label: 'Product Managers', desc: 'Prototype tools & flows', href: '/product-managers' },
+                    { label: 'Marketers', desc: 'High-converting funnels', href: '/marketers' },
+                    { label: 'Prototypes', desc: 'Functional interactive apps', href: '/prototypes' },
+                    { label: 'Internal Tools', desc: 'Custom business dashboards', href: '/tools' },
                   ].map((s) => (
                     <Link
                       key={s.label}
@@ -87,6 +87,14 @@ export const Navbar: React.FC = () => {
                       <div className="text-xs text-neutral-500">{s.desc}</div>
                     </Link>
                   ))}
+                  <div className="col-span-2 pt-2 border-t border-neutral-100 flex justify-between items-center text-xs">
+                    <Link href="/solutions" onClick={() => setSolutionsOpen(false)} className="font-semibold text-orange-600 hover:text-orange-700">
+                      View all solutions →
+                    </Link>
+                    <Link href="/webflow-transfer" onClick={() => setSolutionsOpen(false)} className="text-neutral-500 hover:text-neutral-900">
+                      Webflow Migration
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -103,15 +111,24 @@ export const Navbar: React.FC = () => {
               </button>
 
               {resourcesOpen && (
-                <div className="absolute left-0 top-full mt-2 z-50 w-[240px] rounded-[18px] border border-neutral-200 bg-white p-2 shadow-xl flex flex-col gap-1 mfy-fadein">
-                  <Link href="/templates" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Showcase
+                <div className="absolute left-0 top-full mt-2 z-50 w-[260px] rounded-[18px] border border-neutral-200 bg-white p-2 shadow-xl flex flex-col gap-1 mfy-fadein">
+                  <Link href="/made-in-modulify" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Made in PixartualAI
                   </Link>
-                  <Link href="/templates" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Documentation
+                  <Link href="/insights" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Insights & Case Studies
                   </Link>
-                  <Link href="/templates" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Community & Discord
+                  <Link href="/connect" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Connect & Integrations
+                  </Link>
+                  <Link href="/top-agencies" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Top Agencies Directory
+                  </Link>
+                  <Link href="/faqs" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Frequently Asked Questions
+                  </Link>
+                  <Link href="/domains" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                    Custom Domains
                   </Link>
                 </div>
               )}

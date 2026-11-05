@@ -64,17 +64,20 @@ export const Footer: React.FC = () => {
                 </div>
                 <hr className="my-4 h-px w-full border-0 bg-neutral-200" />
                 <div className="flex flex-col gap-2">
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare">
                     Compare
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/modulify-vs-framer">
                     PixartualAI vs Framer
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/modulify-vs-webflow">
                     PixartualAI vs Webflow
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/pricing">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/modulify-vs-lovable">
                     PixartualAI vs Lovable
+                  </Link>
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/webflow-transfer">
+                    Webflow to PixartualAI
                   </Link>
                 </div>
               </div>
@@ -85,28 +88,34 @@ export const Footer: React.FC = () => {
                   Solutions
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/solutions">
                     All solutions
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=portfolio">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/founders">
                     Founders
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=tool">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/product-managers">
                     Product managers
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=portfolio">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/designers">
                     Designers
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=tool">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/marketers">
                     Marketers
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=tool">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/sales">
+                    Sales
+                  </Link>
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/ops">
                     Ops
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=personal">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/people">
+                    People & HR
+                  </Link>
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/prototypes">
                     Prototypes
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates?category=tool">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/tools">
                     Internal tools
                   </Link>
                 </div>
@@ -118,23 +127,32 @@ export const Footer: React.FC = () => {
                   Resources
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/insights">
                     Insights
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/insights/use-cases">
                     Use cases
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/faqs">
                     FAQs
                   </Link>
                   <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     Templates
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/made-in-modulify">
                     Made in PixartualAI
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
-                    Docs
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/connect">
+                    Connect & Integrations
+                  </Link>
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/top-agencies">
+                    Top Agencies
+                  </Link>
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/domains">
+                    Domains
+                  </Link>
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/enterprise-teams">
+                    Enterprise
                   </Link>
                 </div>
               </div>
@@ -172,13 +190,13 @@ export const Footer: React.FC = () => {
                   Legal
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/privacy">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/contact">
                     Contact
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/privacy">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/legal/privacy-policy">
                     Privacy Policy
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/terms">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/legal/terms">
                     Terms of Service
                   </Link>
                 </div>
