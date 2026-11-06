@@ -38,9 +38,9 @@ export const KeepYourSiteSection: React.FC = () => {
             loop
             muted
             playsInline
-            poster="/images/webflow-to-modulify.webp"
+            poster="/images/webflow-to-pixartual.webp"
             preload="metadata"
-            src="/videos/webflow-to-modulify.webm"
+            src="/videos/webflow-to-pixartual.webm"
           />
         </div>
 

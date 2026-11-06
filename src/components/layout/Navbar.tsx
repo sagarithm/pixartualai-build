@@ -93,7 +93,7 @@ export const Navbar: React.FC = () => {
 
               {resourcesOpen && (
                 <div className="absolute left-0 top-full mt-2 z-50 w-[260px] rounded-[18px] border border-neutral-200 bg-white p-2 shadow-xl flex flex-col gap-1 mfy-fadein">
-                  <Link href="/made-in-modulify" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
+                  <Link href="/made-in-pixartual" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
                     Made in PixartualAI
                   </Link>
                   <Link href="/insights" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
@@ -180,7 +180,7 @@ export const Navbar: React.FC = () => {
               <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
                 Pricing Plans
               </Link>
-              <Link href="/made-in-modulify" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
+              <Link href="/made-in-pixartual" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
                 Made in PixartualAI
               </Link>
               <Link href="/insights" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">

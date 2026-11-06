@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { MfyFaqAccordion, FaqItem } from '@/components/landing/MfyFaqAccordion';
 import { Lightning, Sparkle, ShieldCheck, Browser, RocketLaunch } from '@phosphor-icons/react';
 
@@ -67,7 +67,7 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
       <Navbar />
 
       <main className="flex-1">
-        {/* Section 0: Authentic Modulify Hero with Gradient Banner & Photo Drift */}
+        {/* Section 0: Authentic Pixartual Hero with Gradient Banner & Photo Drift */}
         <section className="kit-root relative box-border px-1.5 md:px-[50px]">
           <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,theme(colors.white)_0%,theme(colors.violet.50)_70%,theme(colors.pink.200)_99.04%)] px-4 pb-0 pt-[110px] md:px-[50px] md:pt-[150px]">
             <div className="fhs-wrap relative z-[1] mx-auto flex w-full max-w-[900px] flex-col items-center text-center">
@@ -122,7 +122,7 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
               <li key={l.name} className="fhs-logo-item" style={{ ['--fhs-i' as string]: idx }}>
                 <img
                   alt={l.name}
-                  className="mdlfy-adaptive-graphic transition-all duration-300"
+                  className="px-adaptive-graphic transition-all duration-300"
                   loading="lazy"
                   src={l.src}
                   style={{ height: `${l.h}px` }}
@@ -229,7 +229,7 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
         </section>
 
         {/* Bottom CTA Banner */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

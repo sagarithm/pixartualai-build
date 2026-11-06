@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
 import templatesData from '@/data/templates.json';
 
@@ -177,7 +177,7 @@ export default function TemplatesPage() {
         </div>
 
         {/* CTA Banner */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

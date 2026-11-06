@@ -206,6 +206,6 @@ if __name__ == '__main__':
     generate_hero_bg('public/images/hero-bg-dark.jpg', dark=True)
     generate_hero_bg('public/images/kit/hero-bg-dark.jpg', dark=True)
     generate_poster('public/images/hero-video-poster.webp')
-    generate_corner_glow('public/images/modulify-bg-left-top.webp')
+    generate_corner_glow('public/images/pixartual-bg-left-top.webp')
     print("All procedural brand backgrounds generated successfully!")
 

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { Check, X, ArrowRight, Sparkle } from '@phosphor-icons/react';
 
 export default function ComparePage() {
@@ -14,7 +14,7 @@ export default function ComparePage() {
     {
       id: 'webflow',
       name: 'Webflow',
-      slug: '/compare/modulify-vs-webflow',
+      slug: '/compare/pixartual-vs-webflow',
       title: 'PixartualAI vs Webflow',
       desc: 'Webflow requires complex CSS box-model knowledge and manual styling for every breakpoint. PixartualAI allows you to describe what you want in plain language while maintaining visual precision and instantly generating stateful apps.',
       features: [
@@ -31,7 +31,7 @@ export default function ComparePage() {
     {
       id: 'framer',
       name: 'Framer',
-      slug: '/compare/modulify-vs-framer',
+      slug: '/compare/pixartual-vs-framer',
       title: 'PixartualAI vs Framer',
       desc: 'Framer is great for simple static marketing pages, but falls short when you need full-stack databases, dynamic stateful calculation tools, or complex user flows. PixartualAI bridges the gap between design and functional software.',
       features: [
@@ -48,7 +48,7 @@ export default function ComparePage() {
     {
       id: 'lovable',
       name: 'Lovable / v0',
-      slug: '/compare/modulify-vs-lovable',
+      slug: '/compare/pixartual-vs-lovable',
       title: 'PixartualAI vs Lovable & v0',
       desc: 'First-generation AI code generators spit out raw code that requires developers to inspect, deploy, and fix. PixartualAI is a complete visual design studio where anyone can edit typography, styles, and layouts visually without touching a terminal.',
       features: [
@@ -172,7 +172,7 @@ export default function ComparePage() {
         </section>
 
         {/* Bottom CTA */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

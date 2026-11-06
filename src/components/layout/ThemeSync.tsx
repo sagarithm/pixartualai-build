@@ -7,7 +7,7 @@ export const ThemeSync: React.FC = () => {
     try {
       const getStoredTheme = (): 'auto' | 'light' | 'dark' => {
         try {
-          const modTheme = window.localStorage.getItem('modulify-theme');
+          const modTheme = window.localStorage.getItem('pixartual-theme');
           if (modTheme) {
             const parsed = JSON.parse(modTheme);
             if (parsed?.state?.Theme && ['auto', 'light', 'dark'].includes(parsed.state.Theme)) {

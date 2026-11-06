@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { Check, Sparkle } from '@phosphor-icons/react';
 
 export default function WebflowTransferPage() {
@@ -57,9 +57,9 @@ export default function WebflowTransferPage() {
                 loop
                 muted
                 playsInline
-                poster="/images/webflow-to-modulify.webp"
+                poster="/images/webflow-to-pixartual.webp"
                 preload="metadata"
-                src="/videos/webflow-to-modulify.webm"
+                src="/videos/webflow-to-pixartual.webm"
               />
             </div>
 
@@ -138,7 +138,7 @@ export default function WebflowTransferPage() {
         </section>
 
         {/* CTA Banner */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

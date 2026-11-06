@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { MapPin, Globe, Sparkle, ArrowRight, ArrowUpRight } from '@phosphor-icons/react';
 
 export default function TopAgenciesUSPage() {
@@ -200,7 +200,7 @@ export default function TopAgenciesUSPage() {
         </section>
 
         {/* CTA */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

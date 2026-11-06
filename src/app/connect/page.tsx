@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { MagnifyingGlass, PlugsConnected, ArrowRight, Check } from '@phosphor-icons/react';
 
 interface Connector {
@@ -210,7 +210,7 @@ export default function ConnectPage() {
         </section>
 
         {/* Bottom CTA */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

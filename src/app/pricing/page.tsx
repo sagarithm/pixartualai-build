@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { MfyFaqAccordion } from '@/components/landing/MfyFaqAccordion';
 
 interface CreditOption {
@@ -386,7 +386,7 @@ export default function PricingPage() {
         </section>
 
         {/* CTA banner */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { MfyFaqAccordion, FaqItem } from '@/components/landing/MfyFaqAccordion';
 import { Check, X, ArrowRight, Sparkle, ShieldCheck, Lightning, Cube, Desktop } from '@phosphor-icons/react';
 
@@ -333,7 +333,7 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
         </section>
 
         {/* Bottom CTA */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

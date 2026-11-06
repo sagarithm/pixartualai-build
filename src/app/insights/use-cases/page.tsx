@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
@@ -61,7 +61,7 @@ export default function UseCasesPage() {
           </div>
         </section>
 
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

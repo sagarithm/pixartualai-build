@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { getAllPostSlugs, getPostBySlug, getRelatedPosts } from '@/lib/posts';
 
 interface PageProps {
@@ -122,7 +122,7 @@ export default async function PostDetailPage({ params }: PageProps) {
         )}
 
         {/* Call to action */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

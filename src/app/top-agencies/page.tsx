@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { MfyFaqAccordion } from '@/components/landing/MfyFaqAccordion';
 import { Globe, MapPin, ArrowRight, Compass } from '@phosphor-icons/react';
 
@@ -179,7 +179,7 @@ export default function TopAgenciesPage() {
         </section>
 
         {/* Bottom CTA */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

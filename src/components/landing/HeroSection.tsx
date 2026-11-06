@@ -30,7 +30,7 @@ export const HeroSection: React.FC = () => {
         <video
           aria-hidden="true"
           autoPlay
-          className="mdlfy-adaptive-media pointer-events-none absolute inset-0 z-0 size-full object-cover"
+          className="px-adaptive-media pointer-events-none absolute inset-0 z-0 size-full object-cover"
           loop
           muted
           playsInline

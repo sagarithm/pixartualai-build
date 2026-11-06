@@ -4,66 +4,66 @@ import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 import { ArrowUpRight, Sparkle, Lightning, ChartLineUp, ShieldCheck } from '@phosphor-icons/react';
 
-export default function MadeInModulifyPage() {
+export default function MadeInPixartualPage() {
   const showcaseProjects = [
     {
       name: 'FontInLogo',
       desc: 'Free brand typography directory',
       url: 'https://fontinlogo.com',
-      cardImg: '/images/made-in-modulify/card-fontinlogo.webp',
+      cardImg: '/images/made-in-pixartual/card-fontinlogo.webp',
       favImg: '/images/personas/logos/logo-fontinlogo.png',
     },
     {
       name: 'LogoToUse',
       desc: 'Open brand identity platform',
       url: 'https://logotouse.com',
-      cardImg: '/images/made-in-modulify/card-logotouse.webp',
+      cardImg: '/images/made-in-pixartual/card-logotouse.webp',
       favImg: '/images/personas/logos/logo-logotouse.png',
     },
     {
       name: 'Motion Studio',
       desc: 'Interactive motion graphics portfolio',
       url: 'https://motion.design',
-      cardImg: '/images/made-in-modulify/card-motion.webp',
+      cardImg: '/images/made-in-pixartual/card-motion.webp',
       favImg: '/images/personas/logos/logo-motion.png',
     },
     {
       name: 'Paperanimation',
       desc: 'Stop-motion craft and commercial animation',
       url: 'https://paperanimation.com',
-      cardImg: '/images/made-in-modulify/card-paperanimation.webp',
+      cardImg: '/images/made-in-pixartual/card-paperanimation.webp',
       favImg: '/images/personas/logos/logo-3.png',
     },
     {
       name: 'Wonderlist',
       desc: 'Curated products & gift guides',
       url: 'https://wonderlist.app',
-      cardImg: '/images/made-in-modulify/card-wonderlist.webp',
+      cardImg: '/images/made-in-pixartual/card-wonderlist.webp',
       favImg: '/images/personas/logos/logo-wonderlist.png',
     },
     {
       name: 'Construction Web Design UK',
       desc: 'Commercial building contractor directory',
       url: 'https://constructionwebdesign.co.uk',
-      cardImg: '/images/made-in-modulify/card-constructionwebdesign.webp',
-      favImg: '/images/made-in-modulify/fav-constructionwebdesign.png',
+      cardImg: '/images/made-in-pixartual/card-constructionwebdesign.webp',
+      favImg: '/images/made-in-pixartual/fav-constructionwebdesign.png',
     },
     {
       name: 'MeinMwStRechner',
       desc: 'Interactive European VAT calculator app',
       url: 'https://meinmwstrechner.de',
-      cardImg: '/images/made-in-modulify/card-meinmwstrechner.webp',
+      cardImg: '/images/made-in-pixartual/card-meinmwstrechner.webp',
       favImg: '/images/personas/logos/logo-orange.png',
     },
     {
       name: 'Landdding',
       desc: 'SaaS landing page inspiration vault',
       url: 'https://landdding.com',
-      cardImg: '/images/made-in-modulify/card-landdding.webp',
-      favImg: '/images/made-in-modulify/fav-landdding.png',
+      cardImg: '/images/made-in-pixartual/card-landdding.webp',
+      favImg: '/images/made-in-pixartual/fav-landdding.png',
     },
   ];
 
@@ -225,7 +225,7 @@ export default function MadeInModulifyPage() {
                     alt="Paperanimation website screenshot"
                     className="h-full w-full object-cover"
                     loading="lazy"
-                    src="/images/made-in-modulify/story-paperanimation.webp"
+                    src="/images/made-in-pixartual/story-paperanimation.webp"
                   />
                 </div>
               </div>
@@ -269,7 +269,7 @@ export default function MadeInModulifyPage() {
                     alt="Iconly website screenshot"
                     className="h-full w-full object-cover"
                     loading="lazy"
-                    src="/images/made-in-modulify/story-iconly.webp"
+                    src="/images/made-in-pixartual/story-iconly.webp"
                   />
                 </div>
               </div>
@@ -278,7 +278,7 @@ export default function MadeInModulifyPage() {
         </section>
 
         {/* Bottom CTA */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       <Footer />

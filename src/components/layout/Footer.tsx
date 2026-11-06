@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
 
   useEffect(() => {
     try {
-      const modTheme = localStorage.getItem('modulify-theme');
+      const modTheme = localStorage.getItem('pixartual-theme');
       if (modTheme) {
         const parsed = JSON.parse(modTheme);
         if (parsed?.state?.Theme && ['auto', 'light', 'dark'].includes(parsed.state.Theme)) {
@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
   const applyTheme = (mode: 'auto' | 'light' | 'dark') => {
     try {
       localStorage.setItem('theme', mode);
-      localStorage.setItem('modulify-theme', JSON.stringify({ state: { Theme: mode } }));
+      localStorage.setItem('pixartual-theme', JSON.stringify({ state: { Theme: mode } }));
     } catch (e) { }
     setThemeMode(mode);
     window.dispatchEvent(new CustomEvent('pixartual-theme-change', { detail: mode }));
@@ -106,13 +106,13 @@ export const Footer: React.FC = () => {
                   <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare">
                     Compare
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/modulify-vs-framer">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/pixartual-vs-framer">
                     PixartualAI vs Framer
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/modulify-vs-webflow">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/pixartual-vs-webflow">
                     PixartualAI vs Webflow
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/modulify-vs-lovable">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/compare/pixartual-vs-lovable">
                     PixartualAI vs Lovable
                   </Link>
                   <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/webflow-transfer">
@@ -178,7 +178,7 @@ export const Footer: React.FC = () => {
                   <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/templates">
                     Templates
                   </Link>
-                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/made-in-modulify">
+                  <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/made-in-pixartual">
                     Made in PixartualAI
                   </Link>
                   <Link className="fx-link text-[0.9375rem] text-neutral-800 no-underline" href="/connect">

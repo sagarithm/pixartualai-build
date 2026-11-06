@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const ModulifyCta: React.FC = () => {
+export const PixartualCta: React.FC = () => {
   return (
     <section className="bg-white pt-16" id="cta">
       <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
@@ -32,3 +32,5 @@ export const ModulifyCta: React.FC = () => {
     </section>
   );
 };
+
+export const ModulifyCta = PixartualCta;

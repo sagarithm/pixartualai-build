@@ -5,11 +5,11 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { PromptToOutputSection } from '@/components/landing/PromptToOutputSection';
-import { ModulifyBento } from '@/components/landing/ModulifyBento';
+import { PixartualBento } from '@/components/landing/PixartualBento';
 import { BuildAnythingSection } from '@/components/landing/BuildAnythingSection';
 import { KeepYourSiteSection } from '@/components/landing/KeepYourSiteSection';
 import { PlatformFeaturesSection } from '@/components/landing/PlatformFeaturesSection';
-import { ModulifyCta } from '@/components/landing/ModulifyCta';
+import { PixartualCta } from '@/components/landing/PixartualCta';
 
 export default function HomePage() {
   return (
@@ -24,7 +24,7 @@ export default function HomePage() {
         <PromptToOutputSection />
 
         {/* Section 2: Not just generated. Designed. with glowing amber backdrop */}
-        <ModulifyBento />
+        <PixartualBento />
 
         {/* Section 3: Build Anything with orange split scroller and 3D stacked previews */}
         <BuildAnythingSection />
@@ -36,7 +36,7 @@ export default function HomePage() {
         <PlatformFeaturesSection />
 
         {/* Section 6: What are we building? banner */}
-        <ModulifyCta />
+        <PixartualCta />
       </main>
 
       {/* Floating Footer with authentic glowing orange backdrop */}

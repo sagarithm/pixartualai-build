@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-export const ModulifyBento: React.FC = () => {
+export const PixartualBento: React.FC = () => {
   const previewItems = [
     { name: 'Revolver', img: '/images/home-collage/revolver.jpg' },
     { name: 'Cinema Reel', img: '/images/home-collage/cinema-reel.jpg' },
@@ -14,7 +14,7 @@ export const ModulifyBento: React.FC = () => {
 
   return (
     <section aria-labelledby="dbento-title" className="relative overflow-hidden bg-white" id="designed">
-      {/* Authentic Modulify ambient orange/amber glow behind Bento */}
+      {/* Authentic Pixartual ambient orange/amber glow behind Bento */}
       <div aria-hidden="true" className="bento-glow pointer-events-none absolute -bottom-[6%] -left-[10%] -right-[10%] -top-[6%]" />
 
       <div className="relative z-[1] mx-auto w-full max-w-[1240px] px-5 py-14 md:px-[50px] md:py-20">
@@ -120,3 +120,5 @@ export const ModulifyBento: React.FC = () => {
     </section>
   );
 };
+
+export const ModulifyBento = PixartualBento;

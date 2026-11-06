@@ -41,7 +41,7 @@ export const CapabilitiesCarousel: React.FC = () => {
           ))}
         </div>
 
-        {/* 3D-Stacked Carousel Cards matching Modulify 1:1 */}
+        {/* 3D-Stacked Carousel Cards matching Pixartual 1:1 */}
         <div className="relative mx-auto mt-12 aspect-[45/32] w-full max-w-[min(560px,85vw)] rounded-[14px]">
           {items.map((item, idx) => {
             const diff = idx - activeIndex;
