@@ -22,12 +22,21 @@ export const metadata: Metadata = {
     url: 'https://pixartual.ai',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/og.png',
+        width: 1200,
+        height: 630,
+        alt: 'PixartualAI — Turn Ideas into Interactive Digital Experiences',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PixartualAI — Turn Ideas into Interactive Digital Experiences',
     description:
       'Describe your idea to AI or customize ready-made templates. Zero code required.',
+    images: ['/og.png'],
   },
 };
 
