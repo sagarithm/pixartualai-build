@@ -86,7 +86,10 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="marketing-footer bg-cover bg-top bg-no-repeat px-4 py-8 md:px-8 md:py-12">
-      <div className="mx-auto w-full max-w-[1240px] overflow-hidden rounded-[32px] bg-white shadow-[0_18px_50px_theme(colors.static-black/10%)]">
+      <div
+        className="mx-auto w-full max-w-[1240px] overflow-hidden rounded-[32px] bg-white dark:bg-[#121212] shadow-[0_18px_50px_rgba(0,0,0,0.10)] transition-colors duration-300"
+        style={{ backgroundColor: 'rgb(var(--px-color-white, 255 255 255))' }}
+      >
         <div className="px-6 md:px-[50px]">
           <div className="flex flex-col gap-12 pb-10 pt-8">
             {/* Top Brand & Mission statement */}
