@@ -9,18 +9,47 @@ import {
   Desktop,
   CaretDown,
 } from '@phosphor-icons/react';
+import { Banknote } from 'lucide-react';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
 
 export const Footer: React.FC = () => {
   const [themeMode, setThemeMode] = useState<'auto' | 'light' | 'dark'>('light');
   const [themeOpen, setThemeOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [currencyOpen, setCurrencyOpen] = useState(false);
   const [language, setLanguage] = useState('English');
+  const [currency, setCurrency] = useState('INR ₹');
 
   const themeRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
+  const currencyRef = useRef<HTMLDivElement>(null);
 
   const languages = ['English', 'Español', 'Français', 'Deutsch', '日本語', 'Português', 'Italiano'];
+  const currencies = [
+    { code: 'INR', symbol: '₹', label: 'INR ₹' },
+    { code: 'USD', symbol: '$', label: 'USD $' },
+    { code: 'EUR', symbol: '€', label: 'EUR €' },
+    { code: 'GBP', symbol: '£', label: 'GBP £' },
+    { code: 'JPY', symbol: '¥', label: 'JPY ¥' },
+    { code: 'CAD', symbol: '$', label: 'CAD $' },
+    { code: 'AUD', symbol: '$', label: 'AUD $' },
+  ];
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (themeRef.current && !themeRef.current.contains(e.target as Node)) {
+        setThemeOpen(false);
+      }
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+      if (currencyRef.current && !currencyRef.current.contains(e.target as Node)) {
+        setCurrencyOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -289,72 +318,41 @@ export const Footer: React.FC = () => {
         {/* Rainbow Gradient Line */}
         <div className="h-0.5 w-full bg-[linear-gradient(to_right,rgb(var(--px-color-accent-hot)),rgb(var(--px-color-accent)),rgba(252,140,4,0.35),#a855f7,#3b82f6)]"></div>
 
-        {/* Bottom Bar with Copyright, Language, and Theme Switcher */}
+        {/* Bottom Bar with Copyright, Theme, Currency, and Language */}
         <div className="flex flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between md:px-[50px]">
           <p className="text-sm text-neutral-400">
             © 2026 PixartualAI. All rights reserved.
           </p>
 
           <div className="flex items-center gap-2">
-            {/* Language Selector */}
-            <div className="relative" ref={langRef}>
-              <button
-                type="button"
-                onClick={() => setLangOpen(!langOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 transition-colors hover:bg-stone-100"
-                aria-label="Language"
-              >
-                <Globe size={16} className="text-gray-500" />
-                <span>{language}</span>
-                <CaretDown size={14} className="text-gray-500" />
-              </button>
-              {langOpen && (
-                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-xl border border-neutral-200 bg-surface p-1 shadow-lg mfy-fadein">
-                  {languages.map((l) => (
-                    <button
-                      key={l}
-                      type="button"
-                      onClick={() => {
-                        setLanguage(l);
-                        setLangOpen(false);
-                      }}
-                      className="w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 text-ink-strong transition-colors"
-                    >
-                      {l}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Theme Switcher */}
+            {/* 1. Theme Switcher */}
             <div className="relative" ref={themeRef}>
               <button
                 type="button"
                 onClick={() => setThemeOpen(!themeOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 transition-colors hover:bg-stone-100"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] px-3 py-1.5 text-xs text-neutral-800 dark:text-neutral-200 transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800"
                 aria-label="Theme"
               >
                 {themeMode === 'light' ? (
-                  <Sun size={16} className="text-gray-500" />
+                  <Sun size={15} className="text-gray-500" />
                 ) : themeMode === 'dark' ? (
-                  <Moon size={16} className="text-gray-500" />
+                  <Moon size={15} className="text-gray-500" />
                 ) : (
-                  <Desktop size={16} className="text-gray-500" />
+                  <Desktop size={15} className="text-gray-500" />
                 )}
                 <span className="capitalize">{themeMode}</span>
-                <CaretDown size={14} className="text-gray-500" />
+                <CaretDown size={13} className="text-gray-500" />
               </button>
               {themeOpen && (
-                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[130px] rounded-xl border border-neutral-200 bg-surface p-1 shadow-lg mfy-fadein">
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg mfy-fadein">
                   <button
                     type="button"
                     onClick={() => {
                       applyTheme('light');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 text-ink-strong transition-colors ${
-                      themeMode === 'light' ? 'font-semibold bg-stone-100' : ''
+                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
+                      themeMode === 'light' ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
                     }`}
                   >
                     <Sun size={14} /> Light
@@ -365,8 +363,8 @@ export const Footer: React.FC = () => {
                       applyTheme('dark');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 text-ink-strong transition-colors ${
-                      themeMode === 'dark' ? 'font-semibold bg-stone-100' : ''
+                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
+                      themeMode === 'dark' ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
                     }`}
                   >
                     <Moon size={14} /> Dark
@@ -377,12 +375,78 @@ export const Footer: React.FC = () => {
                       applyTheme('auto');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 text-ink-strong transition-colors ${
-                      themeMode === 'auto' ? 'font-semibold bg-stone-100' : ''
+                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
+                      themeMode === 'auto' ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
                     }`}
                   >
                     <Desktop size={14} /> Auto
                   </button>
+                </div>
+              )}
+            </div>
+
+            {/* 2. Currency Selector */}
+            <div className="relative" ref={currencyRef}>
+              <button
+                type="button"
+                onClick={() => setCurrencyOpen(!currencyOpen)}
+                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] px-3 py-1.5 text-xs text-neutral-800 dark:text-neutral-200 transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800"
+                aria-label="Currency"
+              >
+                <Banknote size={15} className="text-gray-500" />
+                <span>{currency}</span>
+                <CaretDown size={13} className="text-gray-500" />
+              </button>
+              {currencyOpen && (
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] max-h-48 overflow-y-auto rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg mfy-fadein">
+                  {currencies.map((c) => (
+                    <button
+                      key={c.code}
+                      type="button"
+                      onClick={() => {
+                        setCurrency(c.label);
+                        setCurrencyOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
+                        currency === c.label ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
+                      }`}
+                    >
+                      {c.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* 3. Language Selector */}
+            <div className="relative" ref={langRef}>
+              <button
+                type="button"
+                onClick={() => setLangOpen(!langOpen)}
+                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] px-3 py-1.5 text-xs text-neutral-800 dark:text-neutral-200 transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800"
+                aria-label="Language"
+              >
+                <Globe size={15} className="text-gray-500" />
+                <span>{language}</span>
+                <CaretDown size={13} className="text-gray-500" />
+              </button>
+              {langOpen && (
+                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg mfy-fadein">
+                  {languages.map((l) => (
+                    <button
+                      key={l}
+                      type="button"
+                      onClick={() => {
+                        setLanguage(l);
+                        setLangOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
+                        language === l ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
+                      }`}
+                    >
+                      {l}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
