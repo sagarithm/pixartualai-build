@@ -36,8 +36,8 @@ export const BuildAnythingSection: React.FC = () => {
     <section className="relative h-auto overflow-hidden bg-white md:h-[80vh] md:max-h-[80vh]" id="build-anything">
       <div className="grid h-full grid-cols-1 md:grid-cols-2">
         {/* Left Column: Authentic Vibrant Orange Scroller */}
-        <div className="order-2 flex h-[500px] md:h-auto items-center justify-center overflow-hidden bg-[linear-gradient(165deg,#fe3200_8%,#fc8c04_48%,rgba(248,113,113,0)_86%),linear-gradient(90deg,#fc8c04,#fc8c04)] px-5 md:order-none md:pl-[max(50px,calc((100vw-1240px)/2+50px))] md:pr-0">
-          <div className="scroller py-10">
+        <div className="order-2 flex h-[70vh] items-center justify-center overflow-hidden bg-[linear-gradient(165deg,rgb(var(--px-color-accent-hot))_8%,rgb(var(--px-color-accent))_48%,rgba(248,113,113,0)_86%),linear-gradient(90deg,rgb(var(--px-color-accent)),rgb(var(--px-color-accent)))] px-5 md:order-none md:h-auto md:pl-[max(50px,calc((100vw-1240px)/2+50px))] md:pr-0">
+          <div className="scroller">
             <ul className="scroller__track">
               {capabilities.map((cap) => {
                 const isActive = cap.key === activeKey;
@@ -58,9 +58,9 @@ export const BuildAnythingSection: React.FC = () => {
         </div>
 
         {/* Right Column: Title + 3D Stacked Preview Images */}
-        <div className="flex flex-col justify-center gap-7 overflow-hidden bg-gray-100 px-5 py-14 md:px-16 md:py-20">
+        <div className="flex flex-col justify-start gap-7 overflow-hidden bg-gray-100 px-5 py-14 md:px-16 md:py-20">
           <div className="text-center">
-            <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-neutral-900 font-['Neutralsans']">
+            <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-ink-strong">
               Build Anything
             </h2>
             <p className="mx-auto max-w-[520px] text-[clamp(1rem,1.3vw,1.12rem)] leading-relaxed text-gray-500">
@@ -112,7 +112,7 @@ export const BuildAnythingSection: React.FC = () => {
                   alt={cap.alt}
                   loading="lazy"
                   onClick={() => setActiveKey(cap.key)}
-                  className="absolute inset-0 size-full cursor-pointer rounded-[12px] bg-neutral-300 object-cover object-left-top shadow-[0_8px_28px_rgba(0,0,0,0.16)] transition-[transform,opacity] duration-[420ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+                  className="absolute inset-0 size-full cursor-pointer rounded-[12px] bg-neutral-300 object-cover object-left-top shadow-[0_8px_28px_theme(colors.static-black/16%)] transition-[transform,opacity] duration-[420ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
                   style={style}
                 />
               );

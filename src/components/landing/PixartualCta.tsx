@@ -17,13 +17,13 @@ export const PixartualCta: React.FC = () => {
             width={1600}
           />
           <div className="relative z-[1]">
-            <h2 className="mb-3 text-[clamp(2rem,5vw,2.5rem)] font-medium leading-[1.2] text-white font-['Neutralsans']">
+            <h2 className="mb-3 text-[clamp(2rem,5vw,2.5rem)] font-medium leading-[1.2] text-static-white">
               What are we building?
             </h2>
-            <p className="mb-9 text-base text-white/80">
-              Create a website, landing page, dashboard, or digital experience with AI.
+            <p className="mb-9 text-base text-static-white/75">
+              Create a website, landing page, dashboard, or app...
             </p>
-            <Link className="mfy-btn mfy-btn--primary !bg-white !text-black hover:!bg-neutral-100 font-semibold" href="/dashboard">
+            <Link className="mfy-btn mfy-btn--primary" href="/dashboard">
               Start building
             </Link>
           </div>

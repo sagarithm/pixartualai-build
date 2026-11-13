@@ -10,15 +10,12 @@ export const Navbar: React.FC = () => {
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const solutionsRef = useRef<HTMLDivElement>(null);
-  const resourcesRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (solutionsRef.current && !solutionsRef.current.contains(e.target as Node)) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setSolutionsOpen(false);
-      }
-      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
         setResourcesOpen(false);
       }
     };
@@ -27,143 +24,258 @@ export const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-[100] transition-colors duration-300 bg-white/90 backdrop-blur-md backdrop-saturate-[1.8] border-b border-black/[0.04]">
-      <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between gap-3 px-5 py-3.5 md:px-[50px] lg:gap-6">
-        {/* Left: PixartualAI Brand Logo + Nav items */}
-        <div className="flex items-center gap-6">
-          <Link aria-label="PixartualAI home" className="flex shrink-0 items-center gap-2" href="/">
-            <PixartualLogo variant="auto" size={30} showWordmark />
-          </Link>
+    <header className="sticky top-0 z-[100] transition-colors duration-300 bg-white/85 backdrop-blur-md backdrop-saturate-[1.8]">
+      <div className="mx-auto flex w-full max-w-[1240px] items-center gap-3 px-5 transition-[padding] duration-200 md:px-[50px] lg:gap-6 py-4">
+        {/* Left: PixartualAI Brand Logo */}
+        <Link href="/" className="flex shrink-0 items-center" aria-label="PixartualAI home">
+          <PixartualLogo variant="auto" size={28} showWordmark />
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav aria-label="Primary" className="ml-2 hidden items-center gap-1 lg:flex">
-            {/* Solutions Dropdown */}
-            <div className="relative" ref={solutionsRef}>
-              <button
-                type="button"
-                onClick={() => setSolutionsOpen(!solutionsOpen)}
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 no-underline cursor-pointer bg-transparent hover:bg-neutral-100/70 transition-colors"
+        {/* Primary Desktop Navigation */}
+        <nav ref={navRef} className="ml-2 hidden items-center gap-1 lg:flex" aria-label="Primary">
+          <div className="relative flex items-center gap-1">
+            {/* Solutions Dropdown Button */}
+            <button
+              type="button"
+              onClick={() => {
+                setSolutionsOpen(!solutionsOpen);
+                setResourcesOpen(false);
+              }}
+              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline cursor-pointer bg-transparent hover:bg-stone-100/70 transition-colors"
+              aria-expanded={solutionsOpen}
+              aria-haspopup="true"
+            >
+              Solutions
+              <CaretDown
+                size={15}
+                className={`text-gray-500 transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+
+            {/* Resources Dropdown Button */}
+            <button
+              type="button"
+              onClick={() => {
+                setResourcesOpen(!resourcesOpen);
+                setSolutionsOpen(false);
+              }}
+              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline cursor-pointer bg-transparent hover:bg-stone-100/70 transition-colors"
+              aria-expanded={resourcesOpen}
+              aria-haspopup="true"
+            >
+              Resources
+              <CaretDown
+                size={15}
+                className={`text-gray-500 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+
+            {/* Solutions Megamenu */}
+            {solutionsOpen && (
+              <div
+                className="mfy-mega absolute left-0 top-[calc(100%+12px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200 bg-surface shadow-[0_30px_60px_theme(colors.static-black/12%),0_2px_8px_theme(colors.static-black/6%)] mfy-fadein"
+                role="region"
+                aria-label="Solutions"
               >
-                Solutions
-                <CaretDown size={14} className={`text-gray-500 transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {solutionsOpen && (
-                <div className="absolute left-0 top-full mt-2 z-50 w-[480px] rounded-[18px] border border-neutral-200 bg-white p-4 shadow-xl grid grid-cols-2 gap-2 mfy-fadein">
-                  {[
-                    { label: 'Founders', desc: 'Ship your MVP in minutes', href: '/founders' },
-                    { label: 'Designers', desc: 'No-code interactive design', href: '/designers' },
-                    { label: 'Product Managers', desc: 'Prototype tools & flows', href: '/product-managers' },
-                    { label: 'Marketers', desc: 'High-converting funnels', href: '/marketers' },
-                    { label: 'Prototypes', desc: 'Functional interactive apps', href: '/prototypes' },
-                    { label: 'Internal Tools', desc: 'Custom business dashboards', href: '/tools' },
-                  ].map((s) => (
+                <div className="p-[22px]">
+                  <div className="flex gap-5">
                     <Link
-                      key={s.label}
-                      href={s.href}
+                      href="/solutions"
                       onClick={() => setSolutionsOpen(false)}
-                      className="p-2.5 rounded-xl hover:bg-neutral-50 transition-colors block"
+                      className="group flex w-[190px] shrink-0 flex-col rounded-[12px] bg-stone-100 p-4 no-underline transition-colors hover:bg-stone-200"
                     >
-                      <div className="text-sm font-medium text-neutral-900">{s.label}</div>
-                      <div className="text-xs text-neutral-500">{s.desc}</div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-zinc-400">Solutions</p>
+                      <p className="mt-2 text-[13px] leading-[1.45] text-zinc-500">
+                        What every team builds with PixartualAI.
+                      </p>
+                      <span className="mt-auto inline-flex items-center gap-1 pt-3 text-[13px] font-medium text-ink-strong">
+                        View all use cases →
+                      </span>
                     </Link>
-                  ))}
-                  <div className="col-span-2 pt-2 border-t border-neutral-100 flex justify-between items-center text-xs">
-                    <Link href="/solutions" onClick={() => setSolutionsOpen(false)} className="font-semibold text-orange-600 hover:text-orange-700">
-                      View all solutions →
-                    </Link>
-                    <Link href="/webflow-transfer" onClick={() => setSolutionsOpen(false)} className="text-neutral-500 hover:text-neutral-900">
-                      Webflow Migration
-                    </Link>
+
+                    <div className="flex-1 space-y-3">
+                      <div>
+                        <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
+                          By role
+                        </p>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+                          {[
+                            { label: 'Founders', desc: 'Ship your site and MVP fast.', href: '/founders' },
+                            { label: 'Sales', desc: 'Build live, tailored demos.', href: '/sales' },
+                            { label: 'Product managers', desc: 'Prototype instead of spec.', href: '/product-managers' },
+                            { label: 'Designers', desc: 'Ship your design, no handoff.', href: '/designers' },
+                            { label: 'Marketers', desc: 'Launch campaign pages fast.', href: '/marketers' },
+                            { label: 'Ops', desc: 'Internal tools that fit.', href: '/ops' },
+                            { label: 'People', desc: 'HR tools your team likes.', href: '/people' },
+                          ].map((item) => (
+                            <Link
+                              key={item.label}
+                              href={item.href}
+                              onClick={() => setSolutionsOpen(false)}
+                              className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100"
+                            >
+                              <span className="text-[14.5px] font-medium leading-[1.35] text-ink-strong">
+                                {item.label}
+                              </span>
+                              <span className="text-[12.5px] leading-[1.35] text-zinc-500">{item.desc}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
+                          By use case
+                        </p>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+                          {[
+                            { label: 'Prototypes', desc: 'Real, clickable prototypes.', href: '/prototypes' },
+                            { label: 'Internal tools', desc: 'Dashboards, trackers, admin.', href: '/tools' },
+                          ].map((item) => (
+                            <Link
+                              key={item.label}
+                              href={item.href}
+                              onClick={() => setSolutionsOpen(false)}
+                              className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100"
+                            >
+                              <span className="text-[14.5px] font-medium leading-[1.35] text-ink-strong">
+                                {item.label}
+                              </span>
+                              <span className="text-[12.5px] leading-[1.35] text-zinc-500">{item.desc}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
 
-            {/* Resources Dropdown */}
-            <div className="relative" ref={resourcesRef}>
-              <button
-                type="button"
-                onClick={() => setResourcesOpen(!resourcesOpen)}
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 no-underline cursor-pointer bg-transparent hover:bg-neutral-100/70 transition-colors"
+            {/* Resources Megamenu */}
+            {resourcesOpen && (
+              <div
+                className="mfy-mega absolute left-0 top-[calc(100%+12px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200 bg-surface shadow-[0_30px_60px_theme(colors.static-black/12%),0_2px_8px_theme(colors.static-black/6%)] mfy-fadein"
+                role="region"
+                aria-label="Resources"
               >
-                Resources
-                <CaretDown size={14} className={`text-gray-500 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} />
-              </button>
+                <div className="p-[22px]">
+                  <div className="flex gap-5">
+                    <Link
+                      href="/insights"
+                      onClick={() => setResourcesOpen(false)}
+                      className="group flex w-[190px] shrink-0 flex-col rounded-[12px] bg-stone-100 p-4 no-underline transition-colors hover:bg-stone-200"
+                    >
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-zinc-400">Resources</p>
+                      <p className="mt-2 text-[13px] leading-[1.45] text-zinc-500">
+                        Guides, templates, updates, and ecosystem.
+                      </p>
+                      <span className="mt-auto inline-flex items-center gap-1 pt-3 text-[13px] font-medium text-ink-strong">
+                        Explore all resources →
+                      </span>
+                    </Link>
 
-              {resourcesOpen && (
-                <div className="absolute left-0 top-full mt-2 z-50 w-[260px] rounded-[18px] border border-neutral-200 bg-white p-2 shadow-xl flex flex-col gap-1 mfy-fadein">
-                  <Link href="/made-in-pixartual" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Made in PixartualAI
-                  </Link>
-                  <Link href="/insights" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Insights & Case Studies
-                  </Link>
-                  <Link href="/connect" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Connect & Integrations
-                  </Link>
-                  <Link href="/top-agencies" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Top Agencies Directory
-                  </Link>
-                  <Link href="/faqs" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Frequently Asked Questions
-                  </Link>
-                  <Link href="/domains" onClick={() => setResourcesOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                    Custom Domains
-                  </Link>
+                    <div className="flex-1 space-y-3">
+                      <div>
+                        <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
+                          Explore
+                        </p>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+                          {[
+                            { label: 'Insights & Blog', desc: 'Design tips and AI tutorials.', href: '/insights' },
+                            { label: 'Templates', desc: '120+ cloneable site templates.', href: '/templates' },
+                            { label: 'Made in PixartualAI', desc: 'Showcase of live sites built.', href: '/made-in-pixartual' },
+                            { label: 'Use Cases', desc: 'Deep dive into real projects.', href: '/insights/use-cases' },
+                            { label: 'FAQs', desc: 'Answers to common questions.', href: '/faqs' },
+                            { label: 'Webflow Transfer', desc: 'Migrate your Webflow sites.', href: '/webflow-transfer' },
+                            { label: 'Compare Platforms', desc: 'PixartualAI vs Framer, Webflow.', href: '/compare' },
+                            { label: 'Agencies Directory', desc: 'Top vetted web agencies.', href: '/top-agencies' },
+                          ].map((item) => (
+                            <Link
+                              key={item.label}
+                              href={item.href}
+                              onClick={() => setResourcesOpen(false)}
+                              className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100"
+                            >
+                              <span className="text-[14.5px] font-medium leading-[1.35] text-ink-strong">
+                                {item.label}
+                              </span>
+                              <span className="text-[12.5px] leading-[1.35] text-zinc-500">{item.desc}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
+          </div>
 
-            <Link href="/templates" className="inline-flex items-center rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 hover:bg-neutral-100/70 transition-colors">
-              Templates
-            </Link>
-
-            <Link href="/pricing" className="inline-flex items-center rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 hover:bg-neutral-100/70 transition-colors">
-              Pricing
-            </Link>
-          </nav>
-        </div>
-
-        {/* Right: Actions */}
-        <div className="flex items-center gap-3">
-          <Link href="/dashboard" className="hidden sm:inline-flex text-[15px] font-normal text-neutral-800 hover:text-neutral-500 px-3 py-1.5 transition-colors">
-            Log in
-          </Link>
-          <Link href="/dashboard" className="mfy-btn mfy-btn--primary !px-5 !py-2.5 !text-sm !font-semibold">
-            Start building
-          </Link>
-
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+          <Link
+            href="/pricing"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline fx-link"
           >
-            {mobileMenuOpen ? <X size={20} /> : <List size={20} />}
-          </button>
+            Pricing
+          </Link>
+          <Link
+            href="/enterprise-teams"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline fx-link"
+          >
+            Enterprise
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline fx-link"
+          >
+            Contact
+          </Link>
+        </nav>
+
+        {/* Right Actions */}
+        <div className="ml-auto hidden items-center gap-5 lg:flex">
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline fx-link"
+          >
+            Sign In
+          </Link>
+          <Link className="mfy-btn mfy-btn--primary" href="/dashboard">
+            Get Started
+          </Link>
         </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="ml-auto inline-flex size-[42px] items-center justify-center rounded-[10px] bg-transparent text-ink-strong lg:hidden"
+          aria-label="Open menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? <X size={24} /> : <List size={24} />}
+        </button>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-neutral-200 bg-white px-5 py-5 space-y-4 max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden border-t border-neutral-200 bg-surface px-5 py-5 space-y-4 max-h-[80vh] overflow-y-auto mfy-fadein">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Explore Solutions</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-ink-faint mb-2">Solutions</div>
             <div className="grid grid-cols-2 gap-2">
               {[
                 { label: 'Founders', href: '/founders' },
                 { label: 'Designers', href: '/designers' },
                 { label: 'Marketers', href: '/marketers' },
-                { label: 'Prototypes', href: '/prototypes' },
-                { label: 'Internal Tools', href: '/tools' },
+                { label: 'Sales', href: '/sales' },
+                { label: 'Product Managers', href: '/product-managers' },
                 { label: 'All Solutions', href: '/solutions' },
               ].map((s) => (
                 <Link
                   key={s.label}
                   href={s.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg"
+                  className="px-3 py-2 text-sm text-ink-strong hover:bg-stone-100 rounded-lg"
                 >
                   {s.label}
                 </Link>
@@ -171,40 +283,61 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <div className="border-t border-neutral-100 pt-3">
-            <div className="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Platform & Resources</div>
+          <div className="pt-2 border-t border-neutral-200">
+            <div className="text-xs font-semibold uppercase tracking-wider text-ink-faint mb-2">Explore</div>
             <div className="flex flex-col gap-1">
-              <Link href="/templates" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
-                Templates Gallery
+              <Link
+                href="/templates"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 text-sm text-ink-strong hover:bg-stone-100 rounded-lg"
+              >
+                Templates
               </Link>
-              <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
-                Pricing Plans
+              <Link
+                href="/insights"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 text-sm text-ink-strong hover:bg-stone-100 rounded-lg"
+              >
+                Insights
               </Link>
-              <Link href="/made-in-pixartual" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
-                Made in PixartualAI
+              <Link
+                href="/pricing"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 text-sm text-ink-strong hover:bg-stone-100 rounded-lg"
+              >
+                Pricing
               </Link>
-              <Link href="/insights" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
-                Insights & Updates
+              <Link
+                href="/enterprise-teams"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 text-sm text-ink-strong hover:bg-stone-100 rounded-lg"
+              >
+                Enterprise
               </Link>
-              <Link href="/connect" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
-                Integrations & Connect
-              </Link>
-              <Link href="/domains" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
-                Custom Domains
-              </Link>
-              <Link href="/webflow-transfer" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-100 rounded-lg">
-                Webflow Migration
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 text-sm text-ink-strong hover:bg-stone-100 rounded-lg"
+              >
+                Contact
               </Link>
             </div>
           </div>
 
-          <div className="border-t border-neutral-100 pt-3 flex flex-col gap-2">
+          <div className="pt-4 border-t border-neutral-200 flex flex-col gap-2">
             <Link
               href="/dashboard"
               onClick={() => setMobileMenuOpen(false)}
-              className="mfy-btn mfy-btn--primary w-full justify-center !py-3"
+              className="w-full text-center py-2.5 rounded-lg border border-neutral-200 text-sm font-medium text-ink-strong hover:bg-stone-100"
             >
-              Start building free
+              Sign In
+            </Link>
+            <Link
+              href="/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mfy-btn mfy-btn--primary w-full justify-center"
+            >
+              Get Started
             </Link>
           </div>
         </div>

@@ -26,7 +26,7 @@ export const PromptToOutputSection: React.FC = () => {
   return (
     <section className="bg-white py-12 md:pb-[90px] md:pt-20" id="prompt-to-output">
       <div className="mx-auto w-full max-w-[1240px] px-4 md:px-[50px]">
-        <h2 className="text-center text-[clamp(28px,6vw,48px)] font-medium leading-[1.2] text-neutral-900 font-['Neutralsans']">
+        <h2 className="text-center text-[clamp(28px,6vw,48px)] font-medium leading-[1.2] text-ink-strong">
           From prompt to polished output.
         </h2>
 
@@ -39,7 +39,7 @@ export const PromptToOutputSection: React.FC = () => {
           <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-stone-100 text-[17px] font-medium text-neutral-900">
             Prompt
           </span>
-          <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-[linear-gradient(90deg,#fbbf24_0%,#f472b6_52%,#e879f9_100%)] text-[17px] font-medium text-neutral-900 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]">
+          <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-[linear-gradient(90deg,theme(colors.amber.400)_0%,theme(colors.pink.300)_52%,theme(colors.fuchsia.200)_100%)] text-[17px] font-medium text-ink-strong shadow-[inset_0_0_0_1px_theme(colors.static-black/4%)]">
             Application
           </span>
         </div>

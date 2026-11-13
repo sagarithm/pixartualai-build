@@ -20,7 +20,7 @@ export const KeepYourSiteSection: React.FC = () => {
     >
       <div className="mx-auto flex max-w-[1000px] flex-col items-center text-center">
         <h2
-          className="max-w-[700px] text-[clamp(32px,4.5vw,52px)] font-medium leading-[1.15] text-neutral-900 font-['Neutralsans']"
+          className="max-w-[700px] text-[clamp(32px,4.5vw,52px)] font-medium leading-[1.15] text-ink-strong"
           id="keep-site-title"
         >
           Keep your site. Upgrade how you work on it.
@@ -34,7 +34,7 @@ export const KeepYourSiteSection: React.FC = () => {
         <div aria-hidden="true" className="relative mx-auto mt-11 flex w-full items-center justify-center pb-7 pt-5">
           <video
             autoPlay
-            className="block h-auto w-full max-w-[720px] rounded-xl"
+            className="block h-auto w-full max-w-full"
             loop
             muted
             playsInline
@@ -45,12 +45,12 @@ export const KeepYourSiteSection: React.FC = () => {
         </div>
 
         {/* Feature Checkmarks */}
-        <ul aria-label="What carries over" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4">
+        <ul aria-label="What carries over" className="flex flex-wrap justify-center gap-x-6 gap-y-1">
           {points.map((pt) => (
-            <li key={pt} className="inline-flex items-center gap-[7px] whitespace-nowrap text-[0.88rem] font-medium text-gray-600 hover:text-neutral-900 transition-colors cursor-default">
+            <li key={pt} className="inline-flex items-center gap-[7px] whitespace-nowrap text-[0.88rem] font-medium text-gray-600">
               <svg
                 aria-hidden="true"
-                className="size-3.5 flex-none text-[#fc8c04]"
+                className="size-3.5 flex-none text-accent"
                 fill="currentColor"
                 height="1em"
                 viewBox="0 0 256 256"
@@ -65,7 +65,7 @@ export const KeepYourSiteSection: React.FC = () => {
         </ul>
 
         {/* Action Buttons */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <Link className="mfy-btn mfy-btn--primary" href="/pricing">
             Join the waitlist
           </Link>

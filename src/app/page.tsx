@@ -13,7 +13,7 @@ import { PixartualCta } from '@/components/landing/PixartualCta';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white text-ink-strong selection:bg-orange-500 selection:text-white">
       <Navbar />
 
       <main className="flex-1">

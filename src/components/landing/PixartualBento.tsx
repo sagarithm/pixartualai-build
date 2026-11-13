@@ -19,7 +19,7 @@ export const PixartualBento: React.FC = () => {
 
       <div className="relative z-[1] mx-auto w-full max-w-[1240px] px-5 py-14 md:px-[50px] md:py-20">
         <div className="mb-11 text-center">
-          <h2 className="text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-neutral-900 font-['Neutralsans']" id="dbento-title">
+          <h2 className="text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-ink-strong" id="dbento-title">
             Not just generated. Designed.
           </h2>
           <p className="mx-auto mt-4 max-w-[560px] text-[clamp(0.95rem,1.2vw,1.05rem)] leading-relaxed text-gray-600">
@@ -27,19 +27,19 @@ export const PixartualBento: React.FC = () => {
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-[460px] grid-cols-1 gap-5 md:max-w-none md:grid-cols-12">
+        <div className="mx-auto grid max-w-[460px] grid-cols-1 gap-5 [grid-auto-rows:minmax(260px,auto)] md:max-w-none md:grid-cols-12 md:[grid-auto-rows:minmax(300px,auto)]">
           {/* Card 1: Generate pages */}
-          <article className="bento-card col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-7 cursor-pointer">
+          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-7">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Generating a page from a prompt"
-                className="block w-full flex-none h-auto p-8 md:p-10 object-contain"
+                className="block w-full flex-none h-auto p-10 object-contain"
                 loading="lazy"
                 src="/images/bento-generate.webp"
               />
             </div>
             <div className="px-6 pb-6 pt-[18px]">
-              <h3 className="text-[1.05rem] font-medium tracking-[-0.01em] text-neutral-900 font-['Neutralsans']">
+              <h3 className="text-[1.05rem] font-medium tracking-[-0.01em] text-ink-strong">
                 Generate pages
               </h3>
               <p className="mt-1.5 max-w-[42ch] text-[0.92rem] leading-[1.5] text-gray-500">
@@ -49,17 +49,17 @@ export const PixartualBento: React.FC = () => {
           </article>
 
           {/* Card 2: Refine with chat */}
-          <article className="bento-card col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-5 cursor-pointer">
+          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-5">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Refining a section with chat"
-                className="block w-full flex-none h-auto px-[25px] pt-4 object-contain"
+                className="block w-full flex-none h-auto px-[25px] object-contain"
                 loading="lazy"
                 src="/images/bento-refine.webp"
               />
             </div>
             <div className="px-6 pb-6 pt-[18px]">
-              <h3 className="text-[1.05rem] font-medium tracking-[-0.01em] text-neutral-900 font-['Neutralsans']">
+              <h3 className="text-[1.05rem] font-medium tracking-[-0.01em] text-ink-strong">
                 Refine with chat
               </h3>
               <p className="mt-1.5 max-w-[42ch] text-[0.92rem] leading-[1.5] text-gray-500">
@@ -69,7 +69,7 @@ export const PixartualBento: React.FC = () => {
           </article>
 
           {/* Card 3: CMS */}
-          <article className="bento-card col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-4 cursor-pointer">
+          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-stone-100 md:col-span-4">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Managing CMS collections"
@@ -79,7 +79,7 @@ export const PixartualBento: React.FC = () => {
               />
             </div>
             <div className="px-6 pb-6 pt-[18px]">
-              <h3 className="text-[1.05rem] font-medium tracking-[-0.01em] text-neutral-900 font-['Neutralsans']">
+              <h3 className="text-[1.05rem] font-medium tracking-[-0.01em] text-ink-strong">
                 CMS
               </h3>
               <p className="mt-1.5 max-w-[42ch] text-[0.92rem] leading-[1.5] text-gray-500">
@@ -107,7 +107,7 @@ export const PixartualBento: React.FC = () => {
               </div>
             </div>
             <div className="px-6 pb-6 pt-[18px]">
-              <h3 className="text-[1.05rem] font-medium tracking-[-0.01em] text-neutral-900 font-['Neutralsans']">
+              <h3 className="text-[1.05rem] font-medium tracking-[-0.01em] text-ink-strong">
                 Build beyond landing pages
               </h3>
               <p className="mt-1.5 max-w-[42ch] text-[0.92rem] leading-[1.5] text-gray-500">

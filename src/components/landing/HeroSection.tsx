@@ -40,9 +40,9 @@ export const HeroSection: React.FC = () => {
         />
 
         <div className="relative z-[2] mx-auto flex max-w-[960px] flex-col items-center pt-5 text-center md:pt-[30px]">
-          <h1 className="mb-[18px] max-w-[780px] text-[clamp(32px,5vw,52px)] font-medium leading-[1.25] tracking-[-0.01em] text-ink-strong font-['Neutralsans']">
+          <h1 className="mb-[18px] max-w-[780px] text-[clamp(32px,5vw,48px)] font-medium leading-[1.3] tracking-[-0.01em] text-ink-strong">
             Build a{' '}
-            <span className="hero-shine font-['Neutralsans'] font-bold text-ink-strong" data-text="polished">
+            <span className="hero-shine" data-text="polished">
               polished
             </span>{' '}
             website or web app with AI.
@@ -86,7 +86,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Quick Suggestion Pills */}
-            <div className="mt-[30px] flex max-w-[760px] flex-wrap items-center justify-center gap-x-1 gap-y-1">
+            <div className="mt-[30px] flex max-w-[760px] flex-wrap items-center justify-center gap-x-0.5 gap-y-1">
               {samplePrompts.map((p, idx) => (
                 <React.Fragment key={p}>
                   <button

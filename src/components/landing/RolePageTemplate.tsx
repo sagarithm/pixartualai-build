@@ -56,10 +56,11 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
   const logos = [
     { name: 'FontInLogo', src: '/images/personas/logos/logo-fontinlogo.png', h: 30 },
     { name: 'LogoToUse', src: '/images/personas/logos/logo-logotouse.png', h: 34 },
-    { name: 'Favicon', src: '/images/personas/logos/logo-favicon.png', h: 30 },
-    { name: 'Motion', src: '/images/personas/logos/logo-motion.png', h: 32 },
-    { name: 'Orange', src: '/images/personas/logos/logo-orange.png', h: 28 },
-    { name: 'Wonderlist', src: '/images/personas/logos/logo-wonderlist.png', h: 30 },
+    { name: 'Favicon', src: '/images/personas/logos/logo-favicon.png', h: 34 },
+    { name: 'Motion', src: '/images/personas/logos/logo-motion.png', h: 22 },
+    { name: 'Orange', src: '/images/personas/logos/logo-orange.png', h: 30 },
+    { name: 'Wonderlist', src: '/images/personas/logos/logo-wonderlist.png', h: 28 },
+    { name: 'MwStRechner', src: '/images/personas/logos/logo-3.png', h: 20 },
   ];
 
   return (

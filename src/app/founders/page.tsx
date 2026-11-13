@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { RolePageTemplate } from '@/components/landing/RolePageTemplate';
-import { RocketLaunch, ChartLineUp, ShieldCheck, Lightning } from '@phosphor-icons/react';
+import { RocketLaunch, Browser, Database, Lightning } from '@phosphor-icons/react';
 
 export default function FoundersPage() {
   return (
@@ -25,7 +25,7 @@ export default function FoundersPage() {
           title: 'Built to earn trust instantly',
           tagline: 'Every detail signals credibility.',
           description:
-            'Clear propositions, transparent social proof, and crisp visual hierarchy give prospective customers and angels the confidence to convert without second guessing.',
+            "People decide whether to trust your company in moments. A polished, intentional website shows you're serious about what you do. PixartualAI creates layouts with thoughtful hierarchy, typography, and spacing that help your brand feel established from day one.",
           imageSrc: '/images/personas/founders-trust.webp',
           reverse: true,
         },
@@ -33,15 +33,15 @@ export default function FoundersPage() {
           title: 'Launch faster, iterate smarter',
           tagline: 'Go live without the usual bottlenecks.',
           description:
-            'Skip the endless weeks of design reviews and developer backlogs. Prompt what you need, refine via natural language chat, and deploy directly to global edge CDN in seconds.',
+            'Great ideas lose momentum waiting on design revisions and development cycles. PixartualAI helps you publish a professional website in minutes, so you can validate your product, gather feedback, and improve as your business grows.',
           imageSrc: '/images/personas/founders-launch-faster.webp',
           reverse: false,
         },
         {
           title: 'Designed to grow with you',
-          tagline: 'A platform that scales as your product does.',
+          tagline: 'A website that scales as your business does.',
           description:
-            'Add customer dashboards, dynamic pricing calculators, waitlist portals, and CMS directories as your startup scales from pre-seed to Series A without rebuilding from scratch.',
+            "Whether you're announcing a new product, raising funding, or expanding your team, your website should evolve effortlessly. PixartualAI gives you a flexible foundation that's easy to update, keeping your online presence as polished as your next milestone.",
           imageSrc: '/images/personas/founders-grow-with-you.webp',
           reverse: true,
         },
@@ -50,24 +50,24 @@ export default function FoundersPage() {
       flameDesc="PixartualAI covers the whole first mile: the site, the product, the signups, and the changes you make right after you learn."
       flameCards={[
         {
-          title: 'Instant Production Launch',
-          desc: 'Get full responsive layouts, copy, and typography generated in seconds from a single description.',
+          title: 'A launch-ready site',
+          desc: 'Describe your product and get a homepage, pricing, and about pages that are ready to publish, not a blank template to fill in.',
           icon: <RocketLaunch size={28} weight="duotone" className="text-orange-500" />,
         },
         {
-          title: 'Interactive State & Portals',
-          desc: 'Build functional client portals, ROI calculators, and dynamic lead capture without custom backend code.',
+          title: 'A real MVP, not a mockup',
+          desc: 'Build a working app or dashboard so you can put an actual product in front of users and learn from how they use it.',
+          icon: <Browser size={28} weight="duotone" className="text-orange-500" />,
+        },
+        {
+          title: 'Signups that go somewhere',
+          desc: 'Waitlists, forms, and app data save to a database you own, so every early lead is yours to export and build on.',
+          icon: <Database size={28} weight="duotone" className="text-orange-500" />,
+        },
+        {
+          title: 'Change it the moment you learn',
+          desc: 'Rewrite the pitch, add a page, or test a new angle in minutes. No ticket, no dev queue, no waiting on a release.',
           icon: <Lightning size={28} weight="duotone" className="text-orange-500" />,
-        },
-        {
-          title: 'Zero Code Lock-in',
-          desc: 'Export clean React and Tailwind components whenever your team is ready to self-host or integrate custom APIs.',
-          icon: <ShieldCheck size={28} weight="duotone" className="text-orange-500" />,
-        },
-        {
-          title: 'Conversion-Focused Architecture',
-          desc: 'Layouts structured around high-converting SaaS principles with clear CTAs, proof badges, and responsive viewports.',
-          icon: <ChartLineUp size={28} weight="duotone" className="text-orange-500" />,
         },
       ]}
       faqTitle="Founder questions, answered"
@@ -79,15 +79,23 @@ export default function FoundersPage() {
         },
         {
           q: 'Do I need to know how to code or design?',
-          a: 'No. PixartualAI turns natural language instructions into production-ready software. You can tweak everything visually or conversationally.',
+          a: 'No. You describe what you want in plain language and PixartualAI generates it. You edit everything visually, and the output is built to look professional without hiring a designer.',
         },
         {
-          q: 'Can I connect my own custom domain?',
-          a: 'Yes, all plans support unlimited custom domains with automatic free SSL and global edge routing.',
+          q: 'How fast can I get something live?',
+          a: 'Most founders publish a first page within minutes. A fuller site or a working MVP takes longer to refine, but you are editing a real build the whole time instead of waiting on a handoff.',
         },
         {
-          q: 'Can I export the code later?',
-          a: 'Yes. You can export complete, clean React/Next.js code with Tailwind CSS anytime. You own 100% of your product.',
+          q: 'Can I collect signups and store data?',
+          a: 'Yes. Forms, waitlists, and app data save to a database that belongs to your project, so you own the signups and can export them or build features on top.',
+        },
+        {
+          q: 'Can I use my own brand and domain?',
+          a: 'Yes. Set your colors, fonts, and logo, then publish to a custom domain. Your site stays on brand as you add pages and features.',
+        },
+        {
+          q: 'What happens as the company grows?',
+          a: 'You keep building in the same place. Add pages, ship product features, and invite teammates when you hire, without migrating to a different tool.',
         },
       ]}
     />
