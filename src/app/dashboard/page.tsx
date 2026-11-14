@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
 import {
   House,
@@ -166,255 +167,10 @@ export default function DashboardPage() {
       {/* =========================================================================
           LEFT SIDEBAR (Fixed / Sticky on Desktop)
           ========================================================================= */}
-      <aside className="hidden md:flex w-[240px] flex-col justify-between border-r border-neutral-200/80 dark:border-neutral-800 bg-[#fafafa] dark:bg-[#121212] p-4 select-none">
-        {/* Top Segment */}
-        <div className="flex flex-col gap-3">
-          {/* Logo & Notification Bell */}
-          <div className="flex items-center justify-between pl-1 pr-1 pt-1">
-            <Link href="/dashboard" className="flex items-center gap-2">
-              <PixartualLogo variant="auto" size={26} showWordmark />
-            </Link>
-            <button
-              type="button"
-              className="relative p-1.5 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
-              title="Notifications"
-            >
-              <Bell size={18} />
-              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-accent" />
-            </button>
-          </div>
-
-          {/* Workspace Switcher */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setIsWorkspaceOpen(!isWorkspaceOpen)}
-              className="w-full flex items-center justify-between p-2 rounded-xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-2xs hover:bg-stone-50 dark:hover:bg-neutral-800 transition-colors"
-            >
-              <div className="flex items-center gap-2 min-w-0">
-                <div className="w-5 h-5 rounded-md bg-accent flex items-center justify-center text-white text-[11px] font-bold shadow-2xs shrink-0">
-                  S
-                </div>
-                <span className="text-[13px] font-medium text-neutral-800 dark:text-neutral-200 truncate">
-                  {workspaceName}
-                </span>
-              </div>
-              <CaretUpDown size={14} className="text-neutral-400 shrink-0" />
-            </button>
-
-            {isWorkspaceOpen && (
-              <div className="absolute top-full left-0 mt-1 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1.5 shadow-lg z-50 mfy-fadein">
-                <div className="px-2 py-1 text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">
-                  Workspaces
-                </div>
-                <button
-                  type="button"
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 text-left text-xs font-medium text-neutral-800 dark:text-neutral-200 rounded-lg bg-neutral-100 dark:bg-neutral-800"
-                >
-                  <div className="w-4 h-4 rounded bg-accent text-[9px] text-white flex items-center justify-center font-bold">
-                    S
-                  </div>
-                  <span className="truncate">{workspaceName}</span>
-                  <Check size={12} className="ml-auto text-accent" />
-                </button>
-                <div className="my-1 border-t border-neutral-200 dark:border-neutral-800" />
-                <button
-                  type="button"
-                  onClick={() => setIsWorkspaceOpen(false)}
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 text-left text-xs text-neutral-600 dark:text-neutral-400 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800/60"
-                >
-                  <Plus size={12} />
-                  <span>Create new workspace</span>
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Search Button */}
-          <button
-            type="button"
-            onClick={() => setIsSearchOpen(true)}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] text-neutral-400 text-xs hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors shadow-2xs"
-          >
-            <MagnifyingGlass size={15} className="text-neutral-400" />
-            <span className="text-[13px] text-neutral-400">Search</span>
-            <span className="ml-auto text-[10px] font-mono border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-400">
-              Ctrl K
-            </span>
-          </button>
-
-          {/* Main Navigation */}
-          <nav className="flex flex-col gap-0.5 mt-1">
-            <Link
-              href="/dashboard"
-              className="flex items-center gap-3 px-3 py-2 rounded-xl text-[13.5px] font-medium bg-neutral-200/70 dark:bg-neutral-800 text-neutral-900 dark:text-white transition-colors"
-            >
-              <House size={18} weight="fill" />
-              <span>Home</span>
-            </Link>
-
-            <button
-              type="button"
-              onClick={() => setActiveTab('projects')}
-              className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-[13.5px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors text-left"
-            >
-              <div className="flex items-center gap-3">
-                <SquaresFour size={18} />
-                <span>Projects</span>
-              </div>
-              <CaretDown size={14} className="text-neutral-400" />
-            </button>
-
-            <Link
-              href="/templates"
-              className="flex items-center gap-3 px-3 py-2 rounded-xl text-[13.5px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
-            >
-              <FolderSimple size={18} />
-              <span>Templates</span>
-            </Link>
-
-            <Link
-              href="/domains"
-              className="flex items-center gap-3 px-3 py-2 rounded-xl text-[13.5px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
-            >
-              <Globe size={18} />
-              <span>Domains</span>
-            </Link>
-
-            <button
-              type="button"
-              onClick={() => setIsConnectorsOpen(true)}
-              className="flex items-center gap-3 px-3 py-2 rounded-xl text-[13.5px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors text-left"
-            >
-              <Plugs size={18} />
-              <span>Connectors</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleLaunchStudio()}
-              className="flex items-center gap-3 px-3 py-2 rounded-xl text-[13.5px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors text-left"
-            >
-              <Sparkle size={18} />
-              <span>Skills</span>
-            </button>
-          </nav>
-        </div>
-
-        {/* Bottom Segment */}
-        <div className="flex flex-col gap-3 pt-2">
-          {/* Promo Card 1: Spread the word */}
-          <div className="p-3 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#181818] flex items-center justify-between shadow-2xs hover:border-neutral-300 transition-colors cursor-pointer group">
-            <div className="flex flex-col">
-              <span className="text-[12.5px] font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
-                Spread the word
-              </span>
-              <span className="text-[11px] text-neutral-400 leading-tight mt-0.5">
-                and earn free credits
-              </span>
-            </div>
-            <Gift size={18} className="text-neutral-500 group-hover:text-accent transition-colors shrink-0" />
-          </div>
-
-          {/* Promo Card 2: Upgrade to Pro */}
-          <Link
-            href="/pricing"
-            className="p-3 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#181818] flex items-center justify-between shadow-2xs hover:border-neutral-300 transition-colors group"
-          >
-            <div className="flex flex-col">
-              <span className="text-[12.5px] font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
-                Upgrade to Pro
-              </span>
-              <span className="text-[11px] text-neutral-400 leading-tight mt-0.5">
-                Unlock more features
-              </span>
-            </div>
-            <Lightning size={18} weight="fill" className="text-amber-500 shrink-0" />
-          </Link>
-
-          {/* Tertiary Links */}
-          <div className="flex flex-col gap-0.5 pt-1 text-[12.5px]">
-            <Link
-              href="/contact"
-              className="flex items-center gap-2.5 px-2 py-1.5 text-neutral-500 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
-            >
-              <EnvelopeSimple size={16} />
-              <span>Contact support</span>
-            </Link>
-
-            <Link
-              href="/insights"
-              className="flex items-center justify-between px-2 py-1.5 text-neutral-500 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
-            >
-              <div className="flex items-center gap-2.5">
-                <BookOpen size={16} />
-                <span>Resources</span>
-              </div>
-              <CaretRight size={12} className="text-neutral-400" />
-            </Link>
-
-            <div className="relative group">
-              <button
-                type="button"
-                className="w-full flex items-center justify-between px-2 py-1.5 text-neutral-500 hover:text-neutral-900 dark:hover:text-white rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors text-left"
-              >
-                <div className="flex items-center gap-2.5">
-                  <At size={16} />
-                  <span>Follow us</span>
-                </div>
-                <CaretRight size={12} className="text-neutral-400" />
-              </button>
-            </div>
-          </div>
-
-          {/* User Profile Pill */}
-          <div className="relative border-t border-neutral-200/80 dark:border-neutral-800 pt-2">
-            <button
-              type="button"
-              onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-              className="w-full flex items-center justify-between p-1.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-colors"
-            >
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-accent to-accent-hot text-white flex items-center justify-center font-bold text-xs shadow-2xs">
-                  S
-                </div>
-                <span className="text-[13px] font-semibold text-neutral-900 dark:text-neutral-100">
-                  {userName}
-                </span>
-              </div>
-              <CaretDown size={14} className="text-neutral-400" />
-            </button>
-
-            {isUserMenuOpen && (
-              <div className="absolute bottom-full left-0 mb-1.5 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1.5 shadow-xl z-50 mfy-fadein">
-                <div className="px-2 py-1 text-[11px] font-medium text-neutral-400 truncate">
-                  sagar@pixartual.ai
-                </div>
-                <div className="my-1 border-t border-neutral-200 dark:border-neutral-800" />
-                <button
-                  type="button"
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-neutral-700 dark:text-neutral-300 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800"
-                >
-                  <User size={14} /> Profile & Account
-                </button>
-                <Link
-                  href="/pricing"
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-neutral-700 dark:text-neutral-300 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800"
-                >
-                  <CreditCard size={14} /> Billing & Credits
-                </Link>
-                <div className="my-1 border-t border-neutral-200 dark:border-neutral-800" />
-                <Link
-                  href="/"
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-red-600 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/30"
-                >
-                  <SignOut size={14} /> Log out
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </aside>
+      <DashboardSidebar
+        onOpenSearch={() => setIsSearchOpen(true)}
+        onOpenConnectors={() => setIsConnectorsOpen(true)}
+      />
 
       {/* =========================================================================
           MAIN WORKSPACE CANVAS (Scrollable on right)
@@ -443,9 +199,12 @@ export default function DashboardPage() {
         <div className="p-4 md:p-8 max-w-[1300px] w-full mx-auto">
           {/* 1. Hero Sunset Glowing Box */}
           <div
-            className="relative overflow-hidden rounded-[32px] p-6 sm:p-10 md:p-14 mb-8 border border-neutral-200/70 dark:border-neutral-800 shadow-sm bg-cover bg-center transition-all"
+            className="relative overflow-hidden rounded-[32px] p-6 sm:p-10 md:p-14 mb-8 border border-neutral-200/70 dark:border-neutral-800 shadow-sm transition-all"
             style={{
               backgroundImage: 'url(/images/prompt-background.webp)',
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
               backgroundColor: '#fffaf5',
             }}
           >
@@ -454,31 +213,31 @@ export default function DashboardPage() {
               <button
                 type="button"
                 onClick={() => setIsConnectorsOpen(true)}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-md shadow-2xs border border-neutral-200/80 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-200 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-neutral-200/80 dark:border-neutral-800 text-xs font-normal text-neutral-700 dark:text-neutral-300 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
               >
                 <div className="flex items-center -space-x-1">
-                  <span className="w-4 h-4 rounded-full bg-blue-500 text-white flex items-center justify-center text-[8px] font-bold">
-                    G
-                  </span>
-                  <span className="w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[8px] font-bold">
-                    S
-                  </span>
-                  <span className="w-4 h-4 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[8px] font-bold">
-                    Git
-                  </span>
+                  <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center p-0.5 shadow-2xs z-30">
+                    <Image src="/images/connectors/googledrive.svg" alt="Google Drive" width={12} height={12} />
+                  </div>
+                  <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center p-0.5 shadow-2xs z-20">
+                    <Image src="/images/connectors/slack.svg" alt="Slack" width={12} height={12} />
+                  </div>
+                  <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center p-0.5 shadow-2xs z-10">
+                    <Image src="/images/connectors/github.svg" alt="GitHub" width={12} height={12} />
+                  </div>
                 </div>
-                <span>Connect all your tools</span>
-                <ArrowRight size={12} className="text-neutral-400" />
+                <span className="text-[12px] font-normal text-neutral-700 dark:text-neutral-300">Connect all your tools</span>
+                <ArrowRight size={11} className="text-neutral-400" />
               </button>
             </div>
 
             {/* Main Greeting */}
-            <h1 className="font-inter font-semibold text-center text-[28px] sm:text-[34px] md:text-[38px] tracking-[-0.02em] text-neutral-900 dark:text-white mb-6 leading-tight">
+            <h1 className="font-sans font-normal md:font-medium text-center text-[30px] sm:text-[34px] md:text-[36px] tracking-[-0.025em] text-[#111111] dark:text-white mb-6 leading-tight">
               {greeting}
             </h1>
 
             {/* Floating Prompt Box */}
-            <div className="max-w-[740px] mx-auto rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/90 dark:border-neutral-800 shadow-[0_10px_35px_rgba(0,0,0,0.06)] p-3 sm:p-4 relative transition-all">
+            <div className="max-w-[760px] mx-auto rounded-[20px] bg-white dark:bg-[#181818] border border-neutral-200/90 dark:border-neutral-800 shadow-[0_4px_24px_rgba(0,0,0,0.04)] p-4 relative transition-all">
               <textarea
                 rows={3}
                 value={prompt}
@@ -490,7 +249,7 @@ export default function DashboardPage() {
                   }
                 }}
                 placeholder={placeholders[placeholderIndex]}
-                className="w-full resize-none border-0 bg-transparent text-[15px] leading-relaxed text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:ring-0 p-1"
+                className="w-full resize-none border-0 bg-transparent text-[15px] leading-relaxed text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:ring-0 p-1 min-h-[90px]"
               />
 
               {/* Toolbar */}
@@ -537,9 +296,9 @@ export default function DashboardPage() {
                       onClick={() => setIsModeOpen(!isModeOpen)}
                       className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-[#1a1a1a] text-xs font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
                     >
-                      <Hammer size={14} className="text-neutral-500" />
+                      <Hammer size={13} className="text-neutral-500" />
                       <span>{selectedMode}</span>
-                      <CaretDown size={12} className="text-neutral-400" />
+                      <CaretDown size={11} className="text-neutral-400" />
                     </button>
                     {isModeOpen && (
                       <div className="absolute bottom-full left-0 mb-2 w-32 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg z-50 mfy-fadein">
@@ -592,23 +351,25 @@ export default function DashboardPage() {
               <button
                 type="button"
                 onClick={() => router.push('/dashboard/studio')}
-                className="flex items-center gap-1.5 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors group"
+                className="flex items-center gap-1.5 text-[13px] text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors group"
               >
-                <MagicWand size={14} className="text-neutral-400 group-hover:text-accent transition-colors" />
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2.5 2.5" className="text-neutral-400 group-hover:text-neutral-700 transition-colors">
+                  <rect x="2" y="2" width="12" height="12" rx="2" />
+                </svg>
                 <span>Create blank site</span>
               </button>
             </div>
           </div>
 
           {/* 2. Projects & Templates Bar */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => setActiveTab('projects')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
                   activeTab === 'projects'
-                    ? 'bg-neutral-200/80 dark:bg-neutral-800 text-neutral-900 dark:text-white'
+                    ? 'bg-[#f5f5f5] dark:bg-neutral-800 text-neutral-900 dark:text-white'
                     : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
                 }`}
               >
@@ -619,7 +380,7 @@ export default function DashboardPage() {
                 onClick={() => setActiveTab('templates')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                   activeTab === 'templates'
-                    ? 'bg-neutral-200/80 dark:bg-neutral-800 text-neutral-900 dark:text-white'
+                    ? 'bg-[#f5f5f5] dark:bg-neutral-800 text-neutral-900 dark:text-white'
                     : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
                 }`}
               >
@@ -629,79 +390,62 @@ export default function DashboardPage() {
 
             <Link
               href="/dashboard?view=all"
-              className="text-xs text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-medium flex items-center gap-1"
+              className="text-xs text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal flex items-center gap-1"
             >
               <span>View all</span>
               <ArrowRight size={12} />
             </Link>
           </div>
 
-          {/* 3. Projects Grid */}
+          {/* 3. Projects Grid - Showing Orvane (Cloned) exactly as in Modulify account */}
           {activeTab === 'projects' ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((proj) => (
-                <div
-                  key={proj.id}
-                  onClick={() => router.push(`/dashboard/studio?template=${proj.id}`)}
-                  className="group flex flex-col rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#161616] overflow-hidden shadow-2xs hover:shadow-md hover:border-neutral-300 dark:hover:border-neutral-700 transition-all cursor-pointer"
-                >
-                  {/* Card Image / Preview */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900">
-                    <Image
-                      src={proj.coverUrl}
-                      alt={proj.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <span className="px-3 py-1.5 rounded-xl bg-white/95 text-neutral-900 text-xs font-semibold shadow-lg">
-                        Open in Studio
+              <div
+                onClick={() => router.push('/dashboard/studio?template=orvane-cloned')}
+                className="group flex flex-col rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#161616] overflow-hidden shadow-2xs hover:shadow-md hover:border-neutral-300 dark:hover:border-neutral-700 transition-all cursor-pointer"
+              >
+                {/* Card Image / Preview */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#eef2f5] flex items-center justify-center">
+                  <Image
+                    src="/images/orvane-preview.png"
+                    alt="Orvane (Cloned)"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <span className="px-3 py-1.5 rounded-xl bg-white/95 text-neutral-900 text-xs font-semibold shadow-lg">
+                      Open in Studio
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Bottom Meta */}
+                <div className="flex items-center justify-between p-3.5">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-5 h-5 rounded-md bg-stone-100 dark:bg-neutral-800 flex items-center justify-center text-xs shrink-0 overflow-hidden text-neutral-700">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-[13px] font-medium text-neutral-900 dark:text-neutral-100 truncate">
+                        Orvane (Cloned)
+                      </span>
+                      <span className="text-[11px] text-neutral-400">
+                        Edited 1w ago
                       </span>
                     </div>
                   </div>
-
-                  {/* Card Bottom Meta */}
-                  <div className="flex items-center justify-between p-3.5">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="w-6 h-6 rounded-md bg-stone-100 dark:bg-neutral-800 flex items-center justify-center text-xs shrink-0">
-                        {proj.icon}
-                      </div>
-                      <div className="flex flex-col min-w-0">
-                        <span className="text-[13px] font-semibold text-neutral-900 dark:text-neutral-100 truncate">
-                          {proj.title}
-                        </span>
-                        <span className="text-[11px] text-neutral-400">
-                          {proj.edited}
-                        </span>
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                      className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800"
-                    >
-                      <DotsThree size={18} weight="bold" />
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                    className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800"
+                  >
+                    <DotsThree size={18} weight="bold" />
+                  </button>
                 </div>
-              ))}
-
-              {/* Blank Project Starter Card */}
-              <div
-                onClick={() => router.push('/dashboard/studio')}
-                className="flex flex-col items-center justify-center aspect-[16/10] rounded-2xl border-2 border-dashed border-neutral-200 dark:border-neutral-800 hover:border-accent hover:bg-accent/5 transition-all cursor-pointer p-6 text-center group"
-              >
-                <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 group-hover:bg-accent group-hover:text-white flex items-center justify-center text-neutral-500 transition-colors mb-2">
-                  <Plus size={18} />
-                </div>
-                <span className="text-[13px] font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-accent transition-colors">
-                  New project
-                </span>
-                <span className="text-[11px] text-neutral-400 mt-0.5">
-                  Start from scratch or prompt
-                </span>
               </div>
             </div>
           ) : (
@@ -743,16 +487,13 @@ export default function DashboardPage() {
         {!isSupportDismissed && (
           <div className="flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white dark:bg-[#1a1a1a] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border border-neutral-200/90 dark:border-neutral-800 mb-3 max-w-[320px] mfy-fadein">
             {/* Stacked 3 team avatars */}
-            <div className="flex -space-x-2 shrink-0">
-              <div className="w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold border-2 border-white dark:border-neutral-900">
-                A
-              </div>
-              <div className="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold border-2 border-white dark:border-neutral-900">
-                E
-              </div>
-              <div className="w-7 h-7 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] font-bold border-2 border-white dark:border-neutral-900">
-                M
-              </div>
+            <div className="w-12 h-7 relative rounded-full overflow-hidden shrink-0 border border-neutral-200/50">
+              <Image
+                src="/images/support-team-avatars.png"
+                alt="Support team"
+                fill
+                className="object-cover"
+              />
             </div>
 
             <div className="flex flex-col">
@@ -779,7 +520,7 @@ export default function DashboardPage() {
         <button
           type="button"
           onClick={() => setIsSupportChatOpen(!isSupportChatOpen)}
-          className="relative w-12 h-12 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-transform"
+          className="relative w-11 h-11 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
           aria-label="Chat with support"
         >
           <ChatCircleDots size={22} weight="fill" />

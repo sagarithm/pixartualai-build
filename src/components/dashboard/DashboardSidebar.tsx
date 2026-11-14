@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
 import {
   House,
@@ -121,7 +122,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
   };
 
   return (
-    <aside className="hidden md:flex w-[240px] flex-col justify-between border-r border-neutral-200/80 dark:border-neutral-800 bg-[#fafafa] dark:bg-[#121212] p-4 select-none h-screen shrink-0 overflow-y-auto z-30">
+    <aside className="hidden md:flex w-[240px] flex-col justify-between border-r border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#121212] p-4 select-none h-screen shrink-0 overflow-y-auto z-30">
       {/* Top Segment */}
       <div className="flex flex-col gap-3">
         {/* Logo & Notification Bell */}
@@ -131,11 +132,10 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
           </Link>
           <button
             type="button"
-            className="relative p-1.5 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
+            className="p-1.5 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
             title="Notifications"
           >
             <Bell size={18} />
-            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-accent" />
           </button>
         </div>
 
@@ -147,7 +147,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
             className="w-full flex items-center justify-between p-2 rounded-xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-2xs hover:bg-stone-50 dark:hover:bg-neutral-800 transition-colors"
           >
             <div className="flex items-center gap-2 min-w-0">
-              <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white text-[11px] font-bold shadow-2xs shrink-0">
+              <div className="w-5 h-5 rounded-[6px] bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white text-[11px] font-bold shadow-2xs shrink-0">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
@@ -294,7 +294,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
                 href={link.href}
                 className={`flex items-center justify-between px-3 py-2 rounded-xl text-[13.5px] transition-colors ${
                   active
-                    ? 'bg-neutral-200/70 dark:bg-neutral-800 text-neutral-900 dark:text-white font-medium'
+                    ? 'bg-[#f5f5f5] dark:bg-neutral-800 text-neutral-900 dark:text-white font-medium'
                     : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
                 }`}
               >
@@ -440,13 +440,14 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
             className="w-full flex items-center justify-between p-1.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-colors"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-200 via-pink-200 to-amber-200 p-0.5 flex items-center justify-center shadow-2xs">
-                <div className="w-full h-full rounded-[10px] bg-white dark:bg-black flex items-center justify-center font-bold text-xs text-neutral-900 dark:text-white">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </div>
+              <div className="w-8 h-8 rounded-xl overflow-hidden shadow-2xs shrink-0 border border-black/5 bg-[#f8f6f0]">
+                <Image
+                  src="/images/user-avatar.png"
+                  alt="Sagarithm"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="text-[13px] font-semibold text-neutral-900 dark:text-neutral-100">
                 {userName}
@@ -460,13 +461,14 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
             <div className="absolute bottom-full left-0 mb-2 w-[230px] rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-2xl p-2 z-50 mfy-fadein text-xs space-y-0.5">
               {/* Header */}
               <div className="flex items-center gap-3 p-2 rounded-xl bg-stone-50/60 dark:bg-neutral-800/40">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-200 via-pink-200 to-amber-200 p-0.5 flex items-center justify-center shadow-2xs shrink-0">
-                  <div className="w-full h-full rounded-[10px] bg-white dark:bg-black flex items-center justify-center font-bold text-xs text-neutral-900 dark:text-white">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </div>
+                <div className="w-9 h-9 rounded-xl overflow-hidden shadow-2xs shrink-0 border border-black/5 bg-[#f8f6f0]">
+                  <Image
+                    src="/images/user-avatar.png"
+                    alt="Sagarithm"
+                    width={36}
+                    height={36}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="font-semibold text-neutral-900 dark:text-white truncate">
