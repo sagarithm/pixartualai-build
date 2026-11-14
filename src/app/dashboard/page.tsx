@@ -310,11 +310,10 @@ export default function DashboardPage() {
                               setSelectedMode(mode);
                               setIsModeOpen(false);
                             }}
-                            className={`w-full text-left px-2.5 py-1.5 text-xs rounded-lg transition-colors ${
-                              selectedMode === mode
-                                ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white'
-                                : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800'
-                            }`}
+                            className={`w-full text-left px-2.5 py-1.5 text-xs rounded-lg transition-colors ${selectedMode === mode
+                              ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white'
+                              : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+                              }`}
                           >
                             {mode}
                           </button>
@@ -568,11 +567,10 @@ export default function DashboardPage() {
                   </div>
                   <button
                     type="button"
-                    className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-colors ${
-                      c.connected
-                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300'
-                        : 'bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100'
-                    }`}
+                    className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-colors ${c.connected
+                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300'
+                      : 'bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100'
+                      }`}
                   >
                     {c.connected ? 'Active' : 'Connect'}
                   </button>

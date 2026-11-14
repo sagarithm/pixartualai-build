@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
 import { Users, Plus, X, EnvelopeSimple } from '@phosphor-icons/react';
 
@@ -38,8 +39,14 @@ export default function WorkspaceMembersPage() {
             {members.map((m) => (
               <div key={m.email} className="p-4 sm:p-5 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-200 via-pink-200 to-amber-200 p-0.5 flex items-center justify-center font-bold text-xs text-neutral-900 shadow-2xs">
-                    S
+                  <div className="w-8 h-8 rounded-xl overflow-hidden shadow-2xs shrink-0 border border-black/5 bg-[#f8f6f0]">
+                    <Image
+                      src="/images/user-avatar.png"
+                      alt="Sagarithm"
+                      width={32}
+                      height={32}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <div className="font-semibold text-neutral-900 dark:text-white">{m.name}</div>

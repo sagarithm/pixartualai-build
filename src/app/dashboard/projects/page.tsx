@@ -35,7 +35,7 @@ export default function ProjectsPage() {
       desc: 'High-tech drone & aerial electronics product showcase',
       edited: '1 week ago',
       created: 'Nov 5, 2026',
-      coverUrl: '/images/galway.jpg',
+      coverUrl: '/images/orvane-preview.png',
       icon: '✈️',
       domain: 'orvane.pixartual.ai',
       status: 'Live',

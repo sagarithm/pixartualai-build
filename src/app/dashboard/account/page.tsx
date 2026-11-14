@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
 import {
   Lock,
@@ -96,13 +97,14 @@ export default function AccountPage() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-200 via-pink-200 to-amber-200 p-0.5 flex items-center justify-center shadow-2xs">
-                        <div className="w-full h-full rounded-[10px] bg-white dark:bg-black flex items-center justify-center font-bold text-xs text-neutral-900 dark:text-white">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
-                            <circle cx="12" cy="12" r="3" />
-                          </svg>
-                        </div>
+                      <div className="w-10 h-10 rounded-xl overflow-hidden shadow-2xs shrink-0 border border-black/5 bg-[#f8f6f0]">
+                        <Image
+                          src="/images/user-avatar.png"
+                          alt="Sagarithm"
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <button
                         type="button"
