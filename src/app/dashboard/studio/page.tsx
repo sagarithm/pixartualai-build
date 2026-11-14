@@ -62,6 +62,7 @@ function StudioContent() {
   const [copiedLink, setCopiedLink] = useState(false);
   const [buildMode, setBuildMode] = useState<'Build' | 'Edit' | 'Enhance'>('Build');
   const [isBuildModeOpen, setIsBuildModeOpen] = useState(false);
+  const [isSupportOpen, setIsSupportOpen] = useState(true);
 
   // Chat conversation state
   const [chatInput, setChatInput] = useState('');
@@ -651,6 +652,43 @@ function StudioContent() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Floating Support Widget (Matching Image 2 Bottom Right) */}
+          <div className="fixed bottom-5 right-5 flex flex-col items-end gap-2.5 z-40">
+            {isSupportOpen && (
+              <div className="w-68 p-3 rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/90 dark:border-neutral-800 shadow-xl mfy-fadein relative">
+                <button
+                  type="button"
+                  onClick={() => setIsSupportOpen(false)}
+                  className="absolute top-2.5 right-2.5 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 p-0.5"
+                >
+                  <X size={12} />
+                </button>
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center -space-x-1.5">
+                    <div className="w-5 h-5 rounded-full overflow-hidden border border-white dark:border-neutral-800 shadow-2xs">
+                      <Image src="/images/user-avatar.png" alt="Support" width={20} height={20} className="object-cover" />
+                    </div>
+                    <div className="w-5 h-5 rounded-full overflow-hidden border border-white dark:border-neutral-800 shadow-2xs bg-amber-400" />
+                    <div className="w-5 h-5 rounded-full overflow-hidden border border-white dark:border-neutral-800 shadow-2xs bg-emerald-400" />
+                  </div>
+                  <div className="text-[11.5px] font-semibold text-neutral-900 dark:text-white">Need a hand?</div>
+                </div>
+                <p className="text-[10.5px] text-neutral-400 mt-1">
+                  Our support team is just a message away.
+                </p>
+              </div>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setIsSupportOpen(!isSupportOpen)}
+              className="w-10 h-10 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all"
+              title="Support chat"
+            >
+              <ChatCircleDots size={20} weight="fill" />
+            </button>
           </div>
         </main>
       </div>

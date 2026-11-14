@@ -6,247 +6,217 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
 import {
-  SquaresFour,
   Plus,
   MagnifyingGlass,
-  DotsThree,
-  ArrowRight,
+  CaretDown,
   FolderSimple,
-  Copy,
-  Trash,
-  ShareNetwork,
-  Export,
-  Globe,
-  Clock,
-  Sparkle,
+  DotsThree,
   Check,
+  Trash,
+  Copy,
+  X,
+  ChatCircleDots,
 } from '@phosphor-icons/react';
 
 export default function ProjectsPage() {
   const router = useRouter();
-  const [filter, setFilter] = useState<'all' | 'owned' | 'archived'>('all');
   const [search, setSearch] = useState('');
-  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState('Latest updated');
+  const [isSortOpen, setIsSortOpen] = useState(false);
+  const [isSupportOpen, setIsSupportOpen] = useState(true);
 
-  const initialProjects = [
+  const projects = [
     {
       id: 'orvane-cloned',
-      name: 'Orvane (Cloned)',
-      desc: 'High-tech drone & aerial electronics product showcase',
-      edited: '1 week ago',
-      created: 'Nov 5, 2026',
+      slug: 'teal-tide-zmk',
+      title: 'Orvane (Cloned)',
+      edited: 'Edited 26m ago',
       coverUrl: '/images/orvane-preview.png',
-      icon: '✈️',
-      domain: 'orvane.pixartual.ai',
-      status: 'Live',
-    },
-    {
-      id: 'nova-saas',
-      name: 'Nova SaaS Storefront',
-      desc: 'Multi-tiered B2B subscription software with Stripe checkout',
-      edited: '2 days ago',
-      created: 'Nov 12, 2026',
-      coverUrl: '/images/bento-generate.webp',
-      icon: '⚡',
-      domain: 'nova.pixartual.ai',
-      status: 'Live',
-    },
-    {
-      id: 'atelier-portfolio',
-      name: 'Atelier Portfolio',
-      desc: 'Minimalist creative agency and case study catalog',
-      edited: '5 hours ago',
-      created: 'Nov 14, 2026',
-      coverUrl: '/images/atelier.jpg',
-      icon: '🎨',
-      domain: 'atelier-design.pixartual.ai',
-      status: 'Draft',
-    },
-    {
-      id: 'vancouver-directory',
-      name: 'Vancouver City Guide',
-      desc: 'Relational CMS directory for local culinary spots and parks',
-      edited: '3 days ago',
-      created: 'Nov 11, 2026',
-      coverUrl: '/images/vancouver.jpg',
-      icon: '🌲',
-      domain: 'vancouver.pixartual.ai',
-      status: 'Live',
+      avatarBg: 'bg-gradient-to-tr from-orange-500 to-amber-500',
     },
   ];
-
-  const [projectsList, setProjectsList] = useState(initialProjects);
-
-  const filtered = projectsList.filter((p) =>
-    p.name.toLowerCase().includes(search.toLowerCase()) ||
-    p.desc.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const handleCopyLink = (domain: string, id: string) => {
-    navigator.clipboard.writeText(`https://${domain}`);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
-
-  const handleDelete = (id: string) => {
-    setProjectsList((prev) => prev.filter((p) => p.id !== id));
-  };
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-[#fafafa] dark:bg-[#0d0d0d] text-ink-strong">
       <DashboardSidebar />
 
-      <main className="flex-1 flex flex-col h-screen overflow-y-auto bg-[#fafafa]/50 dark:bg-[#0d0d0d] p-6 md:p-10">
+      <main className="flex-1 flex flex-col h-screen overflow-y-auto bg-[#fafafa]/50 dark:bg-[#0d0d0d] p-6 md:p-10 relative">
         <div className="max-w-[1300px] w-full mx-auto">
           {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-neutral-200/80 dark:border-neutral-800">
+          <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">Projects</h1>
               <p className="text-xs text-neutral-500 mt-1">
-                Manage, edit, publish, and monitor your web products and applications.
+                Create and manage all the projects in your workspace.
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => router.push('/dashboard/studio')}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black text-xs font-semibold hover:opacity-90 transition-opacity shadow-sm"
-              >
-                <Plus size={14} weight="bold" />
-                <span>New project</span>
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => router.push('/dashboard/studio')}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-semibold hover:opacity-90 transition-opacity shadow-2xs"
+            >
+              <Plus size={14} weight="bold" />
+              <span>Create</span>
+            </button>
           </div>
 
-          {/* Controls Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 my-6">
-            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-neutral-200/60 dark:bg-neutral-800/60 border border-neutral-200/80 dark:border-neutral-700/60 self-start">
-              <button
-                onClick={() => setFilter('all')}
-                className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
-                  filter === 'all'
-                    ? 'bg-white dark:bg-[#1a1a1a] text-neutral-900 dark:text-white shadow-2xs font-semibold'
-                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
-                }`}
-              >
-                All ({projectsList.length})
-              </button>
-              <button
-                onClick={() => setFilter('owned')}
-                className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
-                  filter === 'owned'
-                    ? 'bg-white dark:bg-[#1a1a1a] text-neutral-900 dark:text-white shadow-2xs font-semibold'
-                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
-                }`}
-              >
-                Owned by me
-              </button>
-              <button
-                onClick={() => setFilter('archived')}
-                className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
-                  filter === 'archived'
-                    ? 'bg-white dark:bg-[#1a1a1a] text-neutral-900 dark:text-white shadow-2xs font-semibold'
-                    : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
-                }`}
-              >
-                Archived (0)
-              </button>
-            </div>
-
-            {/* Search Input */}
-            <div className="relative w-full sm:w-64">
-              <MagnifyingGlass size={15} className="absolute left-3 top-2.5 text-neutral-400" />
+          {/* Filter & Sort Bar (Matching Image 1) */}
+          <div className="flex items-center justify-between gap-4 mt-6 mb-8">
+            {/* Search Projects */}
+            <div className="relative w-full max-w-xs">
+              <MagnifyingGlass size={15} className="absolute left-3.5 top-2.5 text-neutral-400" />
               <input
                 type="text"
+                placeholder="Search projects"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Filter projects..."
-                className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] text-xs text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-accent"
+                className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#161616] text-xs text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400 shadow-2xs"
               />
+            </div>
+
+            {/* Sort Dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsSortOpen(!isSortOpen)}
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#161616] text-xs font-normal text-neutral-700 dark:text-neutral-300 shadow-2xs hover:bg-neutral-50 dark:hover:bg-neutral-800"
+              >
+                <span>{sortBy}</span>
+                <CaretDown size={12} className="text-neutral-400" />
+              </button>
+
+              {isSortOpen && (
+                <div className="absolute right-0 top-full mt-1.5 w-40 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg z-50 text-xs">
+                  {['Latest updated', 'Oldest updated', 'Alphabetical'].map((item) => (
+                    <button
+                      key={item}
+                      type="button"
+                      onClick={() => {
+                        setSortBy(item);
+                        setIsSortOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-1.5 rounded-lg transition-colors ${
+                        sortBy === item
+                          ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white'
+                          : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((proj) => (
+          {/* Cards Grid (Image 1 Exact Layout) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* Card 1: Archive Folder Card */}
+            <Link
+              href="/dashboard/archive"
+              className="group flex flex-col cursor-pointer"
+            >
+              {/* 2x2 Quadrant Preview */}
+              <div className="aspect-[16/10] w-full rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#161616] p-2 overflow-hidden shadow-2xs group-hover:border-neutral-300 dark:group-hover:border-neutral-700 transition-all">
+                <div className="grid grid-cols-2 grid-rows-2 gap-1.5 h-full w-full">
+                  <div className="rounded-xl bg-[#f0f0f0] dark:bg-neutral-800/80" />
+                  <div className="rounded-xl bg-[#f0f0f0] dark:bg-neutral-800/80" />
+                  <div className="rounded-xl bg-[#f0f0f0] dark:bg-neutral-800/80" />
+                  <div className="rounded-xl bg-[#f0f0f0] dark:bg-neutral-800/80" />
+                </div>
+              </div>
+
+              {/* Bottom Meta */}
+              <div className="mt-3 pl-1">
+                <div className="text-[13px] font-semibold text-neutral-900 dark:text-white group-hover:text-amber-500 transition-colors">
+                  Archive
+                </div>
+                <div className="flex items-center gap-1.5 text-[11.5px] text-neutral-400 mt-0.5">
+                  <FolderSimple size={13} className="text-neutral-400" />
+                  <span>No projects</span>
+                </div>
+              </div>
+            </Link>
+
+            {/* Card 2: Orvane (Cloned) Project Card */}
+            {projects.map((p) => (
               <div
-                key={proj.id}
-                onClick={() => router.push(`/dashboard/studio?template=${proj.id}`)}
-                className="group flex flex-col rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#161616] overflow-hidden shadow-2xs hover:shadow-md hover:border-neutral-300 dark:hover:border-neutral-700 transition-all cursor-pointer"
+                key={p.id}
+                onClick={() => router.push(`/dashboard/projects/${p.slug}`)}
+                className="group flex flex-col cursor-pointer"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+                {/* Thumbnail Preview */}
+                <div className="aspect-[16/10] w-full rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-[#eef2f5] dark:bg-[#161616] overflow-hidden shadow-2xs group-hover:border-neutral-300 dark:group-hover:border-neutral-700 relative transition-all">
                   <Image
-                    src={proj.coverUrl}
-                    alt={proj.name}
+                    src={p.coverUrl}
+                    alt={p.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 dark:bg-black/80 backdrop-blur-md text-[10px] font-semibold text-neutral-800 dark:text-neutral-200 shadow-2xs">
-                    <span
-                      className={`w-1.5 h-1.5 rounded-full ${
-                        proj.status === 'Live' ? 'bg-emerald-500' : 'bg-amber-500'
-                      }`}
-                    />
-                    <span>{proj.status}</span>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <span className="px-3 py-1.5 rounded-xl bg-white/95 text-neutral-900 text-xs font-semibold shadow-lg">
+                      Open in Studio
+                    </span>
                   </div>
                 </div>
 
-                <div className="p-4 flex flex-col justify-between flex-1">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm">{proj.icon}</span>
-                      <h3 className="text-sm font-semibold text-neutral-900 dark:text-white truncate">
-                        {proj.name}
-                      </h3>
-                    </div>
-                    <p className="text-[11.5px] text-neutral-500 mt-1 line-clamp-2 leading-relaxed">
-                      {proj.desc}
-                    </p>
+                {/* Bottom Meta */}
+                <div className="mt-3 flex items-center gap-2.5 pl-1">
+                  <div className={`w-5 h-5 rounded-full ${p.avatarBg} flex items-center justify-center text-white text-[10px] shadow-2xs shrink-0 overflow-hidden`}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                    </svg>
                   </div>
-
-                  <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 flex items-center justify-between text-[11px] text-neutral-400">
-                    <div className="flex items-center gap-1.5">
-                      <Clock size={12} />
-                      <span>{proj.edited}</span>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[13px] font-semibold text-neutral-900 dark:text-white truncate">
+                      {p.title}
                     </div>
-
-                    <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
-                      <button
-                        onClick={() => handleCopyLink(proj.domain, proj.id)}
-                        className="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-900 transition-colors"
-                        title="Copy published link"
-                      >
-                        {copiedId === proj.id ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
-                      </button>
-                      <button
-                        onClick={() => handleDelete(proj.id)}
-                        className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/30 text-neutral-400 hover:text-red-500 transition-colors"
-                        title="Delete project"
-                      >
-                        <Trash size={14} />
-                      </button>
+                    <div className="text-[11.5px] text-neutral-400">
+                      {p.edited}
                     </div>
                   </div>
                 </div>
               </div>
             ))}
-
-            {/* Create Blank Card */}
-            <div
-              onClick={() => router.push('/dashboard/studio')}
-              className="flex flex-col items-center justify-center aspect-[16/10] rounded-2xl border-2 border-dashed border-neutral-200 dark:border-neutral-800 hover:border-accent hover:bg-accent/5 transition-all cursor-pointer p-6 text-center group"
-            >
-              <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 group-hover:bg-accent group-hover:text-white flex items-center justify-center text-neutral-500 transition-colors mb-2">
-                <Plus size={18} />
-              </div>
-              <span className="text-[13px] font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-accent transition-colors">
-                Create new product
-              </span>
-              <span className="text-[11px] text-neutral-400 mt-0.5">
-                Generate with AI or blank canvas
-              </span>
-            </div>
           </div>
+        </div>
+
+        {/* Floating Support Widget (Image 1 Bottom Right) */}
+        <div className="fixed bottom-6 right-6 flex flex-col items-end gap-3 z-40">
+          {isSupportOpen && (
+            <div className="w-72 p-3.5 rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/90 dark:border-neutral-800 shadow-xl mfy-fadein relative">
+              <button
+                type="button"
+                onClick={() => setIsSupportOpen(false)}
+                className="absolute top-2.5 right-2.5 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 p-1"
+              >
+                <X size={13} />
+              </button>
+              <div className="flex items-center gap-2.5">
+                <div className="flex items-center -space-x-1.5">
+                  <div className="w-6 h-6 rounded-full overflow-hidden border border-white dark:border-neutral-800 shadow-2xs">
+                    <Image src="/images/user-avatar.png" alt="Support 1" width={24} height={24} className="object-cover" />
+                  </div>
+                  <div className="w-6 h-6 rounded-full overflow-hidden border border-white dark:border-neutral-800 shadow-2xs bg-amber-400" />
+                  <div className="w-6 h-6 rounded-full overflow-hidden border border-white dark:border-neutral-800 shadow-2xs bg-emerald-400" />
+                </div>
+                <div className="text-xs font-semibold text-neutral-900 dark:text-white">Need a hand?</div>
+              </div>
+              <p className="text-[11px] text-neutral-400 mt-1.5">
+                Our support team is just a message away.
+              </p>
+            </div>
+          )}
+
+          <button
+            type="button"
+            onClick={() => setIsSupportOpen(!isSupportOpen)}
+            className="w-11 h-11 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all"
+            title="Support chat"
+          >
+            <ChatCircleDots size={22} weight="fill" />
+          </button>
         </div>
       </main>
     </div>
