@@ -2,477 +2,713 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useStudioStore } from '@/store/useStudioStore';
 import { PRESET_TEMPLATES } from '@/lib/templates';
-import { HeroRenderer } from '@/components/render/HeroRenderer';
-import { CalculatorRenderer } from '@/components/render/CalculatorRenderer';
-import { QuizRenderer } from '@/components/render/QuizRenderer';
-import { BentoRenderer } from '@/components/render/BentoRenderer';
-import { ContactRenderer } from '@/components/render/ContactRenderer';
-import { PixartualLogo } from '@/components/brand/PixartualLogo';
-import { SectionNode } from '@/types/ast';
 import {
+  Eye,
   Desktop,
   DeviceTablet,
   DeviceMobile,
   ArrowCounterClockwise,
   ArrowClockwise,
+  ChatCircleDots,
+  DotsThree,
   ShareNetwork,
-  Export,
-  RocketLaunch,
-  PaperPlaneRight,
-  Sparkle,
-  Sliders,
-  List,
-  SquaresFour,
-  X,
-  Copy,
-  Check,
-  Plus,
-  Trash,
+  Lightning,
+  SidebarSimple,
+  CaretDown,
+  Lock,
+  Crown,
+  ArrowSquareOut,
+  ArrowsClockwise,
   Palette,
-  ArrowLeft,
+  FilePlus,
+  EnvelopeSimple,
+  PencilSimple,
+  Plus,
+  Hammer,
+  Microphone,
+  ArrowUp,
+  Check,
+  X,
+  MagnifyingGlass,
+  CheckCircle,
 } from '@phosphor-icons/react';
 
 function StudioContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const initialPrompt = searchParams.get('prompt');
   const initialTemplate = searchParams.get('template');
 
   const {
     experience,
-    selectedSectionId,
     viewport,
-    chatMessages,
     setViewport,
-    setSelectedSectionId,
     loadTemplate,
     generateFromPrompt,
-    sendChatMessage,
-    updateSectionText,
-    updateThemeColor,
-    deleteSection,
-    addSection,
     undo,
     redo,
   } = useStudioStore();
 
-  const [activeTab, setActiveTab] = useState<'chat' | 'layers' | 'templates'>('chat');
-  const [chatInput, setChatInput] = useState('');
+  // Studio UI states
+  const [isChatOpen, setIsChatOpen] = useState(true);
+  const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [isProjectMenuOpen, setIsProjectMenuOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [published, setPublished] = useState(false);
+  const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
+  const [buildMode, setBuildMode] = useState<'Build' | 'Edit' | 'Enhance'>('Build');
+  const [isBuildModeOpen, setIsBuildModeOpen] = useState(false);
+
+  // Chat conversation state
+  const [chatInput, setChatInput] = useState('');
+  const [messages, setMessages] = useState<Array<{ sender: 'user' | 'assistant'; text: string; time?: string }>>([]);
+
+  // Active project title
+  const [projectName, setProjectName] = useState('Orvane (Cloned)');
+  const [subdomain, setSubdomain] = useState('https://sgr.pixartual.website');
 
   useEffect(() => {
     if (initialTemplate) {
-      loadTemplate(initialTemplate);
+      if (initialTemplate.includes('orvane')) {
+        setProjectName('Orvane (Cloned)');
+        setSubdomain('https://sgr.pixartual.website');
+      } else {
+        loadTemplate(initialTemplate);
+        setProjectName(initialTemplate.replace('-', ' ').toUpperCase());
+      }
     } else if (initialPrompt) {
       generateFromPrompt(initialPrompt);
+      setProjectName(`Project: ${initialPrompt.slice(0, 20)}...`);
     }
   }, [initialPrompt, initialTemplate, loadTemplate, generateFromPrompt]);
 
-  const handleSendChat = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!chatInput.trim()) return;
-    sendChatMessage(chatInput);
+  const handleSendChat = (customText?: string) => {
+    const textToSend = customText || chatInput;
+    if (!textToSend.trim()) return;
+
+    const newMsg = { sender: 'user' as const, text: textToSend.trim(), time: 'Just now' };
+    setMessages((prev) => [
+      ...prev,
+      newMsg,
+      {
+        sender: 'assistant' as const,
+        text: `Applying changes for: "${textToSend.trim()}". Updating AST nodes, typography tokens, and layout constraints...`,
+        time: 'Just now',
+      },
+    ]);
+
     setChatInput('');
   };
 
   const handleCopyShare = () => {
-    navigator.clipboard.writeText(`https://pixartual.ai/p/${experience.id}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    navigator.clipboard.writeText(subdomain);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
   };
 
-  const getViewportWidth = () => {
+  const getCanvasWidth = () => {
     switch (viewport) {
       case 'mobile':
-        return 'w-[390px]';
+        return 'w-[390px] max-w-[390px]';
       case 'tablet':
-        return 'w-[768px]';
+        return 'w-[768px] max-w-[768px]';
       case 'desktop':
       default:
-        return 'w-full max-w-[1200px]';
+        return 'w-full max-w-[1240px]';
     }
   };
 
-  const selectedSection = experience.sections.find((s) => s.id === selectedSectionId);
-
   return (
-    <div className="flex h-screen w-screen flex-col bg-surface text-ink-strong">
-      {/* Top Header */}
-      <header className="flex h-14 items-center justify-between border-b border-surface-border px-4 bg-white dark:bg-[#121212]">
-        <div className="flex items-center gap-3">
-          <Link
-            href="/dashboard"
-            className="flex items-center gap-1.5 text-xs text-neutral-500 hover:text-neutral-900 transition-colors mr-2"
-          >
-            <ArrowLeft size={14} /> Back to Hub
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#fafafa] dark:bg-[#0c0c0c] text-ink-strong select-none font-sans">
+      {/* =========================================================================
+          1. TOP NAVIGATION HEADER (Matching modulify.ai/dashboard/projects/sgr)
+          ========================================================================= */}
+      <header className="h-12 border-b border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#141414] px-3 sm:px-4 flex items-center justify-between z-30 shrink-0">
+        {/* Left: Brand / Project Dropdown / Sidebar Toggle */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          <Link href="/dashboard" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity" title="Back to Dashboard">
+            <div className="w-5 h-5 rounded-[5px] bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white shadow-2xs">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
           </Link>
-          <PixartualLogo variant="auto" size={24} showWordmark />
-          <span className="text-xs text-ink-soft">/</span>
-          <span className="text-xs font-semibold">{experience.name}</span>
+          <span className="text-neutral-300 dark:text-neutral-700 text-xs">/</span>
+
+          {/* Project Switcher Dropdown */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setIsProjectMenuOpen(!isProjectMenuOpen)}
+              className="flex items-center gap-1.5 px-2 py-1 rounded-lg text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            >
+              <span>{projectName}</span>
+              <CaretDown size={11} className="text-neutral-400" />
+            </button>
+
+            {isProjectMenuOpen && (
+              <div className="absolute top-full left-0 mt-1.5 w-60 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-xl p-1.5 z-50 text-xs">
+                <div className="px-2.5 py-1 text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">
+                  Switch Project
+                </div>
+                {[
+                  { name: 'Orvane (Cloned)', active: true },
+                  { name: 'Nova SaaS Storefront', active: false },
+                  { name: 'Atelier Portfolio', active: false },
+                ].map((p) => (
+                  <button
+                    key={p.name}
+                    type="button"
+                    onClick={() => {
+                      setProjectName(p.name);
+                      setIsProjectMenuOpen(false);
+                    }}
+                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left transition-colors ${
+                      p.name === projectName
+                        ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white'
+                        : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/60'
+                    }`}
+                  >
+                    <span>{p.name}</span>
+                    {p.name === projectName && <Check size={12} className="text-accent" />}
+                  </button>
+                ))}
+                <div className="my-1 border-t border-neutral-100 dark:border-neutral-800" />
+                <Link
+                  href="/dashboard"
+                  className="flex items-center gap-2 px-2.5 py-1.5 text-neutral-600 hover:text-neutral-900 rounded-lg hover:bg-neutral-50 text-[11px]"
+                >
+                  <Plus size={12} />
+                  <span>Create new project</span>
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Sidebar Toggle Icon */}
+          <button
+            type="button"
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            className={`p-1.5 rounded-lg border text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors ${
+              isChatOpen
+                ? 'border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white'
+                : 'border-neutral-200/80 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+            }`}
+            title="Toggle AI chat copilot"
+          >
+            <SidebarSimple size={15} />
+          </button>
         </div>
 
-        {/* Viewport Toggles */}
-        <div className="flex items-center gap-1 rounded-lg border border-surface-border bg-base p-0.5">
+        {/* Center Toolbar Group (Preview, Viewports, Undo, Redo, More) */}
+        <div className="hidden lg:flex items-center gap-1 bg-stone-100/90 dark:bg-neutral-800/60 p-0.5 rounded-xl border border-neutral-200/60 dark:border-neutral-700">
           <button
+            type="button"
+            onClick={() => setIsPreviewMode(!isPreviewMode)}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
+              isPreviewMode
+                ? 'bg-white dark:bg-black shadow-2xs text-neutral-900 dark:text-white'
+                : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+            }`}
+          >
+            <Eye size={14} />
+            <span>Preview</span>
+          </button>
+
+          <div className="h-3 w-px bg-neutral-200 dark:bg-neutral-700 mx-0.5" />
+
+          {/* Viewports */}
+          <button
+            type="button"
             onClick={() => setViewport('desktop')}
-            className={`rounded-md p-1.5 transition-colors ${
-              viewport === 'desktop' ? 'bg-surface shadow-xs text-ink-strong' : 'text-ink-soft hover:text-ink-strong'
+            className={`p-1.5 rounded-lg text-xs transition-colors ${
+              viewport === 'desktop'
+                ? 'bg-white dark:bg-black shadow-2xs text-neutral-900 dark:text-white'
+                : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
             }`}
-            title="Desktop View"
+            title="Desktop view"
           >
-            <Desktop size={16} />
+            <Desktop size={14} />
           </button>
           <button
+            type="button"
             onClick={() => setViewport('tablet')}
-            className={`rounded-md p-1.5 transition-colors ${
-              viewport === 'tablet' ? 'bg-surface shadow-xs text-ink-strong' : 'text-ink-soft hover:text-ink-strong'
+            className={`p-1.5 rounded-lg text-xs transition-colors ${
+              viewport === 'tablet'
+                ? 'bg-white dark:bg-black shadow-2xs text-neutral-900 dark:text-white'
+                : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
             }`}
-            title="Tablet View"
+            title="Tablet view"
           >
-            <DeviceTablet size={16} />
+            <DeviceTablet size={14} />
           </button>
           <button
+            type="button"
             onClick={() => setViewport('mobile')}
-            className={`rounded-md p-1.5 transition-colors ${
-              viewport === 'mobile' ? 'bg-surface shadow-xs text-ink-strong' : 'text-ink-soft hover:text-ink-strong'
+            className={`p-1.5 rounded-lg text-xs transition-colors ${
+              viewport === 'mobile'
+                ? 'bg-white dark:bg-black shadow-2xs text-neutral-900 dark:text-white'
+                : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
             }`}
-            title="Mobile View"
+            title="Mobile view"
           >
-            <DeviceMobile size={16} />
+            <DeviceMobile size={14} />
           </button>
-        </div>
 
-        {/* Actions */}
-        <div className="flex items-center gap-2">
+          <div className="h-3 w-px bg-neutral-200 dark:bg-neutral-700 mx-0.5" />
+
+          {/* Undo / Redo */}
           <button
-            onClick={undo}
-            className="rounded-lg p-2 text-ink-soft hover:bg-surface-hover hover:text-ink-strong"
+            type="button"
+            onClick={() => undo()}
+            className="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
             title="Undo"
           >
-            <ArrowCounterClockwise size={16} />
+            <ArrowCounterClockwise size={14} />
           </button>
           <button
-            onClick={redo}
-            className="rounded-lg p-2 text-ink-soft hover:bg-surface-hover hover:text-ink-strong"
+            type="button"
+            onClick={() => redo()}
+            className="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
             title="Redo"
           >
-            <ArrowClockwise size={16} />
+            <ArrowClockwise size={14} />
           </button>
-          <div className="h-4 w-px bg-surface-border" />
+
           <button
-            onClick={() => setIsShareModalOpen(true)}
-            className="flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs font-medium hover:bg-surface-hover"
+            type="button"
+            className="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
+            title="Comments & notes"
           >
-            <ShareNetwork size={14} />
-            Share
+            <ChatCircleDots size={14} />
           </button>
+
           <button
-            onClick={() => setIsExportModalOpen(true)}
-            className="flex items-center gap-1.5 rounded-lg border border-surface-border px-3 py-1.5 text-xs font-medium hover:bg-surface-hover"
+            type="button"
+            className="flex items-center gap-1 px-2 py-1 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-lg transition-colors"
           >
-            <Export size={14} />
-            Export
+            <DotsThree size={14} weight="bold" />
+            <span>More</span>
           </button>
+        </div>
+
+        {/* Right: Support Avatar Pill + Share + Upgrade + Publish */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Support Team Pill */}
+          <div className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer shadow-2xs">
+            <div className="w-8 h-4 relative rounded-full overflow-hidden shrink-0">
+              <Image src="/images/support-team-avatars.png" alt="Support" fill className="object-cover" />
+            </div>
+            <span className="text-[11.5px] font-medium text-neutral-700 dark:text-neutral-300">Chat with us</span>
+            <span className="w-4 h-4 bg-red-500 rounded-full text-[9px] text-white flex items-center justify-center font-bold">
+              1
+            </span>
+          </div>
+
+          {/* Share */}
           <button
-            onClick={() => setPublished(true)}
-            className="flex items-center gap-1.5 rounded-lg bg-black text-white dark:bg-white dark:text-black px-3 py-1.5 text-xs font-medium hover:opacity-90 shadow-sm"
+            type="button"
+            onClick={handleCopyShare}
+            className="px-3 py-1.5 rounded-xl border border-neutral-200/90 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors flex items-center gap-1.5 shadow-2xs"
           >
-            <RocketLaunch size={14} />
-            {published ? 'Published!' : 'Publish'}
+            {copiedLink ? <Check size={14} className="text-emerald-500" /> : <ShareNetwork size={14} />}
+            <span>{copiedLink ? 'Copied' : 'Share'}</span>
+          </button>
+
+          {/* Upgrade Now */}
+          <Link
+            href="/pricing"
+            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold shadow-xs hover:opacity-95 transition-opacity flex items-center gap-1.5"
+          >
+            <Lightning size={13} weight="fill" />
+            <span>Upgrade now</span>
+          </Link>
+
+          {/* Publish */}
+          <button
+            type="button"
+            onClick={() => setIsPublishModalOpen(true)}
+            className="px-4 py-1.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-xs font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-xs"
+          >
+            Publish
           </button>
         </div>
       </header>
 
-      {/* Main Studio Body */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Left Sidebar */}
-        <aside className="flex w-80 flex-col border-r border-surface-border bg-white dark:bg-[#141414]">
-          <div className="flex border-b border-surface-border">
-            <button
-              onClick={() => setActiveTab('chat')}
-              className={`flex flex-1 items-center justify-center gap-1.5 py-3 text-xs font-medium border-b-2 transition-colors ${
-                activeTab === 'chat'
-                  ? 'border-accent text-accent'
-                  : 'border-transparent text-ink-soft hover:text-ink-strong'
-              }`}
-            >
-              <Sparkle size={14} />
-              Copilot
-            </button>
-            <button
-              onClick={() => setActiveTab('layers')}
-              className={`flex flex-1 items-center justify-center gap-1.5 py-3 text-xs font-medium border-b-2 transition-colors ${
-                activeTab === 'layers'
-                  ? 'border-accent text-accent'
-                  : 'border-transparent text-ink-soft hover:text-ink-strong'
-              }`}
-            >
-              <List size={14} />
-              Layers
-            </button>
-            <button
-              onClick={() => setActiveTab('templates')}
-              className={`flex flex-1 items-center justify-center gap-1.5 py-3 text-xs font-medium border-b-2 transition-colors ${
-                activeTab === 'templates'
-                  ? 'border-accent text-accent'
-                  : 'border-transparent text-ink-soft hover:text-ink-strong'
-              }`}
-            >
-              <SquaresFour size={14} />
-              Templates
-            </button>
-          </div>
+      {/* =========================================================================
+          2. STUDIO BODY: LEFT CHAT COPILOT + FLOATING CANVAS
+          ========================================================================= */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* =========================================================================
+            LEFT CHAT COPILOT PANEL (Exact Modulify Parity)
+            ========================================================================= */}
+        {isChatOpen && (
+          <aside className="w-[300px] sm:w-[330px] border-r border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#121212] flex flex-col justify-between h-[calc(100vh-48px)] shrink-0 z-20 mfy-fadein">
+            {/* Header */}
+            <div className="p-3.5 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs font-semibold text-neutral-900 dark:text-white">
+              <div className="flex items-center gap-2">
+                <ChatCircleDots size={16} className="text-neutral-400" />
+                <span>New chat</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setMessages([])}
+                className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
+                title="Start fresh conversation"
+              >
+                <Plus size={15} />
+              </button>
+            </div>
 
-          <div className="flex-1 overflow-y-auto p-4">
-            {activeTab === 'chat' && (
-              <div className="flex h-full flex-col justify-between">
-                <div className="space-y-3 overflow-y-auto pr-1">
-                  {chatMessages.map((msg) => (
+            {/* Chat Body */}
+            <div className="flex-1 overflow-y-auto p-4 flex flex-col">
+              {messages.length === 0 ? (
+                /* Empty Chat Initial State */
+                <div className="flex flex-col items-center text-center my-auto">
+                  <div className="w-11 h-11 rounded-2xl bg-stone-50 dark:bg-neutral-800 flex items-center justify-center text-neutral-400 mb-3 border border-neutral-200/60 dark:border-neutral-700">
+                    <ChatCircleDots size={24} />
+                  </div>
+                  <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">New chat</h3>
+                  <p className="text-xs text-neutral-400 mt-0.5 mb-6">Ask for a change to the site.</p>
+
+                  {/* Suggestion Chips */}
+                  <div className="w-full space-y-2 text-left">
+                    {[
+                      { icon: Palette, text: 'Change the colors and fonts' },
+                      { icon: FilePlus, text: 'Add a new page' },
+                      { icon: EnvelopeSimple, text: 'Add a contact form' },
+                      { icon: PencilSimple, text: 'Rewrite the text' },
+                      { icon: DeviceMobile, text: 'Make it look right on phones' },
+                    ].map((item, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => handleSendChat(item.text)}
+                        className="w-full p-2.5 rounded-xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#181818] hover:bg-stone-50 dark:hover:bg-neutral-800/60 text-xs text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors flex items-center gap-2.5 shadow-2xs group"
+                      >
+                        <item.icon size={15} className="text-neutral-400 group-hover:text-accent transition-colors shrink-0" />
+                        <span>{item.text}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                /* Chat Messages History */
+                <div className="space-y-3.5 my-auto">
+                  {messages.map((m, idx) => (
                     <div
-                      key={msg.id}
-                      className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
+                      key={idx}
+                      className={`flex flex-col text-xs ${
+                        m.sender === 'user' ? 'items-end' : 'items-start'
+                      }`}
                     >
                       <div
-                        className={`max-w-[85%] rounded-xl px-3 py-2 text-xs leading-relaxed ${
-                          msg.role === 'user'
-                            ? 'bg-neutral-900 text-white dark:bg-white dark:text-black'
-                            : 'bg-neutral-100 dark:bg-neutral-800 text-ink-strong'
+                        className={`max-w-[88%] p-3 rounded-2xl leading-relaxed ${
+                          m.sender === 'user'
+                            ? 'bg-neutral-900 text-white dark:bg-white dark:text-black rounded-tr-xs shadow-2xs'
+                            : 'bg-stone-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-tl-xs'
                         }`}
                       >
-                        {msg.text}
+                        {m.text}
                       </div>
+                      <span className="text-[10px] text-neutral-400 mt-1 px-1">{m.time}</span>
                     </div>
                   ))}
                 </div>
-                <form onSubmit={handleSendChat} className="mt-3 flex gap-2">
-                  <input
-                    type="text"
-                    value={chatInput}
-                    onChange={(e) => setChatInput(e.target.value)}
-                    placeholder="Ask AI to change colors, copy..."
-                    className="flex-1 rounded-xl border border-surface-border bg-base px-3 py-2 text-xs text-ink-strong focus:outline-none focus:ring-1 focus:ring-accent"
-                  />
-                  <button
-                    type="submit"
-                    className="flex h-8 w-8 items-center justify-center rounded-xl bg-accent text-white hover:opacity-90"
-                  >
-                    <PaperPlaneRight size={14} />
-                  </button>
-                </form>
-              </div>
-            )}
+              )}
+            </div>
 
-            {activeTab === 'layers' && (
-              <div className="space-y-2">
-                <div className="flex items-center justify-between pb-2">
-                  <span className="text-[11px] font-semibold uppercase text-ink-muted">Sections</span>
-                  <div className="flex gap-1">
+            {/* Bottom Prompt Box */}
+            <div className="p-3 border-t border-neutral-100 dark:border-neutral-800 bg-white dark:bg-[#121212]">
+              <div className="rounded-[20px] border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#181818] shadow-xs p-3 focus-within:border-neutral-400 dark:focus-within:border-neutral-600 transition-colors">
+                <textarea
+                  rows={2}
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSendChat();
+                    }
+                  }}
+                  placeholder="Describe what you want to build or change..."
+                  className="w-full resize-none border-0 bg-transparent text-xs text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none p-0 leading-relaxed"
+                />
+
+                <div className="flex items-center justify-between pt-2 mt-1 border-t border-neutral-100 dark:border-neutral-800">
+                  <div className="flex items-center gap-1.5">
                     <button
-                      onClick={() => addSection('hero')}
-                      className="flex items-center gap-1 rounded bg-stone-100 dark:bg-neutral-800 px-2 py-1 text-[10px] text-ink-strong hover:bg-stone-200"
+                      type="button"
+                      className="w-6 h-6 rounded-md border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 flex items-center justify-center text-neutral-500"
+                      title="Attach context or code"
                     >
-                      <Plus size={10} /> Hero
+                      <Plus size={12} />
+                    </button>
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setIsBuildModeOpen(!isBuildModeOpen)}
+                        className="flex items-center gap-1 px-2 py-0.5 rounded-md border border-neutral-200 dark:border-neutral-700 text-[11px] font-medium text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-800"
+                      >
+                        <Hammer size={12} className="text-neutral-400" />
+                        <span>{buildMode}</span>
+                        <CaretDown size={10} className="text-neutral-400" />
+                      </button>
+                      {isBuildModeOpen && (
+                        <div className="absolute bottom-full left-0 mb-1.5 w-28 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg z-50 text-[11px]">
+                          {(['Build', 'Edit', 'Enhance'] as const).map((m) => (
+                            <button
+                              key={m}
+                              type="button"
+                              onClick={() => {
+                                setBuildMode(m);
+                                setIsBuildModeOpen(false);
+                              }}
+                              className={`w-full text-left px-2 py-1 rounded-lg ${
+                                buildMode === m ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+                              }`}
+                            >
+                              {m}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      className="w-6 h-6 flex items-center justify-center text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200"
+                      title="Voice prompt"
+                    >
+                      <Microphone size={14} />
                     </button>
                     <button
-                      onClick={() => addSection('interactive-calculator')}
-                      className="flex items-center gap-1 rounded bg-stone-100 dark:bg-neutral-800 px-2 py-1 text-[10px] text-ink-strong hover:bg-stone-200"
+                      type="button"
+                      onClick={() => handleSendChat()}
+                      className="w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center hover:opacity-90 shadow-2xs"
+                      title="Send prompt"
                     >
-                      <Plus size={10} /> Calc
+                      <ArrowUp size={12} weight="bold" />
                     </button>
                   </div>
                 </div>
-                {experience.sections.map((section, idx) => (
-                  <div
-                    key={section.id}
-                    onClick={() => setSelectedSectionId(section.id)}
-                    className={`flex items-center justify-between rounded-xl border p-2.5 text-xs transition-colors cursor-pointer ${
-                      selectedSectionId === section.id
-                        ? 'border-accent bg-accent/5 font-semibold text-accent'
-                        : 'border-surface-border bg-base hover:border-neutral-300'
-                    }`}
+              </div>
+            </div>
+          </aside>
+        )}
+
+        {/* =========================================================================
+            CENTER CANVAS PREVIEW AREA
+            ========================================================================= */}
+        <main className="flex-1 flex flex-col h-[calc(100vh-48px)] overflow-y-auto bg-[#fafafa] dark:bg-[#0c0c0c] p-3 sm:p-5">
+          {/* Subdomain & Page Selector Bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 px-1 shrink-0">
+            {/* Live Subdomain Pill & Connect Domain */}
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1a1a] border border-neutral-200/80 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 shadow-2xs text-xs">
+                <Lock size={11} className="text-neutral-400" />
+                <span className="font-mono text-[11px] text-neutral-700 dark:text-neutral-300">
+                  {subdomain}
+                </span>
+              </div>
+
+              <Link
+                href="/dashboard/domains"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-[11px] shadow-2xs hover:opacity-95 transition-opacity"
+              >
+                <Crown size={12} weight="fill" />
+                <span>Connect domain</span>
+              </Link>
+            </div>
+
+            {/* Canvas Address Route Controls */}
+            <div className="flex items-center gap-2 self-end sm:self-auto">
+              <div className="flex items-center gap-1.5 bg-white dark:bg-[#1a1a1a] border border-neutral-200/80 dark:border-neutral-800 rounded-xl px-2.5 py-1 shadow-2xs text-xs">
+                <div className="flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 pr-2 border-r border-neutral-200 dark:border-neutral-800">
+                  <div className="w-3.5 h-3.5 rounded bg-orange-500 text-white flex items-center justify-center text-[8px] font-bold">
+                    O
+                  </div>
+                  <span>Orvane</span>
+                  <CaretDown size={11} className="text-neutral-400" />
+                </div>
+                <span className="text-neutral-400 font-mono text-[11px]">/</span>
+                <button
+                  type="button"
+                  onClick={() => window.open(subdomain, '_blank')}
+                  className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-white transition-colors"
+                  title="Open live URL"
+                >
+                  <ArrowSquareOut size={13} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const temp = projectName;
+                    setProjectName('Reloading...');
+                    setTimeout(() => setProjectName(temp), 500);
+                  }}
+                  className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-white transition-colors"
+                  title="Reload preview"
+                >
+                  <ArrowsClockwise size={13} />
+                </button>
+                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider pl-1 border-l border-neutral-100 dark:border-neutral-800">
+                  EN
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Canvas Box (Exact Orvane Parity) */}
+          <div className="flex-1 flex justify-center items-start overflow-y-auto">
+            <div
+              className={`${getCanvasWidth()} transition-all duration-300 rounded-[28px] border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#161616] shadow-xl overflow-hidden min-h-[580px] relative flex flex-col`}
+            >
+              {/* Orvane Site Navigation Bar */}
+              <div className="px-6 py-4 flex items-center justify-between border-b border-neutral-100/80 dark:border-neutral-800/80 text-xs text-neutral-600 dark:text-neutral-400 bg-white/80 dark:bg-black/40 backdrop-blur-md">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full border border-neutral-900 dark:border-white flex items-center justify-center">
+                    <span className="w-1 h-1 rounded-full bg-neutral-900 dark:bg-white" />
+                  </span>
+                  <span className="font-bold text-neutral-900 dark:text-white tracking-wider">orvane</span>
+                  <span className="text-neutral-400">•</span>
+                  <span className="text-neutral-500">Lidar Drone Scanning</span>
+                </div>
+
+                <div className="hidden sm:inline font-mono text-[11px] text-neutral-500">
+                  Precision Demo
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-[11px] text-neutral-400 hidden sm:inline">GMT 6:01 am</span>
+                  <button
+                    type="button"
+                    className="px-2.5 py-1 rounded-full border border-neutral-200 dark:border-neutral-700 font-mono text-[11px] text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50"
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] text-ink-muted">{idx + 1}</span>
-                      <span className="capitalize">{section.type}</span>
-                    </div>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        deleteSection(section.id);
-                      }}
-                      className="text-ink-muted hover:text-red-500"
-                    >
-                      <Trash size={12} />
+                    menu
+                  </button>
+                </div>
+              </div>
+
+              {/* Orvane Site Hero Section */}
+              <div className="flex-1 relative p-6 sm:p-12 flex flex-col justify-between overflow-hidden bg-gradient-to-b from-stone-50/60 via-white to-stone-50/40 dark:from-[#151515] dark:via-[#121212] dark:to-[#151515]">
+                {/* Top Badge Indicators */}
+                <div className="flex items-center justify-between text-[11px] font-mono text-neutral-500 z-10">
+                  <div className="flex items-center gap-2">
+                    <span className="text-neutral-400">+</span>
+                    <span className="tracking-wider">[ ORVANE L4 ] —— SELF-FLYING SURVEY UNIT</span>
+                  </div>
+                  <div className="w-5 h-5 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center text-[10px] text-neutral-500 font-bold">
+                    1
+                  </div>
+                </div>
+
+                {/* Giant Typography Background Watermark */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+                  <span className="text-[120px] sm:text-[180px] md:text-[230px] font-extrabold tracking-tighter text-neutral-200/50 dark:text-neutral-800/30 leading-none">
+                    orvane
+                  </span>
+                </div>
+
+                {/* Center Drone Asset */}
+                <div className="relative my-8 sm:my-14 flex items-center justify-center z-10">
+                  <div className="relative w-[320px] sm:w-[460px] md:w-[540px] aspect-[16/9] drop-shadow-2xl">
+                    <Image
+                      src="/images/orvane-drone.png"
+                      alt="Orvane Autonomous LiDAR Survey Drone"
+                      fill
+                      className="object-contain hover:scale-[1.02] transition-transform duration-700"
+                      priority
+                    />
+                  </div>
+                </div>
+
+                {/* Headline & Bottom Description */}
+                <div className="z-10 max-w-2xl">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-neutral-900 dark:text-white tracking-tight leading-tight">
+                    Self-flying LiDAR for the structures we rely on.
+                  </h2>
+                  <p className="text-sm sm:text-base text-neutral-500 dark:text-neutral-400 mt-2 font-normal leading-relaxed">
+                    Every bridge, line and turbine, measured to the centimetre.
+                  </p>
+                </div>
+
+                {/* Bottom Canvas Toolbar & Scroll Indicator */}
+                <div className="mt-8 pt-4 flex items-center justify-between z-10 text-xs">
+                  {/* Floating Action Pill */}
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-neutral-800 shadow-md border border-neutral-200/80 dark:border-neutral-700 text-neutral-500">
+                    <button type="button" className="hover:text-neutral-900 dark:hover:text-white transition-colors" title="Zoom in">
+                      <MagnifyingGlass size={13} />
+                    </button>
+                    <button type="button" className="hover:text-neutral-900 dark:hover:text-white transition-colors" title="Chat notes">
+                      <ChatCircleDots size={13} />
+                    </button>
+                    <button type="button" className="hover:text-neutral-900 dark:hover:text-white transition-colors" title="Canvas frames">
+                      <div className="w-3 h-3 rounded-xs border border-neutral-400" />
                     </button>
                   </div>
-                ))}
-              </div>
-            )}
 
-            {activeTab === 'templates' && (
-              <div className="space-y-3">
-                {PRESET_TEMPLATES.map((tmpl) => (
-                  <div
-                    key={tmpl.id}
-                    onClick={() => loadTemplate(tmpl.id)}
-                    className="group cursor-pointer rounded-xl border border-surface-border bg-base p-3 transition-colors hover:border-accent"
-                  >
-                    <div className="font-medium text-xs text-ink-strong group-hover:text-accent">
-                      {tmpl.name}
-                    </div>
-                    <p className="mt-1 text-[11px] text-ink-soft line-clamp-2">{tmpl.tagline}</p>
+                  {/* Scroll Down */}
+                  <div className="flex items-center gap-1.5 font-mono text-[11px] text-neutral-400">
+                    <span>Scroll Down</span>
+                    <span className="font-bold">:::</span>
                   </div>
-                ))}
+                </div>
               </div>
-            )}
-          </div>
-        </aside>
-
-        {/* Center Canvas */}
-        <main className="flex-1 overflow-y-auto bg-stone-100/60 dark:bg-[#0c0c0c] p-6 flex justify-center items-start">
-          <div
-            className={`transition-all duration-300 bg-white dark:bg-[#121212] rounded-2xl shadow-xl overflow-hidden border border-surface-border ${getViewportWidth()}`}
-          >
-            {experience.sections.map((section) => (
-              <div
-                key={section.id}
-                onClick={() => setSelectedSectionId(section.id)}
-                className={`relative transition-all ${
-                  selectedSectionId === section.id ? 'ring-2 ring-accent ring-offset-2' : ''
-                }`}
-              >
-                {section.type === 'hero' && (
-                  <HeroRenderer section={section} primaryColor={experience.theme.primaryColor} />
-                )}
-                {section.type === 'interactive-calculator' && (
-                  <CalculatorRenderer section={section} primaryColor={experience.theme.primaryColor} />
-                )}
-                {section.type === 'interactive-quiz' && (
-                  <QuizRenderer section={section} primaryColor={experience.theme.primaryColor} />
-                )}
-                {section.type === 'bento-grid' && (
-                  <BentoRenderer section={section} primaryColor={experience.theme.primaryColor} />
-                )}
-                {section.type === 'contact' && (
-                  <ContactRenderer section={section} primaryColor={experience.theme.primaryColor} />
-                )}
-              </div>
-            ))}
+            </div>
           </div>
         </main>
-
-        {/* Right Inspector */}
-        <aside className="w-72 border-l border-surface-border bg-white dark:bg-[#141414] p-4 overflow-y-auto">
-          <div className="flex items-center gap-2 border-b border-surface-border pb-3">
-            <Sliders size={16} className="text-accent" />
-            <h3 className="text-xs font-semibold">Inspector</h3>
-          </div>
-
-          {selectedSection ? (
-            <div className="mt-4 space-y-4">
-              <div>
-                <label className="text-[11px] font-medium text-ink-soft">Section Type</label>
-                <div className="mt-1 text-xs font-semibold capitalize text-ink-strong">
-                  {selectedSection.type}
-                </div>
-              </div>
-
-              <div>
-                <label className="text-[11px] font-medium text-ink-soft">Title</label>
-                <input
-                  type="text"
-                  value={selectedSection.title || ''}
-                  onChange={(e) => updateSectionText(selectedSection.id, 'title', e.target.value)}
-                  className="mt-1 w-full rounded-lg border border-surface-border bg-base px-2.5 py-1.5 text-xs text-ink-strong focus:outline-none focus:ring-1 focus:ring-accent"
-                />
-              </div>
-
-              <div>
-                <label className="text-[11px] font-medium text-ink-soft">Subtitle</label>
-                <textarea
-                  rows={3}
-                  value={selectedSection.subtitle || ''}
-                  onChange={(e) => updateSectionText(selectedSection.id, 'subtitle', e.target.value)}
-                  className="mt-1 w-full rounded-lg border border-surface-border bg-base px-2.5 py-1.5 text-xs text-ink-strong focus:outline-none focus:ring-1 focus:ring-accent"
-                />
-              </div>
-
-              <div>
-                <div className="flex items-center gap-1.5 text-[11px] font-medium text-ink-soft">
-                  <Palette size={12} />
-                  <span>Theme Accent</span>
-                </div>
-                <div className="mt-2 flex gap-2">
-                  {['#fc8c04', '#fe3200', '#2563eb', '#10b981', '#8b5cf6', '#ec4899'].map((c) => (
-                    <button
-                      key={c}
-                      onClick={() => updateThemeColor(c)}
-                      style={{ backgroundColor: c }}
-                      className={`h-6 w-6 rounded-full border-2 transition-transform ${
-                        experience.theme.primaryColor === c ? 'scale-110 border-black dark:border-white' : 'border-transparent'
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="mt-8 text-center text-xs text-ink-muted">
-              Select any section on the canvas to inspect its properties.
-            </div>
-          )}
-        </aside>
       </div>
 
-      {/* Share Modal */}
-      {isShareModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-sm rounded-2xl bg-white dark:bg-[#1a1a1a] p-5 shadow-2xl">
-            <div className="flex items-center justify-between pb-3">
-              <h3 className="text-sm font-semibold">Share Experience</h3>
-              <button onClick={() => setIsShareModalOpen(false)}>
-                <X size={16} />
-              </button>
-            </div>
-            <p className="text-xs text-ink-soft">Anyone with this link can view this live experience.</p>
-            <div className="mt-3 flex gap-2">
-              <input
-                type="text"
-                readOnly
-                value={`https://pixartual.ai/p/${experience.id}`}
-                className="flex-1 rounded-xl border border-surface-border bg-base px-3 py-1.5 text-xs text-ink-strong"
-              />
+      {/* =========================================================================
+          PUBLISH MODAL
+          ========================================================================= */}
+      {isPublishModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 mfy-fadein">
+          <div className="w-full max-w-md rounded-2xl bg-white dark:bg-[#1a1a1a] p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800">
+            <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
+              <div className="flex items-center gap-2">
+                <CheckCircle size={18} className="text-emerald-500" />
+                <h3 className="text-sm font-semibold">Publish to Live Edge</h3>
+              </div>
               <button
-                onClick={handleCopyShare}
-                className="flex items-center gap-1 rounded-xl bg-accent px-3 py-1.5 text-xs text-white"
+                type="button"
+                onClick={() => setIsPublishModalOpen(false)}
+                className="text-neutral-400 hover:text-neutral-800 p-1"
               >
-                {copied ? <Check size={14} /> : <Copy size={14} />}
-                {copied ? 'Copied' : 'Copy'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Export Modal */}
-      {isExportModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-md rounded-2xl bg-white dark:bg-[#1a1a1a] p-5 shadow-2xl">
-            <div className="flex items-center justify-between pb-3">
-              <h3 className="text-sm font-semibold">Export Clean Code</h3>
-              <button onClick={() => setIsExportModalOpen(false)}>
                 <X size={16} />
               </button>
             </div>
-            <p className="text-xs text-ink-soft">Pure React + Tailwind components ready for production.</p>
-            <pre className="mt-3 max-h-60 overflow-y-auto rounded-xl bg-neutral-900 p-3 text-[11px] text-neutral-200">
-              {JSON.stringify(experience, null, 2)}
-            </pre>
+            <p className="text-xs text-neutral-500 mt-2 mb-4 leading-relaxed">
+              Your site is published on edge CDN servers worldwide. SSL certificates and responsive cache layers are actively provisioned.
+            </p>
+
+            <div className="p-3 rounded-xl bg-stone-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between text-xs font-mono mb-5">
+              <span className="truncate text-neutral-700 dark:text-neutral-300">{subdomain}</span>
+              <button
+                type="button"
+                onClick={handleCopyShare}
+                className="px-2.5 py-1 rounded-lg bg-black text-white dark:bg-white dark:text-black font-sans text-xs font-semibold hover:opacity-90 transition-opacity"
+              >
+                {copiedLink ? 'Copied' : 'Copy'}
+              </button>
+            </div>
+
+            <div className="flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => setIsPublishModalOpen(false)}
+                className="px-4 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black text-xs font-semibold hover:opacity-90 shadow-sm"
+              >
+                Done
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -482,7 +718,13 @@ function StudioContent() {
 
 export default function StudioPage() {
   return (
-    <Suspense fallback={<div className="flex h-screen items-center justify-center">Loading Studio...</div>}>
+    <Suspense
+      fallback={
+        <div className="h-screen w-screen flex items-center justify-center bg-white text-xs text-neutral-400">
+          Loading Pixartual Studio...
+        </div>
+      }
+    >
       <StudioContent />
     </Suspense>
   );
