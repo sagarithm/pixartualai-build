@@ -81,14 +81,6 @@ function StudioContent() {
         setProjectName(initialTemplate.replace('-', ' ').toUpperCase());
       }
     } else if (initialPrompt) {
-      setMessages([
-        { sender: 'user', text: initialPrompt, time: 'Just now' },
-        {
-          sender: 'assistant',
-          text: `Generated your project preview for: "${initialPrompt}". You can ask me to change copy, colors, or add sections.`,
-          time: 'Just now',
-        },
-      ]);
       setProjectName('Orvane (Cloned)');
       setSubdomain('https://sgr.pixartual.website');
     }
@@ -138,12 +130,18 @@ function StudioContent() {
       <header className="h-12 border-b border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#141414] px-3 sm:px-4 flex items-center justify-between z-30 shrink-0">
         {/* Left: Brand / Project Dropdown / Sidebar Toggle */}
         <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Brand Logo & Switcher */}
           <Link href="/dashboard" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity" title="Back to Dashboard">
-            <div className="w-5 h-5 rounded-[5px] bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white shadow-2xs">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-amber-500">
+              <line x1="12" y1="2" x2="12" y2="7" />
+              <line x1="12" y1="17" x2="12" y2="22" />
+              <line x1="4.93" y1="4.93" x2="8.46" y2="8.46" />
+              <line x1="15.54" y1="15.54" x2="19.07" y2="19.07" />
+              <line x1="2" y1="12" x2="7" y2="12" />
+              <line x1="17" y1="12" x2="22" y2="12" />
+              <line x1="4.93" y1="19.07" x2="8.46" y2="15.54" />
+              <line x1="15.54" y1="8.46" x2="19.07" y2="4.93" />
+            </svg>
           </Link>
           <span className="text-neutral-300 dark:text-neutral-700 text-xs">/</span>
 
@@ -226,11 +224,40 @@ function StudioContent() {
 
             <button
               type="button"
-              onClick={() => setViewport(viewport === 'desktop' ? 'mobile' : 'desktop')}
-              className="p-1.5 rounded-lg border border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
-              title="Toggle responsive view"
+              onClick={() => setViewport('desktop')}
+              className={`p-1.5 rounded-lg border transition-colors ${
+                viewport === 'desktop'
+                  ? 'border-neutral-300 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white'
+                  : 'border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+              }`}
+              title="Desktop view"
             >
               <Desktop size={14} />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setViewport('mobile')}
+              className={`p-1.5 rounded-lg border transition-colors ${
+                viewport === 'mobile'
+                  ? 'border-neutral-300 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white'
+                  : 'border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+              }`}
+              title="Mobile view"
+            >
+              <DeviceMobile size={14} />
+            </button>
+
+            <button
+              type="button"
+              className="p-1.5 rounded-lg border border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+              title="Vector paths"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 18c4-12 12-12 16 0" />
+                <circle cx="4" cy="18" r="2" />
+                <circle cx="20" cy="18" r="2" />
+              </svg>
             </button>
 
             <button
@@ -240,6 +267,15 @@ function StudioContent() {
               title="Undo"
             >
               <ArrowCounterClockwise size={14} />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => redo()}
+              className="p-1.5 rounded-lg border border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+              title="Redo"
+            >
+              <ArrowClockwise size={14} />
             </button>
 
             <button
@@ -261,11 +297,9 @@ function StudioContent() {
         </div>
 
         {/* Center: Address Bar Pill (Exact Modulify Top-Bar Position) */}
-        <div className="hidden md:flex items-center gap-1.5 bg-stone-50 dark:bg-[#1a1a1a] border border-neutral-200/90 dark:border-neutral-800 rounded-xl px-2.5 py-1 shadow-2xs text-xs">
+        <div className="hidden md:flex items-center gap-1.5 bg-stone-50/80 dark:bg-[#1a1a1a] border border-neutral-200/90 dark:border-neutral-800 rounded-xl px-2.5 py-1 shadow-2xs text-xs">
           <div className="flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 pr-2 border-r border-neutral-200 dark:border-neutral-800">
-            <div className="w-3.5 h-3.5 rounded bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center text-[8px] font-bold">
-              O
-            </div>
+            <span className="text-sm leading-none">🦩</span>
             <span>Orvane</span>
             <CaretDown size={11} className="text-neutral-400" />
           </div>

@@ -91,13 +91,13 @@ export default function DashboardPage() {
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
   useEffect(() => {
-    // Randomize initial greeting
-    setGreeting(greetings[Math.floor(Math.random() * greetings.length)]);
+    // Keep exact Modulify greeting
+    setGreeting('Time to make waves, Sagarithm.');
 
-    // Cycle placeholders every 4.5 seconds
+    // Cycle placeholders every 6 seconds
     const interval = setInterval(() => {
       setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
-    }, 4500);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
