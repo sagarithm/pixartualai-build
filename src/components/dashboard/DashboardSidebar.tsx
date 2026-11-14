@@ -393,7 +393,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
       {/* Bottom Segment */}
       <div className="flex flex-col gap-3 pt-2">
         {/* Promo Card 1: Spread the word */}
-        <div className="p-3 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#181818] flex items-center justify-between shadow-2xs hover:border-neutral-300 transition-colors cursor-pointer group">
+        <div className="p-3 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#181818] flex items-center justify-between shadow-2xs hover:border-neutral-300 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer group">
           <div className="flex flex-col">
             <span className="text-[12.5px] font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
               Spread the word
@@ -402,13 +402,13 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
               and earn free credits
             </span>
           </div>
-          <Gift size={18} className="text-neutral-500 group-hover:text-accent transition-colors shrink-0" />
+          <Gift size={18} className="text-neutral-500 group-hover:text-accent group-hover:scale-110 transition-all shrink-0" />
         </div>
 
         {/* Promo Card 2: Upgrade to Pro */}
         <Link
           href="/dashboard/plans"
-          className="p-3 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#181818] flex items-center justify-between shadow-2xs hover:border-neutral-300 transition-colors group"
+          className="p-3 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#181818] flex items-center justify-between shadow-2xs hover:border-neutral-300 hover:scale-[1.01] active:scale-[0.99] transition-all group"
         >
           <div className="flex flex-col">
             <span className="text-[12.5px] font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
@@ -418,7 +418,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
               Unlock more features
             </span>
           </div>
-          <Lightning size={18} weight="fill" className="text-amber-500 shrink-0" />
+          <Lightning size={18} weight="fill" className="text-amber-500 group-hover:scale-110 transition-transform duration-200 shrink-0" />
         </Link>
 
         {/* Tertiary Links */}

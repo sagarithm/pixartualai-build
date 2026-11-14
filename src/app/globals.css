@@ -4,6 +4,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Authentic Modulify on-hover & micro-interaction transitions */
+.on-hover, .on-hover-hover:hover {
+  transition: all 0.5s ease-in-out, box-shadow 0s;
+}
+
+.interactive-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+}
+
+.interactive-card:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.interactive-button {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interactive-button:hover {
+  opacity: 0.92;
+  transform: translateY(-0.5px);
+}
+
+.interactive-button:active {
+  transform: scale(0.97);
+}
+
 @font-face {
   font-family: 'Neutralsans';
   src: url('/fonts/NeutralSans-Regular.ttf') format('truetype');

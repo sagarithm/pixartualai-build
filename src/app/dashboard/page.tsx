@@ -213,7 +213,7 @@ export default function DashboardPage() {
               <button
                 type="button"
                 onClick={() => setIsConnectorsOpen(true)}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-neutral-200/80 dark:border-neutral-800 text-xs font-normal text-neutral-700 dark:text-neutral-300 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
+                className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-neutral-200/80 dark:border-neutral-800 text-xs font-normal text-neutral-700 dark:text-neutral-300 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
               >
                 <div className="flex items-center -space-x-1">
                   <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center p-0.5 shadow-2xs z-30">
@@ -227,7 +227,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <span className="text-[12px] font-normal text-neutral-700 dark:text-neutral-300">Connect all your tools</span>
-                <ArrowRight size={11} className="text-neutral-400" />
+                <ArrowRight size={11} className="text-neutral-400 group-hover:translate-x-0.5 transition-transform duration-200" />
               </button>
             </div>
 
@@ -404,11 +404,11 @@ export default function DashboardPage() {
             </div>
 
             <Link
-              href="/dashboard?view=all"
-              className="text-xs text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal flex items-center gap-1"
+              href="/dashboard/projects"
+              className="group text-xs text-neutral-500 hover:text-neutral-900 dark:hover:text-white font-normal flex items-center gap-1.5 transition-colors"
             >
               <span>View all</span>
-              <ArrowRight size={12} />
+              <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform duration-200" />
             </Link>
           </div>
 
