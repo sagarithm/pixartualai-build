@@ -81,10 +81,18 @@ function StudioContent() {
         setProjectName(initialTemplate.replace('-', ' ').toUpperCase());
       }
     } else if (initialPrompt) {
-      generateFromPrompt(initialPrompt);
-      setProjectName(`Project: ${initialPrompt.slice(0, 20)}...`);
+      setMessages([
+        { sender: 'user', text: initialPrompt, time: 'Just now' },
+        {
+          sender: 'assistant',
+          text: `Generated your project preview for: "${initialPrompt}". You can ask me to change copy, colors, or add sections.`,
+          time: 'Just now',
+        },
+      ]);
+      setProjectName('Orvane (Cloned)');
+      setSubdomain('https://sgr.pixartual.website');
     }
-  }, [initialPrompt, initialTemplate, loadTemplate, generateFromPrompt]);
+  }, [initialPrompt, initialTemplate, loadTemplate]);
 
   const handleSendChat = (customText?: string) => {
     const textToSend = customText || chatInput;
@@ -167,11 +175,10 @@ function StudioContent() {
                       setProjectName(p.name);
                       setIsProjectMenuOpen(false);
                     }}
-                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left transition-colors ${
-                      p.name === projectName
-                        ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white'
-                        : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/60'
-                    }`}
+                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left transition-colors ${p.name === projectName
+                      ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white'
+                      : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/60'
+                      }`}
                   >
                     <span>{p.name}</span>
                     {p.name === projectName && <Check size={12} className="text-accent" />}
@@ -193,107 +200,99 @@ function StudioContent() {
           <button
             type="button"
             onClick={() => setIsChatOpen(!isChatOpen)}
-            className={`p-1.5 rounded-lg border text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors ${
-              isChatOpen
-                ? 'border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white'
-                : 'border-neutral-200/80 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800'
-            }`}
+            className={`p-1.5 rounded-lg border text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors ${isChatOpen
+              ? 'border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white'
+              : 'border-neutral-200/80 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+              }`}
             title="Toggle AI chat copilot"
           >
             <SidebarSimple size={15} />
           </button>
+
+          {/* Left Toolbar Controls (Matching Modulify screenshot) */}
+          <div className="hidden sm:flex items-center gap-1 pl-1">
+            <button
+              type="button"
+              onClick={() => setIsPreviewMode(!isPreviewMode)}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border border-neutral-200/80 dark:border-neutral-700 transition-colors ${
+                isPreviewMode
+                  ? 'bg-neutral-900 text-white dark:bg-white dark:text-black'
+                  : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50'
+              }`}
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>Preview</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setViewport(viewport === 'desktop' ? 'mobile' : 'desktop')}
+              className="p-1.5 rounded-lg border border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+              title="Toggle responsive view"
+            >
+              <Desktop size={14} />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => undo()}
+              className="p-1.5 rounded-lg border border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+              title="Undo"
+            >
+              <ArrowCounterClockwise size={14} />
+            </button>
+
+            <button
+              type="button"
+              className="p-1.5 rounded-lg border border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+              title="Comments"
+            >
+              <ChatCircleDots size={14} />
+            </button>
+
+            <button
+              type="button"
+              className="flex items-center gap-1 px-2 py-1 text-xs border border-neutral-200/80 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-lg transition-colors"
+            >
+              <DotsThree size={14} weight="bold" />
+              <span>More</span>
+            </button>
+          </div>
         </div>
 
-        {/* Center Toolbar Group (Preview, Viewports, Undo, Redo, More) */}
-        <div className="hidden lg:flex items-center gap-1 bg-stone-100/90 dark:bg-neutral-800/60 p-0.5 rounded-xl border border-neutral-200/60 dark:border-neutral-700">
+        {/* Center: Address Bar Pill (Exact Modulify Top-Bar Position) */}
+        <div className="hidden md:flex items-center gap-1.5 bg-stone-50 dark:bg-[#1a1a1a] border border-neutral-200/90 dark:border-neutral-800 rounded-xl px-2.5 py-1 shadow-2xs text-xs">
+          <div className="flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 pr-2 border-r border-neutral-200 dark:border-neutral-800">
+            <div className="w-3.5 h-3.5 rounded bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center text-[8px] font-bold">
+              O
+            </div>
+            <span>Orvane</span>
+            <CaretDown size={11} className="text-neutral-400" />
+          </div>
+          <span className="text-neutral-400 font-mono text-[11px]">/</span>
           <button
             type="button"
-            onClick={() => setIsPreviewMode(!isPreviewMode)}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
-              isPreviewMode
-                ? 'bg-white dark:bg-black shadow-2xs text-neutral-900 dark:text-white'
-                : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
-            }`}
+            onClick={() => window.open(subdomain, '_blank')}
+            className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-white transition-colors"
+            title="Open live URL in new tab"
           >
-            <Eye size={14} />
-            <span>Preview</span>
-          </button>
-
-          <div className="h-3 w-px bg-neutral-200 dark:bg-neutral-700 mx-0.5" />
-
-          {/* Viewports */}
-          <button
-            type="button"
-            onClick={() => setViewport('desktop')}
-            className={`p-1.5 rounded-lg text-xs transition-colors ${
-              viewport === 'desktop'
-                ? 'bg-white dark:bg-black shadow-2xs text-neutral-900 dark:text-white'
-                : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
-            }`}
-            title="Desktop view"
-          >
-            <Desktop size={14} />
+            <ArrowSquareOut size={13} />
           </button>
           <button
             type="button"
-            onClick={() => setViewport('tablet')}
-            className={`p-1.5 rounded-lg text-xs transition-colors ${
-              viewport === 'tablet'
-                ? 'bg-white dark:bg-black shadow-2xs text-neutral-900 dark:text-white'
-                : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
-            }`}
-            title="Tablet view"
+            onClick={() => {
+              const temp = projectName;
+              setProjectName('Reloading...');
+              setTimeout(() => setProjectName(temp), 400);
+            }}
+            className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-white transition-colors"
+            title="Reload preview"
           >
-            <DeviceTablet size={14} />
+            <ArrowsClockwise size={13} />
           </button>
-          <button
-            type="button"
-            onClick={() => setViewport('mobile')}
-            className={`p-1.5 rounded-lg text-xs transition-colors ${
-              viewport === 'mobile'
-                ? 'bg-white dark:bg-black shadow-2xs text-neutral-900 dark:text-white'
-                : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
-            }`}
-            title="Mobile view"
-          >
-            <DeviceMobile size={14} />
-          </button>
-
-          <div className="h-3 w-px bg-neutral-200 dark:bg-neutral-700 mx-0.5" />
-
-          {/* Undo / Redo */}
-          <button
-            type="button"
-            onClick={() => undo()}
-            className="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
-            title="Undo"
-          >
-            <ArrowCounterClockwise size={14} />
-          </button>
-          <button
-            type="button"
-            onClick={() => redo()}
-            className="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
-            title="Redo"
-          >
-            <ArrowClockwise size={14} />
-          </button>
-
-          <button
-            type="button"
-            className="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
-            title="Comments & notes"
-          >
-            <ChatCircleDots size={14} />
-          </button>
-
-          <button
-            type="button"
-            className="flex items-center gap-1 px-2 py-1 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-lg transition-colors"
-          >
-            <DotsThree size={14} weight="bold" />
-            <span>More</span>
-          </button>
+          <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider pl-1 border-l border-neutral-200 dark:border-neutral-800">
+            EN
+          </span>
         </div>
 
         {/* Right: Support Avatar Pill + Share + Upgrade + Publish */}
@@ -402,16 +401,14 @@ function StudioContent() {
                   {messages.map((m, idx) => (
                     <div
                       key={idx}
-                      className={`flex flex-col text-xs ${
-                        m.sender === 'user' ? 'items-end' : 'items-start'
-                      }`}
+                      className={`flex flex-col text-xs ${m.sender === 'user' ? 'items-end' : 'items-start'
+                        }`}
                     >
                       <div
-                        className={`max-w-[88%] p-3 rounded-2xl leading-relaxed ${
-                          m.sender === 'user'
-                            ? 'bg-neutral-900 text-white dark:bg-white dark:text-black rounded-tr-xs shadow-2xs'
-                            : 'bg-stone-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-tl-xs'
-                        }`}
+                        className={`max-w-[88%] p-3 rounded-2xl leading-relaxed ${m.sender === 'user'
+                          ? 'bg-neutral-900 text-white dark:bg-white dark:text-black rounded-tr-xs shadow-2xs'
+                          : 'bg-stone-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-tl-xs'
+                          }`}
                       >
                         {m.text}
                       </div>
@@ -468,9 +465,8 @@ function StudioContent() {
                                 setBuildMode(m);
                                 setIsBuildModeOpen(false);
                               }}
-                              className={`w-full text-left px-2 py-1 rounded-lg ${
-                                buildMode === m ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800'
-                              }`}
+                              className={`w-full text-left px-2 py-1 rounded-lg ${buildMode === m ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-900 dark:text-white' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+                                }`}
                             >
                               {m}
                             </button>
@@ -507,62 +503,22 @@ function StudioContent() {
             CENTER CANVAS PREVIEW AREA
             ========================================================================= */}
         <main className="flex-1 flex flex-col h-[calc(100vh-48px)] overflow-y-auto bg-[#fafafa] dark:bg-[#0c0c0c] p-3 sm:p-5">
-          {/* Subdomain & Page Selector Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 px-1 shrink-0">
-            {/* Live Subdomain Pill & Connect Domain */}
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1a1a] border border-neutral-200/80 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 shadow-2xs text-xs">
-                <Lock size={11} className="text-neutral-400" />
-                <span className="font-mono text-[11px] text-neutral-700 dark:text-neutral-300">
-                  {subdomain}
-                </span>
-              </div>
-
-              <Link
-                href="/dashboard/domains"
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-[11px] shadow-2xs hover:opacity-95 transition-opacity"
-              >
-                <Crown size={12} weight="fill" />
-                <span>Connect domain</span>
-              </Link>
+          {/* Subdomain & Connect Domain Pill (Centered above canvas matching Modulify) */}
+          <div className="flex items-center justify-center gap-2 mb-3 px-1 shrink-0">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1a1a] border border-neutral-200/80 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 shadow-2xs text-xs">
+              <Lock size={11} className="text-neutral-400" />
+              <span className="font-mono text-[11px] text-neutral-700 dark:text-neutral-300">
+                {subdomain}
+              </span>
             </div>
 
-            {/* Canvas Address Route Controls */}
-            <div className="flex items-center gap-2 self-end sm:self-auto">
-              <div className="flex items-center gap-1.5 bg-white dark:bg-[#1a1a1a] border border-neutral-200/80 dark:border-neutral-800 rounded-xl px-2.5 py-1 shadow-2xs text-xs">
-                <div className="flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 pr-2 border-r border-neutral-200 dark:border-neutral-800">
-                  <div className="w-3.5 h-3.5 rounded bg-orange-500 text-white flex items-center justify-center text-[8px] font-bold">
-                    O
-                  </div>
-                  <span>Orvane</span>
-                  <CaretDown size={11} className="text-neutral-400" />
-                </div>
-                <span className="text-neutral-400 font-mono text-[11px]">/</span>
-                <button
-                  type="button"
-                  onClick={() => window.open(subdomain, '_blank')}
-                  className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-white transition-colors"
-                  title="Open live URL"
-                >
-                  <ArrowSquareOut size={13} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const temp = projectName;
-                    setProjectName('Reloading...');
-                    setTimeout(() => setProjectName(temp), 500);
-                  }}
-                  className="p-1 text-neutral-400 hover:text-neutral-800 dark:hover:text-white transition-colors"
-                  title="Reload preview"
-                >
-                  <ArrowsClockwise size={13} />
-                </button>
-                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider pl-1 border-l border-neutral-100 dark:border-neutral-800">
-                  EN
-                </span>
-              </div>
-            </div>
+            <Link
+              href="/dashboard/domains"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-[11px] shadow-2xs hover:opacity-95 transition-opacity"
+            >
+              <Crown size={12} weight="fill" />
+              <span>Connect domain</span>
+            </Link>
           </div>
 
           {/* Floating Canvas Box (Exact Orvane Parity) */}
