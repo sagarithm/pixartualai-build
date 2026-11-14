@@ -2,176 +2,235 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { PixartualCta } from '@/components/landing/PixartualCta';
-import { Check, X, ArrowRight, Sparkle } from '@phosphor-icons/react';
+import { ArrowUpRight, Plus, Minus } from '@phosphor-icons/react';
+import comparisonsCatalog from '@/data/comparisons_catalog.json';
+
+interface CardItem {
+  title: string;
+  desc: string;
+  href: string;
+}
+
+interface CategoryGroup {
+  category: string;
+  cards: CardItem[];
+}
 
 export default function ComparePage() {
-  const [selectedCompetitor, setSelectedCompetitor] = useState<'framer' | 'webflow' | 'lovable'>('webflow');
+  const categories: CategoryGroup[] = comparisonsCatalog as CategoryGroup[];
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const competitors = [
+  const toggleFaq = (idx: number) => {
+    setOpenFaq(openFaq === idx ? null : idx);
+  };
+
+  const faqs = [
     {
-      id: 'webflow',
-      name: 'Webflow',
-      slug: '/compare/pixartual-vs-webflow',
-      title: 'PixartualAI vs Webflow',
-      desc: 'Webflow requires complex CSS box-model knowledge and manual styling for every breakpoint. PixartualAI allows you to describe what you want in plain language while maintaining visual precision and instantly generating stateful apps.',
-      features: [
-        { name: 'AI prompt-to-experience generation', pixartual: true, competitor: false },
-        { name: 'Conversational chat refinement', pixartual: true, competitor: false },
-        { name: 'Built-in interactive state (calculators/quizzes)', pixartual: true, competitor: false },
-        { name: 'Visual canvas customization', pixartual: true, competitor: true },
-        { name: 'Production hosting & SSL', pixartual: true, competitor: true },
-        { name: 'Zero coding requirement', pixartual: true, competitor: false },
-        { name: '1:1 Webflow site import', pixartual: true, competitor: false },
-        { name: 'Fast learning curve (< 5 minutes)', pixartual: true, competitor: false },
-      ],
+      q: 'How honest are these comparisons?',
+      a: 'Every page has a section naming where the other product is the better choice, and we mean it. We would rather lose a signup to the right tool than win a customer who leaves angry next month. The comparisons focus on architectural differences, not checklists of superficial features.',
     },
     {
-      id: 'framer',
-      name: 'Framer',
-      slug: '/compare/pixartual-vs-framer',
-      title: 'PixartualAI vs Framer',
-      desc: 'Framer is great for simple static marketing pages, but falls short when you need full-stack databases, dynamic stateful calculation tools, or complex user flows. PixartualAI bridges the gap between design and functional software.',
-      features: [
-        { name: 'Stateful interactive calculations', pixartual: true, competitor: false },
-        { name: 'Conversational design refactoring', pixartual: true, competitor: false },
-        { name: 'Full-stack database collections', pixartual: true, competitor: false },
-        { name: 'Visual canvas & layout editing', pixartual: true, competitor: true },
-        { name: 'Instant edge deployment', pixartual: true, competitor: true },
-        { name: 'Self-contained code export (React/HTML)', pixartual: true, competitor: false },
-        { name: 'Enterprise client portal workflows', pixartual: true, competitor: false },
-        { name: 'No proprietary component lock-in', pixartual: true, competitor: false },
-      ],
+      q: 'Why are ChatGPT, Claude Code and Figma in here?',
+      a: 'Because people genuinely ask whether they can build a website with them, and the honest answer is usually nuanced. They are great tools for parts of the problem, but they are not website platforms: they do not host, authenticate, query data, or provide a visual editing canvas for non-technical teammates.',
     },
     {
-      id: 'lovable',
-      name: 'Lovable / v0',
-      slug: '/compare/pixartual-vs-lovable',
-      title: 'PixartualAI vs Lovable & v0',
-      desc: 'First-generation AI code generators spit out raw code that requires developers to inspect, deploy, and fix. PixartualAI is a complete visual design studio where anyone can edit typography, styles, and layouts visually without touching a terminal.',
-      features: [
-        { name: 'Visual direct canvas manipulation', pixartual: true, competitor: false },
-        { name: 'Curated design system & NeutralSans typography', pixartual: true, competitor: false },
-        { name: 'Ready-to-use template catalog', pixartual: true, competitor: false },
-        { name: 'AI code generation', pixartual: true, competitor: true },
-        { name: 'Zero terminal / zero dev setup required', pixartual: true, competitor: false },
-        { name: 'Instant public share links (300ms edge)', pixartual: true, competitor: false },
-        { name: 'Client portals & CMS built-in', pixartual: true, competitor: false },
-        { name: '1:1 Webflow site migration', pixartual: true, competitor: false },
-      ],
+      q: 'What does PixartualAI actually do differently?',
+      a: 'You describe what you want and get a complete, structured page back, then refine it visually. The same page can hold static marketing copy, interactive calculators, a full headless CMS, and secure data connections — without you writing boilerplate or glue code.',
+    },
+    {
+      q: 'Can I move a site I already have?',
+      a: 'If it is on Webflow, apply to our transfer program. We reconstruct selected sites 1:1 inside PixartualAI, clean up the class names, and reconnect your CMS collections so you can keep your existing domain and SEO equity.',
+    },
+    {
+      q: 'What does it cost to try?',
+      a: 'Nothing. The free plan publishes a real site on a PixartualAI subdomain and includes the database, file hosting, and visual studio. You only upgrade when you want a custom domain or team seats.',
     },
   ];
-
-  const current = competitors.find((c) => c.id === selectedCompetitor)!;
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
       <Navbar />
 
       <main className="flex-1">
-        {/* Header with hero-bg.jpg */}
+        {/* Hero Section */}
         <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
-          <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]">
-            <img alt="" className="h-full w-full object-cover object-bottom" src="/images/kit/hero-bg.jpg" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]"
+          >
+            <Image
+              src="/images/kit/hero-bg.jpg"
+              alt=""
+              fill
+              className="object-cover object-bottom opacity-60"
+              priority
+            />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-[1000px] text-center px-5">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-orange-600">
-              <Sparkle size={14} weight="fill" />
-              Platform Comparison
-            </div>
-            <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-['Neutralsans']">
-              How PixartualAI compares
-            </h1>
-            <p className="mx-auto mt-4 max-w-[620px] text-lg leading-relaxed text-neutral-600">
-              Compare PixartualAI with traditional visual web design tools, manual website builders, and developer-first AI code generators.
-            </p>
-
-            {/* Competitor Switcher */}
-            <div className="mt-8 inline-flex items-center gap-2 p-1.5 rounded-full bg-stone-100 border border-neutral-200">
-              {competitors.map((comp) => (
-                <button
-                  key={comp.id}
-                  type="button"
-                  onClick={() => setSelectedCompetitor(comp.id as any)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                    selectedCompetitor === comp.id
-                      ? 'bg-neutral-950 text-white shadow-sm'
-                      : 'text-neutral-600 hover:text-neutral-900'
-                  }`}
-                >
-                  vs {comp.name}
-                </button>
-              ))}
+          <div className="relative z-10 mx-auto flex w-full max-w-[1240px] flex-col gap-12 px-5 md:gap-[71px] md:px-[50px]">
+            <div className="flex max-w-[800px] flex-col gap-3">
+              <div>
+                <span className="inline-block text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">
+                  Compare
+                </span>
+              </div>
+              <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.25rem] md:text-[3.25rem] lg:text-[3.75rem] max-w-[760px] font-['Neutralsans']">
+                How PixartualAI compares
+              </h1>
+              <p className="max-w-[682px] text-[15px] leading-relaxed text-neutral-600">
+                A fair breakdown of how PixartualAI differs from visual builders, traditional CMSs, code generators, and AI coding agents. Where each tool shines, and where PixartualAI takes a different approach.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Comparison Section */}
-        <section className="pb-20 px-5 max-w-[1000px] mx-auto">
-          <div className="text-center mb-10 flex flex-col items-center">
-            <h2 className="text-3xl font-medium font-['Neutralsans'] text-neutral-900 mb-3">
-              {current.title}
-            </h2>
-            <p className="text-sm md:text-base text-gray-500 max-w-[700px] mx-auto leading-relaxed">
-              {current.desc}
-            </p>
-            <Link
-              href={current.slug}
-              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-orange-600 hover:text-orange-700"
-            >
-              Read deep-dive comparison page <ArrowRight size={14} />
-            </Link>
-          </div>
-
-          {/* Feature Matrix Table */}
-          <div className="rounded-[22px] border border-neutral-200 bg-white overflow-hidden shadow-lg">
-            <div className="grid grid-cols-[1fr_120px_120px] sm:grid-cols-[1fr_180px_180px] bg-stone-50 border-b border-neutral-200 p-4 sm:p-5 font-medium text-xs sm:text-sm text-neutral-700">
-              <div>Capability</div>
-              <div className="text-center font-bold text-neutral-950 font-['Neutralsans']">PixartualAI</div>
-              <div className="text-center text-neutral-500">{current.name}</div>
-            </div>
-
-            <div className="divide-y divide-neutral-100">
-              {current.features.map((f, i) => (
-                <div
-                  key={i}
-                  className="grid grid-cols-[1fr_120px_120px] sm:grid-cols-[1fr_180px_180px] items-center p-4 sm:p-5 text-xs sm:text-sm hover:bg-neutral-50 transition-colors"
-                >
-                  <div className="font-medium text-neutral-900">{f.name}</div>
-
-                  <div className="flex justify-center">
-                    {f.pixartual ? (
-                      <div className="flex size-6 sm:size-7 items-center justify-center rounded-full bg-orange-100 text-[#fe3200]">
-                        <Check size={16} weight="bold" />
-                      </div>
-                    ) : (
-                      <div className="flex size-6 sm:size-7 items-center justify-center rounded-full bg-neutral-100 text-neutral-400">
-                        <X size={16} weight="bold" />
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="flex justify-center">
-                    {f.competitor ? (
-                      <div className="flex size-6 sm:size-7 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                        <Check size={16} weight="bold" />
-                      </div>
-                    ) : (
-                      <div className="flex size-6 sm:size-7 items-center justify-center rounded-full bg-neutral-100 text-neutral-400">
-                        <X size={16} weight="bold" />
-                      </div>
-                    )}
-                  </div>
+        {/* Categories Sections */}
+        {categories.map((cat, idx) => (
+          <section
+            key={cat.category}
+            id={cat.category.toLowerCase().replace(/\s+/g, '-')}
+            className={`kit-root relative overflow-hidden py-16 md:py-20 ${
+              idx % 2 === 0 ? 'bg-white' : 'bg-neutral-50/50'
+            }`}
+          >
+            <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
+              <div className="flex flex-col gap-8">
+                <div className="flex items-center justify-between border-b border-neutral-200/80 pb-4">
+                  <h2 className="kit-heading font-medium tracking-[-0.02em] text-neutral-950 text-[1.75rem] md:text-[2.25rem] font-['Neutralsans']">
+                    {cat.category}
+                  </h2>
                 </div>
-              ))}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {cat.cards.map((card) => (
+                    <Link
+                      key={card.title}
+                      href={card.href}
+                      className="kit-fcard group relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[28px] min-h-[320px] no-underline transition-all duration-300 hover:bg-neutral-900 hover:text-white hover:-translate-y-1 hover:shadow-lg"
+                    >
+                      <div className="flex items-start justify-between w-full">
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 group-hover:text-neutral-400">
+                          Comparison
+                        </span>
+                        <div className="size-8 rounded-full bg-white group-hover:bg-neutral-800 flex items-center justify-center transition-colors">
+                          <ArrowUpRight
+                            size={18}
+                            className="text-neutral-900 group-hover:text-[#fc8c04] transition-colors"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="mt-8 flex flex-col gap-2">
+                        <h3 className="font-['Neutralsans'] font-medium text-xl md:text-2xl text-neutral-950 group-hover:text-white transition-colors">
+                          {card.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-neutral-600 group-hover:text-neutral-300 transition-colors">
+                          {card.desc}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        ))}
+
+        {/* What every PixartualAI project includes */}
+        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px] border-t border-neutral-100">
+          <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
+            <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-3.5">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                  What every PixartualAI project includes
+                </h2>
+                <p className="text-[15px] leading-relaxed text-neutral-600">
+                  Included from the free plan up, not sold as separate services.
+                </p>
+              </div>
+
+              <div className="grid gap-[30px] sm:grid-cols-2 md:grid-cols-3">
+                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-8 transition-transform hover:-translate-y-1 duration-300">
+                  <span className="text-6xl font-medium tracking-[-0.02em] text-neutral-950 font-['Neutralsans']">
+                    1
+                  </span>
+                  <span className="text-[16px] text-neutral-900 font-medium">
+                    place for design, content, data, and publishing
+                  </span>
+                </div>
+
+                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-8 transition-transform hover:-translate-y-1 duration-300">
+                  <span className="text-6xl font-medium tracking-[-0.02em] text-[#fc8c04] font-['Neutralsans']">
+                    100+
+                  </span>
+                  <span className="text-[16px] text-neutral-900 font-medium">
+                    connectors to build against your real data
+                  </span>
+                </div>
+
+                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-8 transition-transform hover:-translate-y-1 duration-300">
+                  <span className="text-6xl font-medium tracking-[-0.02em] text-neutral-950 font-['Neutralsans']">
+                    $0
+                  </span>
+                  <span className="text-[16px] text-neutral-900 font-medium">
+                    to start, with a live subdomain, database, and analytics
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Bottom CTA */}
+        {/* Before you compare */}
+        <section className="kit-root relative overflow-hidden bg-neutral-50/60 py-20 md:py-[100px] border-t border-neutral-100">
+          <div className="mx-auto w-full px-5 md:px-[50px] max-w-[860px]">
+            <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-3.5 text-center">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                  Before you compare
+                </h2>
+                <p className="text-[15px] leading-relaxed text-neutral-600">
+                  How we write these pages, and what PixartualAI is for.
+                </p>
+              </div>
+
+              <div className="flex flex-col divide-y divide-neutral-200">
+                {faqs.map((faq, idx) => {
+                  const isOpen = openFaq === idx;
+                  return (
+                    <div key={faq.q} className="py-6">
+                      <button
+                        type="button"
+                        onClick={() => toggleFaq(idx)}
+                        className="flex w-full items-center justify-between text-left group cursor-pointer"
+                        aria-expanded={isOpen}
+                      >
+                        <span className="text-lg md:text-xl font-medium text-neutral-900 group-hover:text-[#fc8c04] transition-colors">
+                          {faq.q}
+                        </span>
+                        <div className="ml-4 flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-200/80 group-hover:bg-[#fc8c04] group-hover:text-white transition-colors">
+                          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                        </div>
+                      </button>
+
+                      {isOpen && (
+                        <div className="mt-4 text-[15px] leading-relaxed text-neutral-600 animate-fadeIn">
+                          {faq.a}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Banner */}
         <PixartualCta />
       </main>
 

@@ -1,0 +1,132 @@
+[
+  {
+    "category": "Visual builders",
+    "cards": [
+      {
+        "title": "PixartualAI vs Framer",
+        "desc": "A design-first canvas against a prompt-first platform. Where it lands: motion and canvas control versus speed, real data, and apps.",
+        "href": "/compare/pixartual-vs-framer"
+      },
+      {
+        "title": "PixartualAI vs Webflow",
+        "desc": "Deep control for a specialist against changes anyone can ship. Includes how to move an existing Webflow site over 1:1.",
+        "href": "/compare/pixartual-vs-webflow"
+      }
+    ]
+  },
+  {
+    "category": "Website builders",
+    "cards": [
+      {
+        "title": "PixartualAI vs Wix",
+        "desc": "A drag-and-drop editor with a huge app market against a prompt-first platform. Where it lands: breadth of add-ons versus design quality and real data.",
+        "href": "/compare/pixartual-vs-wix"
+      },
+      {
+        "title": "PixartualAI vs Squarespace",
+        "desc": "Beautiful templates you fit your content into, against a page generated around your content. Plus what happens when you need more than a site.",
+        "href": "/compare/pixartual-vs-squarespace"
+      },
+      {
+        "title": "PixartualAI vs WordPress",
+        "desc": "The most extensible platform on the web, and the maintenance that comes with it, against one place where nothing needs patching.",
+        "href": "/compare/pixartual-vs-wordpress"
+      }
+    ]
+  },
+  {
+    "category": "AI app builders",
+    "cards": [
+      {
+        "title": "PixartualAI vs Lovable",
+        "desc": "A codebase you own and maintain against a platform your whole team can run. The difference shows up months after launch.",
+        "href": "/compare/pixartual-vs-lovable"
+      },
+      {
+        "title": "PixartualAI vs Replit",
+        "desc": "A full cloud development environment against a website platform. Where it lands: who has to open the editor after launch.",
+        "href": "/compare/pixartual-vs-replit"
+      },
+      {
+        "title": "PixartualAI vs v0",
+        "desc": "Generated components you paste into your own codebase, against a complete site that runs on its own.",
+        "href": "/compare/pixartual-vs-v0"
+      }
+    ]
+  },
+  {
+    "category": "AI assistants",
+    "cards": [
+      {
+        "title": "PixartualAI vs ChatGPT",
+        "desc": "It can write the code and the copy. It cannot host the site, structure the content, or keep it running.",
+        "href": "/compare/pixartual-vs-chatgpt"
+      },
+      {
+        "title": "PixartualAI vs Claude Code",
+        "desc": "A coding agent that works in your repository, against a platform that runs the site for people who do not have one.",
+        "href": "/compare/pixartual-vs-claude-code"
+      },
+      {
+        "title": "PixartualAI vs Codex",
+        "desc": "A software engineering agent for developers, against a platform that ships and hosts the site itself.",
+        "href": "/compare/pixartual-vs-codex"
+      }
+    ]
+  },
+  {
+    "category": "Headless CMS",
+    "cards": [
+      {
+        "title": "PixartualAI vs Contentful",
+        "desc": "A content API that assumes you build the front end, against a platform where the site and the content ship together.",
+        "href": "/compare/pixartual-vs-contentful"
+      },
+      {
+        "title": "PixartualAI vs Sanity",
+        "desc": "A developer-first content backend you shape in code, against a site that arrives already built around your content.",
+        "href": "/compare/pixartual-vs-sanity"
+      }
+    ]
+  },
+  {
+    "category": "Design tools",
+    "cards": [
+      {
+        "title": "PixartualAI vs Figma",
+        "desc": "The industry standard for designing a site, against a platform that produces the working one. Most teams need both.",
+        "href": "/compare/pixartual-vs-figma"
+      }
+    ]
+  },
+  {
+    "category": "Specialist tools",
+    "cards": [
+      {
+        "title": "PixartualAI vs Unbounce",
+        "desc": "A conversion-focused landing page tool against a platform that also builds the rest of the site. Where it lands: testing depth versus scope.",
+        "href": "/compare/pixartual-vs-unbounce"
+      },
+      {
+        "title": "PixartualAI vs Readymag",
+        "desc": "A free-canvas tool for expressive editorial and portfolio work, against a platform for sites that need to keep running.",
+        "href": "/compare/pixartual-vs-readymag"
+      },
+      {
+        "title": "PixartualAI vs Ceros",
+        "desc": "Interactive campaign content designed to be embedded, against a platform that runs the whole site it sits on.",
+        "href": "/compare/pixartual-vs-ceros"
+      }
+    ]
+  },
+  {
+    "category": "Enterprise",
+    "cards": [
+      {
+        "title": "PixartualAI vs Adobe Experience Manager",
+        "desc": "An enterprise digital experience platform against a tool a small team can actually run. Very different budgets and very different jobs.",
+        "href": "/compare/pixartual-vs-adobe-experience-manager"
+      }
+    ]
+  }
+]

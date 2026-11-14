@@ -1,0 +1,170 @@
+[
+  {
+    "category": "General",
+    "faqs": [
+      {
+        "q": "What is PixartualAI?",
+        "a": "PixartualAI is an AI website and web app platform. You describe what you want and PixartualAI generates a polished, responsive site you can refine by chat, connect to a CMS, publish, and keep improving. It is a full platform, not a one-off generator, and it does not depend on any other builder."
+      },
+      {
+        "q": "What can I build with PixartualAI?",
+        "a": "PixartualAI builds landing pages, multi-page websites, dashboards, CMS-driven sites, web apps, and client portals. You can start from a prompt, a screenshot, or a template, then extend the project with dynamic content, forms, and app flows as your requirements grow."
+      },
+      {
+        "q": "How does prompting work in PixartualAI?",
+        "a": "You describe the page, section, or change you want in plain language, and PixartualAI generates it using curated design systems so the output is design quality rather than prototype quality. You can keep prompting to adjust layout, copy, styling, responsiveness, and structure."
+      },
+      {
+        "q": "Do I need coding or design skills?",
+        "a": "No. PixartualAI is built for people who are not developers or designers. Everything is created and edited through prompting and visual editing. Teams with technical skills can go further using connectors and custom code, but neither is required to launch a complete site."
+      },
+      {
+        "q": "Who is PixartualAI for?",
+        "a": "PixartualAI is used by founders, marketers, designers, product managers, sales, ops, and people teams. It suits anyone who needs to ship a professional site or internal tool quickly without waiting on design and development capacity."
+      },
+      {
+        "q": "Is PixartualAI suitable for large projects?",
+        "a": "Yes. PixartualAI handles multi-page websites, CMS-driven content, and web apps with multiple flows. Design systems keep styling consistent across every page as the project grows, so large sites stay coherent instead of drifting."
+      },
+      {
+        "q": "Which browsers does PixartualAI support?",
+        "a": "PixartualAI works in all modern browsers, including Chrome, Safari, Edge, and Firefox. There are no browser-specific limitations on building, editing, or publishing."
+      }
+    ]
+  },
+  {
+    "category": "CMS and content",
+    "faqs": [
+      {
+        "q": "Does PixartualAI have a CMS?",
+        "a": "Yes. PixartualAI includes a built-in CMS where you create collections for blogs, resources, case studies, careers, products, and any other repeating content. Collections are created by prompting, and you manage entries directly inside PixartualAI."
+      },
+      {
+        "q": "Can I create databases in PixartualAI?",
+        "a": "Yes. PixartualAI supports structured collections and databases with custom fields and relationships, so you can model real content and application data rather than only static page copy."
+      },
+      {
+        "q": "Can I build pages that pull from a collection?",
+        "a": "Yes. PixartualAI generates dynamic pages and listings from your collections, so one template renders every entry. Adding a new item publishes a new page automatically without rebuilding the layout."
+      },
+      {
+        "q": "Can I collect form submissions?",
+        "a": "Yes. PixartualAI supports forms and stores submissions in your project's own database, so the records are yours. Submissions can also be sent onward to the tools your team already uses, such as an email notification or a CRM record, which PixartualAI wires into the site's server-side code using an API key held in your encrypted secrets vault."
+      },
+      {
+        "q": "Can I import existing content?",
+        "a": "Content import is on the roadmap. Today, content is added directly in PixartualAI or through connectors."
+      }
+    ]
+  },
+  {
+    "category": "Web apps and internal tools",
+    "faqs": [
+      {
+        "q": "Can I build a web app, not just a website?",
+        "a": "Yes. PixartualAI builds dashboards, client portals, and internal tools with multiple pages, forms, structured data, and app flows. You describe the behaviour you need and refine it the same way you refine a marketing page."
+      },
+      {
+        "q": "What kinds of internal tools can I build?",
+        "a": "Teams use PixartualAI for client portals, internal dashboards, request and intake tools, resource hubs, and prototypes. These are built from the same prompting workflow as public sites, using collections for the underlying data."
+      }
+    ]
+  },
+  {
+    "category": "Connectors and integrations",
+    "faqs": [
+      {
+        "q": "What can I connect PixartualAI to?",
+        "a": "PixartualAI offers more than 100 connectors covering categories such as CRM and sales, communication, marketing and social, finance and payments, project management, and developer tools. You attach your own account and PixartualAI reads your real data from it while building, so what it generates is shaped around your actual records rather than placeholder content. When a published site needs to keep talking to an external tool, PixartualAI writes that into the site's own server-side code and stores the API key in your encrypted secrets vault."
+      },
+      {
+        "q": "Can I add custom code or call an external API?",
+        "a": "Yes. You can add custom code and connect external APIs when you need behavior beyond what a connector already covers, alongside PixartualAI's more than 100 built-in connectors. This keeps advanced integrations possible without limiting everyone else to point-and-click setup."
+      }
+    ]
+  },
+  {
+    "category": "Publishing and hosting",
+    "faqs": [
+      {
+        "q": "Is hosting included with PixartualAI?",
+        "a": "Yes. PixartualAI includes hosting, so you can publish your site live from inside the platform without configuring servers or a separate hosting provider."
+      },
+      {
+        "q": "Can I use my own domain?",
+        "a": "Yes. You can connect a custom domain to your PixartualAI project and publish to it. Custom domain support is included on the Starter, Pro, and Scale plans; the Free plan publishes to a PixartualAI subdomain only."
+      },
+      {
+        "q": "How do I publish and update my site?",
+        "a": "You publish from inside PixartualAI with a single action, and every later change goes live the same way. Because editing stays prompt-based after launch, you keep improving the live site instead of handing it off to a separate workflow."
+      }
+    ]
+  },
+  {
+    "category": "SEO and analytics",
+    "faqs": [
+      {
+        "q": "Can I control SEO settings?",
+        "a": "Yes. PixartualAI lets you edit page titles, meta descriptions, URL structure, heading hierarchy, alt text, and social share previews on every page, including dynamic pages generated from CMS collections."
+      },
+      {
+        "q": "Does PixartualAI include analytics?",
+        "a": "Yes. PixartualAI has built-in analytics so you can see traffic and page performance without adding a separate tool, and use it to decide what to improve next."
+      },
+      {
+        "q": "Can I use Google Analytics or other third-party tracking?",
+        "a": "Yes. You can add Google Analytics and other tracking tools alongside PixartualAI's built-in analytics. This lets you keep using the reporting and attribution tools your team already relies on, in addition to the traffic and performance data PixartualAI shows you natively."
+      }
+    ]
+  },
+  {
+    "category": "Plans, credits, and billing",
+    "faqs": [
+      {
+        "q": "How does PixartualAI pricing work?",
+        "a": "PixartualAI uses a flat credit-based model rather than variable token billing, so your cost is predictable month to month instead of changing with the length or complexity of each generation."
+      },
+      {
+        "q": "What uses credits?",
+        "a": "PixartualAI credits are spent on AI generation work: creating a page, refining a section, restructuring a layout, or rewriting copy all draw down your balance. Generating a brand new AI image is the single most credit-hungry action, so bringing your own images or using a placeholder keeps costs down."
+      },
+      {
+        "q": "Do credits renew each month?",
+        "a": "Paid plan credits do. They reset at the start of each billing cycle to whatever monthly allowance your plan and credit tier include, so your balance is predictable every cycle. The Free plan works differently: its 35 credits are a one-time allowance, not a monthly one, so they do not refresh. Once they are used, you can move to a paid plan or buy top-up credits to keep generating."
+      },
+      {
+        "q": "Do unused credits roll over?",
+        "a": "Plan credits do not roll over and expire at the end of the billing cycle. Top-up credits purchased separately do roll over and stay available in later months."
+      },
+      {
+        "q": "Can I cancel my subscription?",
+        "a": "Yes. You can cancel at any time from the Plans section by opening Manage Subscription and selecting Cancel Subscription. You keep access until the end of your current billing cycle. You can also downgrade instead of cancelling."
+      },
+      {
+        "q": "Can I get a refund?",
+        "a": "Yearly plans are eligible for a refund within 7 days of the charge if the account has not been significantly used. Monthly subscriptions are not refundable, so cancel before your billing period ends to avoid a charge. Use the contact form at modulify.ai/contact to request one."
+      },
+      {
+        "q": "Who owns the site I build?",
+        "a": "PixartualAI does not claim ownership of the sites or content you create. You retain full rights to publish, modify, or distribute your work, for personal or commercial use, without restriction from PixartualAI. You own the site and everything you build with it."
+      }
+    ]
+  },
+  {
+    "category": "Coming from Webflow",
+    "faqs": [
+      {
+        "q": "Is PixartualAI built on Webflow?",
+        "a": "No. PixartualAI is a standalone platform. It generates, hosts, and publishes sites entirely on its own infrastructure, with its own CMS, analytics, and connectors. PixartualAI does not require a Webflow account and does not export into Webflow."
+      },
+      {
+        "q": "Can I move my existing Webflow site to PixartualAI?",
+        "a": "Yes. PixartualAI runs a migration programme that rebuilds selected Webflow sites 1:1 inside PixartualAI, preserving the design, pages, CMS structure, and content model, so your team keeps the site it already has and gains AI editing on top."
+      },
+      {
+        "q": "Do I have to redesign my site to migrate?",
+        "a": "No. The migration preserves your existing design and content model rather than replacing it. Once the rebuild is complete, you continue working on the same site using prompting, CMS, analytics, and publishing inside PixartualAI."
+      }
+    ]
+  }
+]

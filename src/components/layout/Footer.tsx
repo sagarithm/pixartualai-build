@@ -164,13 +164,13 @@ export const Footer: React.FC = () => {
                   <Link href="/compare" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     Compare
                   </Link>
-                  <Link href="/compare/modulify-vs-framer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/compare/pixartual-vs-framer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     PixartualAI vs Framer
                   </Link>
-                  <Link href="/compare/modulify-vs-webflow" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/compare/pixartual-vs-webflow" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     PixartualAI vs Webflow
                   </Link>
-                  <Link href="/compare/modulify-vs-lovable" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/compare/pixartual-vs-lovable" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     PixartualAI vs Lovable
                   </Link>
                   <Link href="/migrate" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
