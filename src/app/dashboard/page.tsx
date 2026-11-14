@@ -151,7 +151,7 @@ export default function DashboardPage() {
 
   // Available Connectors
   const connectors = [
-    { name: 'Google Drive', icon: '/images/connectors/google_drive.svg', connected: true },
+    { name: 'Google Drive', icon: '/images/connectors/googledrive.svg', connected: true },
     { name: 'GitHub', icon: '/images/connectors/github.svg', connected: true },
     { name: 'Slack', icon: '/images/connectors/slack.svg', connected: true },
     { name: 'Notion', icon: '/images/connectors/notion.svg', connected: false },

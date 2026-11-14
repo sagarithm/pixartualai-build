@@ -27,7 +27,7 @@ export default function ConnectorsPage() {
       name: 'Google Drive',
       category: 'Storage',
       desc: 'Read and sync document files, product assets, and media directly into your applications.',
-      icon: '/images/connectors/google_drive.svg',
+      icon: '/images/connectors/googledrive.svg',
       connected: true,
       popular: true,
       authType: 'One-click OAuth',
