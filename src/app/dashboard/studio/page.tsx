@@ -212,11 +212,10 @@ function StudioContent() {
             <button
               type="button"
               onClick={() => setIsPreviewMode(!isPreviewMode)}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border border-neutral-200/80 dark:border-neutral-700 transition-colors ${
-                isPreviewMode
-                  ? 'bg-neutral-900 text-white dark:bg-white dark:text-black'
-                  : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50'
-              }`}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border border-neutral-200/80 dark:border-neutral-700 transition-colors ${isPreviewMode
+                ? 'bg-neutral-900 text-white dark:bg-white dark:text-black'
+                : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50'
+                }`}
             >
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>Preview</span>

@@ -54,6 +54,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
   onOpenConnectors,
 }) => {
   const pathname = usePathname();
+  const [isProjectsOpen, setIsProjectsOpen] = useState(true);
   const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
@@ -180,7 +181,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
               {/* Workspace Action Links */}
               <div className="mt-2 space-y-0.5 border-t border-neutral-100 dark:border-neutral-800 pt-2">
                 <Link
-                  href="/dashboard/workspace/settings"
+                  href="/dashboard/settings"
                   onClick={() => setIsWorkspaceOpen(false)}
                   className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                 >
@@ -188,7 +189,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
                   <span>Settings</span>
                 </Link>
                 <Link
-                  href="/dashboard/workspace/members"
+                  href="/dashboard/members"
                   onClick={() => setIsWorkspaceOpen(false)}
                   className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                 >
@@ -196,7 +197,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
                   <span>Members</span>
                 </Link>
                 <Link
-                  href="/pricing"
+                  href="/dashboard/plans"
                   onClick={() => setIsWorkspaceOpen(false)}
                   className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                 >
@@ -218,7 +219,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-semibold text-neutral-900 dark:text-white">Credits</span>
                   <Link
-                    href="/pricing"
+                    href="/dashboard/plans"
                     onClick={() => setIsWorkspaceOpen(false)}
                     className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white flex items-center gap-0.5 text-[11px]"
                   >
@@ -288,22 +289,102 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
           {navLinks.map((link) => {
             const active = isActive(link.href, link.exact);
             const Icon = link.icon;
+            const isProjects = link.label === 'Projects';
+
             return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`flex items-center justify-between px-3 py-2 rounded-xl text-[13.5px] transition-colors ${
-                  active
-                    ? 'bg-[#f5f5f5] dark:bg-neutral-800 text-neutral-900 dark:text-white font-medium'
-                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <Icon size={18} weight={active ? 'fill' : 'regular'} />
-                  <span>{link.label}</span>
+              <div key={link.href} className="flex flex-col">
+                <div
+                  className={`flex items-center justify-between px-3 py-2 rounded-xl text-[13.5px] transition-colors cursor-pointer ${
+                    active
+                      ? 'bg-[#f5f5f5] dark:bg-neutral-800 text-neutral-900 dark:text-white font-medium'
+                      : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
+                  }`}
+                  onClick={() => {
+                    if (isProjects) {
+                      setIsProjectsOpen(!isProjectsOpen);
+                    }
+                  }}
+                >
+                  <Link href={link.href} className="flex items-center gap-3 flex-1">
+                    <Icon size={18} weight={active ? 'fill' : 'regular'} />
+                    <span>{link.label}</span>
+                  </Link>
+                  {isProjects && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsProjectsOpen(!isProjectsOpen);
+                      }}
+                      className="p-0.5 rounded hover:bg-neutral-200/50 dark:hover:bg-neutral-700/50 transition-colors"
+                    >
+                      <CaretDown
+                        size={14}
+                        className={`text-neutral-400 transition-transform ${
+                          isProjectsOpen ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                  )}
                 </div>
-                {link.label === 'Projects' && <CaretDown size={14} className="text-neutral-400" />}
-              </Link>
+
+                {/* Subfolder Tree for Projects */}
+                {isProjects && isProjectsOpen && (
+                  <div className="flex flex-col mt-0.5 ml-2 pl-3">
+                    {/* Archive */}
+                    <div className="flex items-center relative min-h-[30px]">
+                      <div className="shrink-0 self-stretch relative w-4">
+                        <div className="absolute left-0 top-0 h-[calc(100%+4px)] w-[1px] bg-neutral-200 dark:bg-neutral-800" />
+                        <div className="absolute left-0 top-1/2 w-3 h-[1px] bg-neutral-200 dark:bg-neutral-800" />
+                      </div>
+                      <Link
+                        href="/dashboard/archive"
+                        className="flex-1 flex items-center gap-2 py-1 px-2 text-[12.5px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 rounded-lg transition-colors"
+                      >
+                        <svg className="shrink-0 text-neutral-500" fill="currentColor" height="15" viewBox="0 0 256 256" width="15">
+                          <path d="M224,48H32A16,16,0,0,0,16,64V88a16,16,0,0,0,16,16v88a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V104a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM208,192H48V104H208ZM224,88H32V64H224V88ZM96,136a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,136Z" />
+                        </svg>
+                        <span>Archive</span>
+                      </Link>
+                    </div>
+
+                    {/* Recently deleted */}
+                    <div className="flex items-center relative min-h-[30px]">
+                      <div className="shrink-0 self-stretch relative w-4">
+                        <div className="absolute left-0 top-0 h-[calc(100%+4px)] w-[1px] bg-neutral-200 dark:bg-neutral-800" />
+                        <div className="absolute left-0 top-1/2 w-3 h-[1px] bg-neutral-200 dark:bg-neutral-800" />
+                      </div>
+                      <Link
+                        href="/dashboard/recently-deleted"
+                        className="flex-1 flex items-center gap-2 py-1 px-2 text-[12.5px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 rounded-lg transition-colors"
+                      >
+                        <svg className="shrink-0 text-neutral-500" fill="currentColor" height="15" viewBox="0 0 256 256" width="15">
+                          <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z" />
+                        </svg>
+                        <span>Recently deleted</span>
+                      </Link>
+                    </div>
+
+                    {/* New folder */}
+                    <div className="flex items-center relative min-h-[30px]">
+                      <div className="shrink-0 self-stretch relative w-4">
+                        <div className="absolute left-0 top-[-4px] h-[calc(50%+4px)] w-[1px] bg-neutral-200 dark:bg-neutral-800" />
+                        <div className="absolute left-0 top-1/2 w-3 h-[1px] bg-neutral-200 dark:bg-neutral-800" />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => alert('New folder creation modal')}
+                        className="flex-1 flex items-center gap-2 py-1 px-2 text-[12.5px] text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 rounded-lg transition-colors text-left"
+                      >
+                        <svg className="shrink-0 text-neutral-500" fill="currentColor" height="15" viewBox="0 0 256 256" width="15">
+                          <path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM92.69,56l16,16H40V56ZM216,200H40V88H216Zm-88-88a8,8,0,0,1,8,8v16h16a8,8,0,0,1,0,16H136v16a8,8,0,0,1-16,0V152H104a8,8,0,0,1,0-16h16V120A8,8,0,0,1,128,112Z" />
+                        </svg>
+                        <span>New folder</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             );
           })}
         </nav>
@@ -326,7 +407,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
 
         {/* Promo Card 2: Upgrade to Pro */}
         <Link
-          href="/pricing"
+          href="/dashboard/plans"
           className="p-3 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#181818] flex items-center justify-between shadow-2xs hover:border-neutral-300 transition-colors group"
         >
           <div className="flex flex-col">
@@ -508,7 +589,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
                 </Link>
 
                 <Link
-                  href="/dashboard/account/affiliates"
+                  href="/dashboard/affiliates"
                   onClick={() => setIsUserMenuOpen(false)}
                   className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800"
                 >

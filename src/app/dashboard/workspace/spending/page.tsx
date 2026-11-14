@@ -21,7 +21,7 @@ export default function WorkspaceSpendingPage() {
             </div>
 
             <Link
-              href="/pricing"
+              href="/dashboard/plans"
               className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-accent text-white text-xs font-semibold hover:opacity-90 shadow-sm"
             >
               <Lightning size={14} weight="fill" />

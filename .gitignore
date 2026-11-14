@@ -11,6 +11,7 @@ dist/
 *.html
 *.css.tmp
 modulify_styles.css
+modulify_dumps/
 extract_sections.py
 find_css.py
 inspect_exact_modulify.py

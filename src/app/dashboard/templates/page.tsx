@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
+import rawTemplates from '@/data/modulify_templates.json';
 import {
   FolderSimple,
   MagnifyingGlass,
@@ -14,6 +15,7 @@ import {
   RocketLaunch,
   Tag,
   Sparkle,
+  DotsThree,
 } from '@phosphor-icons/react';
 
 export default function TemplatesPage() {
@@ -21,75 +23,15 @@ export default function TemplatesPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [search, setSearch] = useState('');
 
-  const categories = ['All', 'SaaS', 'Portfolio', 'E-Commerce', 'Agency', 'Directory', 'Mobile'];
+  const categories = ['All', 'AI', 'SaaS & Apps', 'Agency & Services', 'Architecture', 'Portfolio & Personal', 'Travel & Hospitality'];
 
-  const templates = [
-    {
-      id: 'nova-saas',
-      title: 'Nova SaaS Suite',
-      category: 'SaaS',
-      desc: 'B2B subscription landing page with feature bento, live pricing tiers, and Stripe checkout.',
-      coverUrl: '/images/bento-generate.webp',
-      badge: 'Popular',
-    },
-    {
-      id: 'atelier-portfolio',
-      title: 'Atelier Creative Studio',
-      category: 'Portfolio',
-      desc: 'Editorial visual portfolio for photographers, designers, and creative directors with smooth typography.',
-      coverUrl: '/images/atelier.jpg',
-      badge: 'Featured',
-    },
-    {
-      id: 'aperture-media',
-      title: 'Aperture Cinema & Media',
-      category: 'Agency',
-      desc: 'High-impact agency layout with video hero, client reels, and interactive case studies.',
-      coverUrl: '/images/aperture.jpg',
-    },
-    {
-      id: 'galway-store',
-      title: 'Galway Lifestyle Commerce',
-      category: 'E-Commerce',
-      desc: 'Full-featured digital storefront with shopping cart, variant picker, and customer reviews.',
-      coverUrl: '/images/galway.jpg',
-      badge: 'New',
-    },
-    {
-      id: 'vancouver-directory',
-      title: 'Vancouver City Guide',
-      category: 'Directory',
-      desc: 'Multi-category relational CMS directory with search, interactive map cards, and filter pills.',
-      coverUrl: '/images/vancouver.jpg',
-    },
-    {
-      id: 'black-label',
-      title: 'Black Label Luxury Goods',
-      category: 'E-Commerce',
-      desc: 'Monochrome dark-mode shopping experience with high-resolution imagery and elegant typography.',
-      coverUrl: '/images/black.jpg',
-    },
-    {
-      id: 'boutique-consulting',
-      title: 'Boutique Advisory',
-      category: 'Agency',
-      desc: 'Corporate consultation and strategic advisory firm landing page with booking integration.',
-      coverUrl: '/images/boutique.jpg',
-    },
-    {
-      id: 'canada-travel',
-      title: 'Nordic & Alpine Retreats',
-      category: 'Directory',
-      desc: 'Hospitality and boutique hotel booking platform with interactive amenity calculator.',
-      coverUrl: '/images/canada.jpg',
-    },
-  ];
+  const templates = rawTemplates;
 
   const filtered = templates.filter((t) => {
     const matchesCat = selectedCategory === 'All' || t.category === selectedCategory;
     const matchesSearch =
-      t.title.toLowerCase().includes(search.toLowerCase()) ||
-      t.desc.toLowerCase().includes(search.toLowerCase());
+      t.name.toLowerCase().includes(search.toLowerCase()) ||
+      t.category.toLowerCase().includes(search.toLowerCase());
     return matchesCat && matchesSearch;
   });
 
@@ -149,59 +91,45 @@ export default function TemplatesPage() {
             </div>
           </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Authentic Modulify Templates Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filtered.map((tmpl) => (
               <div
-                key={tmpl.id}
-                className="group flex flex-col rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#161616] overflow-hidden shadow-2xs hover:shadow-md hover:border-neutral-300 dark:hover:border-neutral-700 transition-all"
+                key={tmpl.slug}
+                onClick={() => router.push(`/dashboard/studio?template=${tmpl.slug}`)}
+                className="group flex flex-col gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-ring focus:outline-none"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900">
-                  <Image
-                    src={tmpl.coverUrl}
-                    alt={tmpl.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900">
+                  <img
+                    src={tmpl.previewUrl}
+                    alt={tmpl.name}
+                    className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-105"
                   />
-                  {tmpl.badge && (
-                    <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-black/80 text-white text-[10px] font-semibold tracking-wide">
-                      {tmpl.badge}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <span className="px-3 py-1.5 rounded-xl bg-white/95 text-neutral-900 text-xs font-semibold shadow-lg">
+                      Open in Studio
                     </span>
-                  )}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
-                    <button
-                      onClick={() => router.push(`/dashboard/studio?template=${tmpl.id}`)}
-                      className="px-3.5 py-2 rounded-xl bg-accent text-white text-xs font-semibold shadow-lg hover:opacity-95 flex items-center gap-1.5 transition-transform active:scale-95"
-                    >
-                      <RocketLaunch size={14} />
-                      <span>Clone Template</span>
-                    </button>
                   </div>
                 </div>
 
-                <div className="p-4 flex flex-col justify-between flex-1">
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-semibold text-accent uppercase tracking-wider">
+                <div className="w-full flex flex-col px-1 pb-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-col min-w-0">
+                      <h2 className="text-[15px] font-semibold text-neutral-900 dark:text-white truncate">
+                        {tmpl.name}
+                      </h2>
+                      <span className="text-xs font-medium text-neutral-400 truncate">
                         {tmpl.category}
                       </span>
                     </div>
-                    <h3 className="text-sm font-semibold text-neutral-900 dark:text-white mt-1">
-                      {tmpl.title}
-                    </h3>
-                    <p className="text-[11.5px] text-neutral-500 mt-1.5 line-clamp-2 leading-relaxed">
-                      {tmpl.desc}
-                    </p>
-                  </div>
-
-                  <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 flex items-center justify-between">
-                    <span className="text-[11px] text-neutral-400">100% Responsive • Next.js</span>
                     <button
-                      onClick={() => router.push(`/dashboard/studio?template=${tmpl.id}`)}
-                      className="text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:text-accent flex items-center gap-1 transition-colors"
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                      className="p-1 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
                     >
-                      <span>Use this</span>
-                      <ArrowRight size={12} />
+                      <DotsThree size={18} weight="bold" />
                     </button>
                   </div>
                 </div>

@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
 import {
   Lock,
@@ -12,12 +13,20 @@ import {
   GithubLogo,
 } from '@phosphor-icons/react';
 
-export default function AccountPage() {
+function AccountContent() {
+  const searchParams = useSearchParams();
+  const initialTab = searchParams.get('tab');
   const [activeTab, setActiveTab] = useState<'general' | 'notifications' | 'surveys'>('general');
   const [name, setName] = useState('Sagarithm');
   const [saved, setSaved] = useState(false);
   const [isGoogleConnected, setIsGoogleConnected] = useState(true);
   const [isGithubConnected, setIsGithubConnected] = useState(false);
+
+  useEffect(() => {
+    if (initialTab === 'surveys' || initialTab === 'notifications' || initialTab === 'general') {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab]);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -269,5 +278,13 @@ export default function AccountPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function AccountPage() {
+  return (
+    <Suspense fallback={<div className="h-screen w-screen bg-[#fafafa] dark:bg-[#0d0d0d]" />}>
+      <AccountContent />
+    </Suspense>
   );
 }

@@ -252,6 +252,22 @@ export default function DashboardPage() {
                 className="w-full resize-none border-0 bg-transparent text-[15px] leading-relaxed text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:ring-0 p-1 min-h-[90px]"
               />
 
+              {/* Enhance with AI Pill (when prompt has text) */}
+              {prompt.trim().length > 0 && (
+                <div className="px-1 pb-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPrompt((prev) => `${prev} — optimized with clean typography, responsive layout, high contrast accessibility, and production animations.`);
+                    }}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors text-[11px] font-medium"
+                  >
+                    <Sparkle size={13} className="text-amber-500" weight="fill" />
+                    <span>Enhance with AI</span>
+                  </button>
+                </div>
+              )}
+
               {/* Toolbar */}
               <div className="flex items-center justify-between pt-2 border-t border-neutral-100 dark:border-neutral-800/60 mt-1">
                 {/* Left tools */}
@@ -448,28 +464,47 @@ export default function DashboardPage() {
               </div>
             </div>
           ) : (
-            /* Templates View */
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            /* Authentic Templates View from Modulify */
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { title: 'SaaS Launch Kit', category: 'Software', img: '/images/bento-generate.webp' },
-                { title: 'Minimalist Portfolio', category: 'Design', img: '/images/atelier.jpg' },
-                { title: 'E-Commerce Storefront', category: 'Retail', img: '/images/galway.jpg' },
-              ].map((tmpl, idx) => (
+                { title: 'Forge', category: 'AI', img: 'https://cdn.modulify.ai/custom-previews/6adb6a2f05611b34dba93502.webp', slug: 'forge-template' },
+                { title: 'Sales CRM', category: 'SaaS & Apps', img: 'https://cdn.modulify.ai/previews/6ac50ada7f321777a2ee3605.webp', slug: 'sales-crm-template' },
+                { title: 'Onda Studio', category: 'Agency & Services', img: 'https://cdn.modulify.ai/previews/6ac3b3a4c01ca4e98bbb4408.webp', slug: 'onda-template' },
+                { title: 'NORRVIK', category: 'Architecture', img: 'https://cdn.modulify.ai/custom-previews/6ac370d03996523cd20f727a.webp', slug: 'norrvik-template' },
+              ].map((tmpl) => (
                 <div
-                  key={idx}
-                  onClick={() => router.push(`/dashboard/studio?template=${tmpl.title.toLowerCase().replace(/\s+/g, '-')}`)}
-                  className="group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#161616] overflow-hidden shadow-2xs hover:shadow-md transition-all cursor-pointer"
+                  key={tmpl.slug}
+                  onClick={() => router.push(`/dashboard/studio?template=${tmpl.slug}`)}
+                  className="group flex flex-col gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-ring focus:outline-none"
                 >
-                  <div className="relative aspect-[16/10] w-full bg-neutral-100">
-                    <Image src={tmpl.img} alt={tmpl.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900">
+                    <img
+                      src={tmpl.img}
+                      alt={tmpl.title}
+                      className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 pointer-events-none" />
                   </div>
-                  <div className="p-3.5">
-                    <span className="text-xs font-semibold text-neutral-900 dark:text-white block">
-                      {tmpl.title}
-                    </span>
-                    <span className="text-[11px] text-neutral-400 block mt-0.5">
-                      {tmpl.category}
-                    </span>
+                  <div className="flex flex-col px-1 pb-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col min-w-0">
+                        <h2 className="text-[15px] font-semibold text-neutral-900 dark:text-white truncate">
+                          {tmpl.title}
+                        </h2>
+                        <span className="text-xs font-medium text-neutral-400 truncate">
+                          {tmpl.category}
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                        className="p-1 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <DotsThree size={18} weight="bold" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
