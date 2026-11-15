@@ -58,9 +58,14 @@ const capabilities: Capability[] = [
   },
 ];
 
+// 3 repetitions for seamless vertical waterfall around the centered spotlight
+const repeatedCapabilities = [...capabilities, ...capabilities, ...capabilities];
+
 export const BuildAnythingSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [trackOffset, setTrackOffset] = useState(0);
+
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -75,17 +80,33 @@ export const BuildAnythingSection: React.FC = () => {
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  // Center the active pill smoothly in the scroller
+  // Center the active pill smoothly in the scroller via CSS transform (NEVER scrolls page)
   useEffect(() => {
-    const el = itemRefs.current[activeIndex];
-    if (el && scrollerRef.current) {
-      el.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      });
+    const middleIndex = capabilities.length + activeIndex;
+    const el = itemRefs.current[middleIndex];
+    const container = scrollerRef.current;
+    if (el && container) {
+      const containerHeight = container.clientHeight;
+      const elOffsetTop = el.offsetTop;
+      const elHeight = el.offsetHeight;
+      const targetOffset = containerHeight / 2 - (elOffsetTop + elHeight / 2);
+      setTrackOffset(targetOffset);
     }
   }, [activeIndex]);
+
+  // Initial calculation on mount
+  useEffect(() => {
+    const middleIndex = capabilities.length;
+    const el = itemRefs.current[middleIndex];
+    const container = scrollerRef.current;
+    if (el && container) {
+      const containerHeight = container.clientHeight;
+      const elOffsetTop = el.offsetTop;
+      const elHeight = el.offsetHeight;
+      const targetOffset = containerHeight / 2 - (elOffsetTop + elHeight / 2);
+      setTrackOffset(targetOffset);
+    }
+  }, []);
 
   const goToNext = () => {
     setActiveIndex((prev) => (prev + 1) % capabilities.length);
@@ -105,20 +126,36 @@ export const BuildAnythingSection: React.FC = () => {
       <div className="grid h-full grid-cols-1 md:grid-cols-2">
         {/* Left Column: Authentic Vibrant Orange Scroller */}
         <div className="order-2 flex h-[70vh] items-center justify-center overflow-hidden bg-[linear-gradient(165deg,rgb(var(--px-color-accent-hot))_8%,rgb(var(--px-color-accent))_48%,rgba(248,113,113,0)_86%),linear-gradient(90deg,rgb(var(--px-color-accent)),rgb(var(--px-color-accent)))] px-5 md:order-none md:h-auto md:pl-[max(50px,calc((100vw-1240px)/2+50px))] md:pr-0">
-          <div ref={scrollerRef} className="scroller max-h-[500px]">
-            <ul className="scroller__track py-12">
-              {capabilities.map((cap, idx) => {
-                const isActive = idx === activeIndex;
+          <div
+            ref={scrollerRef}
+            className="scroller relative h-[480px] w-full max-w-[460px] overflow-hidden"
+          >
+            {/* The vertical track translates so the active word is always centered */}
+            <ul
+              className="scroller__track"
+              style={{
+                transform: `translateY(${trackOffset}px)`,
+                transition: 'transform 0.65s cubic-bezier(0.25, 1, 0.5, 1)',
+              }}
+            >
+              {repeatedCapabilities.map((cap, globalIdx) => {
+                const itemCapIndex = globalIdx % capabilities.length;
+                const isCenterSet =
+                  globalIdx >= capabilities.length && globalIdx < capabilities.length * 2;
+                const isActive = isCenterSet && itemCapIndex === activeIndex;
+
                 return (
-                  <li key={cap.key} className="scroller__row">
+                  <li key={`${cap.key}-${globalIdx}`} className="scroller__row">
                     <button
                       ref={(el) => {
-                        itemRefs.current[idx] = el;
+                        itemRefs.current[globalIdx] = el;
                       }}
                       type="button"
-                      onClick={() => setActiveIndex(idx)}
+                      onClick={() => setActiveIndex(itemCapIndex)}
                       className={`scroller__item cursor-pointer select-none transition-all duration-300 ${
-                        isActive ? 'is-active scale-105' : 'opacity-70 hover:opacity-100'
+                        isActive
+                          ? 'is-active scale-105 shadow-xl'
+                          : 'opacity-65 hover:opacity-100 hover:scale-102'
                       }`}
                     >
                       {cap.label}
