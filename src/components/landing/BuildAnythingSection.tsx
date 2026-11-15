@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 
 type CapabilityKey =
   | 'landingPages'
@@ -19,34 +20,106 @@ interface Capability {
 }
 
 const capabilities: Capability[] = [
-  { key: 'landingPages', label: 'Landing pages', img: '/images/cap-landing-pages.webp', alt: 'Landing page built with PixartualAI' },
-  { key: 'dashboards', label: 'Dashboards', img: '/images/cap-dashboards.webp', alt: 'Dashboard built with PixartualAI' },
-  { key: 'multiPageWebsites', label: 'Multi-page websites', img: '/images/cap-multi-page-websites.webp', alt: 'Multi-page website built with PixartualAI' },
-  { key: 'cms', label: 'CMS', img: '/images/cap-cms.webp', alt: 'CMS-driven site built with PixartualAI' },
-  { key: 'webApps', label: 'WebApps', img: '/images/cap-webapps.webp', alt: 'Web app built with PixartualAI' },
-  { key: 'clientPortals', label: 'Client portals', img: '/images/cap-client-portals.webp', alt: 'Client portal built with PixartualAI' },
+  {
+    key: 'landingPages',
+    label: 'Landing pages',
+    img: '/images/cap-landing-pages.webp',
+    alt: 'Landing page built with PixartualAI',
+  },
+  {
+    key: 'dashboards',
+    label: 'Dashboards',
+    img: '/images/cap-dashboards.webp',
+    alt: 'Dashboard built with PixartualAI',
+  },
+  {
+    key: 'multiPageWebsites',
+    label: 'Multi-page websites',
+    img: '/images/cap-multi-page-websites.webp',
+    alt: 'Multi-page website built with PixartualAI',
+  },
+  {
+    key: 'cms',
+    label: 'CMS',
+    img: '/images/cap-cms.webp',
+    alt: 'CMS-driven site built with PixartualAI',
+  },
+  {
+    key: 'webApps',
+    label: 'WebApps',
+    img: '/images/cap-webapps.webp',
+    alt: 'Web app built with PixartualAI',
+  },
+  {
+    key: 'clientPortals',
+    label: 'Client portals',
+    img: '/images/cap-client-portals.webp',
+    alt: 'Client portal built with PixartualAI',
+  },
 ];
 
 export const BuildAnythingSection: React.FC = () => {
-  const [activeKey, setActiveKey] = useState<CapabilityKey>('dashboards');
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const scrollerRef = useRef<HTMLDivElement>(null);
 
-  const activeIndex = capabilities.findIndex((c) => c.key === activeKey);
+  // Auto-advancing rotating carousel: one by one showing image
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % capabilities.length);
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  // Center the active pill smoothly in the scroller
+  useEffect(() => {
+    const el = itemRefs.current[activeIndex];
+    if (el && scrollerRef.current) {
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [activeIndex]);
+
+  const goToNext = () => {
+    setActiveIndex((prev) => (prev + 1) % capabilities.length);
+  };
+
+  const goToPrev = () => {
+    setActiveIndex((prev) => (prev - 1 + capabilities.length) % capabilities.length);
+  };
 
   return (
-    <section className="relative h-auto overflow-hidden bg-white md:h-[80vh] md:max-h-[80vh]" id="build-anything">
+    <section
+      className="relative h-auto overflow-hidden bg-white md:h-[80vh] md:max-h-[80vh]"
+      id="build-anything"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <div className="grid h-full grid-cols-1 md:grid-cols-2">
         {/* Left Column: Authentic Vibrant Orange Scroller */}
         <div className="order-2 flex h-[70vh] items-center justify-center overflow-hidden bg-[linear-gradient(165deg,rgb(var(--px-color-accent-hot))_8%,rgb(var(--px-color-accent))_48%,rgba(248,113,113,0)_86%),linear-gradient(90deg,rgb(var(--px-color-accent)),rgb(var(--px-color-accent)))] px-5 md:order-none md:h-auto md:pl-[max(50px,calc((100vw-1240px)/2+50px))] md:pr-0">
-          <div className="scroller">
-            <ul className="scroller__track">
-              {capabilities.map((cap) => {
-                const isActive = cap.key === activeKey;
+          <div ref={scrollerRef} className="scroller max-h-[500px]">
+            <ul className="scroller__track py-12">
+              {capabilities.map((cap, idx) => {
+                const isActive = idx === activeIndex;
                 return (
                   <li key={cap.key} className="scroller__row">
                     <button
+                      ref={(el) => {
+                        itemRefs.current[idx] = el;
+                      }}
                       type="button"
-                      onClick={() => setActiveKey(cap.key)}
-                      className={`scroller__item ${isActive ? 'is-active' : ''}`}
+                      onClick={() => setActiveIndex(idx)}
+                      className={`scroller__item cursor-pointer select-none transition-all duration-300 ${
+                        isActive ? 'is-active scale-105' : 'opacity-70 hover:opacity-100'
+                      }`}
                     >
                       {cap.label}
                     </button>
@@ -58,9 +131,9 @@ export const BuildAnythingSection: React.FC = () => {
         </div>
 
         {/* Right Column: Title + 3D Stacked Preview Images */}
-        <div className="flex flex-col justify-start gap-7 overflow-hidden bg-gray-100 px-5 py-14 md:px-16 md:py-20">
+        <div className="flex flex-col justify-between overflow-hidden bg-gray-100 px-5 py-12 md:px-16 md:py-16">
           <div className="text-center">
-            <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-ink-strong">
+            <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-ink-strong font-['Neutralsans']">
               Build Anything
             </h2>
             <p className="mx-auto max-w-[520px] text-[clamp(1rem,1.3vw,1.12rem)] leading-relaxed text-gray-500">
@@ -68,59 +141,114 @@ export const BuildAnythingSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="relative mx-auto mt-6 aspect-[45/32] w-full max-w-[min(460px,80vw)] rounded-[14px]">
+          {/* 3D Stacked Moving Carousel Container */}
+          <div className="relative mx-auto my-auto aspect-[45/32] w-full max-w-[min(460px,80vw)] rounded-[14px]">
             {capabilities.map((cap, i) => {
-              const diff = i - activeIndex;
+              // Relative position in modular circular list
+              const total = capabilities.length;
+              let diff = (i - activeIndex) % total;
+              if (diff < -Math.floor(total / 2)) diff += total;
+              if (diff > Math.floor(total / 2)) diff -= total;
 
               let style: React.CSSProperties = {
-                transform: 'translateX(0) scale(0.8)',
+                transform: 'translateX(0) scale(0.7)',
                 zIndex: 1,
                 opacity: 0,
                 pointerEvents: 'none',
               };
 
               if (diff === 0) {
-                // Active / Front Center
+                // Active Front Center
                 style = {
                   transform: 'translateX(0) scale(1)',
                   zIndex: 10,
                   opacity: 1,
                   pointerEvents: 'auto',
                 };
-              } else if (diff === -1 || (diff > 0 && i === capabilities.length - 1 && activeIndex === 0)) {
+              } else if (diff === -1) {
                 // Left neighbor
                 style = {
                   transform: 'translateX(-24%) scale(0.8)',
                   zIndex: 5,
-                  opacity: 1,
+                  opacity: 0.9,
                   pointerEvents: 'auto',
                 };
-              } else if (diff === 1 || (diff < 0 && i === 0 && activeIndex === capabilities.length - 1)) {
+              } else if (diff === 1) {
                 // Right neighbor
                 style = {
                   transform: 'translateX(24%) scale(0.8)',
                   zIndex: 5,
-                  opacity: 1,
+                  opacity: 0.9,
                   pointerEvents: 'auto',
                 };
               }
 
               return (
-                <img
+                <div
                   key={cap.key}
-                  src={cap.img}
-                  alt={cap.alt}
-                  loading="lazy"
-                  onClick={() => setActiveKey(cap.key)}
-                  className="absolute inset-0 size-full cursor-pointer rounded-[12px] bg-neutral-300 object-cover object-left-top shadow-[0_8px_28px_theme(colors.static-black/16%)] transition-[transform,opacity] duration-[420ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+                  onClick={() => {
+                    if (diff === 1) goToNext();
+                    if (diff === -1) goToPrev();
+                  }}
+                  className={`absolute inset-0 size-full rounded-[14px] overflow-hidden shadow-[0_12px_36px_rgba(0,0,0,0.18)] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                    diff !== 0 ? 'cursor-pointer hover:brightness-105' : ''
+                  }`}
                   style={style}
-                />
+                >
+                  <Image
+                    src={cap.img}
+                    alt={cap.alt}
+                    fill
+                    sizes="(max-width: 768px) 80vw, 460px"
+                    priority={i === 0 || i === 1}
+                    className="object-cover object-left-top"
+                  />
+                  {diff !== 0 && (
+                    <div className="absolute inset-0 bg-black/15 transition-opacity hover:bg-black/5" />
+                  )}
+                </div>
               );
             })}
+          </div>
+
+          {/* Carousel Navigation Indicator Dots & Controls */}
+          <div className="mt-4 flex items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={goToPrev}
+              className="size-8 rounded-full bg-white text-neutral-700 hover:bg-neutral-900 hover:text-white flex items-center justify-center transition-all shadow-xs cursor-pointer"
+              aria-label="Previous slide"
+            >
+              <CaretLeft size={16} />
+            </button>
+
+            <div className="flex items-center gap-1.5 px-2">
+              {capabilities.map((cap, idx) => (
+                <button
+                  key={cap.key}
+                  type="button"
+                  onClick={() => setActiveIndex(idx)}
+                  className={`h-2 rounded-full transition-all cursor-pointer ${
+                    idx === activeIndex
+                      ? 'w-6 bg-[#fc8c04]'
+                      : 'w-2 bg-neutral-300 hover:bg-neutral-400'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}: ${cap.label}`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={goToNext}
+              className="size-8 rounded-full bg-white text-neutral-700 hover:bg-neutral-900 hover:text-white flex items-center justify-center transition-all shadow-xs cursor-pointer"
+              aria-label="Next slide"
+            >
+              <CaretRight size={16} />
+            </button>
           </div>
         </div>
       </div>
     </section>
   );
 };
-
