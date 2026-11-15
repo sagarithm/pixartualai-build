@@ -29,7 +29,7 @@ export const PixartualBento: React.FC = () => {
 
         <div className="mx-auto grid max-w-[460px] grid-cols-1 gap-5 [grid-auto-rows:minmax(260px,auto)] md:max-w-none md:grid-cols-12 md:[grid-auto-rows:minmax(300px,auto)]">
           {/* Card 1: Generate pages */}
-          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-[#f5f5f4] dark:bg-[#18181b] border border-neutral-200/60 dark:border-neutral-800/80 md:col-span-7 transition-colors">
+          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-[#f5f5f4] dark:bg-[#1c1c1c] border-0 md:col-span-7 transition-colors">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Generating a page from a prompt"
@@ -49,7 +49,7 @@ export const PixartualBento: React.FC = () => {
           </article>
 
           {/* Card 2: Refine with chat */}
-          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-[#f5f5f4] dark:bg-[#18181b] border border-neutral-200/60 dark:border-neutral-800/80 md:col-span-5 transition-colors">
+          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-[#f5f5f4] dark:bg-[#1c1c1c] border-0 md:col-span-5 transition-colors">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Refining a section with chat"
@@ -69,7 +69,7 @@ export const PixartualBento: React.FC = () => {
           </article>
 
           {/* Card 3: CMS */}
-          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-[#f5f5f4] dark:bg-[#18181b] border border-neutral-200/60 dark:border-neutral-800/80 md:col-span-4 transition-colors">
+          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-[#f5f5f4] dark:bg-[#1c1c1c] border-0 md:col-span-4 transition-colors">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <img
                 alt="Managing CMS collections"
@@ -89,7 +89,7 @@ export const PixartualBento: React.FC = () => {
           </article>
 
           {/* Card 4: Build beyond landing pages with looping video marquee */}
-          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-[#f5f5f4] dark:bg-[#18181b] border border-neutral-200/60 dark:border-neutral-800/80 md:col-span-8 transition-colors">
+          <article className="col-span-1 flex flex-col overflow-hidden rounded-[22px] bg-[#f5f5f4] dark:bg-[#1c1c1c] border-0 md:col-span-8 transition-colors">
             <div className="relative flex min-h-0 flex-1 flex-col items-stretch justify-start overflow-hidden">
               <div aria-label="Dashboards, forms, and app flows" className="bento-marquee h-full min-h-[200px] w-full flex-1">
                 <div className="bento-track">

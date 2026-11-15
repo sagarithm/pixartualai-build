@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[100] transition-colors duration-300 bg-white/85 dark:bg-[#0a0a0c]/85 backdrop-blur-md backdrop-saturate-[1.8] border-b border-transparent dark:border-neutral-800/60">
+    <header className="sticky top-0 z-[100] transition-colors duration-300 bg-white/85 dark:bg-[#121212]/85 backdrop-blur-md backdrop-saturate-[1.8] border-b border-transparent">
       <div className="mx-auto flex w-full max-w-[1240px] items-center gap-3 px-5 transition-[padding] duration-200 md:px-[50px] lg:gap-6 py-4">
         {/* Left: PixartualAI Brand Logo */}
         <Link href="/" className="flex shrink-0 items-center" aria-label="PixartualAI home">
@@ -124,7 +124,7 @@ export const Navbar: React.FC = () => {
             <div
               onMouseEnter={keepOpen}
               onMouseLeave={scheduleClose}
-              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
+              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-[#292929] bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
                 solutionsOpen
                   ? 'opacity-100 translate-y-0 pointer-events-auto visible'
                   : 'opacity-0 translate-y-2 pointer-events-none invisible'
@@ -210,7 +210,7 @@ export const Navbar: React.FC = () => {
             <div
               onMouseEnter={keepOpen}
               onMouseLeave={scheduleClose}
-              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
+              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-[#292929] bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
                 resourcesOpen
                   ? 'opacity-100 translate-y-0 pointer-events-auto visible'
                   : 'opacity-0 translate-y-2 pointer-events-none invisible'

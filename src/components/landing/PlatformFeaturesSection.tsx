@@ -80,7 +80,7 @@ export const PlatformFeaturesSection: React.FC = () => {
         {features.map((f) => (
           <article
             key={f.title}
-            className="group feature-flame relative isolate flex min-h-[330px] snap-start flex-col overflow-hidden rounded-[20px] bg-[#f5f5f4] dark:bg-[#18181b] border border-neutral-200/60 dark:border-neutral-800/80 p-6 [flex:0_0_clamp(240px,24vw,320px)] transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:-translate-y-2.5 max-[680px]:min-h-[280px] max-[680px]:[flex:0_0_78vw]"
+            className="group feature-flame relative isolate flex min-h-[330px] snap-start flex-col overflow-hidden rounded-[20px] bg-[#f5f5f4] dark:bg-[#1c1c1c] border-0 p-6 [flex:0_0_clamp(240px,24vw,320px)] transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:-translate-y-2.5 max-[680px]:min-h-[280px] max-[680px]:[flex:0_0_78vw]"
             role="listitem"
           >
             <span className="mb-auto inline-flex items-center justify-start text-neutral-950 dark:text-white">

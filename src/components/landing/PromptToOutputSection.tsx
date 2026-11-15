@@ -45,8 +45,8 @@ export const PromptToOutputSection: React.FC = () => {
         </div>
 
         {/* Marquee Collage Container with Dot Grid */}
-        <div className="relative mt-2 overflow-hidden rounded-[24px] bg-neutral-50 dark:bg-[#18181b] border border-neutral-200/60 dark:border-neutral-800/80 pb-24 transition-colors">
-          <div className="dot-grid dark:!bg-[#18181b] flex flex-col gap-4 overflow-hidden rounded-[20px] p-[22px]">
+        <div className="relative mt-2 overflow-hidden rounded-[24px] bg-neutral-50 dark:bg-[#171717] border-0 pb-24 transition-colors">
+          <div className="dot-grid dark:!bg-[#171717] flex flex-col gap-4 overflow-hidden rounded-[20px] p-[22px]">
             {/* Top row - sliding left */}
             <div className="flex h-[200px] w-max flex-nowrap [will-change:transform] md:h-[300px] marquee-left">
               {[...row1, ...row1].map((item, i) => (

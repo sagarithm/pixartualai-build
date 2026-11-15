@@ -125,7 +125,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="marketing-footer bg-cover bg-top bg-no-repeat px-4 py-8 md:px-8 md:py-12">
       <div
-        className="mx-auto w-full max-w-[1240px] overflow-hidden rounded-[32px] marketing-footer-card shadow-[0_18px_50px_rgba(0,0,0,0.10)] transition-colors duration-300 border border-neutral-200/60 dark:border-neutral-800/80"
+        className="mx-auto w-full max-w-[1240px] overflow-hidden rounded-[32px] marketing-footer-card shadow-[0_18px_50px_rgba(0,0,0,0.10)] transition-colors duration-300 border-0"
       >
         <div className="px-6 md:px-[50px]">
           <div className="flex flex-col gap-12 pb-10 pt-8">

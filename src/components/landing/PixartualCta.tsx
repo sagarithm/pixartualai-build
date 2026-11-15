@@ -23,7 +23,7 @@ export const PixartualCta: React.FC = () => {
             <p className="mb-9 text-base text-static-white/75">
               Create a website, landing page, dashboard, or app...
             </p>
-            <Link className="mfy-btn mfy-btn--primary" href="/dashboard">
+            <Link className="mfy-btn mfy-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black font-semibold rounded-xl px-6 py-3 hover:opacity-90 transition-opacity" href="/dashboard">
               Start building
             </Link>
           </div>
