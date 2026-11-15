@@ -1999,3 +1999,21 @@ body {
   background-color: #121215 !important;
   border-color: #27272a !important;
 }
+
+/* Lenis Smooth Scroll Enhancements */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis {
+  scroll-behavior: initial !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}

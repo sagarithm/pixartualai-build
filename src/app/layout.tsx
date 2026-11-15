@@ -1,4 +1,5 @@
 import { ThemeSync } from '@/components/layout/ThemeSync';
+import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -54,7 +55,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-base text-ink antialiased selection:bg-orange-500/20 selection:text-ink-strong">
         <ThemeSync />
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );
