@@ -8,6 +8,7 @@ import {
   Moon,
   Desktop,
   CaretDown,
+  Check,
 } from '@phosphor-icons/react';
 import { Banknote } from 'lucide-react';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
@@ -108,16 +109,23 @@ export const Footer: React.FC = () => {
           return;
         }
       }
-      // default to current system or light
-      applyTheme('light');
+      // default to system preference (auto)
+      applyTheme('auto');
     } catch (e) {}
+
+    const handleThemeChange = (e: any) => {
+      if (e.detail && ['auto', 'light', 'dark'].includes(e.detail)) {
+        setThemeMode(e.detail);
+      }
+    };
+    window.addEventListener('pixartual-theme-change', handleThemeChange);
+    return () => window.removeEventListener('pixartual-theme-change', handleThemeChange);
   }, []);
 
   return (
     <footer className="marketing-footer bg-cover bg-top bg-no-repeat px-4 py-8 md:px-8 md:py-12">
       <div
-        className="mx-auto w-full max-w-[1240px] overflow-hidden rounded-[32px] bg-white dark:bg-[#121212] shadow-[0_18px_50px_rgba(0,0,0,0.10)] transition-colors duration-300"
-        style={{ backgroundColor: 'rgb(var(--px-color-white, 255 255 255))' }}
+        className="mx-auto w-full max-w-[1240px] overflow-hidden rounded-[32px] marketing-footer-card shadow-[0_18px_50px_rgba(0,0,0,0.10)] transition-colors duration-300 border border-neutral-200/60 dark:border-neutral-800/80"
       >
         <div className="px-6 md:px-[50px]">
           <div className="flex flex-col gap-12 pb-10 pt-8">
@@ -315,8 +323,8 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Rainbow Gradient Line */}
-        <div className="h-0.5 w-full bg-[linear-gradient(to_right,rgb(var(--px-color-accent-hot)),rgb(var(--px-color-accent)),rgba(252,140,4,0.35),#a855f7,#3b82f6)]"></div>
+        {/* Neon Gradient Hairline Divider matching Modulify Dark Theme */}
+        <div className="h-px w-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-60 my-4" />
 
         {/* Bottom Bar with Copyright, Theme, Currency, and Language */}
         <div className="flex flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between md:px-[50px]">
@@ -330,32 +338,62 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setThemeOpen(!themeOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] px-3 py-1.5 text-xs text-neutral-800 dark:text-neutral-200 transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white/80 dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
                 aria-label="Theme"
               >
                 {themeMode === 'light' ? (
-                  <Sun size={15} className="text-gray-500" />
+                  <Sun size={14} className="text-gray-500 dark:text-neutral-400" />
                 ) : themeMode === 'dark' ? (
-                  <Moon size={15} className="text-gray-500" />
+                  <Moon size={14} className="text-gray-500 dark:text-neutral-400" />
                 ) : (
-                  <Desktop size={15} className="text-gray-500" />
+                  <Desktop size={14} className="text-gray-500 dark:text-neutral-400" />
                 )}
                 <span className="capitalize">{themeMode}</span>
-                <CaretDown size={13} className="text-gray-500" />
+                <CaretDown
+                  size={12}
+                  className={`text-gray-500 dark:text-neutral-400 transition-transform ${
+                    themeOpen ? 'rotate-180' : ''
+                  }`}
+                />
               </button>
+
               {themeOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg mfy-fadein">
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[140px] rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121215] p-1.5 shadow-2xl mfy-fadein">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      applyTheme('auto');
+                      setThemeOpen(false);
+                    }}
+                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 transition-colors cursor-pointer ${
+                      themeMode === 'auto'
+                        ? 'font-medium text-neutral-900 dark:text-static-white'
+                        : 'text-neutral-500 dark:text-neutral-400'
+                    }`}
+                  >
+                    <Desktop size={14} className={themeMode === 'auto' ? 'text-neutral-900 dark:text-static-white' : 'text-neutral-400'} />
+                    <span>Auto</span>
+                    {themeMode === 'auto' && (
+                      <Check size={13} weight="bold" className="ml-auto text-[#fc8c04]" />
+                    )}
+                  </button>
                   <button
                     type="button"
                     onClick={() => {
                       applyTheme('light');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
-                      themeMode === 'light' ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
+                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 transition-colors cursor-pointer ${
+                      themeMode === 'light'
+                        ? 'font-medium text-neutral-900 dark:text-static-white'
+                        : 'text-neutral-500 dark:text-neutral-400'
                     }`}
                   >
-                    <Sun size={14} /> Light
+                    <Sun size={14} className={themeMode === 'light' ? 'text-neutral-900 dark:text-static-white' : 'text-neutral-400'} />
+                    <span>Light</span>
+                    {themeMode === 'light' && (
+                      <Check size={13} weight="bold" className="ml-auto text-[#fc8c04]" />
+                    )}
                   </button>
                   <button
                     type="button"
@@ -363,23 +401,17 @@ export const Footer: React.FC = () => {
                       applyTheme('dark');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
-                      themeMode === 'dark' ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
+                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 transition-colors cursor-pointer ${
+                      themeMode === 'dark'
+                        ? 'font-medium text-neutral-900 dark:text-static-white'
+                        : 'text-neutral-500 dark:text-neutral-400'
                     }`}
                   >
-                    <Moon size={14} /> Dark
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      applyTheme('auto');
-                      setThemeOpen(false);
-                    }}
-                    className={`flex items-center gap-2 w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
-                      themeMode === 'auto' ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
-                    }`}
-                  >
-                    <Desktop size={14} /> Auto
+                    <Moon size={14} className={themeMode === 'dark' ? 'text-neutral-900 dark:text-static-white' : 'text-neutral-400'} />
+                    <span>Dark</span>
+                    {themeMode === 'dark' && (
+                      <Check size={13} weight="bold" className="ml-auto text-[#fc8c04]" />
+                    )}
                   </button>
                 </div>
               )}
@@ -390,15 +422,15 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setCurrencyOpen(!currencyOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] px-3 py-1.5 text-xs text-neutral-800 dark:text-neutral-200 transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white/80 dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
                 aria-label="Currency"
               >
-                <Banknote size={15} className="text-gray-500" />
+                <Banknote size={14} className="text-gray-500 dark:text-neutral-400" />
                 <span>{currency}</span>
-                <CaretDown size={13} className="text-gray-500" />
+                <CaretDown size={12} className="text-gray-500 dark:text-neutral-400" />
               </button>
               {currencyOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] max-h-48 overflow-y-auto rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg mfy-fadein">
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] max-h-48 overflow-y-auto rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121215] p-1.5 shadow-2xl mfy-fadein">
                   {currencies.map((c) => (
                     <button
                       key={c.code}
@@ -407,8 +439,8 @@ export const Footer: React.FC = () => {
                         setCurrency(c.label);
                         setCurrencyOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
-                        currency === c.label ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
+                      className={`w-full text-left px-3 py-1.5 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200 transition-colors ${
+                        currency === c.label ? 'font-semibold text-neutral-900 dark:text-static-white bg-neutral-100 dark:bg-neutral-800/50' : ''
                       }`}
                     >
                       {c.label}
@@ -423,15 +455,15 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLangOpen(!langOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] px-3 py-1.5 text-xs text-neutral-800 dark:text-neutral-200 transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white/80 dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
                 aria-label="Language"
               >
-                <Globe size={15} className="text-gray-500" />
+                <Globe size={14} className="text-gray-500 dark:text-neutral-400" />
                 <span>{language}</span>
-                <CaretDown size={13} className="text-gray-500" />
+                <CaretDown size={12} className="text-gray-500 dark:text-neutral-400" />
               </button>
               {langOpen && (
-                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg mfy-fadein">
+                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121215] p-1.5 shadow-2xl mfy-fadein">
                   {languages.map((l) => (
                     <button
                       key={l}
@@ -440,8 +472,8 @@ export const Footer: React.FC = () => {
                         setLanguage(l);
                         setLangOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-1.5 text-xs rounded-lg hover:bg-stone-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors ${
-                        language === l ? 'font-semibold bg-stone-100 dark:bg-neutral-800' : ''
+                      className={`w-full text-left px-3 py-1.5 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200 transition-colors ${
+                        language === l ? 'font-semibold text-neutral-900 dark:text-static-white bg-neutral-100 dark:bg-neutral-800/50' : ''
                       }`}
                     >
                       {l}

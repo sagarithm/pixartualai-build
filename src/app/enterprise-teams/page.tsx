@@ -40,25 +40,25 @@ export default function EnterpriseTeamsPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0c] text-neutral-900 dark:text-neutral-100 selection:bg-orange-500 selection:text-white transition-colors duration-200">
       <Navbar />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]">
             <img alt="" className="h-full w-full object-cover object-bottom" src="/images/kit/hero-bg.jpg" />
           </div>
 
           <div className="relative z-10 mx-auto max-w-[1000px] text-center px-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-orange-200 bg-orange-50/80 text-orange-600 mb-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-orange-200 dark:border-orange-900/60 bg-orange-50/80 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 mb-6">
               <span>PixartualAI for Enterprise & Teams</span>
             </div>
 
-            <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-['Neutralsans']">
+            <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-['Neutralsans']">
               AI website operations for teams that move fast.
             </h1>
-            <p className="mx-auto mt-4 max-w-[620px] text-lg leading-relaxed text-neutral-600">
+            <p className="mx-auto mt-4 max-w-[620px] text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
               Enable marketing, design, and engineering teams to build, edit, and ship web apps and digital experiences with speed, autonomy, and security.
             </p>
           </div>
@@ -70,15 +70,15 @@ export default function EnterpriseTeamsPage() {
             {benefits.map((b) => {
               const Icon = b.icon;
               return (
-                <div key={b.title} className="p-7 rounded-[22px] border border-neutral-200 bg-stone-50 flex flex-col justify-between">
+                <div key={b.title} className="p-7 rounded-[22px] border border-neutral-200 dark:border-neutral-800 bg-stone-50 dark:bg-[#121215] flex flex-col justify-between transition-colors">
                   <div>
-                    <div className="size-10 rounded-xl bg-white border border-neutral-200 flex items-center justify-center text-neutral-950 mb-5 shadow-sm">
+                    <div className="size-10 rounded-xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center text-neutral-950 dark:text-white mb-5 shadow-sm">
                       <Icon size={20} className="text-[#fc8c04]" />
                     </div>
-                    <h3 className="text-lg font-medium text-neutral-900 font-['Neutralsans'] mb-2">
+                    <h3 className="text-lg font-medium text-neutral-900 dark:text-white font-['Neutralsans'] mb-2">
                       {b.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
                       {b.desc}
                     </p>
                   </div>

@@ -101,7 +101,7 @@ export default function PricingPage() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0c] text-neutral-900 dark:text-neutral-100 selection:bg-orange-500 selection:text-white transition-colors">
       <Navbar />
 
       <main className="pr-main flex-1">

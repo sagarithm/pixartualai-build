@@ -24,9 +24,9 @@ export const PromptToOutputSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-white py-12 md:pb-[90px] md:pt-20" id="prompt-to-output">
+    <section className="bg-white dark:bg-[#0a0a0c] py-12 md:pb-[90px] md:pt-20 transition-colors" id="prompt-to-output">
       <div className="mx-auto w-full max-w-[1240px] px-4 md:px-[50px]">
-        <h2 className="text-center text-[clamp(28px,6vw,48px)] font-medium leading-[1.2] text-ink-strong">
+        <h2 className="text-center text-[clamp(28px,6vw,48px)] font-medium leading-[1.2] text-ink-strong dark:text-white">
           From prompt to polished output.
         </h2>
 
@@ -35,8 +35,8 @@ export const PromptToOutputSection: React.FC = () => {
           aria-label="From prompt to application"
           className="relative mx-auto mb-10 mt-7 flex h-[52px] w-full items-center justify-between md:w-3/5"
         >
-          <div className="pointer-events-none absolute left-[170px] right-[170px] top-1/2 h-px bg-stone-200" />
-          <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-stone-100 text-[17px] font-medium text-neutral-900">
+          <div className="pointer-events-none absolute left-[170px] right-[170px] top-1/2 h-px bg-stone-200 dark:bg-neutral-800" />
+          <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-stone-100 dark:bg-neutral-800 text-[17px] font-medium text-neutral-900 dark:text-white">
             Prompt
           </span>
           <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-[linear-gradient(90deg,theme(colors.amber.400)_0%,theme(colors.pink.300)_52%,theme(colors.fuchsia.200)_100%)] text-[17px] font-medium text-ink-strong shadow-[inset_0_0_0_1px_theme(colors.static-black/4%)]">
@@ -45,8 +45,8 @@ export const PromptToOutputSection: React.FC = () => {
         </div>
 
         {/* Marquee Collage Container with Dot Grid */}
-        <div className="relative mt-2 overflow-hidden rounded-[24px] bg-neutral-50 pb-24">
-          <div className="dot-grid flex flex-col gap-4 overflow-hidden rounded-[20px] p-[22px]">
+        <div className="relative mt-2 overflow-hidden rounded-[24px] bg-neutral-50 dark:bg-[#121215] border border-transparent dark:border-neutral-800/80 pb-24 transition-colors">
+          <div className="dot-grid dark:!bg-[#121215] flex flex-col gap-4 overflow-hidden rounded-[20px] p-[22px]">
             {/* Top row - sliding left */}
             <div className="flex h-[200px] w-max flex-nowrap [will-change:transform] md:h-[300px] marquee-left">
               {[...row1, ...row1].map((item, i) => (
@@ -77,7 +77,7 @@ export const PromptToOutputSection: React.FC = () => {
           {/* Fade gradient overlay at bottom */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-[230px] bg-[linear-gradient(180deg,rgba(250,250,250,0)_0%,#fafafa_80%)]"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[230px] bg-[linear-gradient(180deg,rgba(250,250,250,0)_0%,#fafafa_80%)] dark:bg-[linear-gradient(180deg,rgba(18,18,21,0)_0%,#121215_80%)]"
           />
 
           <div className="absolute bottom-7 left-1/2 z-[2] -translate-x-1/2">

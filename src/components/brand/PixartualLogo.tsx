@@ -64,7 +64,7 @@ export const PixartualLogo: React.FC<PixartualLogoProps> = ({
       {showWordmark && (
         <span
           className={`font-['Neutralsans',sans-serif] font-medium tracking-tight text-[19px] leading-none ${
-            wordmarkClassName || 'text-neutral-900 dark:text-white'
+            wordmarkClassName || 'text-neutral-900 dark:text-static-white'
           }`}
         >
           Pixartual<span className="text-[#fc8c04] font-semibold">AI</span>

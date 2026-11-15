@@ -22,7 +22,8 @@ const themeColors = {
           950: 'rgb(var(--px-color-amber-950) / <alpha-value>)',
         },
         base: 'rgb(var(--px-color-base) / <alpha-value>)',
-        black: 'rgb(var(--px-color-black) / <alpha-value>)',
+        black: '#000000',
+        'theme-black': 'rgb(var(--px-color-black) / <alpha-value>)',
         blue: {
           100: 'rgb(var(--px-color-blue-100) / <alpha-value>)',
           200: 'rgb(var(--px-color-blue-200) / <alpha-value>)',
@@ -305,7 +306,8 @@ const themeColors = {
           900: 'rgb(var(--px-color-violet-900) / <alpha-value>)',
           950: 'rgb(var(--px-color-violet-950) / <alpha-value>)',
         },
-        white: 'rgb(var(--px-color-white) / <alpha-value>)',
+        white: '#ffffff',
+        'theme-white': 'rgb(var(--px-color-white) / <alpha-value>)',
         yellow: {
           100: 'rgb(var(--px-color-yellow-100) / <alpha-value>)',
           200: 'rgb(var(--px-color-yellow-200) / <alpha-value>)',

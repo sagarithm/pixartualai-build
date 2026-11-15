@@ -68,7 +68,7 @@ export default function MadeInPixartualPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0c] text-neutral-900 dark:text-neutral-100 selection:bg-orange-500 selection:text-white transition-colors duration-200">
       <Navbar />
 
       <main className="flex-1">
@@ -119,40 +119,40 @@ export default function MadeInPixartualPage() {
         </section>
 
         {/* Section 1: Real projects. Different problems. Same unfair speed. */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-3.5">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   Real projects. Different problems. Same unfair speed.
                 </h2>
               </div>
 
-              <div className="overflow-hidden rounded-[20px] bg-neutral-100 border border-neutral-200">
-                <div className="grid border-b border-neutral-200 md:grid-cols-2 md:divide-x md:divide-neutral-200">
+              <div className="overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#121215] border border-neutral-200 dark:border-neutral-800">
+                <div className="grid border-b border-neutral-200 dark:border-neutral-800 md:grid-cols-2 md:divide-x md:divide-neutral-200 dark:md:divide-neutral-800">
                   <div className="flex flex-col gap-4 p-8">
                     <span className="text-xs font-bold uppercase tracking-wider text-orange-600">Case Study · Directory</span>
-                    <h3 className="text-2xl font-bold text-neutral-900 font-['Neutralsans']">FontInLogo</h3>
-                    <p className="text-sm leading-relaxed text-neutral-600">
+                    <h3 className="text-2xl font-bold text-neutral-900 dark:text-white font-['Neutralsans']">FontInLogo</h3>
+                    <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                       Scaled to 150,000+ monthly visits by generating programmatic typography showcase pages and instant brand font discovery filters.
                     </p>
-                    <div className="mt-4 flex items-center gap-6 text-xs text-neutral-500">
-                      <div><strong className="text-neutral-900 text-sm">3 Days</strong> to MVP</div>
-                      <div><strong className="text-neutral-900 text-sm">1,200+</strong> Fonts Indexed</div>
-                      <div><strong className="text-neutral-900 text-sm">100/100</strong> Performance</div>
+                    <div className="mt-4 flex items-center gap-6 text-xs text-neutral-500 dark:text-neutral-400">
+                      <div><strong className="text-neutral-900 dark:text-white text-sm">3 Days</strong> to MVP</div>
+                      <div><strong className="text-neutral-900 dark:text-white text-sm">1,200+</strong> Fonts Indexed</div>
+                      <div><strong className="text-neutral-900 dark:text-white text-sm">100/100</strong> Performance</div>
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-4 p-8">
                     <span className="text-xs font-bold uppercase tracking-wider text-orange-600">Case Study · Interactive Tool</span>
-                    <h3 className="text-2xl font-bold text-neutral-900 font-['Neutralsans']">MeinMwStRechner</h3>
-                    <p className="text-sm leading-relaxed text-neutral-600">
+                    <h3 className="text-2xl font-bold text-neutral-900 dark:text-white font-['Neutralsans']">MeinMwStRechner</h3>
+                    <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                       Built a stateful multi-country VAT and tax calculation engine with instant currency conversion that ranks #1 for German financial calculators.
                     </p>
-                    <div className="mt-4 flex items-center gap-6 text-xs text-neutral-500">
-                      <div><strong className="text-neutral-900 text-sm">4 Hours</strong> to Launch</div>
-                      <div><strong className="text-neutral-900 text-sm">Zero</strong> Backend Servers</div>
-                      <div><strong className="text-neutral-900 text-sm">300ms</strong> Edge Speed</div>
+                    <div className="mt-4 flex items-center gap-6 text-xs text-neutral-500 dark:text-neutral-400">
+                      <div><strong className="text-neutral-900 dark:text-white text-sm">4 Hours</strong> to Launch</div>
+                      <div><strong className="text-neutral-900 dark:text-white text-sm">Zero</strong> Backend Servers</div>
+                      <div><strong className="text-neutral-900 dark:text-white text-sm">300ms</strong> Edge Speed</div>
                     </div>
                   </div>
                 </div>
@@ -162,50 +162,50 @@ export default function MadeInPixartualPage() {
         </section>
 
         {/* Section 2: What PixartualAI helped make faster (Flame cards) */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-3.5">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   What PixartualAI helped make faster
                 </h2>
-                <p className="text-[15px] leading-relaxed text-neutral-900">
+                <p className="text-[15px] leading-relaxed text-neutral-900 dark:text-neutral-100">
                   Create, edit, manage, publish, and improve your site from one place.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 items-start gap-[30px] sm:grid-cols-2 lg:grid-cols-3">
-                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[25px] aspect-[253/368] min-h-[368px]">
+                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#121215] border border-transparent dark:border-neutral-800/80 p-[25px] aspect-[253/368] min-h-[368px]">
                   <div>
                     <Lightning size={32} className="text-orange-500 mb-6" weight="duotone" />
-                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 font-['Neutralsans']">
+                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 dark:text-white font-['Neutralsans']">
                       From Prompt to Live URLs
                     </h3>
-                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600">
+                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                       Turn an idea or product description into responsive, production-hosted pages in under 60 seconds.
                     </p>
                   </div>
                 </article>
 
-                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[25px] aspect-[253/368] min-h-[368px]">
+                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#121215] border border-transparent dark:border-neutral-800/80 p-[25px] aspect-[253/368] min-h-[368px]">
                   <div>
                     <ChartLineUp size={32} className="text-orange-500 mb-6" weight="duotone" />
-                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 font-['Neutralsans']">
+                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 dark:text-white font-['Neutralsans']">
                       SEO & Programmatic Scale
                     </h3>
-                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600">
+                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                       Generate high-ranking programmatic pages, location directories, and dynamic landing pages with automated metadata.
                     </p>
                   </div>
                 </article>
 
-                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[25px] aspect-[253/368] min-h-[368px]">
+                <article className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#121215] border border-transparent dark:border-neutral-800/80 p-[25px] aspect-[253/368] min-h-[368px]">
                   <div>
                     <ShieldCheck size={32} className="text-orange-500 mb-6" weight="duotone" />
-                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 font-['Neutralsans']">
+                    <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 dark:text-white font-['Neutralsans']">
                       Enterprise Reliability
                     </h3>
-                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600">
+                    <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                       Global edge network with automated SSL certificates, 99.99% uptime, and instant rollback versioning.
                     </p>
                   </div>
@@ -216,11 +216,11 @@ export default function MadeInPixartualPage() {
         </section>
 
         {/* Section 3: Paperanimation Deep Dive */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
             <div className="flex items-center gap-8 md:flex-row md:gap-[30px] flex-col">
               <div className="w-full md:w-1/2">
-                <div className="aspect-[631/480] w-full overflow-hidden rounded-2xl shadow-sm border border-neutral-200">
+                <div className="aspect-[631/480] w-full overflow-hidden rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800">
                   <img
                     alt="Paperanimation website screenshot"
                     className="h-full w-full object-cover"
@@ -230,14 +230,14 @@ export default function MadeInPixartualPage() {
                 </div>
               </div>
               <div className="flex w-full flex-col gap-6 md:w-1/2 lg:gap-8">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   Paperanimation
                 </h2>
                 <div className="flex flex-col gap-2">
-                  <p className="text-[15px] leading-relaxed text-neutral-500 font-medium">
+                  <p className="text-[15px] leading-relaxed text-neutral-500 dark:text-neutral-400 font-medium">
                     Art direction meets zero-code agility.
                   </p>
-                  <p className="text-[15px] leading-relaxed text-neutral-900">
+                  <p className="text-[15px] leading-relaxed text-neutral-900 dark:text-neutral-200">
                     A boutique stop-motion studio needed an editorial portfolio that celebrated physical paper craft. Instead of paying a $40k agency fee, they generated the complete site with PixartualAI in two afternoons, complete with embedded showreels, client credits, and project galleries.
                   </p>
                 </div>
@@ -247,24 +247,24 @@ export default function MadeInPixartualPage() {
         </section>
 
         {/* Section 4: Iconly Deep Dive */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
             <div className="flex items-center gap-8 md:flex-row md:gap-[30px] flex-col-reverse">
               <div className="flex w-full flex-col gap-6 md:w-1/2 lg:gap-8">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   Iconly
                 </h2>
                 <div className="flex flex-col gap-2">
-                  <p className="text-[15px] leading-relaxed text-neutral-500 font-medium">
+                  <p className="text-[15px] leading-relaxed text-neutral-500 dark:text-neutral-400 font-medium">
                     From asset library to multi-million download marketplace.
                   </p>
-                  <p className="text-[15px] leading-relaxed text-neutral-900">
+                  <p className="text-[15px] leading-relaxed text-neutral-900 dark:text-neutral-200">
                     Iconly used PixartualAI to transition from static icon packs to a live searchable web catalog. Customers search, copy SVGs in one click, and preview stroke weights on screen.
                   </p>
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-                <div className="aspect-[631/480] w-full overflow-hidden rounded-2xl shadow-sm border border-neutral-200">
+                <div className="aspect-[631/480] w-full overflow-hidden rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800">
                   <img
                     alt="Iconly website screenshot"
                     className="h-full w-full object-cover"

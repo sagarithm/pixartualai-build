@@ -118,7 +118,7 @@ export const BuildAnythingSection: React.FC = () => {
 
   return (
     <section
-      className="relative h-auto overflow-hidden bg-white md:h-[80vh] md:max-h-[80vh]"
+      className="relative h-auto overflow-hidden bg-white dark:bg-[#0a0a0c] md:h-[80vh] md:max-h-[80vh] transition-colors"
       id="build-anything"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -168,12 +168,12 @@ export const BuildAnythingSection: React.FC = () => {
         </div>
 
         {/* Right Column: Title + 3D Stacked Preview Images */}
-        <div className="flex flex-col justify-between overflow-hidden bg-gray-100 px-5 py-12 md:px-16 md:py-16">
+        <div className="flex flex-col justify-between overflow-hidden bg-gray-100 dark:bg-[#121215] px-5 py-12 md:px-16 md:py-16 transition-colors">
           <div className="text-center">
-            <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-ink-strong font-['Neutralsans']">
+            <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-ink-strong dark:text-white font-['Neutralsans']">
               Build Anything
             </h2>
-            <p className="mx-auto max-w-[520px] text-[clamp(1rem,1.3vw,1.12rem)] leading-relaxed text-gray-500">
+            <p className="mx-auto max-w-[520px] text-[clamp(1rem,1.3vw,1.12rem)] leading-relaxed text-gray-500 dark:text-neutral-400">
               PixartualAI turns a prompt into a complete website or web app, layouts, content, database, and hosting included, then you refine every detail by chatting with AI.
             </p>
           </div>
@@ -253,7 +253,7 @@ export const BuildAnythingSection: React.FC = () => {
             <button
               type="button"
               onClick={goToPrev}
-              className="size-8 rounded-full bg-white text-neutral-700 hover:bg-neutral-900 hover:text-white flex items-center justify-center transition-all shadow-xs cursor-pointer"
+              className="size-8 rounded-full bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-900 dark:hover:bg-white hover:text-white dark:hover:text-black flex items-center justify-center transition-all shadow-xs cursor-pointer"
               aria-label="Previous slide"
             >
               <CaretLeft size={16} />
@@ -268,7 +268,7 @@ export const BuildAnythingSection: React.FC = () => {
                   className={`h-2 rounded-full transition-all cursor-pointer ${
                     idx === activeIndex
                       ? 'w-6 bg-[#fc8c04]'
-                      : 'w-2 bg-neutral-300 hover:bg-neutral-400'
+                      : 'w-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-600'
                   }`}
                   aria-label={`Go to slide ${idx + 1}: ${cap.label}`}
                 />
@@ -278,7 +278,7 @@ export const BuildAnythingSection: React.FC = () => {
             <button
               type="button"
               onClick={goToNext}
-              className="size-8 rounded-full bg-white text-neutral-700 hover:bg-neutral-900 hover:text-white flex items-center justify-center transition-all shadow-xs cursor-pointer"
+              className="size-8 rounded-full bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-900 dark:hover:bg-white hover:text-white dark:hover:text-black flex items-center justify-center transition-all shadow-xs cursor-pointer"
               aria-label="Next slide"
             >
               <CaretRight size={16} />

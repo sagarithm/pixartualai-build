@@ -28,34 +28,34 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0c] text-neutral-900 dark:text-neutral-100 selection:bg-orange-500 selection:text-white transition-colors">
       <Navbar />
 
       <main className="flex-1">
         {/* Contact Hero & Form */}
-        <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-100/50 via-white to-white px-5 pt-16 pb-20 md:pt-24 md:pb-28">
+        <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-100/50 via-white to-white dark:from-neutral-900/40 dark:via-[#0a0a0c] dark:to-[#0a0a0c] px-5 pt-16 pb-20 md:pt-24 md:pb-28">
           <div className="mx-auto max-w-[800px]">
             <div className="text-center">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-orange-600">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 dark:border-orange-900/60 bg-orange-50/80 dark:bg-orange-950/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400">
                 <ChatCircleDots size={14} weight="fill" />
                 Contact PixartualAI
               </div>
-              <h1 className="text-[clamp(32px,5vw,56px)] font-bold tracking-tight text-neutral-900 font-['Neutralsans']">
+              <h1 className="text-[clamp(32px,5vw,56px)] font-bold tracking-tight text-neutral-900 dark:text-white font-['Neutralsans']">
                 Let&rsquo;s build faster, smarter sites together
               </h1>
-              <p className="mx-auto mt-4 max-w-[560px] text-base md:text-lg text-neutral-600">
+              <p className="mx-auto mt-4 max-w-[560px] text-base md:text-lg text-neutral-600 dark:text-neutral-400">
                 Have questions about custom plans, migrations, or technical architecture? Send our team a note and we&rsquo;ll respond within 24 hours.
               </p>
             </div>
 
-            <div className="mt-12 rounded-3xl border border-neutral-200 bg-white p-6 sm:p-10 shadow-lg">
+            <div className="mt-12 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121215] p-6 sm:p-10 shadow-lg dark:shadow-2xl transition-colors">
               {submitted ? (
                 <div className="py-12 text-center">
                   <CheckCircle size={56} className="mx-auto text-emerald-500 mb-4" weight="fill" />
-                  <h3 className="text-2xl font-bold text-neutral-900 font-['Neutralsans']">
+                  <h3 className="text-2xl font-bold text-neutral-900 dark:text-white font-['Neutralsans']">
                     Thank you, {name}!
                   </h3>
-                  <p className="mt-2 text-neutral-600">
+                  <p className="mt-2 text-neutral-600 dark:text-neutral-400">
                     We&rsquo;ve received your message regarding &ldquo;{topic}&rdquo; and will get back to {email} shortly.
                   </p>
                   <button
@@ -72,7 +72,7 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2">
                       Topic
                     </label>
                     <div className="flex flex-wrap gap-2">
@@ -81,10 +81,10 @@ export default function ContactPage() {
                           key={t}
                           type="button"
                           onClick={() => setTopic(t)}
-                          className={`rounded-full px-4 py-2 text-xs font-semibold transition-all ${
+                          className={`rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
                             topic === t
-                              ? 'bg-neutral-900 text-white shadow-sm'
-                              : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+                              ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-sm'
+                              : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700'
                           }`}
                         >
                           {t}
@@ -95,7 +95,7 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2">
                         Your Name
                       </label>
                       <input
@@ -104,11 +104,11 @@ export default function ContactPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Jane Doe"
-                        className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
+                        className="w-full rounded-xl border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#18181b] px-4 py-3 text-sm text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none transition-all focus:border-[#fc8c04] focus:ring-2 focus:ring-[#fc8c04]/20 shadow-xs"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2">
                         Work Email
                       </label>
                       <input
@@ -117,13 +117,13 @@ export default function ContactPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="jane@company.com"
-                        className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
+                        className="w-full rounded-xl border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#18181b] px-4 py-3 text-sm text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none transition-all focus:border-[#fc8c04] focus:ring-2 focus:ring-[#fc8c04]/20 shadow-xs"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2">
                       Message
                     </label>
                     <textarea
@@ -132,7 +132,7 @@ export default function ContactPage() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Tell us about what you want to build or your team's requirements..."
-                      className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 resize-none"
+                      className="w-full rounded-xl border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#18181b] px-4 py-3 text-sm text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-500 outline-none transition-all focus:border-[#fc8c04] focus:ring-2 focus:ring-[#fc8c04]/20 shadow-xs resize-none"
                     />
                   </div>
 

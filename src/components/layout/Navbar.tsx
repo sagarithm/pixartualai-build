@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[100] transition-colors duration-300 bg-white/85 backdrop-blur-md backdrop-saturate-[1.8]">
+    <header className="sticky top-0 z-[100] transition-colors duration-300 bg-white/85 dark:bg-[#0a0a0c]/85 backdrop-blur-md backdrop-saturate-[1.8] border-b border-transparent dark:border-neutral-800/60">
       <div className="mx-auto flex w-full max-w-[1240px] items-center gap-3 px-5 transition-[padding] duration-200 md:px-[50px] lg:gap-6 py-4">
         {/* Left: PixartualAI Brand Logo */}
         <Link href="/" className="flex shrink-0 items-center" aria-label="PixartualAI home">
@@ -62,6 +62,13 @@ export const Navbar: React.FC = () => {
 
         {/* Primary Desktop Navigation */}
         <nav ref={navRef} className="ml-2 hidden items-center gap-1 lg:flex" aria-label="Primary">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-semibold text-[#fc8c04] hover:text-[#fc8c04]/80 no-underline transition-colors"
+          >
+            AI
+          </Link>
+
           <div
             className="relative flex items-center gap-1"
             onMouseLeave={scheduleClose}
@@ -79,8 +86,8 @@ export const Navbar: React.FC = () => {
                 }}
                 className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal no-underline cursor-pointer transition-colors ${
                   solutionsOpen
-                    ? 'bg-stone-100 text-neutral-950 font-medium'
-                    : 'text-neutral-800 bg-transparent hover:bg-stone-100/70'
+                    ? 'bg-stone-100 dark:bg-neutral-800 text-neutral-950 dark:text-white font-medium'
+                    : 'text-neutral-800 dark:text-neutral-200 bg-transparent hover:bg-stone-100/70 dark:hover:bg-neutral-800/70'
                 }`}
                 aria-expanded={solutionsOpen}
                 aria-haspopup="true"
@@ -88,7 +95,7 @@ export const Navbar: React.FC = () => {
                 Solutions
                 <CaretDown
                   size={15}
-                  className={`text-gray-500 transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`}
+                  className={`text-gray-500 dark:text-neutral-400 transition-transform duration-200 ${solutionsOpen ? 'rotate-180' : ''}`}
                 />
               </button>
             </div>
@@ -106,8 +113,8 @@ export const Navbar: React.FC = () => {
                 }}
                 className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal no-underline cursor-pointer transition-colors ${
                   resourcesOpen
-                    ? 'bg-stone-100 text-neutral-950 font-medium'
-                    : 'text-neutral-800 bg-transparent hover:bg-stone-100/70'
+                    ? 'bg-stone-100 dark:bg-neutral-800 text-neutral-950 dark:text-white font-medium'
+                    : 'text-neutral-800 dark:text-neutral-200 bg-transparent hover:bg-stone-100/70 dark:hover:bg-neutral-800/70'
                 }`}
                 aria-expanded={resourcesOpen}
                 aria-haspopup="true"
@@ -115,7 +122,7 @@ export const Navbar: React.FC = () => {
                 Resources
                 <CaretDown
                   size={15}
-                  className={`text-gray-500 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`}
+                  className={`text-gray-500 dark:text-neutral-400 transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`}
                 />
               </button>
             </div>
@@ -124,7 +131,7 @@ export const Navbar: React.FC = () => {
             <div
               onMouseEnter={keepOpen}
               onMouseLeave={scheduleClose}
-              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 bg-white shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
+              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
                 solutionsOpen
                   ? 'opacity-100 translate-y-0 pointer-events-auto visible'
                   : 'opacity-0 translate-y-2 pointer-events-none invisible'
@@ -137,20 +144,20 @@ export const Navbar: React.FC = () => {
                   <Link
                     href="/solutions"
                     onClick={() => setSolutionsOpen(false)}
-                    className="group flex w-[190px] shrink-0 flex-col rounded-[12px] bg-stone-100 p-4 no-underline transition-colors hover:bg-stone-200"
+                    className="group flex w-[190px] shrink-0 flex-col rounded-[12px] bg-stone-100 dark:bg-neutral-800/50 p-4 no-underline transition-colors hover:bg-stone-200 dark:hover:bg-neutral-700/50"
                   >
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-zinc-400">Solutions</p>
-                    <p className="mt-2 text-[13px] leading-[1.45] text-zinc-500">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-zinc-400 dark:text-zinc-500">Solutions</p>
+                    <p className="mt-2 text-[13px] leading-[1.45] text-zinc-500 dark:text-neutral-400">
                       What every team builds with PixartualAI.
                     </p>
-                    <span className="mt-auto inline-flex items-center gap-1 pt-3 text-[13px] font-medium text-ink-strong group-hover:text-[#fc8c04] transition-colors">
+                    <span className="mt-auto inline-flex items-center gap-1 pt-3 text-[13px] font-medium text-ink-strong dark:text-white group-hover:text-[#fc8c04] transition-colors">
                       View all use cases →
                     </span>
                   </Link>
 
                   <div className="flex-1 space-y-3">
                     <div>
-                      <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-neutral-400">
+                      <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-neutral-400 dark:text-neutral-500">
                         By role
                       </p>
                       <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
@@ -167,19 +174,19 @@ export const Navbar: React.FC = () => {
                             key={item.label}
                             href={item.href}
                             onClick={() => setSolutionsOpen(false)}
-                            className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100"
+                            className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800/60"
                           >
-                            <span className="text-[14.5px] font-medium leading-[1.35] text-neutral-900">
+                            <span className="text-[14.5px] font-medium leading-[1.35] text-neutral-900 dark:text-white">
                               {item.label}
                             </span>
-                            <span className="text-[12.5px] leading-[1.35] text-zinc-500">{item.desc}</span>
+                            <span className="text-[12.5px] leading-[1.35] text-zinc-500 dark:text-neutral-400">{item.desc}</span>
                           </Link>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-neutral-400">
+                      <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-neutral-400 dark:text-neutral-500">
                         By use case
                       </p>
                       <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
@@ -191,12 +198,12 @@ export const Navbar: React.FC = () => {
                             key={item.label}
                             href={item.href}
                             onClick={() => setSolutionsOpen(false)}
-                            className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100"
+                            className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800/60"
                           >
-                            <span className="text-[14.5px] font-medium leading-[1.35] text-neutral-900">
+                            <span className="text-[14.5px] font-medium leading-[1.35] text-neutral-900 dark:text-white">
                               {item.label}
                             </span>
-                            <span className="text-[12.5px] leading-[1.35] text-zinc-500">{item.desc}</span>
+                            <span className="text-[12.5px] leading-[1.35] text-zinc-500 dark:text-neutral-400">{item.desc}</span>
                           </Link>
                         ))}
                       </div>
@@ -210,7 +217,7 @@ export const Navbar: React.FC = () => {
             <div
               onMouseEnter={keepOpen}
               onMouseLeave={scheduleClose}
-              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 bg-white shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
+              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
                 resourcesOpen
                   ? 'opacity-100 translate-y-0 pointer-events-auto visible'
                   : 'opacity-0 translate-y-2 pointer-events-none invisible'
@@ -223,20 +230,20 @@ export const Navbar: React.FC = () => {
                   <Link
                     href="/insights"
                     onClick={() => setResourcesOpen(false)}
-                    className="group flex w-[190px] shrink-0 flex-col rounded-[12px] bg-stone-100 p-4 no-underline transition-colors hover:bg-stone-200"
+                    className="group flex w-[190px] shrink-0 flex-col rounded-[12px] bg-stone-100 dark:bg-neutral-800/50 p-4 no-underline transition-colors hover:bg-stone-200 dark:hover:bg-neutral-700/50"
                   >
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-zinc-400">Resources</p>
-                    <p className="mt-2 text-[13px] leading-[1.45] text-zinc-500">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-zinc-400 dark:text-zinc-500">Resources</p>
+                    <p className="mt-2 text-[13px] leading-[1.45] text-zinc-500 dark:text-neutral-400">
                       Guides, templates, updates, and ecosystem.
                     </p>
-                    <span className="mt-auto inline-flex items-center gap-1 pt-3 text-[13px] font-medium text-ink-strong group-hover:text-[#fc8c04] transition-colors">
+                    <span className="mt-auto inline-flex items-center gap-1 pt-3 text-[13px] font-medium text-ink-strong dark:text-white group-hover:text-[#fc8c04] transition-colors">
                       Explore all resources →
                     </span>
                   </Link>
 
                   <div className="flex-1 space-y-3">
                     <div>
-                      <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-neutral-400">
+                      <p className="mb-1 px-2.5 text-[10.5px] font-semibold uppercase tracking-[0.06em] text-neutral-400 dark:text-neutral-500">
                         Explore
                       </p>
                       <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
@@ -254,12 +261,12 @@ export const Navbar: React.FC = () => {
                             key={item.label}
                             href={item.href}
                             onClick={() => setResourcesOpen(false)}
-                            className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100"
+                            className="flex flex-col rounded-[10px] px-2.5 py-[9px] no-underline transition-colors hover:bg-stone-100 dark:hover:bg-neutral-800/60"
                           >
-                            <span className="text-[14.5px] font-medium leading-[1.35] text-neutral-900">
+                            <span className="text-[14.5px] font-medium leading-[1.35] text-neutral-900 dark:text-white">
                               {item.label}
                             </span>
-                            <span className="text-[12.5px] leading-[1.35] text-zinc-500">{item.desc}</span>
+                            <span className="text-[12.5px] leading-[1.35] text-zinc-500 dark:text-neutral-400">{item.desc}</span>
                           </Link>
                         ))}
                       </div>
@@ -272,19 +279,19 @@ export const Navbar: React.FC = () => {
 
           <Link
             href="/pricing"
-            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline fx-link hover:text-neutral-950 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 dark:text-neutral-200 no-underline fx-link hover:text-neutral-950 dark:hover:text-white transition-colors"
           >
             Pricing
           </Link>
           <Link
             href="/enterprise-teams"
-            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline fx-link hover:text-neutral-950 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 dark:text-neutral-200 no-underline fx-link hover:text-neutral-950 dark:hover:text-white transition-colors"
           >
             Enterprise
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline fx-link hover:text-neutral-950 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 dark:text-neutral-200 no-underline fx-link hover:text-neutral-950 dark:hover:text-white transition-colors"
           >
             Contact
           </Link>
@@ -294,11 +301,11 @@ export const Navbar: React.FC = () => {
         <div className="ml-auto hidden items-center gap-5 lg:flex">
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-ink-strong no-underline fx-link hover:text-neutral-950 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 dark:text-neutral-200 no-underline fx-link hover:text-neutral-950 dark:hover:text-white transition-colors"
           >
             Sign In
           </Link>
-          <Link className="mfy-btn mfy-btn--primary" href="/dashboard">
+          <Link className="mfy-btn mfy-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black font-semibold rounded-xl px-4 py-2 hover:opacity-90 transition-opacity" href="/dashboard">
             Get Started
           </Link>
         </div>
@@ -307,7 +314,7 @@ export const Navbar: React.FC = () => {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="ml-auto inline-flex size-[42px] items-center justify-center rounded-[10px] bg-transparent text-ink-strong lg:hidden cursor-pointer hover:bg-stone-100"
+          className="ml-auto inline-flex size-[42px] items-center justify-center rounded-[10px] bg-transparent text-neutral-900 dark:text-white lg:hidden cursor-pointer hover:bg-stone-100 dark:hover:bg-neutral-800"
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X size={24} /> : <List size={24} />}
@@ -316,32 +323,32 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="border-t border-neutral-200 bg-white px-5 py-6 lg:hidden animate-fadeIn">
+        <div className="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121215] px-5 py-6 lg:hidden animate-fadeIn">
           <div className="flex flex-col gap-4">
             <Link
               href="/solutions"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-medium text-ink-strong no-underline"
+              className="text-lg font-medium text-neutral-950 dark:text-white no-underline"
             >
               Solutions
             </Link>
-            <div className="pl-4 flex flex-col gap-2 border-l border-neutral-200">
-              <Link href="/founders" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+            <div className="pl-4 flex flex-col gap-2 border-l border-neutral-200 dark:border-neutral-800">
+              <Link href="/founders" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Founders
               </Link>
-              <Link href="/sales" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+              <Link href="/sales" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Sales
               </Link>
-              <Link href="/product-managers" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+              <Link href="/product-managers" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Product Managers
               </Link>
-              <Link href="/designers" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+              <Link href="/designers" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Designers
               </Link>
-              <Link href="/marketers" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+              <Link href="/marketers" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Marketers
               </Link>
-              <Link href="/ops" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+              <Link href="/ops" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Ops
               </Link>
             </div>
@@ -349,21 +356,21 @@ export const Navbar: React.FC = () => {
             <Link
               href="/insights"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-medium text-ink-strong no-underline"
+              className="text-lg font-medium text-neutral-950 dark:text-white no-underline"
             >
               Resources
             </Link>
-            <div className="pl-4 flex flex-col gap-2 border-l border-neutral-200">
-              <Link href="/templates" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+            <div className="pl-4 flex flex-col gap-2 border-l border-neutral-200 dark:border-neutral-800">
+              <Link href="/templates" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Templates
               </Link>
-              <Link href="/made-in-pixartual" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+              <Link href="/made-in-pixartual" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Made in PixartualAI
               </Link>
-              <Link href="/faqs" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+              <Link href="/faqs" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 FAQs
               </Link>
-              <Link href="/compare" onClick={() => setMobileMenuOpen(false)} className="text-sm text-zinc-600">
+              <Link href="/compare" onClick={() => setMobileMenuOpen(false)} className="text-sm text-neutral-600 dark:text-neutral-400">
                 Compare
               </Link>
             </div>
@@ -371,37 +378,37 @@ export const Navbar: React.FC = () => {
             <Link
               href="/pricing"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-medium text-ink-strong no-underline"
+              className="text-lg font-medium text-neutral-950 dark:text-white no-underline"
             >
               Pricing
             </Link>
             <Link
               href="/enterprise-teams"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-medium text-ink-strong no-underline"
+              className="text-lg font-medium text-neutral-950 dark:text-white no-underline"
             >
               Enterprise
             </Link>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-medium text-ink-strong no-underline"
+              className="text-lg font-medium text-neutral-950 dark:text-white no-underline"
             >
               Contact
             </Link>
 
-            <div className="pt-4 border-t border-neutral-100 flex flex-col gap-3">
+            <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex flex-col gap-3">
               <Link
                 href="/dashboard"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-2.5 rounded-lg border border-neutral-200 font-medium text-sm text-neutral-800"
+                className="w-full text-center py-2.5 rounded-lg border border-neutral-200 dark:border-neutral-700 font-medium text-sm text-neutral-800 dark:text-neutral-200"
               >
                 Sign In
               </Link>
               <Link
                 href="/dashboard"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-2.5 rounded-lg bg-neutral-950 font-medium text-sm text-white"
+                className="w-full text-center py-2.5 rounded-lg bg-neutral-950 text-white dark:bg-white dark:text-black font-medium text-sm"
               >
                 Get Started
               </Link>

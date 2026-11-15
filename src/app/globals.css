@@ -603,6 +603,45 @@
   transform: translateY(0);
 }
 
+/* In dark theme, Get Started and Primary Buttons are WHITE with black text */
+.dark .mfy-btn--primary,
+[data-theme="dark"] .mfy-btn--primary,
+[data-color-scheme="dark"] .mfy-btn--primary {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.dark .mfy-btn--primary:hover,
+[data-theme="dark"] .mfy-btn--primary:hover,
+[data-color-scheme="dark"] .mfy-btn--primary:hover {
+  background-color: #f0f0f0 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25), 0 8px 24px rgba(255, 255, 255, 0.22) !important;
+}
+
+/* Ensure text-white and dark:text-white always output pure white across all components */
+.text-white,
+.dark .text-white,
+[data-theme="dark"] .text-white,
+[data-color-scheme="dark"] .text-white,
+.dark\:text-white,
+.dark .dark\:text-white,
+[data-theme="dark"] .dark\:text-white,
+[data-color-scheme="dark"] .dark\:text-white,
+.dark\:text-white:is([data-theme="dark"] *),
+.dark\:text-white:is(.dark *) {
+  color: #ffffff !important;
+}
+
+.dark\:bg-white,
+.dark .dark\:bg-white,
+[data-theme="dark"] .dark\:bg-white,
+[data-color-scheme="dark"] .dark\:bg-white,
+.dark\:bg-white:is([data-theme="dark"] *),
+.dark\:bg-white:is(.dark *) {
+  background-color: #ffffff !important;
+}
+
 .mfy-btn--secondary {
   background-color: #ffffff;
   color: #0a0a0a;
@@ -634,6 +673,40 @@
 [data-theme="dark"] .marketing-footer,
 html.dark .marketing-footer {
   background-image: url(/images/footer-bg-dark.jpg);
+}
+
+.marketing-footer-card {
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
+[data-color-scheme="dark"] .marketing-footer-card,
+[data-theme="dark"] .marketing-footer-card,
+html.dark .marketing-footer-card {
+  background-color: #121215 !important;
+  color: #f5f5f5 !important;
+}
+
+[data-color-scheme="dark"] .marketing-footer-card a,
+[data-theme="dark"] .marketing-footer-card a,
+html.dark .marketing-footer-card a,
+.dark .marketing-footer-card a {
+  color: #d4d4d8 !important;
+  -webkit-text-fill-color: #d4d4d8 !important;
+}
+
+[data-color-scheme="dark"] .marketing-footer-card a:hover,
+[data-theme="dark"] .marketing-footer-card a:hover,
+html.dark .marketing-footer-card a:hover,
+.dark .marketing-footer-card a:hover {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+[data-color-scheme="dark"] .marketing-footer-card p,
+[data-theme="dark"] .marketing-footer-card p,
+html.dark .marketing-footer-card p {
+  color: #a1a1aa !important;
 }
 
 .mim-hero-section {
@@ -1718,4 +1791,211 @@ body {
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   MODULIFY COMPLETE DARK THEME PARITY OVERRIDES
+   ========================================================================== */
+
+/* Pricing Page Dark Mode Parity */
+[data-theme="dark"] .pr-main,
+.dark .pr-main {
+  background-color: #0a0a0c !important;
+}
+
+[data-theme="dark"] .pr-card,
+.dark .pr-card {
+  background-color: #121215 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .pr-ent-card,
+.dark .pr-ent-card {
+  background-color: #141417 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pr-ent-card h2,
+.dark .pr-ent-card h2 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pr-ent-card p,
+.dark .pr-ent-card p {
+  color: #a1a1aa !important;
+}
+
+[data-theme="dark"] .pr-hero h1,
+.dark .pr-hero h1 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pr-faq-head h2,
+.dark .pr-faq-head h2 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pr-faq-item,
+.dark .pr-faq-item {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .pr-faq-btn,
+.dark .pr-faq-btn {
+  color: #f5f5f5 !important;
+}
+
+[data-theme="dark"] .pr-faq-ans,
+.dark .pr-faq-ans {
+  color: #a1a1aa !important;
+}
+
+/* Solutions Page Dark Mode Parity */
+[data-theme="dark"] .sx-page,
+.dark .sx-page {
+  background-color: #0a0a0c !important;
+}
+
+[data-theme="dark"] .sx-hero h1,
+.dark .sx-hero h1 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .sx-catnav a,
+.dark .sx-catnav a {
+  background-color: #18181b !important;
+  color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] .sx-catnav a:hover,
+.dark .sx-catnav a:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Templates Gallery Dark Mode Parity */
+[data-theme="dark"] .tg-filter,
+.dark .tg-filter {
+  background-color: #141417 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #d4d4d8 !important;
+}
+
+[data-theme="dark"] .tg-filter.is-active,
+.dark .tg-filter.is-active {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+[data-theme="dark"] .tg-title,
+.dark .tg-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .tg-name,
+.dark .tg-name {
+  color: #ffffff !important;
+}
+
+/* Insights Page Dark Mode Parity */
+[data-theme="dark"] .in-main,
+.dark .in-main {
+  background-color: #0a0a0c !important;
+}
+
+[data-theme="dark"] .in-hero h1,
+.dark .in-hero h1 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .in-filter,
+.dark .in-filter {
+  background-color: #141417 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #d4d4d8 !important;
+}
+
+[data-theme="dark"] .in-filter[aria-current="page"],
+.dark .in-filter[aria-current="page"] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+[data-theme="dark"] .in-card-title,
+.dark .in-card-title {
+  color: #ffffff !important;
+}
+
+/* Global FAQ Accordion Dark Mode Parity */
+[data-theme="dark"] .mfy-faq-list,
+.dark .mfy-faq-list {
+  border-top-color: #27272a !important;
+}
+
+[data-theme="dark"] .mfy-faq-item,
+.dark .mfy-faq-item {
+  border-bottom-color: #27272a !important;
+}
+
+[data-theme="dark"] .mfy-faq-q,
+.dark .mfy-faq-q {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .mfy-faq-q:hover,
+.dark .mfy-faq-q:hover {
+  color: #fc8c04 !important;
+}
+
+[data-theme="dark"] .mfy-faq-a p,
+.dark .mfy-faq-a p {
+  color: #a1a1aa !important;
+}
+
+/* Made in Pixartual Page Dark Mode Parity */
+[data-theme="dark"] .mim-hero-section,
+.dark .mim-hero-section {
+  background-color: #0a0a0c !important;
+}
+
+[data-theme="dark"] .mim-title,
+.dark .mim-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .mim-sub,
+.dark .mim-sub {
+  color: #a1a1aa !important;
+}
+
+[data-theme="dark"] .mim-badge,
+.dark .mim-badge {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  color: #e4e4e7 !important;
+}
+
+/* Contact Page Dark Mode Parity */
+[data-theme="dark"] .ct-main,
+.dark .ct-main {
+  background-color: #0a0a0c !important;
+}
+
+[data-theme="dark"] .ct-intro h1,
+.dark .ct-intro h1 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .ct-intro p,
+.dark .ct-intro p {
+  color: #a1a1aa !important;
+}
+
+[data-theme="dark"] .ct-card,
+.dark .ct-card {
+  background-color: #121215 !important;
+  border-color: #27272a !important;
 }

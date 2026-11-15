@@ -52,12 +52,12 @@ export default function ComparePage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0c] text-neutral-900 dark:text-neutral-100 selection:bg-orange-500 selection:text-white transition-colors">
       <Navbar />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]"
@@ -66,7 +66,7 @@ export default function ComparePage() {
               src="/images/kit/hero-bg.jpg"
               alt=""
               fill
-              className="object-cover object-bottom opacity-60"
+              className="object-cover object-bottom opacity-60 dark:opacity-20"
               priority
             />
           </div>
@@ -74,14 +74,14 @@ export default function ComparePage() {
           <div className="relative z-10 mx-auto flex w-full max-w-[1240px] flex-col gap-12 px-5 md:gap-[71px] md:px-[50px]">
             <div className="flex max-w-[800px] flex-col gap-3">
               <div>
-                <span className="inline-block text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">
+                <span className="inline-block text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-400">
                   Compare
                 </span>
               </div>
-              <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.25rem] md:text-[3.25rem] lg:text-[3.75rem] max-w-[760px] font-['Neutralsans']">
+              <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2.25rem] md:text-[3.25rem] lg:text-[3.75rem] max-w-[760px] font-['Neutralsans']">
                 How PixartualAI compares
               </h1>
-              <p className="max-w-[682px] text-[15px] leading-relaxed text-neutral-600">
+              <p className="max-w-[682px] text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                 A fair breakdown of how PixartualAI differs from visual builders, traditional CMSs, code generators, and AI coding agents. Where each tool shines, and where PixartualAI takes a different approach.
               </p>
             </div>
@@ -93,14 +93,14 @@ export default function ComparePage() {
           <section
             key={cat.category}
             id={cat.category.toLowerCase().replace(/\s+/g, '-')}
-            className={`kit-root relative overflow-hidden py-16 md:py-20 ${
-              idx % 2 === 0 ? 'bg-white' : 'bg-neutral-50/50'
+            className={`kit-root relative overflow-hidden py-16 md:py-20 transition-colors ${
+              idx % 2 === 0 ? 'bg-white dark:bg-[#0a0a0c]' : 'bg-neutral-50/50 dark:bg-[#0e0e11]'
             }`}
           >
             <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
               <div className="flex flex-col gap-8">
-                <div className="flex items-center justify-between border-b border-neutral-200/80 pb-4">
-                  <h2 className="kit-heading font-medium tracking-[-0.02em] text-neutral-950 text-[1.75rem] md:text-[2.25rem] font-['Neutralsans']">
+                <div className="flex items-center justify-between border-b border-neutral-200/80 dark:border-neutral-800 pb-4">
+                  <h2 className="kit-heading font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[1.75rem] md:text-[2.25rem] font-['Neutralsans']">
                     {cat.category}
                   </h2>
                 </div>
@@ -110,25 +110,25 @@ export default function ComparePage() {
                     <Link
                       key={card.title}
                       href={card.href}
-                      className="kit-fcard group relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[28px] min-h-[320px] no-underline transition-all duration-300 hover:bg-neutral-900 hover:text-white hover:-translate-y-1 hover:shadow-lg"
+                      className="kit-fcard group relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#141417] p-[28px] min-h-[320px] no-underline transition-all duration-300 hover:bg-neutral-900 dark:hover:bg-[#1c1c22] hover:text-white hover:-translate-y-1 hover:shadow-lg border border-transparent dark:border-neutral-800/80"
                     >
                       <div className="flex items-start justify-between w-full">
                         <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 group-hover:text-neutral-400">
                           Comparison
                         </span>
-                        <div className="size-8 rounded-full bg-white group-hover:bg-neutral-800 flex items-center justify-center transition-colors">
+                        <div className="size-8 rounded-full bg-white dark:bg-neutral-800 group-hover:bg-neutral-800 dark:group-hover:bg-neutral-700 flex items-center justify-center transition-colors">
                           <ArrowUpRight
                             size={18}
-                            className="text-neutral-900 group-hover:text-[#fc8c04] transition-colors"
+                            className="text-neutral-900 dark:text-white group-hover:text-[#fc8c04] transition-colors"
                           />
                         </div>
                       </div>
 
                       <div className="mt-8 flex flex-col gap-2">
-                        <h3 className="font-['Neutralsans'] font-medium text-xl md:text-2xl text-neutral-950 group-hover:text-white transition-colors">
+                        <h3 className="font-['Neutralsans'] font-medium text-xl md:text-2xl text-neutral-950 dark:text-white group-hover:text-white transition-colors">
                           {card.title}
                         </h3>
-                        <p className="text-sm leading-relaxed text-neutral-600 group-hover:text-neutral-300 transition-colors">
+                        <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-300 transition-colors">
                           {card.desc}
                         </p>
                       </div>
@@ -148,35 +148,35 @@ export default function ComparePage() {
                 <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   What every PixartualAI project includes
                 </h2>
-                <p className="text-[15px] leading-relaxed text-neutral-600">
+                <p className="text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                   Included from the free plan up, not sold as separate services.
                 </p>
               </div>
 
               <div className="grid gap-[30px] sm:grid-cols-2 md:grid-cols-3">
-                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-8 transition-transform hover:-translate-y-1 duration-300">
-                  <span className="text-6xl font-medium tracking-[-0.02em] text-neutral-950 font-['Neutralsans']">
+                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#141417] p-8 transition-transform hover:-translate-y-1 duration-300 border border-transparent dark:border-neutral-800/80">
+                  <span className="text-6xl font-medium tracking-[-0.02em] text-neutral-950 dark:text-white font-['Neutralsans']">
                     1
                   </span>
-                  <span className="text-[16px] text-neutral-900 font-medium">
+                  <span className="text-[16px] text-neutral-900 dark:text-neutral-200 font-medium">
                     place for design, content, data, and publishing
                   </span>
                 </div>
 
-                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-8 transition-transform hover:-translate-y-1 duration-300">
+                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#141417] p-8 transition-transform hover:-translate-y-1 duration-300 border border-transparent dark:border-neutral-800/80">
                   <span className="text-6xl font-medium tracking-[-0.02em] text-[#fc8c04] font-['Neutralsans']">
                     100+
                   </span>
-                  <span className="text-[16px] text-neutral-900 font-medium">
+                  <span className="text-[16px] text-neutral-900 dark:text-neutral-200 font-medium">
                     connectors to build against your real data
                   </span>
                 </div>
 
-                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-8 transition-transform hover:-translate-y-1 duration-300">
-                  <span className="text-6xl font-medium tracking-[-0.02em] text-neutral-950 font-['Neutralsans']">
+                <div className="flex min-h-[246px] flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#141417] p-8 transition-transform hover:-translate-y-1 duration-300 border border-transparent dark:border-neutral-800/80">
+                  <span className="text-6xl font-medium tracking-[-0.02em] text-neutral-950 dark:text-white font-['Neutralsans']">
                     $0
                   </span>
-                  <span className="text-[16px] text-neutral-900 font-medium">
+                  <span className="text-[16px] text-neutral-900 dark:text-neutral-200 font-medium">
                     to start, with a live subdomain, database, and analytics
                   </span>
                 </div>
@@ -186,19 +186,19 @@ export default function ComparePage() {
         </section>
 
         {/* Before you compare */}
-        <section className="kit-root relative overflow-hidden bg-neutral-50/60 py-20 md:py-[100px] border-t border-neutral-100">
+        <section className="kit-root relative overflow-hidden bg-neutral-50/60 dark:bg-[#0a0a0c] py-20 md:py-[100px] border-t border-neutral-100 dark:border-neutral-800 transition-colors">
           <div className="mx-auto w-full px-5 md:px-[50px] max-w-[860px]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-3.5 text-center">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   Before you compare
                 </h2>
-                <p className="text-[15px] leading-relaxed text-neutral-600">
+                <p className="text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                   How we write these pages, and what PixartualAI is for.
                 </p>
               </div>
 
-              <div className="flex flex-col divide-y divide-neutral-200">
+              <div className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800">
                 {faqs.map((faq, idx) => {
                   const isOpen = openFaq === idx;
                   return (
@@ -209,18 +209,18 @@ export default function ComparePage() {
                         className="flex w-full items-center justify-between text-left group cursor-pointer"
                         aria-expanded={isOpen}
                       >
-                        <span className="text-lg md:text-xl font-medium text-neutral-900 group-hover:text-[#fc8c04] transition-colors">
+                        <span className="text-lg md:text-xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[#fc8c04] transition-colors">
                           {faq.q}
                         </span>
-                        <div className="ml-4 flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-200/80 group-hover:bg-[#fc8c04] group-hover:text-white transition-colors">
+                        <div className="ml-4 flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-200/80 dark:bg-neutral-800 group-hover:bg-[#fc8c04] text-neutral-700 dark:text-neutral-300 group-hover:text-white transition-colors">
                           {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                         </div>
                       </button>
 
                       {isOpen && (
-                        <div className="mt-4 text-[15px] leading-relaxed text-neutral-600 animate-fadeIn">
+                        <p className="mt-4 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                           {faq.a}
-                        </div>
+                        </p>
                       )}
                     </div>
                   );

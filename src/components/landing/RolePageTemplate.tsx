@@ -64,13 +64,13 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0c] text-neutral-900 dark:text-neutral-100 selection:bg-orange-500 selection:text-white transition-colors duration-200">
       <Navbar />
 
       <main className="flex-1">
         {/* Section 0: Authentic Pixartual Hero with Gradient Banner & Photo Drift */}
         <section className="kit-root relative box-border px-1.5 md:px-[50px]">
-          <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,theme(colors.white)_0%,theme(colors.violet.50)_70%,theme(colors.pink.200)_99.04%)] px-4 pb-0 pt-[110px] md:px-[50px] md:pt-[150px]">
+          <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,theme(colors.white)_0%,theme(colors.violet.50)_70%,theme(colors.pink.200)_99.04%)] dark:bg-[linear-gradient(180deg,#121214_0%,#1a1622_70%,#1e141a_99.04%)] px-4 pb-0 pt-[110px] md:px-[50px] md:pt-[150px] transition-colors">
             <div className="fhs-wrap relative z-[1] mx-auto flex w-full max-w-[900px] flex-col items-center text-center">
               {/* Badge */}
               <Link className="fhs-badge" href="/insights">
@@ -137,19 +137,19 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
         {features.map((feat, idx) => {
           const isReverse = feat.reverse ?? idx % 2 === 1;
           return (
-            <section key={idx} className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+            <section key={idx} className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
               <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
                 <div className={`flex items-center gap-8 md:flex-row md:gap-[30px] ${isReverse ? 'flex-col' : 'flex-col-reverse'}`}>
                   {/* Text Column */}
                   <div className="flex w-full flex-col gap-6 md:w-1/2 lg:gap-8">
-                    <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                    <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                       {feat.title}
                     </h2>
                     <div className="flex flex-col gap-2">
-                      <p className="text-[15px] leading-relaxed text-neutral-500 font-medium">
+                      <p className="text-[15px] leading-relaxed text-neutral-500 dark:text-neutral-400 font-medium">
                         {feat.tagline}
                       </p>
-                      <p className="text-[15px] leading-relaxed text-neutral-900">
+                      <p className="text-[15px] leading-relaxed text-neutral-900 dark:text-neutral-200">
                         {feat.description}
                       </p>
                     </div>
@@ -157,11 +157,11 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
 
                   {/* Image Column */}
                   <div className="w-full md:w-1/2">
-                    <div className="aspect-[631/480] w-full overflow-hidden rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-neutral-100">
-                      <div className="relative h-full w-full bg-neutral-100">
+                    <div className="aspect-[631/480] w-full overflow-hidden rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-neutral-100 dark:border-neutral-800">
+                      <div className="relative h-full w-full bg-neutral-100 dark:bg-neutral-800">
                         <img
                           alt={feat.title}
-                          className="absolute left-[3.2%] top-[4.2%] h-[106%] w-[106%] rounded-xl border border-black/[0.08] object-cover"
+                          className="absolute left-[3.2%] top-[4.2%] h-[106%] w-[106%] rounded-xl border border-black/[0.08] dark:border-white/[0.08] object-cover"
                           src={feat.imageSrc}
                           loading="lazy"
                         />
@@ -175,14 +175,14 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
         })}
 
         {/* Section: Feature Flame Cards */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-3.5">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   {flameTitle}
                 </h2>
-                <p className="text-[15px] leading-relaxed text-neutral-900">
+                <p className="text-[15px] leading-relaxed text-neutral-900 dark:text-neutral-200">
                   {flameDesc}
                 </p>
               </div>
@@ -191,16 +191,16 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
                 {flameCards.map((card, idx) => (
                   <article
                     key={idx}
-                    className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 p-[25px] aspect-[253/368] min-h-[368px]"
+                    className="kit-fcard relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-neutral-100 dark:bg-[#121215] border border-transparent dark:border-neutral-800/80 p-[25px] aspect-[253/368] min-h-[368px]"
                   >
                     <div>
-                      <div className="mb-6 size-8 text-neutral-900">
+                      <div className="mb-6 size-8 text-neutral-900 dark:text-white">
                         {card.icon || <RocketLaunch size={28} weight="duotone" className="text-orange-500" />}
                       </div>
-                      <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 font-['Neutralsans']">
+                      <h3 className="kit-fcard__title text-lg font-medium text-neutral-950 dark:text-white font-['Neutralsans']">
                         {card.title}
                       </h3>
-                      <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600">
+                      <p className="kit-fcard__text mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                         {card.desc}
                       </p>
                     </div>
@@ -212,14 +212,14 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
         </section>
 
         {/* Section: Persona FAQ Accordion */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[860px] px-5 md:px-[50px]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-3.5 text-center">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   {faqTitle}
                 </h2>
-                <p className="text-[15px] leading-relaxed text-neutral-600">
+                <p className="text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                   {faqDesc}
                 </p>
               </div>

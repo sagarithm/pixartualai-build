@@ -41,12 +41,12 @@ export default function DomainsPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0c] text-neutral-900 dark:text-neutral-100 selection:bg-orange-500 selection:text-white transition-colors duration-200">
       <Navbar />
 
       <main className="flex-1">
         {/* Section 0: Authentic Domains Hero with hero-bg.jpg */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div aria-hidden="true" className="pointer-events-none absolute top-0 inset-x-3 bottom-3 z-0 overflow-hidden rounded-b-[24px] md:inset-x-5 md:bottom-5 md:rounded-b-[48px] xl:inset-x-8 xl:bottom-8 2xl:inset-x-[50px] 2xl:bottom-[50px] 2xl:rounded-b-[64px]">
             <img alt="" className="h-full w-full object-cover object-bottom" src="/images/kit/hero-bg.jpg" />
           </div>
@@ -57,25 +57,25 @@ export default function DomainsPage() {
                 <Globe size={16} weight="bold" />
                 Domains & DNS
               </span>
-              <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-['Neutralsans']">
+              <h1 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-['Neutralsans']">
                 Find the right domain for your next website
               </h1>
-              <p className="max-w-[620px] text-lg leading-relaxed text-neutral-600">
+              <p className="max-w-[620px] text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
                 Search, register, and connect custom domains directly inside PixartualAI with automated SSL and edge routing.
               </p>
             </div>
 
-            {/* Domain Search Box */}
+            {/* Micro UI Domain Search Box */}
             <div className="max-w-[720px] w-full">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   if (searchTerm.trim()) setSearched(true);
                 }}
-                className="flex flex-col sm:flex-row items-center gap-3 rounded-2xl bg-white p-3 shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-neutral-200"
+                className="flex flex-col sm:flex-row items-center gap-3 rounded-2xl bg-white dark:bg-[#141416] p-3 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] border border-neutral-200 dark:border-neutral-800 transition-colors"
               >
                 <div className="flex flex-1 items-center gap-3 px-3 w-full">
-                  <MagnifyingGlass size={20} className="text-neutral-400" />
+                  <MagnifyingGlass size={20} className="text-neutral-400 dark:text-neutral-500" />
                   <input
                     type="text"
                     value={searchTerm}
@@ -84,7 +84,7 @@ export default function DomainsPage() {
                       setSearched(false);
                     }}
                     placeholder="Search your ideal domain name (e.g. AcmeStudio)..."
-                    className="w-full text-base sm:text-lg outline-none text-neutral-900 placeholder:text-neutral-400"
+                    className="w-full text-base sm:text-lg outline-none text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 bg-transparent"
                   />
                 </div>
                 <button type="submit" className="mfy-btn mfy-btn--primary w-full sm:w-auto !py-3">
@@ -93,14 +93,14 @@ export default function DomainsPage() {
               </form>
 
               {searched && (
-                <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 flex items-center justify-between">
+                <div className="mt-4 rounded-xl border border-emerald-200 dark:border-emerald-800/80 bg-emerald-50/70 dark:bg-emerald-950/40 p-4 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Check size={18} className="text-emerald-600" weight="bold" />
-                    <span className="font-semibold text-emerald-950">
+                    <Check size={18} className="text-emerald-600 dark:text-emerald-400" weight="bold" />
+                    <span className="font-semibold text-emerald-950 dark:text-emerald-200">
                       {searchTerm.toLowerCase().replace(/[^a-z0-9-]/g, '')}.com is available!
                     </span>
                   </div>
-                  <Link href="/dashboard" className="text-xs font-bold text-emerald-700 underline">
+                  <Link href="/dashboard" className="text-xs font-bold text-emerald-700 dark:text-emerald-300 underline">
                     Claim in Studio →
                   </Link>
                 </div>
@@ -110,14 +110,14 @@ export default function DomainsPage() {
         </section>
 
         {/* Section 1: Explore Domain Extensions */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-3.5">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   Explore domain extensions
                 </h2>
-                <p className="max-w-[682px] text-[15px] leading-relaxed text-neutral-600">
+                <p className="max-w-[682px] text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                   Each extension suits a different kind of website. Open one to see what it is for, who can register it, and what it costs.
                 </p>
               </div>
@@ -126,29 +126,29 @@ export default function DomainsPage() {
                 {extensions.map((ext) => (
                   <div
                     key={ext.tld}
-                    className="flex flex-col justify-between rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm hover:border-orange-500 hover:shadow-md transition-all"
+                    className="flex flex-col justify-between rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#141416] p-6 shadow-sm hover:border-orange-500 hover:shadow-md transition-all"
                   >
                     <div>
                       <div className="flex items-center justify-between">
-                        <span className="text-3xl font-bold text-neutral-900 font-['Neutralsans']">
+                        <span className="text-3xl font-bold text-neutral-900 dark:text-white font-['Neutralsans']">
                           {ext.tld}
                         </span>
                         <div className="flex items-center gap-2">
                           {ext.badge && (
-                            <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-orange-600">
+                            <span className="rounded-full bg-orange-100 dark:bg-orange-950/60 px-2.5 py-0.5 text-xs font-semibold text-orange-600 dark:text-orange-400">
                               {ext.badge}
                             </span>
                           )}
-                          <span className="font-semibold text-neutral-900">{ext.price}</span>
+                          <span className="font-semibold text-neutral-900 dark:text-white">{ext.price}</span>
                         </div>
                       </div>
-                      <p className="mt-4 text-sm text-neutral-600 leading-relaxed">
+                      <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                         {ext.desc}
                       </p>
                     </div>
-                    <div className="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
+                    <div className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800/80 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
                       <span>Free SSL & Privacy</span>
-                      <span className="font-semibold text-orange-600">Register →</span>
+                      <span className="font-semibold text-orange-600 dark:text-orange-400">Register →</span>
                     </div>
                   </div>
                 ))}
@@ -158,40 +158,40 @@ export default function DomainsPage() {
         </section>
 
         {/* Section 2: Everything you need to launch */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-2">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   Everything you need to launch a website
                 </h2>
-                <p className="text-[15px] leading-relaxed text-neutral-600">
+                <p className="text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                   Your domain, your site, and its hosting in one place.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 items-start gap-[30px] sm:grid-cols-2 md:grid-cols-3">
-                <article className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 flex flex-col justify-between min-h-[220px]">
+                <article className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#141416] p-6 flex flex-col justify-between min-h-[220px]">
                   <Lightning size={32} className="text-orange-500 mb-4" weight="duotone" />
                   <div>
-                    <h3 className="text-lg font-bold text-neutral-900 font-['Neutralsans']">Instant DNS Configuration</h3>
-                    <p className="mt-2 text-sm text-neutral-600 leading-relaxed">One-click domain pairing. Zero manual A record copying or confusing CNAME propagates.</p>
+                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white font-['Neutralsans']">Instant DNS Configuration</h3>
+                    <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">One-click domain pairing. Zero manual A record copying or confusing CNAME propagates.</p>
                   </div>
                 </article>
 
-                <article className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 flex flex-col justify-between min-h-[220px]">
+                <article className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#141416] p-6 flex flex-col justify-between min-h-[220px]">
                   <ShieldCheck size={32} className="text-orange-500 mb-4" weight="duotone" />
                   <div>
-                    <h3 className="text-lg font-bold text-neutral-900 font-['Neutralsans']">Free Automated SSL</h3>
-                    <p className="mt-2 text-sm text-neutral-600 leading-relaxed">End-to-end encryption with automated 90-day renewals and HTTP/3 support.</p>
+                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white font-['Neutralsans']">Free Automated SSL</h3>
+                    <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">End-to-end encryption with automated 90-day renewals and HTTP/3 support.</p>
                   </div>
                 </article>
 
-                <article className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 flex flex-col justify-between min-h-[220px]">
+                <article className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#141416] p-6 flex flex-col justify-between min-h-[220px]">
                   <Globe size={32} className="text-orange-500 mb-4" weight="duotone" />
                   <div>
-                    <h3 className="text-lg font-bold text-neutral-900 font-['Neutralsans']">Global Anycast Routing</h3>
-                    <p className="mt-2 text-sm text-neutral-600 leading-relaxed">Requests route to the closest geographical server node in under 30 milliseconds.</p>
+                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white font-['Neutralsans']">Global Anycast Routing</h3>
+                    <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Requests route to the closest geographical server node in under 30 milliseconds.</p>
                   </div>
                 </article>
               </div>
@@ -200,14 +200,14 @@ export default function DomainsPage() {
         </section>
 
         {/* Section 4: Domain FAQs */}
-        <section className="kit-root relative overflow-hidden bg-white py-20 md:py-[100px]">
+        <section className="kit-root relative overflow-hidden bg-white dark:bg-[#0a0a0c] py-20 md:py-[100px] transition-colors">
           <div className="mx-auto w-full max-w-[860px] px-5 md:px-[50px]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-3.5 text-center">
-                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
+                <h2 className="kit-heading text-balance font-medium tracking-[-0.02em] text-neutral-950 dark:text-white text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-['Neutralsans']">
                   Frequently asked questions
                 </h2>
-                <p className="text-[15px] leading-relaxed text-neutral-600">
+                <p className="text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
                   Got questions about domain setup, transferring, or renewals?
                 </p>
               </div>
