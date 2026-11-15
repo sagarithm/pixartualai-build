@@ -2,13 +2,10 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Hammer, CaretDown, Microphone } from '@phosphor-icons/react';
 
 export const HeroSection: React.FC = () => {
   const router = useRouter();
   const [prompt, setPrompt] = useState('');
-  const [selectedMode, setSelectedMode] = useState<'Build' | 'Edit' | 'Enhance'>('Build');
-  const [isModeOpen, setIsModeOpen] = useState(false);
 
   const samplePrompts = [
     'SaaS Landing Page',
@@ -28,7 +25,7 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section className="box-border px-1.5 md:px-[50px]" id="hero">
-      <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,theme(colors.white)_0%,theme(colors.violet.50)_70%,theme(colors.pink.200)_99.04%)] dark:bg-[linear-gradient(180deg,#121214_0%,#1a1622_70%,#1e141a_99.04%)] px-4 pb-9 pt-[18px] md:px-[50px] md:pb-[50px] md:pt-7 transition-colors">
+      <div className="relative w-full overflow-hidden rounded-b-[42px] bg-[linear-gradient(180deg,theme(colors.white)_0%,theme(colors.violet.50)_70%,theme(colors.pink.200)_99.04%)] dark:bg-[linear-gradient(180deg,#121212_0%,#20113c_70%,#73153b_99.04%)] px-4 pb-9 pt-[18px] md:px-[50px] md:pb-[50px] md:pt-7 transition-colors">
         {/* Ambient video background with glowing orbs */}
         <video
           aria-hidden="true"
@@ -51,7 +48,7 @@ export const HeroSection: React.FC = () => {
             website or web app with AI.
           </h1>
 
-          <p className="mb-[30px] max-w-[600px] text-[clamp(1rem,1.4vw,1.18rem)] leading-relaxed text-neutral-600 dark:text-neutral-300 md:mb-[38px]">
+          <p className="mb-[30px] max-w-[600px] text-[clamp(1rem,1.4vw,1.18rem)] leading-relaxed text-[#6b7280] dark:text-[#8f8f8f] md:mb-[38px]">
             Describe what you want to build. PixartualAI turns your prompt into a polished landing page, website, dashboard, or app, ready to edit, refine, and launch.
           </p>
 
@@ -80,65 +77,13 @@ export const HeroSection: React.FC = () => {
                   }}
                 />
 
-                <div className="relative z-[1] flex items-center justify-between gap-3 mt-3 pt-2 border-t border-neutral-100 dark:border-neutral-800/80">
-                  {/* Left Controls: Plus and Build Mode */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      aria-label="Add context or attachments"
-                      className="inline-flex size-8 items-center justify-center rounded-lg border border-neutral-200 dark:border-neutral-700/80 bg-neutral-50 dark:bg-neutral-800/60 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
-                    >
-                      <Plus size={14} weight="bold" />
-                    </button>
-
-                    <div className="relative">
-                      <button
-                        type="button"
-                        onClick={() => setIsModeOpen(!isModeOpen)}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700/80 bg-neutral-50 dark:bg-neutral-800/60 px-2.5 py-1.5 text-xs font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
-                      >
-                        <Hammer size={13} weight="fill" className="text-[#fc8c04]" />
-                        <span>{selectedMode}</span>
-                        <CaretDown size={11} className={`transition-transform ${isModeOpen ? 'rotate-180' : ''}`} />
-                      </button>
-
-                      {isModeOpen && (
-                        <div className="absolute bottom-full left-0 mb-2 w-32 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#18181b] p-1 shadow-xl z-50 mfy-fadein">
-                          {(['Build', 'Edit', 'Enhance'] as const).map((mode) => (
-                            <button
-                              key={mode}
-                              type="button"
-                              onClick={() => {
-                                setSelectedMode(mode);
-                                setIsModeOpen(false);
-                              }}
-                              className={`w-full text-left px-3 py-1.5 text-xs rounded-lg transition-colors cursor-pointer ${
-                                selectedMode === mode
-                                  ? 'font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white'
-                                  : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/60'
-                              }`}
-                            >
-                              {mode}
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Right Controls: Mic and Generate Button */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      aria-label="Voice input"
-                      className="inline-flex size-8 items-center justify-center rounded-lg text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
-                    >
-                      <Microphone size={17} />
-                    </button>
-                    <button type="submit" className="mfy-btn mfy-btn--primary">
-                      Generate
-                    </button>
-                  </div>
+                <div className="relative z-[1] flex items-center justify-end gap-3 mt-3">
+                  <button
+                    type="submit"
+                    className="mfy-btn mfy-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black font-medium rounded-lg px-6 py-2.5 hover:opacity-90 transition-opacity cursor-pointer text-sm md:text-base"
+                  >
+                    Generate
+                  </button>
                 </div>
               </form>
             </div>

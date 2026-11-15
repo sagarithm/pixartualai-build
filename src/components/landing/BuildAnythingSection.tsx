@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 
 type CapabilityKey =
   | 'landingPages'
@@ -168,7 +167,7 @@ export const BuildAnythingSection: React.FC = () => {
         </div>
 
         {/* Right Column: Title + 3D Stacked Preview Images */}
-        <div className="flex flex-col justify-between overflow-hidden bg-gray-100 dark:bg-[#1c1c1c] px-5 py-12 md:px-16 md:py-16 transition-colors">
+        <div className="flex flex-col justify-start gap-7 overflow-hidden bg-gray-100 dark:bg-[#1a1a1a] px-5 py-14 md:px-16 md:py-20 transition-colors">
           <div className="text-center">
             <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-neutral-950 dark:text-white font-['Neutralsans']">
               Build Anything
@@ -179,7 +178,7 @@ export const BuildAnythingSection: React.FC = () => {
           </div>
 
           {/* 3D Stacked Moving Carousel Container */}
-          <div className="relative mx-auto my-auto aspect-[45/32] w-full max-w-[min(460px,80vw)] rounded-[14px]">
+          <div className="relative mx-auto mt-6 aspect-[45/32] w-full max-w-[min(460px,80vw)] rounded-[14px]">
             {capabilities.map((cap, i) => {
               // Relative position in modular circular list
               const total = capabilities.length;
@@ -207,7 +206,7 @@ export const BuildAnythingSection: React.FC = () => {
                 style = {
                   transform: 'translateX(-24%) scale(0.8)',
                   zIndex: 5,
-                  opacity: 0.9,
+                  opacity: 1,
                   pointerEvents: 'auto',
                 };
               } else if (diff === 1) {
@@ -215,7 +214,7 @@ export const BuildAnythingSection: React.FC = () => {
                 style = {
                   transform: 'translateX(24%) scale(0.8)',
                   zIndex: 5,
-                  opacity: 0.9,
+                  opacity: 1,
                   pointerEvents: 'auto',
                 };
               }
@@ -246,43 +245,6 @@ export const BuildAnythingSection: React.FC = () => {
                 </div>
               );
             })}
-          </div>
-
-          {/* Carousel Navigation Indicator Dots & Controls */}
-          <div className="mt-4 flex items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={goToPrev}
-              className="size-8 rounded-full bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-900 dark:hover:bg-white hover:text-white dark:hover:text-black flex items-center justify-center transition-all shadow-xs cursor-pointer"
-              aria-label="Previous slide"
-            >
-              <CaretLeft size={16} />
-            </button>
-
-            <div className="flex items-center gap-1.5 px-2">
-              {capabilities.map((cap, idx) => (
-                <button
-                  key={cap.key}
-                  type="button"
-                  onClick={() => setActiveIndex(idx)}
-                  className={`h-2 rounded-full transition-all cursor-pointer ${
-                    idx === activeIndex
-                      ? 'w-6 bg-[#fc8c04]'
-                      : 'w-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-600'
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}: ${cap.label}`}
-                />
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={goToNext}
-              className="size-8 rounded-full bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-900 dark:hover:bg-white hover:text-white dark:hover:text-black flex items-center justify-center transition-all shadow-xs cursor-pointer"
-              aria-label="Next slide"
-            >
-              <CaretRight size={16} />
-            </button>
           </div>
         </div>
       </div>

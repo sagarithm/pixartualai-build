@@ -338,7 +338,7 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setThemeOpen(!themeOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white/80 dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
                 aria-label="Theme"
               >
                 {themeMode === 'light' ? (
@@ -351,23 +351,23 @@ export const Footer: React.FC = () => {
                 <span className="capitalize">{themeMode}</span>
                 <CaretDown
                   size={12}
-                  className={`text-gray-500 dark:text-neutral-400 transition-transform ${
+                  className={`text-gray-500 dark:text-neutral-400 transition-transform duration-200 ${
                     themeOpen ? 'rotate-180' : ''
                   }`}
                 />
               </button>
 
               {themeOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] rounded-2xl border border-neutral-200 dark:border-neutral-700/80 bg-white dark:bg-[#1a1a1c] p-1.5 shadow-2xl mfy-fadein flex flex-col gap-0.5">
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[140px] rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl mfy-fadein flex flex-col gap-0.5">
                   <button
                     type="button"
                     onClick={() => {
                       applyTheme('light');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3.5 py-2 text-xs rounded-xl transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-lg transition-all cursor-pointer ${
                       themeMode === 'light'
-                        ? 'font-semibold bg-neutral-900 text-white dark:bg-[#e6e6e6] dark:text-black shadow-sm'
+                        ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black shadow-xs'
                         : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
                     }`}
                   >
@@ -380,9 +380,9 @@ export const Footer: React.FC = () => {
                       applyTheme('dark');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3.5 py-2 text-xs rounded-xl transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-lg transition-all cursor-pointer ${
                       themeMode === 'dark'
-                        ? 'font-semibold bg-neutral-900 text-white dark:bg-[#e6e6e6] dark:text-black shadow-sm'
+                        ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black shadow-xs'
                         : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
                     }`}
                   >
@@ -395,9 +395,9 @@ export const Footer: React.FC = () => {
                       applyTheme('auto');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3.5 py-2 text-xs rounded-xl transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-lg transition-all cursor-pointer ${
                       themeMode === 'auto'
-                        ? 'font-semibold bg-neutral-900 text-white dark:bg-[#e6e6e6] dark:text-black shadow-sm'
+                        ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black shadow-xs'
                         : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
                     }`}
                   >
@@ -413,15 +413,20 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setCurrencyOpen(!currencyOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white/80 dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
                 aria-label="Currency"
               >
                 <Banknote size={14} className="text-gray-500 dark:text-neutral-400" />
                 <span>{currency}</span>
-                <CaretDown size={12} className="text-gray-500 dark:text-neutral-400" />
+                <CaretDown
+                  size={12}
+                  className={`text-gray-500 dark:text-neutral-400 transition-transform duration-200 ${
+                    currencyOpen ? 'rotate-180' : ''
+                  }`}
+                />
               </button>
               {currencyOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] max-h-48 overflow-y-auto rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121215] p-1.5 shadow-2xl mfy-fadein">
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] max-h-48 overflow-y-auto rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl mfy-fadein">
                   {currencies.map((c) => (
                     <button
                       key={c.code}
@@ -430,8 +435,10 @@ export const Footer: React.FC = () => {
                         setCurrency(c.label);
                         setCurrencyOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-1.5 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200 transition-colors ${
-                        currency === c.label ? 'font-semibold text-neutral-900 dark:text-static-white bg-neutral-100 dark:bg-neutral-800/50' : ''
+                      className={`w-full text-left px-3 py-1.5 text-xs rounded-lg transition-colors cursor-pointer ${
+                        currency === c.label
+                          ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black'
+                          : 'hover:bg-neutral-100 dark:hover:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200'
                       }`}
                     >
                       {c.label}
@@ -446,15 +453,20 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLangOpen(!langOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white/80 dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
                 aria-label="Language"
               >
                 <Globe size={14} className="text-gray-500 dark:text-neutral-400" />
                 <span>{language}</span>
-                <CaretDown size={12} className="text-gray-500 dark:text-neutral-400" />
+                <CaretDown
+                  size={12}
+                  className={`text-gray-500 dark:text-neutral-400 transition-transform duration-200 ${
+                    langOpen ? 'rotate-180' : ''
+                  }`}
+                />
               </button>
               {langOpen && (
-                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121215] p-1.5 shadow-2xl mfy-fadein">
+                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl mfy-fadein">
                   {languages.map((l) => (
                     <button
                       key={l}
@@ -463,8 +475,10 @@ export const Footer: React.FC = () => {
                         setLanguage(l);
                         setLangOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-1.5 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200 transition-colors ${
-                        language === l ? 'font-semibold text-neutral-900 dark:text-static-white bg-neutral-100 dark:bg-neutral-800/50' : ''
+                      className={`w-full text-left px-3 py-1.5 text-xs rounded-lg transition-colors cursor-pointer ${
+                        language === l
+                          ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black'
+                          : 'hover:bg-neutral-100 dark:hover:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200'
                       }`}
                     >
                       {l}

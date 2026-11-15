@@ -62,13 +62,6 @@ export const Navbar: React.FC = () => {
 
         {/* Primary Desktop Navigation */}
         <nav ref={navRef} className="ml-2 hidden items-center gap-1 lg:flex" aria-label="Primary">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-semibold text-[#fc8c04] hover:text-[#fc8c04]/80 no-underline transition-colors"
-          >
-            AI
-          </Link>
-
           <div
             className="relative flex items-center gap-1"
             onMouseLeave={scheduleClose}
