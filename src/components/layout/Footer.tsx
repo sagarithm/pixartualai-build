@@ -358,42 +358,21 @@ export const Footer: React.FC = () => {
               </button>
 
               {themeOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[140px] rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#121215] p-1.5 shadow-2xl mfy-fadein">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      applyTheme('auto');
-                      setThemeOpen(false);
-                    }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 transition-colors cursor-pointer ${
-                      themeMode === 'auto'
-                        ? 'font-medium text-neutral-900 dark:text-static-white'
-                        : 'text-neutral-500 dark:text-neutral-400'
-                    }`}
-                  >
-                    <Desktop size={14} className={themeMode === 'auto' ? 'text-neutral-900 dark:text-static-white' : 'text-neutral-400'} />
-                    <span>Auto</span>
-                    {themeMode === 'auto' && (
-                      <Check size={13} weight="bold" className="ml-auto text-[#fc8c04]" />
-                    )}
-                  </button>
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] rounded-2xl border border-neutral-200 dark:border-neutral-700/80 bg-white dark:bg-[#1a1a1c] p-1.5 shadow-2xl mfy-fadein flex flex-col gap-0.5">
                   <button
                     type="button"
                     onClick={() => {
                       applyTheme('light');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 transition-colors cursor-pointer ${
+                    className={`flex items-center gap-2.5 w-full text-left px-3.5 py-2 text-xs rounded-xl transition-all cursor-pointer ${
                       themeMode === 'light'
-                        ? 'font-medium text-neutral-900 dark:text-static-white'
-                        : 'text-neutral-500 dark:text-neutral-400'
+                        ? 'font-semibold bg-neutral-900 text-white dark:bg-[#e6e6e6] dark:text-black shadow-sm'
+                        : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
                     }`}
                   >
-                    <Sun size={14} className={themeMode === 'light' ? 'text-neutral-900 dark:text-static-white' : 'text-neutral-400'} />
+                    <Sun size={15} className={themeMode === 'light' ? 'text-white dark:text-black' : 'text-neutral-400 dark:text-neutral-400'} />
                     <span>Light</span>
-                    {themeMode === 'light' && (
-                      <Check size={13} weight="bold" className="ml-auto text-[#fc8c04]" />
-                    )}
                   </button>
                   <button
                     type="button"
@@ -401,17 +380,29 @@ export const Footer: React.FC = () => {
                       applyTheme('dark');
                       setThemeOpen(false);
                     }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/80 transition-colors cursor-pointer ${
+                    className={`flex items-center gap-2.5 w-full text-left px-3.5 py-2 text-xs rounded-xl transition-all cursor-pointer ${
                       themeMode === 'dark'
-                        ? 'font-medium text-neutral-900 dark:text-static-white'
-                        : 'text-neutral-500 dark:text-neutral-400'
+                        ? 'font-semibold bg-neutral-900 text-white dark:bg-[#e6e6e6] dark:text-black shadow-sm'
+                        : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
                     }`}
                   >
-                    <Moon size={14} className={themeMode === 'dark' ? 'text-neutral-900 dark:text-static-white' : 'text-neutral-400'} />
+                    <Moon size={15} className={themeMode === 'dark' ? 'text-white dark:text-black' : 'text-neutral-400 dark:text-neutral-400'} />
                     <span>Dark</span>
-                    {themeMode === 'dark' && (
-                      <Check size={13} weight="bold" className="ml-auto text-[#fc8c04]" />
-                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      applyTheme('auto');
+                      setThemeOpen(false);
+                    }}
+                    className={`flex items-center gap-2.5 w-full text-left px-3.5 py-2 text-xs rounded-xl transition-all cursor-pointer ${
+                      themeMode === 'auto'
+                        ? 'font-semibold bg-neutral-900 text-white dark:bg-[#e6e6e6] dark:text-black shadow-sm'
+                        : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
+                    }`}
+                  >
+                    <Desktop size={15} className={themeMode === 'auto' ? 'text-white dark:text-black' : 'text-neutral-400 dark:text-neutral-400'} />
+                    <span>Auto</span>
                   </button>
                 </div>
               )}

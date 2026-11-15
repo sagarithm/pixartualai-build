@@ -43,7 +43,7 @@ export const HeroSection: React.FC = () => {
         />
 
         <div className="relative z-[2] mx-auto flex max-w-[960px] flex-col items-center pt-5 text-center md:pt-[30px]">
-          <h1 className="mb-[18px] max-w-[780px] text-[clamp(32px,5vw,48px)] font-medium leading-[1.3] tracking-[-0.01em] text-ink-strong dark:text-white font-['Neutralsans']">
+          <h1 className="mb-[18px] max-w-[780px] text-[clamp(32px,5vw,48px)] font-medium leading-[1.3] tracking-[-0.01em] text-neutral-950 dark:text-white font-['Neutralsans']">
             Build a{' '}
             <span className="hero-shine" data-text="polished">
               polished
@@ -51,7 +51,7 @@ export const HeroSection: React.FC = () => {
             website or web app with AI.
           </h1>
 
-          <p className="mb-[30px] max-w-[600px] text-[clamp(1rem,1.4vw,1.18rem)] leading-relaxed text-gray-500 dark:text-neutral-400 md:mb-[38px]">
+          <p className="mb-[30px] max-w-[600px] text-[clamp(1rem,1.4vw,1.18rem)] leading-relaxed text-neutral-600 dark:text-neutral-300 md:mb-[38px]">
             Describe what you want to build. PixartualAI turns your prompt into a polished landing page, website, dashboard, or app, ready to edit, refine, and launch.
           </p>
 
