@@ -63,11 +63,11 @@ export const HeroSection: React.FC = () => {
 
               <form
                 onSubmit={handleGenerate}
-                className="relative z-[1] flex w-full flex-col rounded-[14px] bg-white dark:bg-[#121215] p-3.5 text-left shadow-[0_4px_8px_theme(colors.static-black/6%)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] border border-transparent dark:border-neutral-800/80 md:p-4 focus-within:ring-2 focus-within:ring-accent-hot focus-within:ring-offset-1 min-h-[150px] md:min-h-[165px] justify-between transition-colors"
+                className="relative z-[1] flex w-full flex-col rounded-[14px] bg-white dark:bg-[#18181b] p-3.5 text-left shadow-[0_4px_8px_theme(colors.static-black/6%)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] border border-transparent dark:border-neutral-800/80 md:p-4 focus-within:ring-2 focus-within:ring-accent-hot focus-within:ring-offset-1 min-h-[150px] md:min-h-[165px] justify-between transition-colors"
               >
                 <textarea
                   aria-label="Describe what you want to build"
-                  className="flex w-full outline-none transition-colors disabled:pointer-events-none min-w-0 rounded-none border-0 bg-transparent p-0 relative z-[1] resize-none px-1 py-1.5 text-base leading-normal text-ink-strong dark:text-neutral-100 placeholder:text-gray-400 dark:placeholder:text-neutral-500 md:text-[17px]"
+                  className="flex w-full outline-none transition-colors disabled:pointer-events-none min-w-0 rounded-none border-0 bg-transparent p-0 relative z-[1] resize-none px-1 py-1.5 text-base leading-normal text-neutral-950 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 md:text-[17px]"
                   placeholder="Ask PixartualAI to build a SaaS landing page with pricing, interactive demo, and testimonials…"
                   rows={3}
                   value={prompt}

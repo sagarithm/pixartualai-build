@@ -15,18 +15,18 @@ export const KeepYourSiteSection: React.FC = () => {
   return (
     <section
       aria-labelledby="keep-site-title"
-      className="overflow-hidden bg-white dark:bg-[#0a0a0c] px-5 pb-[60px] pt-16 md:px-6 md:pb-20 md:pt-24 transition-colors"
+      className="overflow-hidden bg-[linear-gradient(180deg,#fe3200_0%,#fc8c04_42%,rgba(252,140,4,0.55)_60%,#ffffff_82%)] dark:bg-[linear-gradient(180deg,#fe3200_0%,#fc8c04_42%,rgba(252,140,4,0.55)_60%,#121212_82%)] px-5 pb-[60px] pt-16 md:px-6 md:pb-20 md:pt-24 transition-colors"
       id="keep-your-site"
     >
       <div className="mx-auto flex max-w-[1000px] flex-col items-center text-center">
         <h2
-          className="max-w-[700px] text-[clamp(32px,4.5vw,52px)] font-medium leading-[1.15] text-ink-strong dark:text-white"
+          className="max-w-[700px] text-[clamp(32px,4.5vw,52px)] font-medium leading-[1.15] text-static-white font-['Neutralsans']"
           id="keep-site-title"
         >
           Keep your site. Upgrade how you work on it.
         </h2>
 
-        <p className="mx-auto mt-[18px] max-w-[520px] text-[clamp(0.9rem,1.15vw,1rem)] leading-[1.65] text-gray-500 dark:text-neutral-400">
+        <p className="mx-auto mt-[18px] max-w-[520px] text-[clamp(0.9rem,1.15vw,1rem)] leading-[1.65] text-static-white/90">
           Have a Webflow site you do not want to redesign? Join the Webflow to PixartualAI waitlist. We will rebuild selected sites 1:1 inside PixartualAI, preserving the design, pages, CMS structure, and content model, so your team can continue with AI.
         </p>
 
@@ -47,10 +47,10 @@ export const KeepYourSiteSection: React.FC = () => {
         {/* Feature Checkmarks */}
         <ul aria-label="What carries over" className="flex flex-wrap justify-center gap-x-6 gap-y-1">
           {points.map((pt) => (
-            <li key={pt} className="inline-flex items-center gap-[7px] whitespace-nowrap text-[0.88rem] font-medium text-gray-600 dark:text-neutral-300">
+            <li key={pt} className="inline-flex items-center gap-[7px] whitespace-nowrap text-[0.88rem] font-medium text-neutral-800 dark:text-neutral-200">
               <svg
                 aria-hidden="true"
-                className="size-3.5 flex-none text-accent"
+                className="size-3.5 flex-none text-[#fc8c04]"
                 fill="currentColor"
                 height="1em"
                 viewBox="0 0 256 256"
@@ -66,10 +66,10 @@ export const KeepYourSiteSection: React.FC = () => {
 
         {/* Action Buttons */}
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-          <Link className="mfy-btn mfy-btn--primary" href="/pricing">
+          <Link className="mfy-btn mfy-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black" href="/pricing">
             Join the waitlist
           </Link>
-          <Link className="mfy-btn mfy-btn--secondary dark:!bg-neutral-800 dark:!text-white dark:border dark:border-neutral-700 hover:dark:!bg-neutral-700" href="/dashboard">
+          <Link className="mfy-btn mfy-btn--secondary !bg-white !text-neutral-900 border border-neutral-200 dark:!bg-[#1c1c1c] dark:!text-white dark:border-neutral-700" href="/dashboard">
             See what you can build
           </Link>
         </div>

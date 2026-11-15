@@ -61,13 +61,13 @@ export const PlatformFeaturesSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative overflow-x-clip bg-white dark:bg-[#0a0a0c] pb-16 transition-colors" id="platform">
+    <section className="relative overflow-x-clip bg-white dark:bg-[#121212] pb-16 transition-colors" id="platform">
       <div className="mx-auto w-full max-w-[1240px] box-border px-5 pt-16 md:px-[50px]">
         <div className="mb-[34px] text-left">
-          <h2 className="mb-4 text-[clamp(28px,6vw,48px)] font-medium leading-[1.2] text-ink-strong dark:text-white">
+          <h2 className="mb-4 text-[clamp(28px,6vw,48px)] font-medium leading-[1.2] text-neutral-950 dark:text-white font-['Neutralsans']">
             A full website platform, not just a generator.
           </h2>
-          <p className="max-w-[520px] text-[clamp(1rem,1.3vw,1.12rem)] leading-relaxed text-gray-500 dark:text-neutral-400">
+          <p className="max-w-[520px] text-[clamp(1rem,1.3vw,1.12rem)] leading-relaxed text-neutral-500 dark:text-neutral-400">
             Create, edit, manage, publish, and improve your site from one place.
           </p>
         </div>
@@ -80,16 +80,16 @@ export const PlatformFeaturesSection: React.FC = () => {
         {features.map((f) => (
           <article
             key={f.title}
-            className="group feature-flame relative isolate flex min-h-[330px] snap-start flex-col overflow-hidden rounded-[20px] bg-stone-100 dark:bg-[#121215] border border-transparent dark:border-neutral-800/80 p-6 [flex:0_0_clamp(240px,24vw,320px)] transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:-translate-y-2.5 max-[680px]:min-h-[280px] max-[680px]:[flex:0_0_78vw]"
+            className="group feature-flame relative isolate flex min-h-[330px] snap-start flex-col overflow-hidden rounded-[20px] bg-[#f5f5f4] dark:bg-[#18181b] border border-neutral-200/60 dark:border-neutral-800/80 p-6 [flex:0_0_clamp(240px,24vw,320px)] transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:-translate-y-2.5 max-[680px]:min-h-[280px] max-[680px]:[flex:0_0_78vw]"
             role="listitem"
           >
-            <span className="mb-auto inline-flex items-center justify-start text-ink-strong dark:text-white">
+            <span className="mb-auto inline-flex items-center justify-start text-neutral-950 dark:text-white">
               {f.svg}
             </span>
-            <h3 className="mb-1.5 mt-6 text-[15px] font-normal leading-[22px] tracking-[0.15px] text-stone-500 dark:text-neutral-400 transition-colors duration-[450ms] [font-family:Inter,sans-serif] group-hover:text-static-white">
+            <h3 className="mb-1.5 mt-6 text-[15px] font-normal leading-[22px] tracking-[0.15px] text-neutral-500 dark:text-neutral-400 transition-colors duration-[450ms] [font-family:Inter,sans-serif] group-hover:text-static-white">
               {f.title}
             </h3>
-            <p className="text-[15px] font-normal leading-[22px] tracking-[0.15px] text-black dark:text-neutral-100 transition-colors duration-[450ms] [font-family:Inter,sans-serif] group-hover:text-static-white">
+            <p className="text-[15px] font-normal leading-[22px] tracking-[0.15px] text-neutral-900 dark:text-neutral-100 transition-colors duration-[450ms] [font-family:Inter,sans-serif] group-hover:text-static-white">
               {f.desc}
             </p>
           </article>

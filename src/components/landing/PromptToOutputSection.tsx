@@ -24,9 +24,9 @@ export const PromptToOutputSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-white dark:bg-[#0a0a0c] py-12 md:pb-[90px] md:pt-20 transition-colors" id="prompt-to-output">
+    <section className="bg-white dark:bg-[#121212] py-12 md:pb-[90px] md:pt-20 transition-colors" id="prompt-to-output">
       <div className="mx-auto w-full max-w-[1240px] px-4 md:px-[50px]">
-        <h2 className="text-center text-[clamp(28px,6vw,48px)] font-medium leading-[1.2] text-ink-strong dark:text-white">
+        <h2 className="text-center text-[clamp(28px,6vw,48px)] font-medium leading-[1.2] text-neutral-950 dark:text-white">
           From prompt to polished output.
         </h2>
 
@@ -39,14 +39,14 @@ export const PromptToOutputSection: React.FC = () => {
           <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-stone-100 dark:bg-neutral-800 text-[17px] font-medium text-neutral-900 dark:text-white">
             Prompt
           </span>
-          <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-[linear-gradient(90deg,theme(colors.amber.400)_0%,theme(colors.pink.300)_52%,theme(colors.fuchsia.200)_100%)] text-[17px] font-medium text-ink-strong shadow-[inset_0_0_0_1px_theme(colors.static-black/4%)]">
+          <span className="relative z-[1] inline-flex h-full w-40 items-center justify-center rounded-full bg-[linear-gradient(90deg,theme(colors.amber.400)_0%,theme(colors.pink.300)_52%,theme(colors.fuchsia.200)_100%)] text-[17px] font-medium text-neutral-950 shadow-[inset_0_0_0_1px_theme(colors.static-black/4%)]">
             Application
           </span>
         </div>
 
         {/* Marquee Collage Container with Dot Grid */}
-        <div className="relative mt-2 overflow-hidden rounded-[24px] bg-neutral-50 dark:bg-[#121215] border border-transparent dark:border-neutral-800/80 pb-24 transition-colors">
-          <div className="dot-grid dark:!bg-[#121215] flex flex-col gap-4 overflow-hidden rounded-[20px] p-[22px]">
+        <div className="relative mt-2 overflow-hidden rounded-[24px] bg-neutral-50 dark:bg-[#18181b] border border-neutral-200/60 dark:border-neutral-800/80 pb-24 transition-colors">
+          <div className="dot-grid dark:!bg-[#18181b] flex flex-col gap-4 overflow-hidden rounded-[20px] p-[22px]">
             {/* Top row - sliding left */}
             <div className="flex h-[200px] w-max flex-nowrap [will-change:transform] md:h-[300px] marquee-left">
               {[...row1, ...row1].map((item, i) => (

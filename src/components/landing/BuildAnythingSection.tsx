@@ -118,7 +118,7 @@ export const BuildAnythingSection: React.FC = () => {
 
   return (
     <section
-      className="relative h-auto overflow-hidden bg-white dark:bg-[#0a0a0c] md:h-[80vh] md:max-h-[80vh] transition-colors"
+      className="relative h-auto overflow-hidden bg-white dark:bg-[#121212] md:h-[80vh] md:max-h-[80vh] transition-colors"
       id="build-anything"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -168,12 +168,12 @@ export const BuildAnythingSection: React.FC = () => {
         </div>
 
         {/* Right Column: Title + 3D Stacked Preview Images */}
-        <div className="flex flex-col justify-between overflow-hidden bg-gray-100 dark:bg-[#121215] px-5 py-12 md:px-16 md:py-16 transition-colors">
+        <div className="flex flex-col justify-between overflow-hidden bg-gray-100 dark:bg-[#1c1c1c] px-5 py-12 md:px-16 md:py-16 transition-colors">
           <div className="text-center">
-            <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-ink-strong dark:text-white font-['Neutralsans']">
+            <h2 className="mb-4 text-[clamp(32px,6vw,48px)] font-medium leading-[1.2] text-neutral-950 dark:text-white font-['Neutralsans']">
               Build Anything
             </h2>
-            <p className="mx-auto max-w-[520px] text-[clamp(1rem,1.3vw,1.12rem)] leading-relaxed text-gray-500 dark:text-neutral-400">
+            <p className="mx-auto max-w-[520px] text-[clamp(1rem,1.3vw,1.12rem)] leading-relaxed text-neutral-500 dark:text-neutral-400">
               PixartualAI turns a prompt into a complete website or web app, layouts, content, database, and hosting included, then you refine every detail by chatting with AI.
             </p>
           </div>

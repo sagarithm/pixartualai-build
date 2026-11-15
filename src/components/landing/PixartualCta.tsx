@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const PixartualCta: React.FC = () => {
   return (
-    <section className="bg-white dark:bg-[#0a0a0c] pt-16 transition-colors" id="cta">
+    <section className="bg-white dark:bg-[#121212] pt-16 transition-colors" id="cta">
       <div className="mx-auto w-full max-w-[1240px] px-5 md:px-[50px]">
         <div className="relative overflow-hidden rounded-[20px] px-6 py-16 text-center md:px-10 md:py-[100px]">
           <img
