@@ -65,8 +65,8 @@ export default async function PostDetailPage({ params }: PageProps) {
   // Adapt brand names gracefully
   const cleanArticleHtml = post.articleHtml
     ? post.articleHtml
-        .replace(/Modulify(?!\.ai)/g, 'PixartualAI')
-        .replace(/modulify\.ai/g, 'pixartualai.com')
+        .replace(/PixartualAI(?!\.ai)/g, 'PixartualAI')
+        .replace(/pixartual\.ai/g, 'pixartualai.com')
     : '';
 
   return (

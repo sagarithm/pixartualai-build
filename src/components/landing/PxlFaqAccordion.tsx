@@ -7,11 +7,11 @@ export interface FaqItem {
   a: string;
 }
 
-export interface MfyFaqAccordionProps {
+export interface PxlFaqAccordionProps {
   items: FaqItem[];
 }
 
-export const MfyFaqAccordion: React.FC<MfyFaqAccordionProps> = ({ items }) => {
+export const PxlFaqAccordion: React.FC<PxlFaqAccordionProps> = ({ items }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (idx: number) => {
@@ -19,21 +19,21 @@ export const MfyFaqAccordion: React.FC<MfyFaqAccordionProps> = ({ items }) => {
   };
 
   return (
-    <div className="mfy-faq-list">
+    <div className="px-faq-list">
       {items.map((item, idx) => {
         const isOpen = openIndex === idx;
         return (
-          <div key={idx} className={`mfy-faq-item ${isOpen ? 'is-open' : ''}`}>
+          <div key={idx} className={`px-faq-item ${isOpen ? 'is-open' : ''}`}>
             <button
               type="button"
-              className="mfy-faq-q"
+              className="px-faq-q"
               aria-expanded={isOpen}
               onClick={() => toggle(idx)}
             >
               <span>{item.q}</span>
               <svg
                 aria-hidden="true"
-                className="mfy-faq-ic"
+                className="px-faq-ic"
                 fill="currentColor"
                 height="1em"
                 viewBox="0 0 256 256"
@@ -43,8 +43,8 @@ export const MfyFaqAccordion: React.FC<MfyFaqAccordionProps> = ({ items }) => {
                 <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z" />
               </svg>
             </button>
-            <div className="mfy-faq-a">
-              <div className="mfy-faq-a-inner">
+            <div className="px-faq-a">
+              <div className="px-faq-a-inner">
                 <p>{item.a}</p>
               </div>
             </div>

@@ -17,6 +17,8 @@ find_css.py
 inspect_exact_modulify.py
 parse_structure.py
 extracted_sections/
+extracted-blueprint/
+.archive_benchmarks/
 extract_animations.py
 get_all_hovers.py
 scrape_all_pages.py

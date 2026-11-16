@@ -81,7 +81,7 @@ export const PromptToOutputSection: React.FC = () => {
           />
 
           <div className="absolute bottom-7 left-1/2 z-[2] -translate-x-1/2">
-            <Link className="mfy-btn mfy-btn--primary" href="/templates">
+            <Link className="px-btn px-btn--primary" href="/templates">
               See what you can build
             </Link>
           </div>

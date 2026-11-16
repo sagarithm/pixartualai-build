@@ -104,7 +104,7 @@ export default function PlansPage() {
             </p>
           </div>
 
-          {/* Credits Remaining Card (Exact Modulify Parity) */}
+          {/* Credits Remaining Card (Exact PixartualAI Parity) */}
           <div className="mt-6 p-5 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#161616] shadow-2xs">
             <div className="flex items-center justify-between">
               <div>

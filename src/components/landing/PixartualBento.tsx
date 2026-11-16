@@ -121,4 +121,5 @@ export const PixartualBento: React.FC = () => {
   );
 };
 
-export const ModulifyBento = PixartualBento;
+export const PixartualAIBento = PixartualBento;
+export const PxlBento = PixartualBento;

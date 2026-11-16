@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { PixartualCta } from '@/components/landing/PixartualCta';
-import { MfyFaqAccordion } from '@/components/landing/MfyFaqAccordion';
+import { PxlFaqAccordion } from '@/components/landing/PxlFaqAccordion';
 import { Globe, MapPin, ArrowRight, Compass } from '@phosphor-icons/react';
 
 export default function TopAgenciesPage() {
@@ -173,7 +173,7 @@ export default function TopAgenciesPage() {
                 </p>
               </div>
 
-              <MfyFaqAccordion items={agencyFaqs} />
+              <PxlFaqAccordion items={agencyFaqs} />
             </div>
           </div>
         </section>

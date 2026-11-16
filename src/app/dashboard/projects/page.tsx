@@ -185,7 +185,7 @@ export default function ProjectsPage() {
         {/* Floating Support Widget (Image 1 Bottom Right) */}
         <div className="fixed bottom-6 right-6 flex flex-col items-end gap-3 z-40">
           {isSupportOpen && (
-            <div className="w-72 p-3.5 rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/90 dark:border-neutral-800 shadow-xl mfy-fadein relative">
+            <div className="w-72 p-3.5 rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/90 dark:border-neutral-800 shadow-xl px-fadein relative">
               <button
                 type="button"
                 onClick={() => setIsSupportOpen(false)}

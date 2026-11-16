@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { PixartualCta } from '@/components/landing/PixartualCta';
-import { MfyFaqAccordion } from '@/components/landing/MfyFaqAccordion';
+import { PxlFaqAccordion } from '@/components/landing/PxlFaqAccordion';
 import { Globe, MagnifyingGlass, Check, ShieldCheck, Lightning, Sparkle } from '@phosphor-icons/react';
 
 export default function DomainsPage() {
@@ -87,7 +87,7 @@ export default function DomainsPage() {
                     className="w-full text-base sm:text-lg outline-none text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 bg-transparent"
                   />
                 </div>
-                <button type="submit" className="mfy-btn mfy-btn--primary w-full sm:w-auto !py-3">
+                <button type="submit" className="px-btn px-btn--primary w-full sm:w-auto !py-3">
                   Search Domain
                 </button>
               </form>
@@ -212,7 +212,7 @@ export default function DomainsPage() {
                 </p>
               </div>
 
-              <MfyFaqAccordion items={domainFaqs} />
+              <PxlFaqAccordion items={domainFaqs} />
             </div>
           </div>
         </section>

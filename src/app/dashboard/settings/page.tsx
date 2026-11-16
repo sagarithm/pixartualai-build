@@ -63,7 +63,7 @@ export default function WorkspaceSettingsPage() {
             </button>
           </div>
 
-          {/* Tab 1: General (Exact Modulify Parity) */}
+          {/* Tab 1: General (Exact PixartualAI Parity) */}
           {activeTab === 'general' && (
             <div className="mt-8 space-y-10">
               {/* Workspace Details Section */}
@@ -152,7 +152,7 @@ export default function WorkspaceSettingsPage() {
                 </form>
               </div>
 
-              {/* Danger Zone Section (Exact Modulify Parity) */}
+              {/* Danger Zone Section (Exact PixartualAI Parity) */}
               <div>
                 <h2 className="text-base font-semibold text-neutral-900 dark:text-white">Danger zone</h2>
                 <p className="text-xs text-neutral-500 mt-0.5">

@@ -80,7 +80,7 @@ export const HeroSection: React.FC = () => {
                 <div className="relative z-[1] flex items-center justify-end gap-3 mt-3">
                   <button
                     type="submit"
-                    className="mfy-btn mfy-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black font-medium rounded-lg px-6 py-2.5 hover:opacity-90 transition-opacity cursor-pointer text-sm md:text-base"
+                    className="px-btn px-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black font-medium rounded-lg px-6 py-2.5 hover:opacity-90 transition-opacity cursor-pointer text-sm md:text-base"
                   >
                     Generate
                   </button>

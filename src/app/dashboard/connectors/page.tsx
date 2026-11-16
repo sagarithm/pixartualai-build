@@ -151,7 +151,7 @@ export default function ConnectorsPage() {
             </p>
           </div>
 
-          {/* 3 Feature Highlights (Exact 1:1 Modulify Parity) */}
+          {/* 3 Feature Highlights (Exact 1:1 PixartualAI Parity) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#161616] shadow-2xs">
               <h3 className="text-xs font-semibold text-neutral-900 dark:text-white">Connect once</h3>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { PixartualCta } from '@/components/landing/PixartualCta';
-import { MfyFaqAccordion } from '@/components/landing/MfyFaqAccordion';
+import { PxlFaqAccordion } from '@/components/landing/PxlFaqAccordion';
 
 interface CreditOption {
   label: string;
@@ -174,7 +174,7 @@ export default function PricingPage() {
               </div>
 
               <div className="pr-btn-wrap my-6">
-                <Link className="mfy-btn mfy-btn--secondary w-full justify-center" href="/dashboard">
+                <Link className="px-btn px-btn--secondary w-full justify-center" href="/dashboard">
                   Get started
                 </Link>
               </div>
@@ -258,7 +258,7 @@ export default function PricingPage() {
               </div>
 
               <div className="pr-btn-wrap my-6">
-                <Link className="mfy-btn mfy-btn--primary w-full justify-center" href="/dashboard">
+                <Link className="px-btn px-btn--primary w-full justify-center" href="/dashboard">
                   Try it now
                 </Link>
               </div>
@@ -342,7 +342,7 @@ export default function PricingPage() {
               </div>
 
               <div className="pr-btn-wrap my-6">
-                <Link className="mfy-btn mfy-btn--primary w-full justify-center" href="/dashboard">
+                <Link className="px-btn px-btn--primary w-full justify-center" href="/dashboard">
                   Try it now
                 </Link>
               </div>
@@ -371,7 +371,7 @@ export default function PricingPage() {
                 PixartualAI Scale is built for teams that have a great site and want to scale without hiring designers and developers for every page. It includes everything in the Free, Starter, and Pro plans — plus much more, tailored to scale your team.
               </p>
             </div>
-            <Link className="mfy-btn mfy-btn--secondary" href="/enterprise-teams">
+            <Link className="px-btn px-btn--secondary" href="/enterprise-teams">
               Learn more
             </Link>
           </div>
@@ -382,7 +382,7 @@ export default function PricingPage() {
           <div className="pr-faq-head">
             <h2>Billing &amp; plans</h2>
           </div>
-          <MfyFaqAccordion items={faqs} />
+          <PxlFaqAccordion items={faqs} />
         </section>
 
         {/* CTA banner */}

@@ -258,7 +258,7 @@ export const Footer: React.FC = () => {
                   <Link href="/made-in-pixartual" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     Made in PixartualAI
                   </Link>
-                  <a href="https://modulify.ai/docs" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://pixartual.ai/docs" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     Docs
                   </a>
                 </div>
@@ -280,25 +280,25 @@ export const Footer: React.FC = () => {
               <div>
                 <p className="mb-4 text-[0.8125rem] font-medium text-neutral-400">Follow us</p>
                 <div className="flex flex-col gap-2">
-                  <a href="https://x.com/intent/follow?screen_name=modulify" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://x.com/intent/follow?screen_name=pixartual" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     X / Twitter
                   </a>
                   <a href="https://discord.com/invite/Dj4FDdMnYj" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     Discord
                   </a>
-                  <a href="https://www.linkedin.com/company/modulify-ai" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.linkedin.com/company/pixartual-ai" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     LinkedIn
                   </a>
-                  <a href="https://www.youtube.com/@ModulifyAI" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.youtube.com/@PixartualAIAI" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     YouTube
                   </a>
-                  <a href="https://www.instagram.com/modulify_/" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.instagram.com/pixartual_/" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     Instagram
                   </a>
-                  <a href="https://www.threads.com/@modulify_" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.threads.com/@pixartual_" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     Threads
                   </a>
-                  <a href="https://www.facebook.com/modulifyai" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.facebook.com/pixartualai" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
                     Facebook
                   </a>
                 </div>
@@ -323,7 +323,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Neon Gradient Hairline Divider matching Modulify Dark Theme */}
+        {/* Neon Gradient Hairline Divider matching PixartualAI Dark Theme */}
         <div className="h-px w-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-60 my-4" />
 
         {/* Bottom Bar with Copyright, Theme, Currency, and Language */}
@@ -358,7 +358,7 @@ export const Footer: React.FC = () => {
               </button>
 
               {themeOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[140px] rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl mfy-fadein flex flex-col gap-0.5">
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[140px] rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl px-fadein flex flex-col gap-0.5">
                   <button
                     type="button"
                     onClick={() => {
@@ -426,7 +426,7 @@ export const Footer: React.FC = () => {
                 />
               </button>
               {currencyOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] max-h-48 overflow-y-auto rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl mfy-fadein">
+                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] max-h-48 overflow-y-auto rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl px-fadein">
                   {currencies.map((c) => (
                     <button
                       key={c.code}
@@ -466,7 +466,7 @@ export const Footer: React.FC = () => {
                 />
               </button>
               {langOpen && (
-                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl mfy-fadein">
+                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl px-fadein">
                   {languages.map((l) => (
                     <button
                       key={l}

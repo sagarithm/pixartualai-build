@@ -90,10 +90,10 @@ export default function ConnectPage() {
               Connect your PixartualAI site or application to live databases, payment gateways, analytics providers, CRMs, and email tools.
             </p>
             <div className="cx-hero__actions">
-              <Link href="/dashboard" className="mfy-btn mfy-btn--primary">
+              <Link href="/dashboard" className="px-btn px-btn--primary">
                 Explore in Studio
               </Link>
-              <a href="#catalog" className="mfy-btn mfy-btn--outline">
+              <a href="#catalog" className="px-btn px-btn--outline">
                 Browse catalog ({connectors.length})
               </a>
             </div>

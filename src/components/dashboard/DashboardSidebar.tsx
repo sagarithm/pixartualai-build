@@ -162,7 +162,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
 
           {/* Workspace Dropdown Menu */}
           {isWorkspaceOpen && (
-            <div className="absolute top-full left-0 mt-1 w-[260px] rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-xl z-50 p-2 mfy-fadein text-xs">
+            <div className="absolute top-full left-0 mt-1 w-[260px] rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-xl z-50 p-2 px-fadein text-xs">
               {/* Workspace Header */}
               <div className="flex items-center gap-3 p-2 rounded-xl bg-stone-50/60 dark:bg-neutral-800/40">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white shadow-2xs shrink-0">
@@ -446,7 +446,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
             </button>
 
             {isResourcesOpen && (
-              <div className="absolute left-full bottom-0 ml-2 w-48 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-xl p-1.5 z-50 mfy-fadein text-xs space-y-0.5">
+              <div className="absolute left-full bottom-0 ml-2 w-48 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-xl p-1.5 z-50 px-fadein text-xs space-y-0.5">
                 <Link
                   href="/docs"
                   onClick={() => setIsResourcesOpen(false)}
@@ -539,7 +539,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
 
           {/* User Menu Modal (Image 2 exact match) */}
           {isUserMenuOpen && (
-            <div className="absolute bottom-full left-0 mb-2 w-[230px] rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-2xl p-2 z-50 mfy-fadein text-xs space-y-0.5">
+            <div className="absolute bottom-full left-0 mb-2 w-[230px] rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-2xl p-2 z-50 px-fadein text-xs space-y-0.5">
               {/* Header */}
               <div className="flex items-center gap-3 p-2 rounded-xl bg-stone-50/60 dark:bg-neutral-800/40">
                 <div className="w-9 h-9 rounded-xl overflow-hidden shadow-2xs shrink-0 border border-black/5 bg-[#f8f6f0]">

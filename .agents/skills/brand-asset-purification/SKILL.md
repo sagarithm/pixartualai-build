@@ -30,16 +30,18 @@ Any time code or data is brought into the codebase, immediately apply these cano
 | Original Reference | Pixartual Canonical Target | Notes / Context |
 |---|---|---|
 | `Modulify` / `Modulify AI` | `PixartualAI` (or `Pixartual`) | In all copy, headlines, metadata, titles |
-| `modulify` | `pixartual` | In file names, slugs, URLs, lower-case variables |
-| `mdlfy-` | `px-` | CSS class prefix (e.g. `px-adaptive-media`) |
-| `--mdlfy-` | `--px-` | CSS design token variables in `globals.css` |
+| `modulify` | `pixartual` | In URLs, slugs, lower-case variables |
+| `mfy-*` / `mdlfy-*` | `px-*` | CSS class prefix (e.g. `px-btn`, `px-page`, `px-mega`, `px-sizer`) |
+| `--mdlfy-*` | `--px-*` | CSS design token variables in `globals.css` (e.g. `--px-color-*`) |
+| `Mfy*.tsx` | `Pxl*.tsx` | Component source files (e.g. `PxlFaqAccordion.tsx`) |
+| `modulify_*.json` | `pxl_*.json` | Data and schema files (e.g. `pxl_templates.json`) |
 | `modulify-theme` | `pixartual-theme` | LocalStorage keys and theme events |
 | `/made-in-modulify` | `/made-in-pixartual` | Community showcase route |
 | `/compare/modulify-vs-*` | `/compare/pixartual-vs-*` | Competitor comparison routes |
 | `.modulify.website` | `.pixartual.website` | Subdomain preview templates |
 | `cdn.modulify.ai` | `cdn.pixartual.ai` | Media and asset CDN origins |
-| `ModulifyCta` | `PixartualCta` | Primary CTA banner component |
-| `ModulifyBento` | `PixartualBento` | Bento feature showcase component |
+| `ModulifyCta` | `PxlCta` / `PixartualCta` | Primary CTA banner component |
+| `ModulifyBento` | `PxlBento` / `PixartualBento` | Bento feature showcase component |
 
 ---
 

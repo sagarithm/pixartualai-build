@@ -16,10 +16,10 @@ export default function NotFound() {
             The page you&rsquo;re looking for doesn&rsquo;t exist or has been moved.
           </p>
           <div className="nf-actions">
-            <Link className="mfy-btn mfy-btn--primary" href="/">
+            <Link className="px-btn px-btn--primary" href="/">
               Back to home
             </Link>
-            <Link className="mfy-btn mfy-btn--secondary" href="/faqs">
+            <Link className="px-btn px-btn--secondary" href="/faqs">
               Visit the FAQ
             </Link>
           </div>

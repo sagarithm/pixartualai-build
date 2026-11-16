@@ -116,7 +116,7 @@ export default function DomainsDashboardPage() {
             </p>
           </div>
 
-          {/* 3 Feature Highlights (Exact 1:1 Modulify Parity) */}
+          {/* 3 Feature Highlights (Exact 1:1 PixartualAI Parity) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <div className="p-4 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#161616] shadow-2xs">
               <h3 className="text-xs font-semibold text-neutral-900 dark:text-white">Every popular extension</h3>
@@ -297,7 +297,7 @@ export default function DomainsDashboardPage() {
 
           {/* Connect Domain Modal */}
           {isConnectModalOpen && (
-            <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4 mfy-fadein">
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4 px-fadein">
               <div className="w-full max-w-md rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-2xl p-6 text-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white">Connect Custom Domain</h3>

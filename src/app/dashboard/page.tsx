@@ -62,7 +62,7 @@ export default function DashboardPage() {
   const userName = 'Sagarithm';
   const workspaceName = "Sagarithm's Workspace";
 
-  // Greetings array exactly as extracted from Modulify
+  // Greetings array exactly as extracted from PixartualAI
   const greetings = [
     'Time to make waves, Sagarithm.',
     'Dream out loud, Sagarithm.',
@@ -76,7 +76,7 @@ export default function DashboardPage() {
     "What's the spark, Sagarithm?",
   ];
 
-  // Placeholders exactly as in Modulify
+  // Placeholders exactly as in PixartualAI
   const placeholders = [
     'A gallery to showcase my photography...',
     'A landing page for my new SaaS app...',
@@ -91,7 +91,7 @@ export default function DashboardPage() {
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
   useEffect(() => {
-    // Keep exact Modulify greeting
+    // Keep exact PixartualAI greeting
     setGreeting('Time to make waves, Sagarithm.');
 
     // Cycle placeholders every 6 seconds
@@ -283,7 +283,7 @@ export default function DashboardPage() {
                       <Plus size={14} />
                     </button>
                     {isAttachOpen && (
-                      <div className="absolute bottom-full left-0 mb-2 w-48 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg z-50 mfy-fadein">
+                      <div className="absolute bottom-full left-0 mb-2 w-48 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg z-50 px-fadein">
                         <button
                           type="button"
                           onClick={() => {
@@ -317,7 +317,7 @@ export default function DashboardPage() {
                       <CaretDown size={11} className="text-neutral-400" />
                     </button>
                     {isModeOpen && (
-                      <div className="absolute bottom-full left-0 mb-2 w-32 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg z-50 mfy-fadein">
+                      <div className="absolute bottom-full left-0 mb-2 w-32 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] p-1 shadow-lg z-50 px-fadein">
                         {(['Build', 'Edit', 'Enhance'] as const).map((mode) => (
                           <button
                             key={mode}
@@ -412,7 +412,7 @@ export default function DashboardPage() {
             </Link>
           </div>
 
-          {/* 3. Projects Grid - Showing Orvane (Cloned) exactly as in Modulify account */}
+          {/* 3. Projects Grid - Showing Orvane (Cloned) exactly as in PixartualAI account */}
           {activeTab === 'projects' ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <div
@@ -464,13 +464,13 @@ export default function DashboardPage() {
               </div>
             </div>
           ) : (
-            /* Authentic Templates View from Modulify */
+            /* Authentic Templates View from PixartualAI */
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { title: 'Forge', category: 'AI', img: 'https://cdn.modulify.ai/custom-previews/6adb6a2f05611b34dba93502.webp', slug: 'forge-template' },
-                { title: 'Sales CRM', category: 'SaaS & Apps', img: 'https://cdn.modulify.ai/previews/6ac50ada7f321777a2ee3605.webp', slug: 'sales-crm-template' },
-                { title: 'Onda Studio', category: 'Agency & Services', img: 'https://cdn.modulify.ai/previews/6ac3b3a4c01ca4e98bbb4408.webp', slug: 'onda-template' },
-                { title: 'NORRVIK', category: 'Architecture', img: 'https://cdn.modulify.ai/custom-previews/6ac370d03996523cd20f727a.webp', slug: 'norrvik-template' },
+                { title: 'Forge', category: 'AI', img: 'https://cdn.pixartual.ai/custom-previews/6adb6a2f05611b34dba93502.webp', slug: 'forge-template' },
+                { title: 'Sales CRM', category: 'SaaS & Apps', img: 'https://cdn.pixartual.ai/previews/6ac50ada7f321777a2ee3605.webp', slug: 'sales-crm-template' },
+                { title: 'Onda Studio', category: 'Agency & Services', img: 'https://cdn.pixartual.ai/previews/6ac3b3a4c01ca4e98bbb4408.webp', slug: 'onda-template' },
+                { title: 'NORRVIK', category: 'Architecture', img: 'https://cdn.pixartual.ai/custom-previews/6ac370d03996523cd20f727a.webp', slug: 'norrvik-template' },
               ].map((tmpl) => (
                 <div
                   key={tmpl.slug}
@@ -514,12 +514,12 @@ export default function DashboardPage() {
       </main>
 
       {/* =========================================================================
-          FLOATING SUPPORT WIDGET (Bottom-Right matching Modulify screenshot)
+          FLOATING SUPPORT WIDGET (Bottom-Right matching PixartualAI screenshot)
           ========================================================================= */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">
         {/* Support popup pill if not dismissed */}
         {!isSupportDismissed && (
-          <div className="flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white dark:bg-[#1a1a1a] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border border-neutral-200/90 dark:border-neutral-800 mb-3 max-w-[320px] mfy-fadein">
+          <div className="flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white dark:bg-[#1a1a1a] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border border-neutral-200/90 dark:border-neutral-800 mb-3 max-w-[320px] px-fadein">
             {/* Stacked 3 team avatars */}
             <div className="w-12 h-7 relative rounded-full overflow-hidden shrink-0 border border-neutral-200/50">
               <Image
@@ -568,7 +568,7 @@ export default function DashboardPage() {
           CONNECTORS MODAL ("Connect all your tools")
           ========================================================================= */}
       {isConnectorsOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 mfy-fadein">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 px-fadein">
           <div className="w-full max-w-lg rounded-2xl bg-white dark:bg-[#1a1a1a] p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800">
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
               <div className="flex items-center gap-2">
@@ -630,7 +630,7 @@ export default function DashboardPage() {
           COMMAND SEARCH MODAL (Ctrl + K)
           ========================================================================= */}
       {isSearchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/60 backdrop-blur-xs p-4 mfy-fadein">
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/60 backdrop-blur-xs p-4 px-fadein">
           <div className="w-full max-w-lg rounded-2xl bg-white dark:bg-[#1a1a1a] shadow-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden">
             <div className="flex items-center gap-3 px-4 py-3 border-b border-neutral-100 dark:border-neutral-800">
               <MagnifyingGlass size={18} className="text-neutral-400" />
@@ -689,7 +689,7 @@ export default function DashboardPage() {
           LIVE SUPPORT CHAT DRAWER
           ========================================================================= */}
       {isSupportChatOpen && (
-        <div className="fixed bottom-20 right-6 z-50 w-80 sm:w-96 rounded-2xl bg-white dark:bg-[#1a1a1a] shadow-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden mfy-fadein">
+        <div className="fixed bottom-20 right-6 z-50 w-80 sm:w-96 rounded-2xl bg-white dark:bg-[#1a1a1a] shadow-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden px-fadein">
           <div className="p-4 bg-gradient-to-r from-accent to-accent-hot text-white flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-xs">

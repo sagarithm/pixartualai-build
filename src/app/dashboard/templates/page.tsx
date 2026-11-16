@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
-import rawTemplates from '@/data/modulify_templates.json';
+import rawTemplates from '@/data/pxl_templates.json';
 import {
   FolderSimple,
   MagnifyingGlass,
@@ -91,7 +91,7 @@ export default function TemplatesPage() {
             </div>
           </div>
 
-          {/* Authentic Modulify Templates Grid */}
+          {/* Authentic PixartualAI Templates Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filtered.map((tmpl) => (
               <div

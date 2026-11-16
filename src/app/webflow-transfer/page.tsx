@@ -108,7 +108,7 @@ export default function WebflowTransferPage() {
                     />
                   </div>
 
-                  <button type="submit" className="mfy-btn mfy-btn--primary w-full !py-3">
+                  <button type="submit" className="px-btn px-btn--primary w-full !py-3">
                     Join the waitlist
                   </button>
                 </form>

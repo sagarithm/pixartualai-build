@@ -162,7 +162,7 @@ export default function EnterpriseTeamsPage() {
                   </div>
                 </div>
 
-                <button type="submit" className="mfy-btn mfy-btn--primary !bg-white !text-black hover:!bg-neutral-200 font-semibold w-full !py-3 mt-4">
+                <button type="submit" className="px-btn px-btn--primary !bg-white !text-black hover:!bg-neutral-200 font-semibold w-full !py-3 mt-4">
                   Schedule Demo
                 </button>
               </form>

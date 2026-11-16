@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Authentic Modulify on-hover & micro-interaction transitions */
+/* Authentic PixartualAI on-hover & micro-interaction transitions */
 .on-hover,
 .on-hover-hover:hover {
   transition: all 0.5s ease-in-out, box-shadow 0s;
@@ -73,79 +73,42 @@
 [data-color-scheme="light"] {
 
   --px-color-white: 255 255 255;
-  --mdlfy-color-white: 255 255 255;
   --px-color-black: 0 0 0;
-  --mdlfy-color-black: 0 0 0;
   --px-color-static-white: 255 255 255;
-  --mdlfy-color-static-white: 255 255 255;
   --px-color-static-black: 0 0 0;
-  --mdlfy-color-static-black: 0 0 0;
   --px-color-base: 245 245 245;
-  --mdlfy-color-base: 245 245 245;
   --px-color-surface: 255 255 255;
-  --mdlfy-color-surface: 255 255 255;
   --px-color-surface-border: 243 244 246;
-  --mdlfy-color-surface-border: 243 244 246;
   --px-color-surface-hover: 249 250 251;
-  --mdlfy-color-surface-hover: 249 250 251;
   --px-color-input: 245 245 245;
-  --mdlfy-color-input: 245 245 245;
   --px-color-border: 229 229 229;
-  --mdlfy-color-border: 229 229 229;
   --px-color-ring: 0 0 0;
-  --mdlfy-color-ring: 0 0 0;
   --px-color-accent: 252 140 4;
-  --mdlfy-color-accent: 252 140 4;
   --px-color-accent-hover: 227 124 0;
-  --mdlfy-color-accent-hover: 227 124 0;
   --px-color-accent-hot: 254 50 0;
-  --mdlfy-color-accent-hot: 254 50 0;
   --px-color-ink: 17 17 17;
-  --mdlfy-color-ink: 17 17 17;
   --px-color-ink-strong: 17 17 17;
-  --mdlfy-color-ink-strong: 17 17 17;
   --px-color-ink-soft: 115 115 115;
-  --mdlfy-color-ink-soft: 115 115 115;
   --px-color-ink-muted: 163 163 163;
-  --mdlfy-color-ink-muted: 163 163 163;
   --px-color-ink-faint: 212 212 212;
-  --mdlfy-color-ink-faint: 212 212 212;
   --px-color-neutral-950: 10 10 10;
-  --mdlfy-color-neutral-950: 10 10 10;
   --px-color-neutral-900: 23 23 23;
-  --mdlfy-color-neutral-900: 23 23 23;
   --px-color-neutral-800: 38 38 38;
-  --mdlfy-color-neutral-800: 38 38 38;
   --px-color-neutral-700: 64 64 64;
-  --mdlfy-color-neutral-700: 64 64 64;
   --px-color-neutral-600: 82 82 82;
-  --mdlfy-color-neutral-600: 82 82 82;
   --px-color-neutral-500: 115 115 115;
-  --mdlfy-color-neutral-500: 115 115 115;
   --px-color-neutral-400: 163 163 163;
-  --mdlfy-color-neutral-400: 163 163 163;
   --px-color-neutral-300: 212 212 212;
-  --mdlfy-color-neutral-300: 212 212 212;
   --px-color-neutral-200: 229 229 229;
-  --mdlfy-color-neutral-200: 229 229 229;
   --px-color-neutral-100: 245 245 245;
-  --mdlfy-color-neutral-100: 245 245 245;
   --px-color-neutral-50: 250 250 250;
-  --mdlfy-color-neutral-50: 250 250 250;
   --px-color-stone-100: 245 245 244;
-  --mdlfy-color-stone-100: 245 245 244;
   --px-color-stone-200: 231 229 228;
-  --mdlfy-color-stone-200: 231 229 228;
   --px-color-stone-500: 120 113 108;
-  --mdlfy-color-stone-500: 120 113 108;
   --px-color-gray-500: 107 114 128;
-  --mdlfy-color-gray-500: 107 114 128;
   --px-color-gray-400: 156 163 175;
-  --mdlfy-color-gray-400: 156 163 175;
   --px-color-purple-500: 168 85 247;
-  --mdlfy-color-purple-500: 168 85 247;
   --px-color-blue-500: 59 130 246;
-  --mdlfy-color-blue-500: 59 130 246;
 
   --canvas-bg: #FFFFFF;
   --panel-bg: #FFFFFF;
@@ -163,79 +126,42 @@ html.dark,
 .dark {
 
   --px-color-white: 18 18 18;
-  --mdlfy-color-white: 18 18 18;
   --px-color-black: 250 250 250;
-  --mdlfy-color-black: 250 250 250;
   --px-color-static-white: 255 255 255;
-  --mdlfy-color-static-white: 255 255 255;
   --px-color-static-black: 0 0 0;
-  --mdlfy-color-static-black: 0 0 0;
   --px-color-base: 28 28 28;
-  --mdlfy-color-base: 28 28 28;
   --px-color-surface: 26 26 26;
-  --mdlfy-color-surface: 26 26 26;
   --px-color-surface-border: 43 43 43;
-  --mdlfy-color-surface-border: 43 43 43;
   --px-color-surface-hover: 36 36 36;
-  --mdlfy-color-surface-hover: 36 36 36;
   --px-color-input: 28 28 28;
-  --mdlfy-color-input: 28 28 28;
   --px-color-border: 41 41 41;
-  --mdlfy-color-border: 41 41 41;
   --px-color-ring: 250 250 250;
-  --mdlfy-color-ring: 250 250 250;
   --px-color-accent: 252 140 4;
-  --mdlfy-color-accent: 252 140 4;
   --px-color-accent-hover: 255 157 36;
-  --mdlfy-color-accent-hover: 255 157 36;
   --px-color-accent-hot: 254 50 0;
-  --mdlfy-color-accent-hot: 254 50 0;
   --px-color-ink: 237 237 237;
-  --mdlfy-color-ink: 237 237 237;
   --px-color-ink-strong: 255 255 255;
-  --mdlfy-color-ink-strong: 255 255 255;
   --px-color-ink-soft: 163 163 163;
-  --mdlfy-color-ink-soft: 163 163 163;
   --px-color-ink-muted: 115 115 115;
-  --mdlfy-color-ink-muted: 115 115 115;
   --px-color-ink-faint: 68 68 68;
-  --mdlfy-color-ink-faint: 68 68 68;
   --px-color-neutral-950: 245 245 245;
-  --mdlfy-color-neutral-950: 245 245 245;
   --px-color-neutral-900: 237 237 237;
-  --mdlfy-color-neutral-900: 237 237 237;
   --px-color-neutral-800: 224 224 224;
-  --mdlfy-color-neutral-800: 224 224 224;
   --px-color-neutral-700: 204 204 204;
-  --mdlfy-color-neutral-700: 204 204 204;
   --px-color-neutral-600: 176 176 176;
-  --mdlfy-color-neutral-600: 176 176 176;
   --px-color-neutral-500: 143 143 143;
-  --mdlfy-color-neutral-500: 143 143 143;
   --px-color-neutral-400: 107 107 107;
-  --mdlfy-color-neutral-400: 107 107 107;
   --px-color-neutral-300: 61 61 61;
-  --mdlfy-color-neutral-300: 61 61 61;
   --px-color-neutral-200: 41 41 41;
-  --mdlfy-color-neutral-200: 41 41 41;
   --px-color-neutral-100: 28 28 28;
-  --mdlfy-color-neutral-100: 28 28 28;
   --px-color-neutral-50: 23 23 23;
-  --mdlfy-color-neutral-50: 23 23 23;
   --px-color-stone-100: 28 28 28;
-  --mdlfy-color-stone-100: 28 28 28;
   --px-color-stone-200: 41 41 41;
-  --mdlfy-color-stone-200: 41 41 41;
   --px-color-stone-500: 143 143 143;
-  --mdlfy-color-stone-500: 143 143 143;
   --px-color-gray-500: 143 143 143;
-  --mdlfy-color-gray-500: 143 143 143;
   --px-color-gray-400: 107 107 107;
-  --mdlfy-color-gray-400: 107 107 107;
   --px-color-purple-500: 168 85 247;
-  --mdlfy-color-purple-500: 168 85 247;
   --px-color-blue-500: 59 130 246;
-  --mdlfy-color-blue-500: 59 130 246;
 
   --canvas-bg: #0F0F0F;
   --panel-bg: #181818;
@@ -286,7 +212,7 @@ html.dark,
   }
 }
 
-@keyframes mfy-marquee-left {
+@keyframes px-marquee-left {
   0% {
     transform: translateX(0);
   }
@@ -296,7 +222,7 @@ html.dark,
   }
 }
 
-@keyframes mfy-marquee-right {
+@keyframes px-marquee-right {
   0% {
     transform: translateX(-50%);
   }
@@ -348,7 +274,7 @@ html.dark,
   }
 }
 
-@keyframes mfy-fadein {
+@keyframes px-fadein {
   from {
     opacity: 0;
     transform: translateY(-6px) scale(0.98);
@@ -431,11 +357,11 @@ html.dark,
 }
 
 .marquee-left {
-  animation: mfy-marquee-left 45s linear infinite;
+  animation: px-marquee-left 45s linear infinite;
 }
 
 .marquee-right {
-  animation: mfy-marquee-right 45s linear infinite;
+  animation: px-marquee-right 45s linear infinite;
 }
 
 /* Pause marquee when user hovers over collage */
@@ -629,7 +555,7 @@ html.dark,
    BUTTON HOVER & ACTIVE MICRO-INTERACTIONS
    ========================================================================== */
 
-.mfy-btn {
+.px-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -649,32 +575,32 @@ html.dark,
   transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1), background-color 0.25s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.25s cubic-bezier(0.33, 1, 0.68, 1), color 0.25s ease;
 }
 
-.mfy-btn--primary {
+.px-btn--primary {
   background-color: #0a0a0a;
   color: #ffffff;
 }
 
-.mfy-btn--primary:hover {
+.px-btn--primary:hover {
   transform: translateY(-2px);
   background-color: #1f1f1f;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14), 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
-.mfy-btn--primary:active {
+.px-btn--primary:active {
   transform: translateY(0);
 }
 
 /* In dark theme, Get Started and Primary Buttons are WHITE with black text */
-.dark .mfy-btn--primary,
-[data-theme="dark"] .mfy-btn--primary,
-[data-color-scheme="dark"] .mfy-btn--primary {
+.dark .px-btn--primary,
+[data-theme="dark"] .px-btn--primary,
+[data-color-scheme="dark"] .px-btn--primary {
   background-color: #ffffff !important;
   color: #000000 !important;
 }
 
-.dark .mfy-btn--primary:hover,
-[data-theme="dark"] .mfy-btn--primary:hover,
-[data-color-scheme="dark"] .mfy-btn--primary:hover {
+.dark .px-btn--primary:hover,
+[data-theme="dark"] .px-btn--primary:hover,
+[data-color-scheme="dark"] .px-btn--primary:hover {
   background-color: #f0f0f0 !important;
   color: #000000 !important;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25), 0 8px 24px rgba(255, 255, 255, 0.22) !important;
@@ -701,19 +627,19 @@ html.dark,
   background-color: #ffffff !important;
 }
 
-.mfy-btn--secondary {
+.px-btn--secondary {
   background-color: #ffffff;
   color: #0a0a0a;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.mfy-btn--secondary:hover {
+.px-btn--secondary:hover {
   transform: translateY(-2px);
   background-color: #f5f5f5;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.mfy-btn--secondary:active {
+.px-btn--secondary:active {
   transform: translateY(0);
 }
 
@@ -1094,16 +1020,16 @@ body {
 }
 
 @layer marketing-components {
-  .mfy-page {
+  .px-page {
     font-family: IBM Plex Sans, Arial, sans-serif;
     color: rgb(var(--px-color-ink-strong) / 1)
   }
 
-  .mfy-page :where(button, input, textarea, select) {
+  .px-page :where(button, input, textarea, select) {
     font-family: inherit
   }
 
-  .mfy-page .container {
+  .px-page .container {
     width: 100%;
     max-width: 1240px;
     margin-inline: auto;
@@ -1111,12 +1037,12 @@ body {
   }
 
   @media(min-width:768px) {
-    .mfy-page .container {
+    .px-page .container {
       padding-inline: 50px
     }
   }
 
-  .mfy-btn {
+  .px-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1139,32 +1065,32 @@ body {
     transition: transform .3s cubic-bezier(.4, 0, .2, 1), background-color .3s cubic-bezier(.4, 0, .2, 1), box-shadow .3s cubic-bezier(.4, 0, .2, 1), color .3s cubic-bezier(.4, 0, .2, 1)
   }
 
-  .mfy-btn:focus-visible {
+  .px-btn:focus-visible {
     outline: 2px solid rgb(var(--px-color-neutral-950) / 1);
     outline-offset: 3px
   }
 
-  .mfy-btn--primary {
+  .px-btn--primary {
     background-color: rgb(var(--px-color-neutral-950) / 1);
     color: rgb(var(--px-color-white) / 1)
   }
 
-  .mfy-btn--primary:hover {
+  .px-btn--primary:hover {
     transform: translateY(-1px);
     background-color: rgb(var(--px-color-neutral-800) / 1);
     box-shadow: 0 0 0 1px rgb(var(--px-color-static-black) / 12%), 0 6px 16px rgb(var(--px-color-static-black) / 20%)
   }
 
-  .mfy-btn--secondary {
+  .px-btn--secondary {
     background-color: rgb(var(--px-color-white) / 1);
     color: rgb(var(--px-color-neutral-950) / 1)
   }
 
-  .mfy-btn--secondary:hover {
+  .px-btn--secondary:hover {
     background-color: rgb(var(--px-color-zinc-100) / 1)
   }
 
-  .mfy-btn--block {
+  .px-btn--block {
     width: 100%
   }
 
@@ -1242,11 +1168,11 @@ body {
   }
 
   .marquee-left {
-    animation: mfy-marquee-left 45s linear infinite
+    animation: px-marquee-left 45s linear infinite
   }
 
   .marquee-right {
-    animation: mfy-marquee-right 55s linear infinite
+    animation: px-marquee-right 55s linear infinite
   }
 
   .dot-grid {
@@ -1398,7 +1324,7 @@ body {
   }
 }
 
-.mfy-page.ent-dark {
+.px-page.ent-dark {
   min-height: 100vh;
   background-color: rgb(var(--px-color-white) / 1);
   color: rgb(var(--px-color-ink-strong) / 1)
@@ -1408,7 +1334,7 @@ body {
   border: 1px solid rgb(var(--px-color-black) / 10%)
 }
 
-.ent-dark .mfy-mega {
+.ent-dark .px-mega {
   box-shadow: 0 30px 60px rgb(var(--px-color-static-black) / 55%), 0 2px 8px rgb(var(--px-color-static-black) / 40%)
 }
 
@@ -1417,23 +1343,23 @@ body {
   color: rgb(var(--px-color-static-white) / 1)
 }
 
-.ent-dark .mfy-btn--primary {
+.ent-dark .px-btn--primary {
   box-shadow: 0 2px 12px rgb(var(--px-color-static-black) / 30%) !important
 }
 
-.ent-dark .mfy-btn--primary:hover {
+.ent-dark .px-btn--primary:hover {
   box-shadow: 0 4px 18px rgb(var(--px-color-static-black) / 40%) !important
 }
 
-.mfy-faq-list {
+.px-faq-list {
   border-top: 1px solid rgb(var(--px-color-neutral-200) / 1)
 }
 
-.mfy-faq-item {
+.px-faq-item {
   border-bottom: 1px solid rgb(var(--px-color-neutral-200) / 1)
 }
 
-.mfy-faq-q {
+.px-faq-q {
   width: 100%;
   display: flex;
   align-items: center;
@@ -1452,11 +1378,11 @@ body {
   transition: color .2s ease
 }
 
-.mfy-faq-q:hover {
+.px-faq-q:hover {
   color: rgb(var(--px-color-accent-hot) / 1)
 }
 
-.mfy-faq-ic {
+.px-faq-ic {
   flex: none;
   width: 20px;
   height: 20px;
@@ -1464,26 +1390,26 @@ body {
   transition: transform .3s ease, color .2s ease
 }
 
-.mfy-faq-item.is-open .mfy-faq-ic {
+.px-faq-item.is-open .px-faq-ic {
   transform: rotate(45deg);
   color: rgb(var(--px-color-accent-hot) / 1)
 }
 
-.mfy-faq-a {
+.px-faq-a {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows .3s ease
 }
 
-.mfy-faq-item.is-open .mfy-faq-a {
+.px-faq-item.is-open .px-faq-a {
   grid-template-rows: 1fr
 }
 
-.mfy-faq-a-inner {
+.px-faq-a-inner {
   overflow: hidden
 }
 
-.mfy-faq-a p {
+.px-faq-a p {
   margin: 0 0 12px;
   padding-right: 38px;
   color: rgb(var(--px-color-gray-500) / 1);
@@ -1491,16 +1417,16 @@ body {
   line-height: 1.7
 }
 
-.mfy-faq-a p:first-child {
+.px-faq-a p:first-child {
   padding-top: 2px
 }
 
-.mfy-faq-a p:last-child {
+.px-faq-a p:last-child {
   margin-bottom: 22px
 }
 
 @media(max-width:640px) {
-  .mfy-faq-a p {
+  .px-faq-a p {
     padding-right: 8px
   }
 }
@@ -1551,7 +1477,7 @@ body {
   transform: translateY(56px)
 }
 
-.fhs-preanim .mfy-page>header {
+.fhs-preanim .px-page>header {
   opacity: 0
 }
 
@@ -1566,7 +1492,7 @@ body {
   transform: translateY(56px)
 }
 
-.slh-preanim .mfy-page>header {
+.slh-preanim .px-page>header {
   opacity: 0
 }
 
@@ -1581,7 +1507,7 @@ body {
   transform: translateY(56px)
 }
 
-.pmh-preanim .mfy-page>header {
+.pmh-preanim .px-page>header {
   opacity: 0
 }
 
@@ -1596,7 +1522,7 @@ body {
   transform: translateY(56px)
 }
 
-.dsh-preanim .mfy-page>header {
+.dsh-preanim .px-page>header {
   opacity: 0
 }
 
@@ -1611,7 +1537,7 @@ body {
   transform: translateY(56px)
 }
 
-.mkh-preanim .mfy-page>header {
+.mkh-preanim .px-page>header {
   opacity: 0
 }
 
@@ -1626,7 +1552,7 @@ body {
   transform: translateY(56px)
 }
 
-.oph-preanim .mfy-page>header {
+.oph-preanim .px-page>header {
   opacity: 0
 }
 
@@ -1641,7 +1567,7 @@ body {
   transform: translateY(56px)
 }
 
-.plh-preanim .mfy-page>header {
+.plh-preanim .px-page>header {
   opacity: 0
 }
 
@@ -10751,11 +10677,11 @@ body {
   opacity: 0
 }
 
-.home-preanim .mfy-page>header {
+.home-preanim .px-page>header {
   opacity: 0
 }
 
-.home-preanim .mfy-page>main>section:not(#hero) {
+.home-preanim .px-page>main>section:not(#hero) {
   opacity: 0
 }
 
@@ -15869,7 +15795,7 @@ body {
 }
 
 /* ==========================================================================
-   MODULIFY COMPLETE DARK THEME PARITY OVERRIDES
+   PIXARTUAL COMPLETE DARK THEME PARITY OVERRIDES
    ========================================================================== */
 
 /* Pricing Page Dark Mode Parity */
@@ -16005,28 +15931,28 @@ body {
 }
 
 /* Global FAQ Accordion Dark Mode Parity */
-[data-theme="dark"] .mfy-faq-list,
-.dark .mfy-faq-list {
+[data-theme="dark"] .px-faq-list,
+.dark .px-faq-list {
   border-top-color: #27272a !important;
 }
 
-[data-theme="dark"] .mfy-faq-item,
-.dark .mfy-faq-item {
+[data-theme="dark"] .px-faq-item,
+.dark .px-faq-item {
   border-bottom-color: #27272a !important;
 }
 
-[data-theme="dark"] .mfy-faq-q,
-.dark .mfy-faq-q {
+[data-theme="dark"] .px-faq-q,
+.dark .px-faq-q {
   color: #ffffff !important;
 }
 
-[data-theme="dark"] .mfy-faq-q:hover,
-.dark .mfy-faq-q:hover {
+[data-theme="dark"] .px-faq-q:hover,
+.dark .px-faq-q:hover {
   color: #fc8c04 !important;
 }
 
-[data-theme="dark"] .mfy-faq-a p,
-.dark .mfy-faq-a p {
+[data-theme="dark"] .px-faq-a p,
+.dark .px-faq-a p {
   color: #a1a1aa !important;
 }
 

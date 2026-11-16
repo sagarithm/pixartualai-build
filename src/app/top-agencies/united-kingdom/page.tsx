@@ -145,10 +145,10 @@ export default function TopAgenciesUKPage() {
               Top UK design consultancies deliver extraordinary brand strategy. For agile founders wanting to validate concepts, generate custom client portals, and iterate without retainer fees, PixartualAI bridges the gap.
             </p>
             <div className="mt-8 flex justify-center gap-4">
-              <Link href="/dashboard" className="mfy-btn mfy-btn--primary">
+              <Link href="/dashboard" className="px-btn px-btn--primary">
                 Try PixartualAI Free
               </Link>
-              <Link href="/top-agencies" className="mfy-btn mfy-btn--outline">
+              <Link href="/top-agencies" className="px-btn px-btn--outline">
                 All Regions
               </Link>
             </div>

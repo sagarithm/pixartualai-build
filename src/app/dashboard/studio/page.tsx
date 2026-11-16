@@ -126,7 +126,7 @@ function StudioContent() {
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#fafafa] dark:bg-[#0c0c0c] text-ink-strong select-none font-sans">
       {/* =========================================================================
-          1. TOP NAVIGATION HEADER (Matching modulify.ai/dashboard/projects/sgr)
+          1. TOP NAVIGATION HEADER (Matching pixartual.ai/dashboard/projects/sgr)
           ========================================================================= */}
       <header className="h-12 border-b border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#141414] px-3 sm:px-4 flex items-center justify-between z-30 shrink-0">
         {/* Left: Brand / Project Dropdown / Sidebar Toggle */}
@@ -208,7 +208,7 @@ function StudioContent() {
             <SidebarSimple size={15} />
           </button>
 
-          {/* Left Toolbar Controls (Matching Modulify screenshot) */}
+          {/* Left Toolbar Controls (Matching PixartualAI screenshot) */}
           <div className="hidden sm:flex items-center gap-1 pl-1">
             <button
               type="button"
@@ -296,7 +296,7 @@ function StudioContent() {
           </div>
         </div>
 
-        {/* Center: Address Bar Pill (Exact Modulify Top-Bar Position) */}
+        {/* Center: Address Bar Pill (Exact PixartualAI Top-Bar Position) */}
         <div className="hidden md:flex items-center gap-1.5 bg-stone-50/80 dark:bg-[#1a1a1a] border border-neutral-200/90 dark:border-neutral-800 rounded-xl px-2.5 py-1 shadow-2xs text-xs">
           <div className="flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 pr-2 border-r border-neutral-200 dark:border-neutral-800">
             <span className="text-sm leading-none">🦩</span>
@@ -377,10 +377,10 @@ function StudioContent() {
           ========================================================================= */}
       <div className="flex-1 flex overflow-hidden">
         {/* =========================================================================
-            LEFT CHAT COPILOT PANEL (Exact Modulify Parity)
+            LEFT CHAT COPILOT PANEL (Exact PixartualAI Parity)
             ========================================================================= */}
         {isChatOpen && (
-          <aside className="w-[300px] sm:w-[330px] border-r border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#121212] flex flex-col justify-between h-[calc(100vh-48px)] shrink-0 z-20 mfy-fadein">
+          <aside className="w-[300px] sm:w-[330px] border-r border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#121212] flex flex-col justify-between h-[calc(100vh-48px)] shrink-0 z-20 px-fadein">
             {/* Header */}
             <div className="p-3.5 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs font-semibold text-neutral-900 dark:text-white">
               <div className="flex items-center gap-2">
@@ -537,7 +537,7 @@ function StudioContent() {
             CENTER CANVAS PREVIEW AREA
             ========================================================================= */}
         <main className="flex-1 flex flex-col h-[calc(100vh-48px)] overflow-y-auto bg-[#fafafa] dark:bg-[#0c0c0c] p-3 sm:p-5">
-          {/* Subdomain & Connect Domain Pill (Centered above canvas matching Modulify) */}
+          {/* Subdomain & Connect Domain Pill (Centered above canvas matching PixartualAI) */}
           <div className="flex items-center justify-center gap-2 mb-3 px-1 shrink-0">
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1a1a] border border-neutral-200/80 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 shadow-2xs text-xs">
               <Lock size={11} className="text-neutral-400" />
@@ -657,7 +657,7 @@ function StudioContent() {
           {/* Floating Support Widget (Matching Image 2 Bottom Right) */}
           <div className="fixed bottom-5 right-5 flex flex-col items-end gap-2.5 z-40">
             {isSupportOpen && (
-              <div className="w-68 p-3 rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/90 dark:border-neutral-800 shadow-xl mfy-fadein relative">
+              <div className="w-68 p-3 rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/90 dark:border-neutral-800 shadow-xl px-fadein relative">
                 <button
                   type="button"
                   onClick={() => setIsSupportOpen(false)}
@@ -697,7 +697,7 @@ function StudioContent() {
           PUBLISH MODAL
           ========================================================================= */}
       {isPublishModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 mfy-fadein">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 px-fadein">
           <div className="w-full max-w-md rounded-2xl bg-white dark:bg-[#1a1a1a] p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800">
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
               <div className="flex items-center gap-2">

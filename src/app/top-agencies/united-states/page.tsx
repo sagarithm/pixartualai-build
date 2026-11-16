@@ -189,10 +189,10 @@ export default function TopAgenciesUSPage() {
               If your startup or marketing team has 4 months and $100k+, a top agency will craft bespoke brand assets. If you need to test positioning, ship high-converting pages this week, or iterate on a live product without agency delays, PixartualAI provides agency-grade design output at lightning speed.
             </p>
             <div className="mt-8 flex justify-center gap-4">
-              <Link href="/dashboard" className="mfy-btn mfy-btn--primary">
+              <Link href="/dashboard" className="px-btn px-btn--primary">
                 Try PixartualAI Free
               </Link>
-              <Link href="/top-agencies" className="mfy-btn mfy-btn--outline">
+              <Link href="/top-agencies" className="px-btn px-btn--outline">
                 All Regions
               </Link>
             </div>

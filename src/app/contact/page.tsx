@@ -64,7 +64,7 @@ export default function ContactPage() {
                       setSubmitted(false);
                       setMessage('');
                     }}
-                    className="mt-6 mfy-btn mfy-btn--outline"
+                    className="mt-6 px-btn px-btn--outline"
                   >
                     Send another message
                   </button>
@@ -136,7 +136,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <button type="submit" className="mfy-btn mfy-btn--primary w-full !py-3.5 !text-base">
+                  <button type="submit" className="px-btn px-btn--primary w-full !py-3.5 !text-base">
                     Send Message <PaperPlaneTilt size={16} weight="bold" />
                   </button>
                 </form>

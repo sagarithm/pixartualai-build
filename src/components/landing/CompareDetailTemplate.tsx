@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { PixartualCta } from '@/components/landing/PixartualCta';
-import { MfyFaqAccordion, FaqItem } from '@/components/landing/MfyFaqAccordion';
+import { PxlFaqAccordion, FaqItem } from '@/components/landing/PxlFaqAccordion';
 import { Check, X, ArrowRight, Sparkle, ShieldCheck, Lightning, Cube, Desktop } from '@phosphor-icons/react';
 
 export interface ComparisonFeature {
@@ -80,10 +80,10 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Link href="/dashboard" className="mfy-btn mfy-btn--primary">
+              <Link href="/dashboard" className="px-btn px-btn--primary">
                 Build with PixartualAI
               </Link>
-              <Link href="/compare" className="mfy-btn mfy-btn--outline">
+              <Link href="/compare" className="px-btn px-btn--outline">
                 All Comparisons
               </Link>
             </div>
@@ -327,7 +327,7 @@ export const CompareDetailTemplate: React.FC<CompareDetailProps> = ({
                 </p>
               </div>
 
-              <MfyFaqAccordion items={faqs} />
+              <PxlFaqAccordion items={faqs} />
             </div>
           </div>
         </section>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { PixartualCta } from '@/components/landing/PixartualCta';
-import { MfyFaqAccordion, FaqItem } from '@/components/landing/MfyFaqAccordion';
+import { PxlFaqAccordion, FaqItem } from '@/components/landing/PxlFaqAccordion';
 import { Lightning, Sparkle, ShieldCheck, Browser, RocketLaunch } from '@phosphor-icons/react';
 
 export interface PersonaSection {
@@ -106,7 +106,7 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
                 </div>
                 <div className="fhs-overlay">
                   <p className="fhs-overlay-copy">{heroDesc}</p>
-                  <Link className="mfy-btn mfy-btn--secondary fhs-cta !bg-white !text-neutral-900 hover:!bg-neutral-100" href="/dashboard">
+                  <Link className="px-btn px-btn--secondary fhs-cta !bg-white !text-neutral-900 hover:!bg-neutral-100" href="/dashboard">
                     Start building
                   </Link>
                   <Link className="fhs-secondary-link" href="/templates">
@@ -224,7 +224,7 @@ export const RolePageTemplate: React.FC<RolePageProps> = ({
                 </p>
               </div>
 
-              <MfyFaqAccordion items={faqs} />
+              <PxlFaqAccordion items={faqs} />
             </div>
           </div>
         </section>

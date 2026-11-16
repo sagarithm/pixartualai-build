@@ -124,7 +124,7 @@ export const Navbar: React.FC = () => {
             <div
               onMouseEnter={keepOpen}
               onMouseLeave={scheduleClose}
-              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-[#292929] bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
+              className={`px-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-[#292929] bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
                 solutionsOpen
                   ? 'opacity-100 translate-y-0 pointer-events-auto visible'
                   : 'opacity-0 translate-y-2 pointer-events-none invisible'
@@ -210,7 +210,7 @@ export const Navbar: React.FC = () => {
             <div
               onMouseEnter={keepOpen}
               onMouseLeave={scheduleClose}
-              className={`mfy-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-[#292929] bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
+              className={`px-mega absolute left-0 top-[calc(100%+8px)] z-20 w-[640px] max-w-[calc(100vw-40px)] overflow-hidden rounded-[18px] border border-neutral-200/90 dark:border-[#292929] bg-white dark:bg-[#121215] shadow-[0_30px_60px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.6)] transition-all duration-200 before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 before:content-[''] ${
                 resourcesOpen
                   ? 'opacity-100 translate-y-0 pointer-events-auto visible'
                   : 'opacity-0 translate-y-2 pointer-events-none invisible'
@@ -298,7 +298,7 @@ export const Navbar: React.FC = () => {
           >
             Sign In
           </Link>
-          <Link className="mfy-btn mfy-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black font-semibold rounded-xl px-4 py-2 hover:opacity-90 transition-opacity" href="/dashboard">
+          <Link className="px-btn px-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black font-semibold rounded-xl px-4 py-2 hover:opacity-90 transition-opacity" href="/dashboard">
             Get Started
           </Link>
         </div>

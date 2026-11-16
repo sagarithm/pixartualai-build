@@ -66,10 +66,10 @@ export const KeepYourSiteSection: React.FC = () => {
 
         {/* Action Buttons */}
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-          <Link className="mfy-btn mfy-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black" href="/pricing">
+          <Link className="px-btn px-btn--primary !bg-black !text-white dark:!bg-white dark:!text-black" href="/pricing">
             Join the waitlist
           </Link>
-          <Link className="mfy-btn mfy-btn--secondary !bg-white !text-neutral-900 border border-neutral-200 dark:!bg-[#1c1c1c] dark:!text-white dark:border-neutral-700" href="/dashboard">
+          <Link className="px-btn px-btn--secondary !bg-white !text-neutral-900 border border-neutral-200 dark:!bg-[#1c1c1c] dark:!text-white dark:border-neutral-700" href="/dashboard">
             See what you can build
           </Link>
         </div>

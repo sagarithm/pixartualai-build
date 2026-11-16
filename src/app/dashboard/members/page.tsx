@@ -194,7 +194,7 @@ export default function MembersPage() {
 
           {/* Invite Member Modal */}
           {isInviteModalOpen && (
-            <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4 mfy-fadein">
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4 px-fadein">
               <div className="w-full max-w-md rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] shadow-2xl p-6 text-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white">Invite Team Member</h3>
