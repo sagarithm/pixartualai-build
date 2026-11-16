@@ -673,7 +673,7 @@ export default function DashboardPage() {
               <button
                 onClick={() => {
                   setIsSearchOpen(false);
-                  router.push('/domains');
+                  router.push('/dashboard/domains');
                 }}
                 className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-left"
               >

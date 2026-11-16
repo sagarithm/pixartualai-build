@@ -1,69 +1,16 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  Globe,
-  Sun,
-  Moon,
   Desktop,
-  CaretDown,
-  Check,
+  Sun,
+  MoonStars,
 } from '@phosphor-icons/react';
-import { Banknote } from 'lucide-react';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
 
 export const Footer: React.FC = () => {
-  const [themeMode, setThemeMode] = useState<'auto' | 'light' | 'dark'>('light');
-  const [themeOpen, setThemeOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
-  const [currencyOpen, setCurrencyOpen] = useState(false);
-  const [language, setLanguage] = useState('English');
-  const [currency, setCurrency] = useState('INR ₹');
-
-  const themeRef = useRef<HTMLDivElement>(null);
-  const langRef = useRef<HTMLDivElement>(null);
-  const currencyRef = useRef<HTMLDivElement>(null);
-
-  const languages = ['English', 'Español', 'Français', 'Deutsch', '日本語', 'Português', 'Italiano'];
-  const currencies = [
-    { code: 'INR', symbol: '₹', label: 'INR ₹' },
-    { code: 'USD', symbol: '$', label: 'USD $' },
-    { code: 'EUR', symbol: '€', label: 'EUR €' },
-    { code: 'GBP', symbol: '£', label: 'GBP £' },
-    { code: 'JPY', symbol: '¥', label: 'JPY ¥' },
-    { code: 'CAD', symbol: '$', label: 'CAD $' },
-    { code: 'AUD', symbol: '$', label: 'AUD $' },
-  ];
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (themeRef.current && !themeRef.current.contains(e.target as Node)) {
-        setThemeOpen(false);
-      }
-      if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false);
-      }
-      if (currencyRef.current && !currencyRef.current.contains(e.target as Node)) {
-        setCurrencyOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (themeRef.current && !themeRef.current.contains(e.target as Node)) {
-        setThemeOpen(false);
-      }
-      if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  const [themeMode, setThemeMode] = useState<'auto' | 'light' | 'dark'>('auto');
 
   const applyTheme = (mode: 'auto' | 'light' | 'dark') => {
     try {
@@ -109,7 +56,6 @@ export const Footer: React.FC = () => {
           return;
         }
       }
-      // default to system preference (auto)
       applyTheme('auto');
     } catch (e) {}
 
@@ -134,7 +80,7 @@ export const Footer: React.FC = () => {
               <Link href="/" aria-label="PixartualAI home" className="inline-block">
                 <PixartualLogo variant="auto" size={32} showWordmark />
               </Link>
-              <p className="max-w-[560px] text-[0.9375rem] leading-relaxed text-neutral-700">
+              <p className="max-w-[560px] text-[0.9375rem] leading-relaxed text-neutral-700 dark:text-neutral-300">
                 The AI platform that designs, builds, and hosts complete web apps and websites, end to end.
               </p>
             </div>
@@ -145,56 +91,38 @@ export const Footer: React.FC = () => {
               <div>
                 <p className="mb-4 text-[0.8125rem] font-medium text-neutral-400">Platform</p>
                 <div className="flex flex-col gap-2">
-                  <Link href="/" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Home
                   </Link>
-                  <Link href="/dashboard" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/dashboard" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     AI Builder
                   </Link>
-                  <Link href="/templates" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/templates" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Templates
                   </Link>
-                  <Link href="/domains" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Domain search
-                  </Link>
-                  <Link href="/pricing" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/pricing" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Pricing
                   </Link>
-                  <Link href="/enterprise-teams" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/enterprise-teams" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Enterprise
                   </Link>
-                  <Link href="/dashboard" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/dashboard" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Start building
                   </Link>
                 </div>
-                <hr className="my-4 h-px w-full border-0 bg-neutral-200" />
+                <hr className="my-4 h-px w-full border-0 bg-neutral-200 dark:bg-neutral-800" />
                 <div className="flex flex-col gap-2">
-                  <Link href="/compare" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/compare" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Compare
                   </Link>
-                  <Link href="/compare/pixartual-vs-framer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/compare/pixartual-vs-framer" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     PixartualAI vs Framer
                   </Link>
-                  <Link href="/compare/pixartual-vs-webflow" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/compare/pixartual-vs-webflow" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     PixartualAI vs Webflow
                   </Link>
-                  <Link href="/compare/pixartual-vs-lovable" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/compare/pixartual-vs-lovable" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     PixartualAI vs Lovable
-                  </Link>
-                  <Link href="/migrate" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Migrate to PixartualAI
-                  </Link>
-                  <Link href="/migrate/webflow" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Migrate from Webflow
-                  </Link>
-                  <Link href="/migrate/framer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Migrate from Framer
-                  </Link>
-                  <Link href="/migrate/wix" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Migrate from Wix
-                  </Link>
-                  <Link href="/migrate/shopify" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Migrate from Shopify
                   </Link>
                 </div>
               </div>
@@ -203,34 +131,34 @@ export const Footer: React.FC = () => {
               <div>
                 <p className="mb-4 text-[0.8125rem] font-medium text-neutral-400">Solutions</p>
                 <div className="flex flex-col gap-2">
-                  <Link href="/solutions" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/solutions" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     All solutions
                   </Link>
-                  <Link href="/founders" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/founders" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Founders
                   </Link>
-                  <Link href="/sales" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/sales" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Sales
                   </Link>
-                  <Link href="/product-managers" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/product-managers" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Product managers
                   </Link>
-                  <Link href="/designers" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/designers" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Designers
                   </Link>
-                  <Link href="/marketers" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/marketers" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Marketers
                   </Link>
-                  <Link href="/ops" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/ops" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Ops
                   </Link>
-                  <Link href="/people" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/people" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     People
                   </Link>
-                  <Link href="/prototypes" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/prototypes" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Prototypes
                   </Link>
-                  <Link href="/tools" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/tools" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Internal tools
                   </Link>
                 </div>
@@ -240,39 +168,27 @@ export const Footer: React.FC = () => {
               <div>
                 <p className="mb-4 text-[0.8125rem] font-medium text-neutral-400">Resources</p>
                 <div className="flex flex-col gap-2">
-                  <Link href="/insights" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/insights" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Insights
                   </Link>
-                  <Link href="/insights/use-cases" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/insights/use-cases" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Use cases
                   </Link>
-                  <Link href="/faqs" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/faqs" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     FAQs
                   </Link>
-                  <Link href="/connect" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/connect" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Connect
                   </Link>
-                  <Link href="/templates" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/templates" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Templates
                   </Link>
-                  <Link href="/made-in-pixartual" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/made-in-pixartual" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Made in PixartualAI
                   </Link>
-                  <a href="https://pixartual.ai/docs" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="/docs" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Docs
                   </a>
-                </div>
-                <hr className="my-4 h-px w-full border-0 bg-neutral-200" />
-                <div className="flex flex-col gap-2">
-                  <Link href="/top-agencies" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Web design agencies
-                  </Link>
-                  <Link href="/top-agencies/united-states" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Agencies in the US
-                  </Link>
-                  <Link href="/top-agencies/united-kingdom" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Agencies in the UK
-                  </Link>
                 </div>
               </div>
 
@@ -280,26 +196,23 @@ export const Footer: React.FC = () => {
               <div>
                 <p className="mb-4 text-[0.8125rem] font-medium text-neutral-400">Follow us</p>
                 <div className="flex flex-col gap-2">
-                  <a href="https://x.com/intent/follow?screen_name=pixartual" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    X / Twitter
+                  <a href="https://twitter.com/pixartual" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
+                    Twitter
                   </a>
-                  <a href="https://discord.com/invite/Dj4FDdMnYj" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Discord
-                  </a>
-                  <a href="https://www.linkedin.com/company/pixartual-ai" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.linkedin.com/company/pixartual" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     LinkedIn
                   </a>
-                  <a href="https://www.youtube.com/@PixartualAIAI" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.youtube.com/@pixartual" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     YouTube
                   </a>
-                  <a href="https://www.instagram.com/pixartual_/" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.instagram.com/pixartual" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Instagram
                   </a>
-                  <a href="https://www.threads.com/@pixartual_" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <a href="https://www.threads.net/@pixartual" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Threads
                   </a>
-                  <a href="https://www.facebook.com/pixartualai" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
-                    Facebook
+                  <a href="https://github.com/pixartual" target="_blank" rel="noopener noreferrer" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
+                    GitHub
                   </a>
                 </div>
               </div>
@@ -308,14 +221,23 @@ export const Footer: React.FC = () => {
               <div>
                 <p className="mb-4 text-[0.8125rem] font-medium text-neutral-400">Legal</p>
                 <div className="flex flex-col gap-2">
-                  <Link href="/contact" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/contact" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Contact
                   </Link>
-                  <Link href="/legal/privacy-policy" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/legal/privacy-policy" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Privacy Policy
                   </Link>
-                  <Link href="/legal/terms" className="fx-link text-[0.9375rem] text-neutral-800 no-underline">
+                  <Link href="/legal/terms" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
                     Terms of Service
+                  </Link>
+                  <Link href="/legal/cookie-policy" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
+                    Cookie Policy
+                  </Link>
+                  <Link href="/legal/security" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
+                    Security &amp; Compliance
+                  </Link>
+                  <Link href="/legal/dpa" className="fx-link text-[0.9375rem] text-neutral-800 dark:text-neutral-200 no-underline">
+                    Data Processing (DPA)
                   </Link>
                 </div>
               </div>
@@ -326,167 +248,60 @@ export const Footer: React.FC = () => {
         {/* Neon Gradient Hairline Divider matching PixartualAI Dark Theme */}
         <div className="h-px w-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-60 my-4" />
 
-        {/* Bottom Bar with Copyright, Theme, Currency, and Language */}
+        {/* Bottom Bar with Copyright and Vercel-style Segmented Theme Toggle */}
         <div className="flex flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between md:px-[50px]">
           <p className="text-sm text-neutral-400">
             © 2026 PixartualAI. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-2">
-            {/* 1. Theme Switcher */}
-            <div className="relative" ref={themeRef}>
-              <button
-                type="button"
-                onClick={() => setThemeOpen(!themeOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
-                aria-label="Theme"
-              >
-                {themeMode === 'light' ? (
-                  <Sun size={14} className="text-gray-500 dark:text-neutral-400" />
-                ) : themeMode === 'dark' ? (
-                  <Moon size={14} className="text-gray-500 dark:text-neutral-400" />
-                ) : (
-                  <Desktop size={14} className="text-gray-500 dark:text-neutral-400" />
-                )}
-                <span className="capitalize">{themeMode}</span>
-                <CaretDown
-                  size={12}
-                  className={`text-gray-500 dark:text-neutral-400 transition-transform duration-200 ${
-                    themeOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              {themeOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[140px] rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl px-fadein flex flex-col gap-0.5">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      applyTheme('light');
-                      setThemeOpen(false);
-                    }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-lg transition-all cursor-pointer ${
-                      themeMode === 'light'
-                        ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black shadow-xs'
-                        : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
-                    }`}
-                  >
-                    <Sun size={15} className={themeMode === 'light' ? 'text-white dark:text-black' : 'text-neutral-400 dark:text-neutral-400'} />
-                    <span>Light</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      applyTheme('dark');
-                      setThemeOpen(false);
-                    }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-lg transition-all cursor-pointer ${
-                      themeMode === 'dark'
-                        ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black shadow-xs'
-                        : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
-                    }`}
-                  >
-                    <Moon size={15} className={themeMode === 'dark' ? 'text-white dark:text-black' : 'text-neutral-400 dark:text-neutral-400'} />
-                    <span>Dark</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      applyTheme('auto');
-                      setThemeOpen(false);
-                    }}
-                    className={`flex items-center gap-2.5 w-full text-left px-3 py-2 text-xs rounded-lg transition-all cursor-pointer ${
-                      themeMode === 'auto'
-                        ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black shadow-xs'
-                        : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50'
-                    }`}
-                  >
-                    <Desktop size={15} className={themeMode === 'auto' ? 'text-white dark:text-black' : 'text-neutral-400 dark:text-neutral-400'} />
-                    <span>Auto</span>
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* 2. Currency Selector */}
-            <div className="relative" ref={currencyRef}>
-              <button
-                type="button"
-                onClick={() => setCurrencyOpen(!currencyOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
-                aria-label="Currency"
-              >
-                <Banknote size={14} className="text-gray-500 dark:text-neutral-400" />
-                <span>{currency}</span>
-                <CaretDown
-                  size={12}
-                  className={`text-gray-500 dark:text-neutral-400 transition-transform duration-200 ${
-                    currencyOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {currencyOpen && (
-                <div className="absolute bottom-full mb-2 left-0 sm:left-auto sm:right-0 z-50 min-w-[130px] max-h-48 overflow-y-auto rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl px-fadein">
-                  {currencies.map((c) => (
-                    <button
-                      key={c.code}
-                      type="button"
-                      onClick={() => {
-                        setCurrency(c.label);
-                        setCurrencyOpen(false);
-                      }}
-                      className={`w-full text-left px-3 py-1.5 text-xs rounded-lg transition-colors cursor-pointer ${
-                        currency === c.label
-                          ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black'
-                          : 'hover:bg-neutral-100 dark:hover:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200'
-                      }`}
-                    >
-                      {c.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* 3. Language Selector */}
-            <div className="relative" ref={langRef}>
-              <button
-                type="button"
-                onClick={() => setLangOpen(!langOpen)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700/80 bg-white dark:bg-[#141416] px-3.5 py-1.5 text-xs text-neutral-800 dark:text-neutral-300 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/80"
-                aria-label="Language"
-              >
-                <Globe size={14} className="text-gray-500 dark:text-neutral-400" />
-                <span>{language}</span>
-                <CaretDown
-                  size={12}
-                  className={`text-gray-500 dark:text-neutral-400 transition-transform duration-200 ${
-                    langOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {langOpen && (
-                <div className="absolute bottom-full mb-2 right-0 z-50 min-w-[140px] rounded-[14px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#181818] p-1 shadow-2xl px-fadein">
-                  {languages.map((l) => (
-                    <button
-                      key={l}
-                      type="button"
-                      onClick={() => {
-                        setLanguage(l);
-                        setLangOpen(false);
-                      }}
-                      className={`w-full text-left px-3 py-1.5 text-xs rounded-lg transition-colors cursor-pointer ${
-                        language === l
-                          ? 'font-medium bg-neutral-900 text-white dark:bg-[#e5e5e5] dark:text-black'
-                          : 'hover:bg-neutral-100 dark:hover:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200'
-                      }`}
-                    >
-                      {l}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+          {/* Vercel-style 3-State Segmented Theme Toggle */}
+          <div
+            role="radiogroup"
+            aria-label="Color theme"
+            className="inline-flex items-center rounded-full border border-neutral-300/80 dark:border-neutral-800/90 bg-neutral-100/90 dark:bg-[#0c0c0e] p-[3px] shadow-xs"
+          >
+            <button
+              type="button"
+              role="radio"
+              aria-checked={themeMode === 'auto'}
+              title="System Theme"
+              onClick={() => applyTheme('auto')}
+              className={`size-7 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+                themeMode === 'auto'
+                  ? 'bg-white dark:bg-[#1f1f23] text-neutral-950 dark:text-white shadow-xs'
+                  : 'text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
+              }`}
+            >
+              <Desktop size={15} weight={themeMode === 'auto' ? 'fill' : 'regular'} />
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={themeMode === 'light'}
+              title="Light Theme"
+              onClick={() => applyTheme('light')}
+              className={`size-7 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+                themeMode === 'light'
+                  ? 'bg-white dark:bg-[#1f1f23] text-neutral-950 dark:text-white shadow-xs'
+                  : 'text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
+              }`}
+            >
+              <Sun size={15} weight={themeMode === 'light' ? 'fill' : 'regular'} />
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={themeMode === 'dark'}
+              title="Dark Theme"
+              onClick={() => applyTheme('dark')}
+              className={`size-7 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+                themeMode === 'dark'
+                  ? 'bg-white dark:bg-[#1f1f23] text-neutral-950 dark:text-white shadow-xs'
+                  : 'text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
+              }`}
+            >
+              <MoonStars size={15} weight={themeMode === 'dark' ? 'fill' : 'regular'} />
+            </button>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-neutral-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0c] text-neutral-900 dark:text-neutral-100 selection:bg-orange-500 selection:text-white transition-colors duration-200">
       <Navbar />
 
       <main className="lp-main flex-1">

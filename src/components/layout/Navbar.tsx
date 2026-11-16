@@ -248,7 +248,6 @@ export const Navbar: React.FC = () => {
                           { label: 'FAQs', desc: 'Answers to common questions.', href: '/faqs' },
                           { label: 'Webflow Transfer', desc: 'Migrate your Webflow sites.', href: '/webflow-transfer' },
                           { label: 'Compare Platforms', desc: 'PixartualAI vs Framer, Webflow.', href: '/compare' },
-                          { label: 'Agencies Directory', desc: 'Top vetted web agencies.', href: '/top-agencies' },
                         ].map((item) => (
                           <Link
                             key={item.label}
