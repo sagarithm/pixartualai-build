@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useStudioStore } from '@/store/useStudioStore';
 import { PRESET_TEMPLATES } from '@/lib/templates';
+import { SandpackCanvas } from '@/components/studio/SandpackCanvas';
+import { SUPPORTED_MODELS, SupportedModelId } from '@/lib/ai/openrouter';
+import { exportProjectToZip } from '@/lib/studio/export-zip';
 import {
   Eye,
   Desktop,
@@ -35,6 +38,9 @@ import {
   X,
   MagnifyingGlass,
   CheckCircle,
+  DownloadSimple,
+  Code,
+  Sparkle,
 } from '@phosphor-icons/react';
 
 function StudioContent() {
@@ -51,6 +57,16 @@ function StudioContent() {
     generateFromPrompt,
     undo,
     redo,
+    files,
+    activeFile,
+    selectedModel,
+    isGenerating,
+    canvasMode,
+    setCanvasMode,
+    setSelectedModel,
+    updateFile,
+    generateCodeFromPrompt,
+    chatMessages,
   } = useStudioStore();
 
   // Studio UI states
@@ -59,6 +75,8 @@ function StudioContent() {
   const [isProjectMenuOpen, setIsProjectMenuOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
+  const [isModelDropdownOpen, setIsModelDropdownOpen] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [buildMode, setBuildMode] = useState<'Build' | 'Edit' | 'Enhance'>('Build');
   const [isBuildModeOpen, setIsBuildModeOpen] = useState(false);
@@ -89,18 +107,22 @@ function StudioContent() {
 
   const handleSendChat = (customText?: string) => {
     const textToSend = customText || chatInput;
-    if (!textToSend.trim()) return;
+    if (!textToSend.trim() || isGenerating) return;
 
-    const newMsg = { sender: 'user' as const, text: textToSend.trim(), time: 'Just now' };
-    setMessages((prev) => [
-      ...prev,
-      newMsg,
-      {
-        sender: 'assistant' as const,
-        text: `Applying changes for: "${textToSend.trim()}". Updating AST nodes, typography tokens, and layout constraints...`,
-        time: 'Just now',
-      },
-    ]);
+    if (canvasMode === 'sandpack') {
+      generateCodeFromPrompt(textToSend.trim());
+    } else {
+      const newMsg = { sender: 'user' as const, text: textToSend.trim(), time: 'Just now' };
+      setMessages((prev) => [
+        ...prev,
+        newMsg,
+        {
+          sender: 'assistant' as const,
+          text: `Applying changes for: "${textToSend.trim()}". Updating AST nodes, typography tokens, and layout constraints...`,
+          time: 'Just now',
+        },
+      ]);
+    }
 
     setChatInput('');
   };
@@ -331,16 +353,94 @@ function StudioContent() {
 
         {/* Right: Support Avatar Pill + Share + Upgrade + Publish */}
         <div className="flex items-center gap-2 sm:gap-2.5">
-          {/* Support Team Pill */}
-          <div className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#1a1a1a] hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer shadow-2xs">
-            <div className="w-8 h-4 relative rounded-full overflow-hidden shrink-0">
-              <Image src="/images/support-team-avatars.png" alt="Support" fill className="object-cover" />
-            </div>
-            <span className="text-[11.5px] font-medium text-neutral-700 dark:text-neutral-300">Chat with us</span>
-            <span className="w-4 h-4 bg-red-500 rounded-full text-[9px] text-white flex items-center justify-center font-bold">
-              1
-            </span>
+          {/* Canvas Mode Toggle (Sandpack Live Code vs Block Designer) */}
+          <div className="hidden lg:flex items-center gap-1 bg-stone-100 dark:bg-[#1a1a1c] p-1 rounded-xl border border-neutral-200/80 dark:border-neutral-800 text-xs">
+            <button
+              type="button"
+              onClick={() => setCanvasMode('sandpack')}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer ${
+                canvasMode === 'sandpack'
+                  ? 'bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs'
+                  : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
+              }`}
+            >
+              <Code size={13} weight="bold" />
+              <span>Sandbox</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setCanvasMode('ast')}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer ${
+                canvasMode === 'ast'
+                  ? 'bg-neutral-900 text-white dark:bg-white dark:text-black shadow-xs'
+                  : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
+              }`}
+            >
+              <span>Blocks</span>
+            </button>
           </div>
+
+          {/* Model Selector Dropdown */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setIsModelDropdownOpen(!isModelDropdownOpen)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-neutral-200/90 dark:border-neutral-700/80 bg-white dark:bg-[#1a1a1c] text-xs font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors shadow-2xs cursor-pointer"
+            >
+              <Sparkle size={13} className="text-[#FE3200]" weight="fill" />
+              <span>{SUPPORTED_MODELS.find((m) => m.id === selectedModel)?.name || 'Claude 3.7'}</span>
+              <CaretDown size={11} className="text-neutral-400" />
+            </button>
+
+            {isModelDropdownOpen && (
+              <div className="absolute right-0 top-full mt-1.5 w-72 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#18181b] p-1.5 shadow-2xl z-50 px-fadein">
+                <div className="px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-neutral-400">
+                  Frontier AI Models (OpenRouter)
+                </div>
+                {SUPPORTED_MODELS.map((m) => (
+                  <button
+                    key={m.id}
+                    type="button"
+                    onClick={() => {
+                      setSelectedModel(m.id);
+                      setIsModelDropdownOpen(false);
+                    }}
+                    className={`w-full text-left p-2 rounded-xl text-xs flex flex-col gap-0.5 transition-colors cursor-pointer ${
+                      selectedModel === m.id
+                        ? 'bg-neutral-100 dark:bg-neutral-800/80 font-medium text-neutral-900 dark:text-white'
+                        : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/40 text-neutral-700 dark:text-neutral-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold">{m.name}</span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-orange-500/10 text-orange-500 font-mono">
+                        {m.badge}
+                      </span>
+                    </div>
+                    <span className="text-[11px] text-neutral-400 leading-tight">{m.description}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Export Codebase ZIP */}
+          <button
+            type="button"
+            onClick={async () => {
+              setIsExporting(true);
+              try {
+                await exportProjectToZip(files, projectName);
+              } finally {
+                setIsExporting(false);
+              }
+            }}
+            className="px-3 py-1.5 rounded-xl border border-neutral-200/90 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors flex items-center gap-1.5 shadow-2xs cursor-pointer"
+            title="Download complete Vite + React + Tailwind codebase"
+          >
+            <DownloadSimple size={14} className={isExporting ? 'animate-bounce' : ''} />
+            <span className="hidden sm:inline">{isExporting ? 'Exporting...' : 'Export'}</span>
+          </button>
 
           {/* Share */}
           <button
@@ -432,23 +532,32 @@ function StudioContent() {
               ) : (
                 /* Chat Messages History */
                 <div className="space-y-3.5 my-auto">
-                  {messages.map((m, idx) => (
-                    <div
-                      key={idx}
-                      className={`flex flex-col text-xs ${m.sender === 'user' ? 'items-end' : 'items-start'
-                        }`}
-                    >
+                  {(canvasMode === 'sandpack' ? chatMessages : messages).map((m: any, idx: number) => {
+                    const isUser = m.sender === 'user' || m.role === 'user';
+                    return (
                       <div
-                        className={`max-w-[88%] p-3 rounded-2xl leading-relaxed ${m.sender === 'user'
-                          ? 'bg-neutral-900 text-white dark:bg-white dark:text-black rounded-tr-xs shadow-2xs'
-                          : 'bg-stone-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-tl-xs'
-                          }`}
+                        key={m.id || idx}
+                        className={`flex flex-col text-xs ${isUser ? 'items-end' : 'items-start'}`}
                       >
-                        {m.text}
+                        <div
+                          className={`max-w-[88%] p-3 rounded-2xl leading-relaxed ${
+                            isUser
+                              ? 'bg-neutral-900 text-white dark:bg-white dark:text-black rounded-tr-xs shadow-2xs'
+                              : 'bg-stone-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-tl-xs'
+                          }`}
+                        >
+                          {m.text}
+                        </div>
+                        {m.time && <span className="text-[10px] text-neutral-400 mt-1 px-1">{m.time}</span>}
                       </div>
-                      <span className="text-[10px] text-neutral-400 mt-1 px-1">{m.time}</span>
+                    );
+                  })}
+                  {isGenerating && (
+                    <div className="flex items-center gap-2 p-2.5 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs animate-pulse">
+                      <Sparkle size={14} className="animate-spin" />
+                      <span>Streaming code via {SUPPORTED_MODELS.find((m) => m.id === selectedModel)?.name || 'AI'}...</span>
                     </div>
-                  ))}
+                  )}
                 </div>
               )}
             </div>
@@ -536,7 +645,18 @@ function StudioContent() {
         {/* =========================================================================
             CENTER CANVAS PREVIEW AREA
             ========================================================================= */}
-        <main className="flex-1 flex flex-col h-[calc(100vh-48px)] overflow-y-auto bg-[#fafafa] dark:bg-[#0c0c0c] p-3 sm:p-5">
+        {canvasMode === 'sandpack' ? (
+          <div className="flex-1 flex flex-col h-[calc(100vh-48px)] overflow-hidden">
+            <SandpackCanvas
+              files={files}
+              activeFile={activeFile}
+              viewport={viewport as any}
+              onViewportChange={setViewport as any}
+              onFileChange={updateFile}
+            />
+          </div>
+        ) : (
+          <main className="flex-1 flex flex-col h-[calc(100vh-48px)] overflow-y-auto bg-[#fafafa] dark:bg-[#0c0c0c] p-3 sm:p-5">
           {/* Subdomain & Connect Domain Pill (Centered above canvas matching PixartualAI) */}
           <div className="flex items-center justify-center gap-2 mb-3 px-1 shrink-0">
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1a1a] border border-neutral-200/80 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 shadow-2xs text-xs">
@@ -691,6 +811,7 @@ function StudioContent() {
             </button>
           </div>
         </main>
+      )}
       </div>
 
       {/* =========================================================================

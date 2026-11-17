@@ -2,8 +2,12 @@ import { create } from 'zustand';
 import { ExperienceAST, SectionNode, ViewportMode, ExperienceTheme } from '@/types/ast';
 import { PRESET_TEMPLATES, DEFAULT_LIGHT_THEME, DEFAULT_DARK_THEME } from '@/lib/templates';
 import { generateExperienceFromPrompt } from '@/lib/ai-generator';
+import { DEFAULT_SANDBOX_FILES } from '@/lib/studio/default-files';
+import { parseFilesFromMarkdown } from '@/lib/ai/stream-parser';
+import { SupportedModelId, DEFAULT_MODEL } from '@/lib/ai/openrouter';
 
 interface StudioState {
+  // AST state (for visual block canvas)
   experience: ExperienceAST;
   selectedSectionId: string | null;
   viewport: ViewportMode;
@@ -14,6 +18,13 @@ interface StudioState {
   chatMessages: { id: string; role: 'user' | 'assistant'; text: string }[];
   history: ExperienceAST[];
   future: ExperienceAST[];
+
+  // Sandpack Code-Gen Sandbox state
+  files: Record<string, string>;
+  activeFile: string;
+  selectedModel: SupportedModelId;
+  isGenerating: boolean;
+  canvasMode: 'ast' | 'sandpack';
 
   // Actions
   setExperience: (exp: ExperienceAST) => void;
@@ -34,6 +45,14 @@ interface StudioState {
   sendChatMessage: (message: string) => void;
   undo: () => void;
   redo: () => void;
+
+  // Sandpack actions
+  setCanvasMode: (mode: 'ast' | 'sandpack') => void;
+  setSelectedModel: (model: SupportedModelId) => void;
+  setActiveFile: (path: string) => void;
+  updateFile: (path: string, content: string) => void;
+  setFiles: (files: Record<string, string>) => void;
+  generateCodeFromPrompt: (prompt: string) => Promise<void>;
 }
 
 export const useStudioStore = create<StudioState>((set, get) => ({
@@ -48,11 +67,117 @@ export const useStudioStore = create<StudioState>((set, get) => ({
     {
       id: 'welcome',
       role: 'assistant',
-      text: "Hi, I'm your PixartualAI Copilot! I can help you modify copy, tweak styling, add interactive calculators, or change your theme. What would you like to refine?",
+      text: "Hi, I'm your PixartualAI Copilot! I can generate full-stack React + Tailwind applications, tweak components, or write custom logic. What would you like to build?",
     },
   ],
   history: [],
   future: [],
+
+  // Initial Sandpack Virtual File System
+  files: DEFAULT_SANDBOX_FILES,
+  activeFile: '/App.tsx',
+  selectedModel: DEFAULT_MODEL,
+  isGenerating: false,
+  canvasMode: 'sandpack',
+
+  setCanvasMode: (mode) => set({ canvasMode: mode }),
+  setSelectedModel: (model) => set({ selectedModel: model }),
+  setActiveFile: (activeFile) => set({ activeFile }),
+  updateFile: (path, content) => {
+    set((state) => ({
+      files: {
+        ...state.files,
+        [path]: content,
+      },
+    }));
+  },
+  setFiles: (files) => set({ files }),
+
+  generateCodeFromPrompt: async (prompt: string) => {
+    set({ isGenerating: true });
+
+    // Append user prompt to chat
+    const userMsg = { id: `user-${Date.now()}`, role: 'user' as const, text: prompt };
+    set((state) => ({ chatMessages: [...state.chatMessages, userMsg] }));
+
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt,
+          modelId: get().selectedModel,
+          existingFiles: get().files,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Generation failed with HTTP ${response.status}`);
+      }
+
+      if (!response.body) {
+        throw new Error('ReadableStream not supported by response');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulatedText = '';
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+
+        accumulatedText += decoder.decode(value, { stream: true });
+
+        // Parse any completed or in-progress files
+        const extracted = parseFilesFromMarkdown(accumulatedText);
+        if (Object.keys(extracted).length > 0) {
+          set((state) => ({
+            files: {
+              ...state.files,
+              ...extracted,
+            },
+          }));
+        }
+      }
+
+      // Final pass on full stream
+      const finalFiles = parseFilesFromMarkdown(accumulatedText);
+      if (Object.keys(finalFiles).length > 0) {
+        set((state) => ({
+          files: {
+            ...state.files,
+            ...finalFiles,
+          },
+        }));
+      }
+
+      set((state) => ({
+        chatMessages: [
+          ...state.chatMessages,
+          {
+            id: `asst-${Date.now()}`,
+            role: 'assistant',
+            text: `✨ Successfully generated and mounted code for: "${prompt}". Check the Preview and Code tabs!`,
+          },
+        ],
+      }));
+    } catch (err: any) {
+      console.error('Error generating code:', err);
+      set((state) => ({
+        chatMessages: [
+          ...state.chatMessages,
+          {
+            id: `err-${Date.now()}`,
+            role: 'assistant',
+            text: `⚠️ Generation error: ${err.message || 'Could not connect to model'}`,
+          },
+        ],
+      }));
+    } finally {
+      set({ isGenerating: false });
+    }
+  },
 
   setExperience: (exp) => {
     const current = get().experience;
@@ -73,7 +198,6 @@ export const useStudioStore = create<StudioState>((set, get) => ({
         get().setExperience(JSON.parse(JSON.stringify(found)));
         set({ isTemplateModalOpen: false });
       } else {
-        // Dynamically instantiate experience for this template
         const generated = generateExperienceFromPrompt({
           prompt: `A polished ${decoded} website template with hero, interactive features, bento grid, and contact`,
           themePreference: get().experience.theme.mode,
@@ -87,7 +211,7 @@ export const useStudioStore = create<StudioState>((set, get) => ({
             {
               id: `msg-${Date.now()}`,
               role: 'assistant',
-              text: `✨ Cloned the "${decoded}" template into your workspace! You can click any section to edit or use Copilot chat to customize it.`,
+              text: `✨ Cloned the "${decoded}" template into your workspace!`,
             },
           ],
         });
@@ -192,10 +316,15 @@ export const useStudioStore = create<StudioState>((set, get) => ({
   setIsChatOpen: (open) => set({ isChatOpen: open }),
 
   sendChatMessage: (message) => {
+    // Check if we are in sandpack mode: if so, stream via generateCodeFromPrompt!
+    if (get().canvasMode === 'sandpack') {
+      get().generateCodeFromPrompt(message);
+      return;
+    }
+
     const userMsg = { id: `user-${Date.now()}`, role: 'user' as const, text: message };
     set((state) => ({ chatMessages: [...state.chatMessages, userMsg] }));
 
-    // Local AI refinement logic
     setTimeout(() => {
       const lower = message.toLowerCase();
       const current = get().experience;
@@ -212,20 +341,6 @@ export const useStudioStore = create<StudioState>((set, get) => ({
         if (hero) {
           get().updateSectionText(hero.id, 'title', message.replace(/^(change|make|update) (the )?(hero|headline|title) (to )?/i, ''));
           replyText = `Updated the hero headline!`;
-        }
-      } else if (lower.includes('blue') || lower.includes('purple') || lower.includes('green') || lower.includes('red')) {
-        const colorMap: Record<string, string> = {
-          blue: '#2563EB',
-          purple: '#9333EA',
-          green: '#059669',
-          red: '#E11D48',
-        };
-        for (const [key, val] of Object.entries(colorMap)) {
-          if (lower.includes(key)) {
-            get().updateThemeColor(val);
-            replyText = `Updated your primary brand accent to ${key}!`;
-            break;
-          }
         }
       } else {
         replyText = `Processed: "${message}". What else would you like to refine?`;
@@ -264,4 +379,3 @@ export const useStudioStore = create<StudioState>((set, get) => ({
     });
   },
 }));
-
