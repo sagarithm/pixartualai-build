@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { CaretDown, List, X } from '@phosphor-icons/react';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
@@ -290,7 +291,8 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right Actions */}
-        <div className="ml-auto hidden items-center gap-5 lg:flex">
+        <div className="ml-auto hidden items-center gap-4 lg:flex">
+          <ThemeToggle />
           <Link
             href="/dashboard"
             className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[15px] font-normal text-neutral-800 dark:text-neutral-200 no-underline fx-link hover:text-neutral-950 dark:hover:text-white transition-colors"
@@ -389,7 +391,12 @@ export const Navbar: React.FC = () => {
               Contact
             </Link>
 
-            <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex flex-col gap-3">
+            <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
+              <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400">Appearance</span>
+              <ThemeToggle />
+            </div>
+
+            <div className="flex flex-col gap-3">
               <Link
                 href="/dashboard"
                 onClick={() => setMobileMenuOpen(false)}

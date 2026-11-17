@@ -1,73 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import {
-  Desktop,
-  Sun,
-  MoonStars,
-} from '@phosphor-icons/react';
 import { PixartualLogo } from '@/components/brand/PixartualLogo';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
 
 export const Footer: React.FC = () => {
-  const [themeMode, setThemeMode] = useState<'auto' | 'light' | 'dark'>('auto');
-
-  const applyTheme = (mode: 'auto' | 'light' | 'dark') => {
-    try {
-      localStorage.setItem('theme', mode);
-      localStorage.setItem('pixartual-theme', JSON.stringify({ state: { Theme: mode } }));
-    } catch (e) {}
-
-    setThemeMode(mode);
-
-    let isDark = false;
-    if (mode === 'dark') {
-      isDark = true;
-    } else if (mode === 'light') {
-      isDark = false;
-    } else {
-      isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-
-    const html = document.documentElement;
-    html.setAttribute('data-color-scheme', isDark ? 'dark' : 'light');
-    html.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    if (isDark) {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
-    }
-
-    window.dispatchEvent(new CustomEvent('pixartual-theme-change', { detail: mode }));
-  };
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('theme') as 'auto' | 'light' | 'dark' | null;
-      if (saved && ['auto', 'light', 'dark'].includes(saved)) {
-        applyTheme(saved);
-        return;
-      }
-      const modTheme = localStorage.getItem('pixartual-theme');
-      if (modTheme) {
-        const parsed = JSON.parse(modTheme);
-        if (parsed?.state?.Theme && ['auto', 'light', 'dark'].includes(parsed.state.Theme)) {
-          applyTheme(parsed.state.Theme);
-          return;
-        }
-      }
-      applyTheme('auto');
-    } catch (e) {}
-
-    const handleThemeChange = (e: any) => {
-      if (e.detail && ['auto', 'light', 'dark'].includes(e.detail)) {
-        setThemeMode(e.detail);
-      }
-    };
-    window.addEventListener('pixartual-theme-change', handleThemeChange);
-    return () => window.removeEventListener('pixartual-theme-change', handleThemeChange);
-  }, []);
-
   return (
     <footer className="marketing-footer bg-cover bg-top bg-no-repeat px-4 py-8 md:px-8 md:py-12">
       <div
@@ -254,55 +192,7 @@ export const Footer: React.FC = () => {
             © 2026 PixartualAI. All rights reserved.
           </p>
 
-          {/* Vercel-style 3-State Segmented Theme Toggle */}
-          <div
-            role="radiogroup"
-            aria-label="Color theme"
-            className="inline-flex items-center rounded-full border border-neutral-300/80 dark:border-neutral-800/90 bg-neutral-100/90 dark:bg-[#0c0c0e] p-[3px] shadow-xs"
-          >
-            <button
-              type="button"
-              role="radio"
-              aria-checked={themeMode === 'auto'}
-              title="System Theme"
-              onClick={() => applyTheme('auto')}
-              className={`size-7 rounded-full flex items-center justify-center transition-all cursor-pointer ${
-                themeMode === 'auto'
-                  ? 'bg-white dark:bg-[#1f1f23] text-neutral-950 dark:text-white shadow-xs'
-                  : 'text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
-              }`}
-            >
-              <Desktop size={15} weight={themeMode === 'auto' ? 'fill' : 'regular'} />
-            </button>
-            <button
-              type="button"
-              role="radio"
-              aria-checked={themeMode === 'light'}
-              title="Light Theme"
-              onClick={() => applyTheme('light')}
-              className={`size-7 rounded-full flex items-center justify-center transition-all cursor-pointer ${
-                themeMode === 'light'
-                  ? 'bg-white dark:bg-[#1f1f23] text-neutral-950 dark:text-white shadow-xs'
-                  : 'text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
-              }`}
-            >
-              <Sun size={15} weight={themeMode === 'light' ? 'fill' : 'regular'} />
-            </button>
-            <button
-              type="button"
-              role="radio"
-              aria-checked={themeMode === 'dark'}
-              title="Dark Theme"
-              onClick={() => applyTheme('dark')}
-              className={`size-7 rounded-full flex items-center justify-center transition-all cursor-pointer ${
-                themeMode === 'dark'
-                  ? 'bg-white dark:bg-[#1f1f23] text-neutral-950 dark:text-white shadow-xs'
-                  : 'text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300'
-              }`}
-            >
-              <MoonStars size={15} weight={themeMode === 'dark' ? 'fill' : 'regular'} />
-            </button>
-          </div>
+          <ThemeToggle />
         </div>
       </div>
     </footer>
